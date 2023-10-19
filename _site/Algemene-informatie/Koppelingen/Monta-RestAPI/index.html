@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Monta RestAPI </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Monta RestAPI ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="monta-restapi">Monta RestAPI</h1>
+
+<p>Monta
+REST API</p>
+<h2 id="documentation-for-using-montas-rest-api">Documentation for using Monta’s REST API</h2>
+<h3 id="abstract">Abstract</h3>
+<p>With our REST API, our clients are enabled to submit to and retrieve information from our systems.
+This document describes the features and usage of this API.</p>
+<h3 id="connection">Connection</h3>
+<p>Url: <a href="https://api.montapacking.nl/rest/v5/">https://api.montapacking.nl/rest/v5/</a>.</p>
+<p>Please note that HTTPS connection with TLS 1.2 is required.</p>
+<h3 id="authentication">Authentication</h3>
+<p>Authenticate with username and password using HTTP basic authentication. Username and password
+can be created in the Montaportal.
+This can be done through the following link: <a href="https://www.montaportal.nl/Connect/PlatformDetails?platform=RestAPI">https://www.montaportal.nl/Connect/PlatformDetails?platform=RestAPI</a></p>
+<h3 id="whitelisting">Whitelisting</h3>
+<p>It is possible to whitelist specific IP addresses. This can be done via de Montaportal. IP’s can be added
+per useraccount. All IP’s are allowed when there isn’t an IP added to the white</p>
+<h3 id="technical-details">Technical details</h3>
+<p>The API is set up according to the REST standard. Entities are identified with the URL. The HTTP
+method specified the action performed on an entity.</p>
+<ul>
+<li>GET To retrieve details of an entity</li>
+<li>POST To create a new entity</li>
+<li>PUT To update an entity</li>
+<li>DELETE To delete an entity
+JSON is used for requests and responses.</li>
+</ul>
+<h3 id="error-handling">Error handling</h3>
+<p>The HTTP status codes defines the status of a request. These HTTP statuses are used:</p>
+<ul>
+<li>200 The entity was successfully retrieved or successfully updated</li>
+<li>204 The entity was successfully deleted</li>
+<li>400 The entity could not be created, updated or deleted. Details about the problem are</li>
+<li>specified in the response content</li>
+<li>403 The IP used for the request is not whitelisted</li>
+<li>404 The entity you tried to retrieve, update or delete could not be found</li>
+<li>429 Too many requests, rate limit exceeded</li>
+</ul>
+<h3 id="rate-limits">Rate limits</h3>
+<p>You can do 4500 requests every 5 minutes, 27000 an hour and 270000 requests a day.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

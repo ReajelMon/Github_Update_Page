@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Shopify Checkout </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Shopify Checkout ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="shopify-checkout">Shopify Checkout</h1>
+
+<p>Met de checkout module kan de klant verschillende functionaliteiten tonen in zijn webshop bij het afrekenen.</p>
+<h2 id="belangrijk-bij-shopify-checkout">Belangrijk bij Shopify checkout</h2>
+<p>Het berekenen van verzendkosten tijdens de checkout is bij Shopify <strong>geen</strong> standaard functie. <a href="https://help.shopify.com/nl/manual/shipping/setting-up-and-managing-your-shipping/enabling-shipping-carriers"><strong><em>De webshop dient te beschikken over de module 'Door externe partij berekende verzendkosten'</em></strong>.</a></p>
+<p><img src="../../../Attachments/image-6558eee8-354c-4fba-bea7-d373b4a56740.png" alt="image.png"></p>
+<p>Deze module is inbegrepen bij het <a href="https://www.shopify.com/nl/prijzen"><strong>Advanced Abbonnement</strong></a> en is los bij te bestellen via Shopify support voor ca. €20,- per maand.</p>
+<p>Het controleren van het actieve Shopify abbonnement kan via IT.</p>
+<h2 id="talen">Talen</h2>
+<p>De volgende talen worden ondersteund in de Shopify checkout:</p>
+<ul>
+<li>Nederlands</li>
+<li>Engels</li>
+</ul>
+<h2 id="configuratie">Configuratie</h2>
+<ol>
+<li>Controleer of de doel-webshop beschikt over de juiste module.</li>
+<li>Zorg dat alle tarieven en verzendmethoden + opties juist staan in de Monta portal.</li>
+<li>Installeer de <a href="https://apps.shopify.com/montapacking-checkout">Monta Checkout App voor Shopify</a></li>
+<li>Maak in de MP REST Api gegevens aan Zie handleiding: <a href="../../../Handleidingen/Installatie-%2D-Rest-API">Installatie REST API</a></li>
+<li>Doorloop de stappen:</li>
+</ol>
+<details closed="">
+<summary> Vul de benodigde informatie in.</summary>
+<p><img src="../../../Attachments/2023-01-13%2008_43_34-Microsoft%20To%20Do-72bcbf8d-da08-48d0-9de4-4cd009dfc758.png" alt="2023-01-13 08_43_34-Microsoft To Do.png"></p>
+</details>
+<ol start="6">
+<li>Controleer of de checkout werkt.</li>
+</ol>
+<p>Binnen Shopify kun je ook vervoerders instellen. Standaard voegt de Monta Checkout deze opties toe.</p>
+<details closed="">
+<summary> De klant kan optioneel extra acties uitvoeren als:
+</summary>
+<ul>
+<li>Kosten toevoegen</li>
+<li>Landen uitsluiten</li>
+<li>Vervoerders uitsluiten</li>
+</ul>
+<p><img src="../../../Attachments/2023-01-13%2009_07_38-monta-fulfilment%20%C2%B7%20Manage%20profile%20%C2%B7%20Shopify%20en%20nog%203%20andere%20pagina%27s%20-%20Werk%20-%20Mi-211f4175-9d42-4f00-9695-8e9bace734b2.png" alt="2023-01-13 09_07_38-monta-fulfilment · Manage profile · Shopify en nog 3 andere pagina's - Werk - Mi.png"></p>
+</details>
+<br>
+Het is echter aangeraden om deze instellingen op standaard te laten, omdat dit wellicht kan conflicteren met de gegevens in de MontaPortal.
+<h2 id="algemene-informatie-en-functies">Algemene informatie en functies</h2>
+<p>Shopify ondersteund de meeste front-end functionaliteiten van onze checkout module:</p>
+<p>Van de volgende functies is bekend dat Shopify het <strong>wel</strong> ondersteund:</p>
+<ul>
+<li>Berekenen van verzendmethoden inclusief prijs</li>
+<li>Weergeven van verzendopties</li>
+<li>Weergeven van levertijden</li>
+</ul>
+<p>Van de volgende standaard functies is bekend dat Shopify het <strong>niet</strong> ondersteund:</p>
+<ul>
+<li>Leverdag kiezen</li>
+</ul>
+<h2 id="known-issues--bugs">Known issues &amp; Bugs</h2>
+<ul>
+<li>Alleen de originele artikel kosten kunnen gebruikt worden voor het berekenen van prijzen. Dit is een limitatie van de data die ontvangen word vanuit Shopify.</li>
+</ul>
+<details closed="">
+<summary>Checkout wordt niet weergegeven</summary>
+Vaak beschikt de klant niet over de juiste module. Zie `<a href="https://dev.azure.com/MontaDevelopment/MontaDocs/_wiki/wikis/MontaDocs/556/Shopify-Checkout?anchor=belangrijk-bij-shopify-checkout">Belangrijk bij Shopify Checkout</a>`
+</details>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

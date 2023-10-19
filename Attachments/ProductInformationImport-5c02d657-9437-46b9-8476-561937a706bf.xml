@@ -1,0 +1,11 @@
+﻿<Products>
+  <Product>
+    <Sku>123456</Sku>
+    <Description>L SHIRT Black</Description>
+    <Barcodes>
+      <Barcode>3426470285123</Barcode>
+    </Barcodes>
+    <SupplierCode>SUPP1</SupplierCode>
+    <Delete>false</Delete>
+  </Product>
+</Products>

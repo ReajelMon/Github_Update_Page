@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SQL Diversen </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="SQL Diversen ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="sql-diversen">SQL Diversen</h1>
+
+<h2 id="sql-database-uit-single-user-halen">SQL database uit single user halen</h2>
+<p>Als een SQL-database in single user mode staat moet deze als volgt in multi-user-mode gezet worden.<br>
+use master<br>
+ALTER DATABASE xxxxxxx<br>
+SET MULTI_USER;<br>
+GO</p>
+<p>Als er dan geklaagd wordt over aangelogde gebruikers dan kan met &quot;execute sp_who2&quot; gekeken worden welke connectie dat is en dan sluiten.<br>
+Mocht de database in &quot;recovery pending&quot; terecht gekomen zijn dan is de eerste stap &quot;ALTER DATABASE Monta_Backend SET ONLINE&quot;.</p>
+<h2 id="sql-always-on-ha-uit-suspended-state-halen">SQL Always on HA uit suspended state halen</h2>
+<p>Door een error kan de synchronisatie van een database uit &quot;Always on High Availability&quot; in een suspended state terecht komen.<br>
+Dit kan opgelost worden via &quot;Resume Data movement&quot; :</p>
+<p><img src="../../../../Attachments/image-00ea013f-bda5-424a-b937-4ecf6157ee23.png" alt="image.png"></p>
+<h2 id="mp-sql04test_backendmonta_backend-uit-restoring-mode-halen">MP-SQL04\TEST_BACKEND\Monta_Backend uit restoring mode halen</h2>
+<p>Elke nacht wordt er op de MP-SQL04 een restore uitgevoerd van de Monta_Backend, vanaf de laatste BAK-file op de MP-SQL10.<br>
+Dit wort uitgevoerd door de job &quot;refresh Monta_Backend&quot; op de MP-SQL04 die medio augustus 2023 de volgende stappen bevat:<br>
+<img src="../../../../Attachments/image-bac630f9-ba65-40f4-a487-0498c7d494ec.png" alt="image.png"></p>
+<p>Het kan voorkomen dat de &quot;MP-SQL04\TEST_BACKEND\Monta_Backend&quot; in restoring mode blijft staan.<br>
+Als de job &quot;refresh Monta_Backend&quot; nog loopt, stop deze dan.<br>
+De database Monta_Backend moet opnieuw aangemaakt worden.<br>
+Je kunt dan onderstaand script uitvoeren op de MP-SQL04.<br>
+Uiteraard zeer belangrijk dat je de  quer op de MP-SQL04 aanmaakt !!!!<br>
+Daarom zit er nog een test in de query.</p>
+<p>-- Indien &quot;MP-SQL04\TEST_BACKEND\Monta_Backend&quot; in restoring mode blijft staan <br>
+if @@servername = 'MP-SQL04\TEST_BACKEND' and (select state_desc from sys.databases where name = 'monta_backend') = 'RESTORING'<br>
+begin <br>
+drop database [Monta_Backend];<br>
+create database [Monta_Backend];<br>
+end;</p>
+<p>Pas het &quot;once&quot; schedule van de job &quot;refresh Monta_Backend&quot; naar het huidige tijdstip + een paar minuten, zodat de job nogmaals gaat draaien.</p>
+<p><img src="../../../../Attachments/image-cab66494-503b-4373-9e94-2e6bb5030b9a.png" alt="image.png"></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

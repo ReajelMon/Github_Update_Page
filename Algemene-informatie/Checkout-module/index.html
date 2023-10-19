@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Checkout module </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Checkout module ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+  
+  <meta property="docfx:rel" content="../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="checkout-module">Checkout module</h1>
+
+<p>Met een checkout module kan de klant bezorgopties tonen in zijn webshop bij het afrekenen.</p>
+<h2 id="algemene-beschrijving">Algemene beschrijving</h2>
+<p>De checkout module is een module/plug-in/app die de klant op zijn website kan laten tonen. Deze
+module zorgt ervoor dat de consument op de website een vervoerder kan kiezen. De beschikbare
+vervoerders worden door middel van slimme programmatuur door Monta geselecteerd. De
+klant kan gelijk zien wanneer zijn pakketje aankomt en wat het hem kost. De webshop eigenaar kan
+zelf instellen hoeveel een klant voor een bepaalde vervoerder betaalt (Instelbaar per land). Ook kijkt
+het systeem of verzending met deze vervoerder mogelijk is in combinatie met o.a. het gewicht; cutoff
+tijden en voorkeur van verkoper.</p>
+<p><img src="../../Attachments/image-da1594a5-fc0d-4024-8e8b-cc336a41a660.png" alt="image.png"></p>
+<p>Monta heeft voor een aantal webshop platforms een checkout module ontwikkeld. Dit is een extra dienst die gratis gebruikt kan worden. Monta kan niet garanderen dat onze checkout module goed werkt in alle verschillende klantsituaties. Monta garandeert niet dat problemen die in een bepaalde sitatie ontstaan worden opgelost. Voor meer informatie zie <a href="#hoe-gaan-we-om-met-problemen">Hoe gaan we om met problemen?</a>.</p>
+<p>Het is niet verplicht om de Monta checkout te gebruiken. Het is ook mogelijk om helemaal geen verzender keuze aan te bieden in de webshop. Er wordt dan een vervoerder bepaald door Monta. Nadeel is dat de consument ook niet de mogelijkheid heeft om bijvoorbeeld een afhaalpunt te kiezen.</p>
+<p>Het is ook mogelijk om een andere checkout module te gebruiken of dat de klant zelf iets ontwikkelt. Hierbij moet dan wel ingeregeld worden dat de gekozen verzender in de koppeling wordt overgenomen, zodat Monta het pakket met de gekozen verzender verzend. Zie hiervoor <a href="../../Algemene-informatie/Koppelingen/1.-Koppelingen-dataflow#verzenderkeuze-importeren">Kopppeling - Order import - verzenderkeuze importeren</a>.</p>
+<h2 id="hoe-ziet-deze-module-eruit">Hoe ziet deze module eruit?</h2>
+<p>Hoe deze module eruitziet is een beetje verschillend per webshop platform. Op sommige platformen kan de klant ook aanpassingen doen. In de kern ziet de module er zo uit:</p>
+<details closed="">
+<summary> WooCommerce </summary>
+<p><br>In WooCommerce is er sprake van een dynamische weergave. Standaard wordt de default shipper getoond: <img src="../../Attachments/Woocommerce_defaultview-68143fe6-960a-4ede-ae3e-3bcf5301456e.png" alt="Woocommerce_defaultview.png"></p>
+<p><br> Wanneer je een andere bezorgoptie wilt zien is dit de weergave:
+<img src="../../Attachments/woocommerce_uitgeklapt-2652044b-6bf7-4c77-a8b9-9cd1e556f570.png" alt="woocommerce_uitgeklapt.png"></p>
+<p><br> Voor ophaalpunten is dit de weergave:
+<img src="../../Attachments/Woocommerce_ophaalpunt-dbbdfcd7-43a1-4165-bce8-694925df40fe.png" alt="Woocommerce_ophaalpunt.png"></p>
+</details>
+<details closed="">
+<summary> Shopify</summary>
+<p>In Shopify is er sprake van de volgende weergave.
+<img src="../../Attachments/2023-01-13%2009_09_37-Shipping%20-%20monta-fulfilment%20-%20Checkout%20en%20nog%204%20andere%20pagina%27s%20-%20Werk%20-%20Microso-291dbb10-7d1b-477a-a4cf-8c1301a209ac.png" alt="2023-01-13 09_09_37-Shipping - monta-fulfilment - Checkout en nog 4 andere pagina's - Werk - Microso.png"></p>
+<p>Aanvullende verzendopties worden in het zelfde schema weergegeven als extra te selecteren opties. Denk hierbij aan: Pick-up punten (Te definiëren in instellingen, standaard 3), Avondlevering, Handtekening etc.</p>
+</details>
+<details closed="">
+<summary> Magento </summary>
+<p>De Magento weergave heeft veel weg van de WooCommerce weergave:
+<img src="../../Attachments/Magento-Keuzemenu-7100d4a7-90ce-4955-80f6-a290a8a22404.png" alt="Magento-Keuzemenu.png"></p>
+<p>En heeft ook een apart venster voor ophaalpunten:
+<img src="../../Attachments/Magento-Afhaalpunt-b6851a40-b33f-4207-80be-85b99269f78f.png" alt="Magento-Afhaalpunt.png"></p>
+</details>
+<details closed="">
+<summary> Lightspeed </summary>
+<p>De Lightspeed checkout is vrij gelimiteerd. Dit is een bekende weergave:
+<img src="../../Attachments/Lightspeed-38ff9645-88be-42c3-bb04-7c6d0d4221cf.png" alt="Lightspeed.png"></p>
+</details>
+<details closed="">
+<summary> BigCommerce</summary>
+<p>Voor BigCommerce zijn op het moment van schrijven nog geen actieve klanten die de checkout gebruiken.</p>
+<p><img src="../../Attachments/MicrosoftTeams-image-28fb0377-61e7-4d31-a027-113ade309b28.png" alt="MicrosoftTeams-image.png"></p>
+</details>
+<h2 id="checkout-beschikbaar-bij-platformen">Checkout beschikbaar bij platformen</h2>
+<ul>
+<li><a href="https://wordpress.org/plugins/montapacking-checkout-woocommerce-extension/#description">WooCommerce: Checkout WooCommerce </a></li>
+<li>Lightspeed</li>
+<li><a href="https://apps.shopify.com/montapacking-checkout">Shopify: Montapacking Checkout </a></li>
+<li><a href="https://marketplace.magento.com/montapacking-montacheckout.html">Magento: Montapacking Checkout </a></li>
+<li><a href="https://www.bigcommerce.com/apps/monta-checkout/">Bigcommerce Checkout</a></li>
+</ul>
+<h2 id="functionaliteiten">Functionaliteiten</h2>
+<details closed="">
+<summary> Berekenen van verzendmethoden inclusief prijs</summary>
+<br>
+Met deze functie berekent de app alle geschikte vervoerders die ingesteld staan in de montaportal en weergeeft deze in de webshop. Dit is afhankelijk van de adresgegevens en het product. Daarnaast is het mogelijk om prijzen, limitaties en kortingen mee te geven.
+<br>
+</details>
+<details closed="">
+<summary> Weergeven van verzendopties</summary>
+<br>
+Met deze functie weergeeft de app alle ingestelde bezorgopties. Denk hierbij aan avondlevering, pick-up points, handtekening bij ontvangst etc.
+<p><br> <em>Voorbeeld uit Woocommerce:</em></p>
+<p><img src="../../Attachments/verzendopties-e98478fc-949a-400b-a2e2-3329cf50bf15.png" alt="verzendopties.png"></p>
+</details>
+<details closed="">
+<summary> Weergeven van levertijden </summary>
+<br>
+Met deze functie weergeeft de app de geschatte leverdatum per vervoerder. Deze informatie komt overeen met de getoonde informatie in de montaportal bij de
+berekening.
+<p><br><em>Voorbeeld uit Shopify:</em>
+<img src="../../Attachments/2023-01-13%2009_09_37-Shipping%20-%20monta-fulfilment%20-%20Checkout%20en%20nog%204%20andere%20pagina%27s%20-%20Werk%20-%20Microso-6e2ce202-a212-4820-bc81-d43b3dac0d47.png" alt="2023-01-13 09_09_37-Shipping - monta-fulfilment - Checkout en nog 4 andere pagina's - Werk - Microso.png"></p>
+</details>
+<details closed="">
+<summary> Leverdag kiezen </summary>
+<br>
+Deze functionaliteit biedt de consument de optie om de levering uit te stellen, er kan een datum geselecteerd worden en per datum zal worden berekend welke vervoerders en tijdvakken er beschikbaar zijn.
+<p><br><em>Voorbeeld uit Woocommerce:</em>
+<img src="../../Attachments/2023-01-13%2012_55_12-Kassa%20-%20allesvoorUWvloer%20en%20nog%204%20andere%20pagina%27s%20-%20Werk%20-%20Microsoft%E2%80%8B%20Edge-c271eeb7-d667-4b4c-9431-504fc44f53d3.png" alt="2023-01-13 12_55_12-Kassa - allesvoorUWvloer en nog 4 andere pagina's - Werk - Microsoft​ Edge.png"></p>
+</details>
+<details closed="">
+<summary> Korting bij uitgestelde leverdag</summary>
+<p>Het is mogelijk om korting in te stellen voor de consument voor bepaalde afleverdagen.</p>
+<p>Zo'n 70% van de consumenten kiest voor een uitgestelde leverdag als ze daarmee korting kunnen krijgen.</p>
+<p>Uitgestelde aflevering zorgt voor een efficiëntere logistieke verwerking: er is minder piekbelasting en er kan beter gepland worden.</p>
+<p>Hieronder sceenshots hoe de korting eruit ziet in de verschillende checkouts:</p>
+<p>Shopify:<br>
+<img src="../../Attachments/MicrosoftTeams-image%20(1)-4f441bd6-ff33-4d99-be5f-918f1ee97c4f.png" width="400"></p>
+<p>Magento:<br>
+<img src="../../Attachments/MicrosoftTeams-image%20(2)-4af6edc1-8593-4cde-8e7a-ace5c187d45f.png" width="400">)</p>
+<p>Lightspeed:<br>
+<img src="../../Attachments/MicrosoftTeams-image%20(3)-234815bc-aff3-4c4e-9d93-576fa27ee28a.png" width="400">)</p>
+<p>Shopware:<br>
+<img src="../../Attachments/MicrosoftTeams-image%20(4)-5046c1ad-c5c0-40f0-834e-938a9b17b524.png" width="400">)</p>
+</details><br>
+<p>In de onderstaande tabel kun je gemakkelijk zien welke functionaliteiten <em>in grote lijnen</em> worden ondersteund door een CMS. Voor specifieke informatie kun je hier terecht:</p>
+<p><a href="../../Algemene-informatie/Checkout-module/Shopify-Checkout">Shopify Checkout</a> -<a href="../../Algemene-informatie/Checkout-module/Woocommerce-Checkout">Woocommerce Checkout</a> -
+<a href="../../Algemene-informatie/Checkout-module/Lightspeed-Checkout">Lightspeed Checkout</a> -
+<a href="../../Algemene-informatie/Checkout-module/BigCommerce-Checkout">BigCommerce Checkout</a>- <a href="../../Algemene-informatie/Checkout-module/Magento-Checkout">Magento Checkout</a></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Shopify</th>
+<th>WooCommerce</th>
+<th>Lightspeed</th>
+<th>BigCommerce</th>
+<th>Magento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Afleverdatum weergeven</strong></td>
+<td>Ja</td>
+<td>Ja</td>
+<td>Nee</td>
+<td>Onbekend</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td><strong>Aanvullende actie vereist?</strong></td>
+<td>App nodig</td>
+<td>Plug-in nodig</td>
+<td>Checkout aanzetten via order-import in MP</td>
+<td>App nodig</td>
+<td>App nodig</td>
+</tr>
+<tr>
+<td><strong>Standaard in CMS beschikbaar?</strong></td>
+<td>Module of advanced abbonement nodig</td>
+<td>Ja</td>
+<td>Ja</td>
+<td>Ja</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td><strong>Verzendopties</strong></td>
+<td>Ja</td>
+<td>Ja</td>
+<td>Ja*</td>
+<td>Onbekend</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td><strong>Pick-Up Points</strong></td>
+<td>Ja</td>
+<td>Ja</td>
+<td>Ja</td>
+<td>Ja</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td><strong>'Standard delivery</strong>'</td>
+<td>Ja</td>
+<td>Ja</td>
+<td>Nee</td>
+<td>Onbekend</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td><strong>Leverdag kiezen</strong></td>
+<td>Nee</td>
+<td>Ja</td>
+<td>Nee</td>
+<td>Onbekend</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td><strong>Check product on SKU</strong></td>
+<td>Ja</td>
+<td>Ja</td>
+<td></td>
+<td>Nee</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Leading Stock</strong></td>
+<td>Ja</td>
+<td></td>
+<td></td>
+<td>Nee</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Controleren op afmetingen (in de cms)</strong></td>
+<td></td>
+<td>Ja</td>
+<td></td>
+<td>Nee</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>*In Lightspeed worden niet alle verzendopties ondersteund. Kijk voor meer info in: <a href="../../Algemene-informatie/Checkout-module/Lightspeed-Checkout">Lightspeed Checkout</a></p>
+<h2 id="instellingen-mogelijk">Instellingen mogelijk</h2>
+<ul>
+<li>Welke vervoerders beschikbaar zijn per land.</li>
+<li>Verzendkosten voor consument per land, dus ook naar afhaalpunten in het
+buitenland.</li>
+<li>Per vervoerder verschillende Shipper Options zoals: gratis levering vanaf,
+avondlevering, niet bij de buren afleveren, tekenen voor ontvangst, etc.</li>
+<li>Afwijkende verzendkosten vanaf een bepaald gewicht. Dit kan met het weegschaal knopje.</li>
+<li>Pick up Points</li>
+</ul>
+<p><img src="../../Attachments/image-9ad3d925-5446-42bf-b37a-9ffc9b6a6d19.png" alt="image.png"></p>
+<h2 id="eigenschappen-en-bijzonderheden">Eigenschappen en bijzonderheden:</h2>
+<p>Pickup points worden niet meegenomen in de gewichten/lengte calculatie. Die worden dus altijd getoond. Dit is bij elke checkout van toepassing.</p>
+<h3 id="leading-stock">Leading Stock</h3>
+<p>Met de optie leading stock kun je specificeren welke voorraadstanden moeten worden gebruikt bij het berekenen van de levertijd/verzendmethode</p>
+<h3 id="check-product-on-sku">Check Product on SKU</h3>
+<p>Als de opties check product on sku aan staat, gaan we rekenen met de gewichten/afmetingen die in de MP bekend zijn. Aan de hand van die gegevens worden de beschikbare verzenders getoond.</p>
+<h3 id="controleren-op-afmetingen">Controleren op afmetingen</h3>
+<p>Bij de WooCommerce checkout is het mogelijk om in te stellen dat de checkout rekening houdt met de afmetingen van de producten om de verzender te selecteren. Als in, het is in de restapi ingebouwd, alleen moet er dan een product meegestuurd worden. En dit wordt alleen in woocommerce gedaan. Andere checkout modules houden hier dus geen rekening mee.</p>
+<h3 id="afleverdatum-berekenen">Afleverdatum berekenen</h3>
+<p>In de checkout berekent Monta de verwachte leverdatum. Dit doen wij op basis van de volgende parameters:</p>
+<ol>
+<li>Voorraad: Monta kijkt of er voorraad is van het artikel. Indien geen voorraad zal dit de verwachte afleverdatum beïnvloeden.</li>
+<li>Cutoff: Monta kijkt naar de afhaaltijden van de vervoerder om de inschatting te maken wanneer de order zal worden verzonden.</li>
+</ol>
+<h2 id="configuratie">Configuratie</h2>
+<p>Voor de installatie van één van onze checkouts vragen we altijd de klant een google api key in te vullen.
+Deze is middels deze url te verkrijgen: <a href="https://developers.google.com/maps/documentation/javascript/get-api-key">https://developers.google.com/maps/documentation/javascript/get-api-key</a>.</p>
+<p><img src="../../Attachments/image-5e43f79d-02fb-466e-9666-f6e7d748c003.png" alt="image.png">
+<img src="../../Attachments/image-0fa1f3f1-8bcb-479e-8795-cc3da72e12b2.png" alt="image.png"></p>
+<h2 id="hoe-gaan-we-om-met-problemen--aanpassingen-vanuit-klant">Hoe gaan we om met problemen / aanpassingen vanuit klant?</h2>
+<p>Shopify en Lightspeed zijn SaaS-oplossingen. De programmatuur is hierbij standaard en
+de checkout module werkt hierbij dan ook vlekkeloos.</p>
+<p>WooCommerce en Magento checkout zijn softwarepakketten die u zelf op een server installeert en onderhoud. Onze checkout module ondersteund de standaard WooCommerce en Magento installatie. Het kan echter zijn dat uw webshop aanpassingen heeft, bijvoorbeeld andere plugins, waardoor problemen ontstaan met de Monta checkout plugin. Het is voor Monta niet te doen om alle plugins van de wereld goed samen te laten werken. Daarom hebben we de programmacode vrij beschikbaar gemaakt op GitHub zodat de klant zelf een aangepast versie van de checkout kan (laten) maken om deze problemen op te lossen. Bij problemen met veelgebruikte plugins kunnen we natuurlijk kijken of we een oplossing kunnen bieden in onze standaardversie.</p>
+<h2 id="veel-gestelde-vragen">Veel gestelde vragen</h2>
+<details closed="">
+<summary> Wat is de functie 'standard delivery'? </summary>
+<br>
+Standard delivery is een optie die onder één noemer (standaard verzending) alle mogelijke vervoerders (te selecteren in de montaportal) laat zien; waar je bij andere vervoerders apart de vervoerders laat zien. Wij berekenen dan als de order binnen komt de meest geschikte vervoerder op basis van de informatie die bij ons bekend is.
+<p><img src="../../Attachments/standaard%20verzending-ea528a2c-d382-4d5f-9696-029ee8d722f3.jpg" alt="standaard verzending.jpg"></p>
+</details>
+<details closed="">
+<summary> Pick-up points worden niet getoond </summary>
+<br>
+Problemen met het tonen van pickuppoints worden mogelijk veroorzaakt door de google api key:
+<ul>
+<li>De googlekey is niet correct ingesteld (het ontbreken van creditcard gegevens in je google account)</li>
+<li>De googlekey heeft niet al de correcte regels.</li>
+</ul>
+<p>Deze instellingen kunnen worden gedaan in de Montaportal onder:
+Home-&gt; Settings -&gt; Checkout options</p>
+</details>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

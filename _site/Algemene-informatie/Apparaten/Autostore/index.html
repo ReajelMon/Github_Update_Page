@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Autostore </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Autostore ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="autostore">Autostore</h1>
+
+<p><img src="../../../Attachments/Autostore%20600-55c2b68e-68ac-4edd-b953-2cc0577ae92c.png" alt="Autostore 600.png"></p>
+<p>Autostore is een ASRS systeem (Automated Storage and Retrieval Systems). Het systeem bestaat uit een grid van maximaal 16 bins hoog. Bovenop dit grid rijden robots. Deze robots kunnen de bins optillen, neerzetten en verplaatsten. Onderstaand een video die de werking van de Autostore laat zien.</p>
+<h2 id="werking-van-de-autostore">Werking van de Autostore</h2>
+<p>::: video</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/iHC9ec591lI?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+:::
+<h2 id="verschillende-data-stromen-bij-de-autostore">Verschillende data stromen bij de Autostore</h2>
+<p><img src="../../../Attachments/image-40c234a5-0c6b-4be3-93af-ebcd730d3767.png" alt="image.png"></p>
+<h3 id="product-synchronisatie">Product synchronisatie</h3>
+<p>De nieuwe en gewijzigde producten zullen iedere vijf minuten naar de Autostore worden gestuurd. Iedere week worden alle producten gesynchroniseerd.</p>
+<h3 id="inbound">Inbound</h3>
+<p>Als een inboundstation is gekoppeld aan de Autostore, dan wordt de optie autostore getoond in de inbound app. Deze staat standaard aangevinkt. Bij het inbounden van het product, zal er een AutoStoreTT01 label uit de printer komen. Ook wordt er ingepland, dat de inbound wordt doorgestuurd naar de autostore om hem daar te kunnen koppelen.</p>
+<p><img src="../../../Attachments/image-ef153536-1283-4c3d-a3d6-17ce7476db5f.png" alt="image.png"></p>
+<p>Door de barcode te scannen van de AutoStoreTT01 kan de juiste inbound gekozen worden bij het Autostore station. Zodra de producten zijn geplaatst in de Autostore, wordt de koppeling ook uitgevoerd aan de kant van Monta.</p>
+<p>Aan de Monta kant heeft de Autostore maar één locatie. Dit is een multi product locatie, waarop alle producten die in de Autostore liggen worden geplaatst. Vanuit GoMonta is het niet mogelijk om een inbound te koppelen op deze locatie, dit moet altijd vanuit de Autostore worden gedaan.</p>
+<p>Als een inbound wordt verwijderd in de Autostore applicatie, dan zal de inbound ook verwijderd worden aan de kant van Monta. Ook is het mogelijk om eerst de inbound te verwijderen in GoMonta. In dit geval met je deze ook handmatig verwijderen in de Autostore applicatie.</p>
+<p>Bij het verwerken van retouren wordt gekeken of het product in de Autostore ligt. Als dit het geval is, dan komt er een AutoStoreTT01 label uit de printer en wordt de retour doorgezet naar de Autostore. Als dit niet het geval is, dan wordt de vraag gesteld of het product naar de Autostore moet.</p>
+<h3 id="outbound">Outbound</h3>
+<p>De Autostore orders krijgen een aparte ready to pick status genaamd Autostore. Als een order een product heeft dat ligt in de Autostore dan krijgt de order deze status. De orders met deze status zullen niet getoond worden op de handscanner. Hierdoor moet het picken gestart worden via GoMonta.</p>
+<p>Via de Autostore knop in GoMonta kan er een order batch worden gemaakt. Het is mogelijk om verschillende filters in te stellen. Op basis van deze filters wordt er een selectie orders doorgestuurd naar de Autostore. Ook is het mogelijk om handmatig een selectie orders te selecteren.</p>
+<p><img src="../../../Attachments/image-e64ca360-bf0b-4bc6-beaa-00b75a6963de.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-02d84b1b-bb8a-4b5b-9c99-72924d73f1c0.png" alt="image.png"></p>
+<p>Er zijn drie soorten pickstromen:</p>
+<ul>
+<li>S-orders: In deze pickstroom zitten alleen de S-orders uit de Autostore. Deze kunnen naar het picken gelijk worden ingepakt. Het maximaal aantal orders in deze pickstroom is in te stellen in GoMonta bij de magazijn outbound instellingen. Dit is dezelfde instelling, die gebruikt wordt voor de handscanners.</li>
+</ul>
+<p><img src="../../../Attachments/image-934ba4dd-8c3a-432f-a54e-03b375d4cc07.png" alt="image.png"></p>
+<ul>
+<li>Multiline orders volledig in de Autostore: In deze pickstroom zitten de multiline orders die alleen via de Autostore gepickt moeten worden. Deze kunnen naar het picken gelijk worden gesorteed in de Put-To-Light. Het maximaal aantal orders in deze pickstroom is in te stellen in GoMonta bij de magazijn outbound instellingen. Dit is dezelfde instelling, die gebruikt wordt voor de handscanners.</li>
+</ul>
+<p><img src="../../../Attachments/image-31813886-9d54-4934-9c00-80cb661c2f2e.png" alt="image.png"></p>
+<ul>
+<li>Multiline orders gedeeltelijk in de Autostore: In deze pickstroom zitten de multiline orders die gedeeltelijk via de Autostore gepickt moeten worden. Na het picken via de Autostore, moet er nog een pickronde worden gelopen in het magazijn. De pickroute kan op de handscanner geopend worden via krat herstel. Nadat alle pickacties zijn gedaan, kunnen alle orders worden uitgesorteerd in de Put-To-Light. Het maximaal aantal orders in deze pickstroom is in te stellen in GoMonta bij de magazijn outbound instellingen. Dit is dezelfde instelling, die gebruikt wordt voor de handscanners.</li>
+</ul>
+<p><img src="../../../Attachments/image-31813886-9d54-4934-9c00-80cb661c2f2e.png" alt="image.png"></p>
+<p>Als er wordt start met picken bij de Autostore, dan komt er een label uit met het kratnummer en informatie op de bulkpickbon. Als de bulkpickbon is afgerond komt er weer een label uit de printer met het kratnummer en de vervolg stappen.</p>
+<p>Als een bulkpickbon wordt verwijderd vanuit de Autostore, dan wordt deze direct terug erin gezet door Monta-systeem. Dit wordt gedaan, omdat een bulkpickbon niet gereset mag worden in het Monta-systeem.</p>
+<h3 id="voorraadbeheer">Voorraadbeheer</h3>
+<p>In GoMonta is het niet mogelijk om voorraad correcties op de Autostore locatie uit te voeren. Dit moet gedaan worden via de Autostore. De Autostore zal vervolgens een correctie boeking doorsturen naar het Monta-systeem, waar deze verwerkt zal worden.</p>
+<p>Iedere dag wordt er een voorraadlijst vanuit de Autostore naar het Monta-systeem gestuurd. Hierbij zal worden gecontroleerd of de voorraadstanden nog kloppen. Als dit niet het geval is, dan worden deze verschillen getoond op de WCS pagina van de Autostore.</p>
+<p><img src="../../../Attachments/image-d5147203-e76f-4def-bd8f-9801640f9fd3.png" alt="image.png"></p>
+<p>Hier kunnen de voorraadverschillen handmatig verwerk worden. De voorraadstand in het Monta-systeem zal dan gelijk worden getrokken met die van de Autostore. Verder is het optioneel om een voorraadtelling taak in de Autostore te schieten voor dit product. Standaard staat deze optie aan. In de Autostore kunnen deze taken geactiveerd worden en zullen alle Autostore locaties met dit product langskomen om geteld te worden.</p>
+<h3 id="replenish">Replenish</h3>
+<p>Er kunnen geen producten direct verplaatst worden naar de Autostore locatie binnen het Monta-systeem. Als producten naar de Autostore geplaatst moeten worden, dan moeten deze eerst op een movebot-locatie geplaatst worden. Als een product op een movebot-locatie wordt geplaatst, dan krijgt de Autostore een vooraanmelding van dit product. Als dit product wordt geplaatst in de Autostore, dan zal de Autostore dit doorzetten naar het Monta-systeem. Hier wordt de verplaatsing vervolgens voltooid.</p>
+<p>Als producten uit de Autostore moeten worden verplaatst naar het magazijn, dan dient er een order te worden aangemaakt. Vervolgens kunnen de producten geplaatst worden in het magazijn.</p>
+<h3 id="pickbon">Pickbon</h3>
+<p>Bij Autostore orders is het niet mogelijk om een pickbon te downloaden.</p>
+<p><img src="../../../Attachments/pickbon-513dffc7-7ca4-430d-9ab1-1f3804c68364.png" alt="pickbon.png"></p>
+<p>Als een order apart gepickt moet worden, dan kan via de Autostore schermen in GoMonta een handmatige selectie ingeschoten worden.</p>
+<p><img src="../../../Attachments/pickbon2-915947da-fc72-4d00-9080-0ffe3297e107.png" alt="pickbon2.png"></p>
+<h2 id="element-logic">Element Logic</h2>
+<p><a href="https://emanager-integration.elementlogic.net/index.html">https://emanager-integration.elementlogic.net/index.html</a></p>
+<p><img src="../../../Attachments/image-03596469-586d-48bb-9651-4ff632d46583.png" alt="image.png"></p>
+<h2 id="mogelijke-problemen-bij-de-autostore">Mogelijke problemen bij de Autostore</h2>
+<p>Een bulkpickbon kan worden afgerond in de Autostore zonder dat er gepickt wordt. Hierdoor zullen alle niet afgeronde pickacties op joker worden gezet. Om dit te herstellen neem dan contact op.</p>
+<p>Soms wordt een bepaalde actie niet juist teruggekoppeld aan Monta. De gefaalde acties kunnen opnieuw worden verstuurd vanuit de Autostore software.</p>
+<p><img src="../../../Attachments/image-98fdfc4b-2101-4422-9470-052e8c1e2f60.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-7495dfa2-2265-44ba-9617-41df32c20b90.png" alt="image.png"></p>
+<p><img src="../../../Attachments/Afdeling%20-%20IT%20-%20man-c6f3a96e-0f99-4c12-a056-0044eca0df99.png" alt="Afdeling - IT - man.png"></p>
+<p>********** De informatie hieronder is meer van technische aard **********</p>
+<h2 id="technische-informatie-bij-de-autostore">Technische informatie bij de Autostore</h2>
+<p>De Autostore service is te benaderen via autostore.monta.nl. Deze webservice draait op de mp-web340.montapacking.nl, mp-web341.montapacking.nl en mp-web342.montapacking.nl. De webservice bevat een backgroundservice. Hierin worden alle Autostore planningitems verwerkt.</p>
+<p>Op deze servers is de emanager van de gekoppelde klanten ook te bereiken. De gegevens staan in de database in tblAutoStoreElementLogicSettings.</p>
+<p>Alle tabellen voor de Autostore bevatten de naam Autostore.</p>
+<h3 id="outbound-1">Outbound</h3>
+<p>De bulkpickbon wordt gesorteerd op productniveau doorgestuurd naar de Autostore. De pickacties worden gebundeld, zodat niet dezelfde Autostore locatie terugkomt. Dit wordt opgeslagen in de database. Als er is gepickt, dan wordt de hoeveelheid verdeeld over de pickacties.</p>
+<p><img src="../../../Attachments/image-c234477f-3199-445e-bb2d-fa0a6e9e4b0b.png" alt="image.png"></p>
+<h3 id="inbound-en-retouren">Inbound en retouren</h3>
+<p>In de tabel tblInboundStations moet het AutoStoreId worden ingevuld om de Autostore te koppelen aan het Inbound/retouren station.</p>
+<p>In de tabel tblMagazijnen moet de AutoStoreTT01 locatie worden ingevuld om deze te kunnen gebruiken.</p>
+<p><img src="../../../Attachments/image-49f0a395-5ec5-475f-9fc5-a0d158267f35.png" alt="image.png"></p>
+<h3 id="product-synchronisatie-1">Product synchronisatie</h3>
+<p><img src="../../../Attachments/image-519d8ee5-0e4e-49cb-9138-72d62b8aaf15.png" alt="image.png"></p>
+<h3 id="voorraadbeheer-1">Voorraadbeheer</h3>
+<p><img src="../../../Attachments/image-d2cbd10e-4582-45ba-94e5-9fa1e0f9b317.png" alt="image.png"></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

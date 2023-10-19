@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>QNAP   Inrichten NAS </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="QNAP   Inrichten NAS ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="qnap---inrichten-nas">QNAP   Inrichten NAS</h1>
+
+<h2 id="inhoudsopgave">Inhoudsopgave</h2>
+<ul>
+<li><p><a href="#inleiding">Inleiding </a></p>
+</li>
+<li><p><a href="#voorbereidingen-treffen-voor-het-instellen-van-een-nas">1. Voorbereidingen treffen voor het instellen van een NAS </a></p>
+</li>
+<li><p><a href="#fysieke-voorbereidingen">1.1 Fysieke voorbereidingen</a></p>
+</li>
+<li><p><a href="#updaten-van-de-qnap-nas.">1.3 Updaten van de QNAP NAS.</a></p>
+</li>
+<li><p><a href="#welkominstellingen-qnap">2. Welkominstellingen QNAP </a></p>
+</li>
+<li><p><a href="#netwerkinstellingen-nas">3. Netwerkinstellingen NAS</a></p>
+</li>
+<li><p><a href="#opslagpool-configureren">4. Opslagpool Configureren</a></p>
+</li>
+<li><p><a href="#volume-instellingen-configureren.">5. Volume instellingen configureren</a></p>
+</li>
+<li><p><a href="#gebruikers-en-rechten">6. Gebruikers en Rechten</a></p>
+</li>
+<li><p><a href="#snmp">7. SNMP</a></p>
+</li>
+<li><p><a href="#uitzetten-van-de-network-recycle-bin">8. Uitzetten van de Network Recycle Bin</a></p>
+</li>
+<li><p><a href="#configuratie-voor-de-shares">9. Configuratie voor de Shares</a></p>
+</li>
+<li><p><a href="#verbergen-van-de-bestaande-shares">9.1 Verbergen van de bestaande shares</a></p>
+</li>
+<li><p><a href="#maken-van-de-veeam-share">9.2 Maken van de VEEAM Share</a></p>
+</li>
+<li><p><a href="#beveiliging">10. Beveiliging</a></p>
+</li>
+<li><p><a href="#algemene-beveiliging-instellingen">10.1 Algemene beveiliging Instellingen</a></p>
+</li>
+<li><p><a href="#sshtelnet-uitzetten">10.2 SSH/Telnet Uitzetten</a></p>
+</li>
+<li><p><a href="#snmp-1">10.2 SNMP</a></p>
+</li>
+<li><p><a href="#security-counselor">10.3 Security Counselor</a></p>
+</li>
+<li><p><a href="#notification-center">11 Notification center</a></p>
+</li>
+<li><p><a href="#bijlage-1-instellingen-ley21-nas01">Bijlage 1 Instellingen LEY21-NAS01</a></p>
+</li>
+</ul>
+<h2 id="inleiding">Inleiding</h2>
+<p>Dit is een handleiding die opgesteld is voor de altijd groeiende
+dataopslag van Montapacking. Het gebruik van NAS-sen wordt ingezet in de
+2 datacenters. De QNAP die in deze handleiding is ingesteld is een QNAP
+ts-863u-rp, wellicht verandert de hardware in de toekomst maar niet de
+software.</p>
+<p>Deze handleiding beschrijft alleen het configureren en klaarmaken van
+een NAS. De inrichting van Veaam en PTRG zijn niet in dit document
+beschreven.</p>
+<h2 id="1-voorbereidingen-treffen-voor-het-instellen-van-een-nas">1. Voorbereidingen treffen voor het instellen van een NAS</h2>
+<h3 id="11-fysieke-voorbereidingen">1.1 Fysieke voorbereidingen</h3>
+<p>Voordat je een NAS gaat instelling is het belangrijk het een en ander in
+te stellen. Naamgeving is EIN-NASXX en ROT-NASXX kijk waar de NAS komt
+en geef het een nummer hoger.</p>
+<p>Zet de NAS op een veilige plek met minimaal 2 netwerkaansluitingen</p>
+<p>Prik de kabels in Poort 1 en 2 zoals hier getoond.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image2.jpeg" alt="Afbeelding met groen Automatisch gegenereerde
+beschrijving"></p>
+<p>Onderstaande kan ook deels uitgevoerd worden door de installatie-wizard
+te volgen.<br>
+De standaard beschrijving is van toepassin go pNAS-systemen in het
+datacentre.</p>
+<p>Voor NAS-systemen op locaties staan de afwijkende instellingen in
+bijlages.<br>
+1.2 Vinden van de NAS op het netwerk</p>
+<p>Als de NAS op een switch wordt aangesloten krijgt deze een DHCP-adres.
+Het IP-nr kan als volgt achterhaald worden :<br>
+Gebruik Advanced portscanner die zich bevindt op
+&quot;\\mp-fs102\Software\Advanced Port scanner&quot; lees daarmee het hele
+netwerk uit totdat je de NAS ziet verschijnen je kunt hem herkennen aan
+de fabrikant. Typ het IP over in de browser.</p>
+<h3 id="13-updaten-van-de-qnap-nas">1.3 Updaten van de QNAP NAS.</h3>
+<p>Voordat we gaan beginnen met instellen gaan we eerst de NAS <strong>updaten.<br>
+Bij andere modellen wordt dat door de initiële wizard al uitgevoerd.</strong></p>
+<p>Ga naar het startscherm.</p>
+<p>Open <strong>Control Panel</strong>.</p>
+<p>Ga naar <strong>Firmware Update.</strong></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image3.png" alt=""></p>
+<p>Druk daarna op <strong>Check For Update</strong> en voer de update als de update
+klaarstaat.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image4.png" alt=""></p>
+<h2 id="2-welkominstellingen-qnap">2. Welkominstellingen QNAP</h2>
+<p>Je ziet welkom scherm en vul de gegevens in die je moet invullen. Geef
+het een tijdelijk wachtwoord zoals Montapacking.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image5.png" alt=""></p>
+<p>Stel de tijdzone in als Amsterdam en hou de huidige NTP-pool test deze
+wel even.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image6.png" alt=""></p>
+<p>De volgende pagina die je ziet is Network settings. Deze laat je even
+voor wat het is. Het geven van een vast IP wordt pas gedaan in het
+datacenter zelf.</p>
+<p>Voor de optie cross-platform vink hou de selectie alleen op Windows.</p>
+<p><img src="../../../../Operations/Servers%5Cimages/Handleiding-Inrichten-NAS-QNAP/media/image7.png" alt=""></p>
+<p>Wacht tot de welkom configuratie is voltooid.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image8.png" alt="">
+Na het instellen kan je bij de loginpagina
+inloggen met admin en je tijdelijke wachtwoord.</p>
+<h2 id="3-netwerkinstellingen-nas">3. Netwerkinstellingen NAS</h2>
+<p>Op het NAS managementscherm ga naar <strong>control panel.</strong></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image9.png" alt=""></p>
+<p>Bij control panel ga je naar <strong>Network</strong> daarna naar <strong>Network &amp; Virtual
+Switch.</strong></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image10.png" alt=""></p>
+<p>Ga rechtsboven naar <strong>Port Trunking.</strong> Druk op <strong>Add</strong>.</p>
+<p>Bij switch type gebruik je <strong>Most common</strong>.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image11.png" alt=""></p>
+<p>Verbind adapter 1 en 2 aan elkaar en zorg dat de mode op <strong>Balance-alb</strong>
+staat.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image12.png" alt=""></p>
+<p>Hierboven is een voorbeeld van een correct ingestelde netwerk adapter.
+En hieronder de specificaties.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image13.png" alt=""></p>
+<h2 id="4-opslagpool-configureren">4. Opslagpool Configureren</h2>
+<p>Op het NAS managementscherm ga naar <strong>control panel.</strong></p>
+<p>Start <strong>Storage &amp; Snapshots</strong>.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image14.png" alt="">
+Er opent zich een wizard die we gaan
+doorlopen.</p>
+<p>Druk op volgende</p>
+<p><strong>Selecteer alle schijven</strong> die zich bevinden in de NAS. Zet raid type
+op <strong>RAID 5</strong> (als er voldoende ruimte is kun je ook voor RAID 6 kiezen
+dan kunnen er 2 disken falen) en Druk op <strong>volgende</strong>.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image15.png" alt=""></p>
+<p>Bij Waarschuwing drempelwaarde zet je <strong>uit</strong>.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image16.png" alt=""></p>
+<p>Geef het een naam die correspondeert met de NAS.</p>
+<p>Zet de opslag pool op <strong>max</strong> we gebruiken de hele pool. Bytes per inode
+gaat op <strong>64k</strong>.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image17.png" alt=""></p>
+<p>Nadat de wizard is doorgelopen druk op <strong>Nieuw Volume</strong>.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image18.png" alt="">{</p>
+<h2 id="5-volume-instellingen-configureren">5. Volume instellingen configureren.</h2>
+<p>De wizard die zich opent na de <strong>Opslagpool-wizard</strong> is de
+<strong>Volume-Wizard</strong>.</p>
+<p>Je locatie is Opslagpool 1 dat is de pool die je net hebt aangemaakt.</p>
+<p>Selecteer ook een <strong>Thick
+volume.</strong><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image19.png" alt=""></p>
+<p>Selecteer <strong>alle schijven</strong> van de machine en druk op volgende.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image20.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image17.png" alt=""></p>
+<p>Dit is een voorbeeld van een goed ingesteld volume.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image21.png" alt=""></p>
+<h2 id="6-gebruikers-en-rechten">6. Gebruikers en Rechten</h2>
+<p>Op het NAS managementscherm ga naar <strong>control panel.</strong></p>
+<p>Start
+<strong>Users</strong>.<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image22.png" alt=""></p>
+<p>Klik op <strong>Create.</strong></p>
+<p>Het Backupaccount gaat heten rs.NASbackup en deze gaat een
+tijdelijkwachtwoord krijgen gebruik hiervoor Montapacking2021. Let op
+dat je dit account <strong>geen</strong> lid maakt van <strong>administrator.</strong></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image23.png" alt=""></p>
+<p>Dit is alles wat er voor dit user account uitgevoerd dient te worden.</p>
+<h2 id="7-snmp">7. SNMP</h2>
+<p>Op het NAS managementscherm ga naar <strong>control panel.</strong></p>
+<p>Start **SNMP.<br>
+<br>
+**<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image24.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p>Neem het volgende exact over.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image25.png" alt=""></p>
+<p>Dit is voor de PRTG-sensoren die later toegevoegd worden bij het
+plaatsen in het datacenter.</p>
+<h2 id="8-uitzetten-van-de-network-recycle-bin">8. Uitzetten van de Network Recycle Bin</h2>
+<p>Op het NAS managementscherm ga naar <strong>Control panel.</strong></p>
+<p>Start <strong>Network Recycle bin.</strong></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image26.png" alt=""></p>
+<p>Zet deze <strong>uit.</strong></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image27.png" alt=""></p>
+<h2 id="9-configuratie-voor-de-shares">9. Configuratie voor de Shares</h2>
+<h3 id="91-verbergen-van-de-bestaande-shares">9.1 Verbergen van de bestaande shares</h3>
+<p>Op het NAS managementscherm ga naar <strong>Control panel.</strong></p>
+<p>Start <strong>Shared Folders.</strong></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image28.png" alt=""></p>
+<p>Je ziet 3 mappen (Public, Web en homes) die we gaan verbergen. Dat doe
+je zo</p>
+<p>Ga naar de standaard share en klik op <strong>Edit Properties.</strong></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image29.png" alt=""></p>
+<p>Klik op <strong>Hide network drive</strong></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image30.png" alt=""></p>
+<p>Doe dit ook voor de shares Web en homes.</p>
+<h3 id="92-maken-van-de-veeam-share">9.2 Maken van de VEEAM Share</h3>
+<p>In nog steeds hetzelfde scherm van shares druk je nu op <strong>Create.</strong></p>
+<p>Daarna <strong>Shared Folder</strong>.</p>
+<p>De folder name wordt <strong>VEEAM.</strong></p>
+<p>Disk volume laat je op de naam die je hebt gegeven in dit geval ROT4</p>
+<p>Path laat je automatisch toewijzen.</p>
+<p>Bij Configure acces geef je beide accounts Schrijf en Lees rechten.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image31.png" alt=""></p>
+<p>Bij de optie onderaan <strong>Guest Access Right</strong> zet je op Deny Access</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image32.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image33.png" alt="">
+Je overzicht ziet er nu zo uit</p>
+<h2 id="10-beveiliging">10. Beveiliging</h2>
+<h3 id="101-algemene-beveiliging-instellingen">10.1 Algemene beveiliging Instellingen</h3>
+<p>Op het NAS managementscherm ga naar <strong>Control panel.</strong></p>
+<p>Start <strong>General Settings.</strong></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image34.png" alt=""></p>
+<p>Schakel <strong>HTTP Compression uit.</strong></p>
+<p>Enable HTTPS.</p>
+<p><strong>Force</strong> HTTPS only.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image35.png" alt=""></p>
+<h3 id="102-sshtelnet-uitzetten">10.2 SSH/Telnet Uitzetten</h3>
+<p>Op het NAS managementscherm ga naar <strong>Control panel.</strong></p>
+<p>Start <strong>Telnet/ SSH.</strong></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image36.png" alt=""></p>
+<p>Vink Allow Telnet <strong>uit.</strong></p>
+<p>Vink Allow SSH <strong>uit.</strong></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image37.png" alt=""></p>
+<h3 id="102-snmp">10.2 SNMP</h3>
+<p>Op het NAS managementscherm ga naar <strong>Control panel.</strong></p>
+<p>Start <strong>SNMP.</strong></p>
+<p>Zet SNMP-service aan.</p>
+<p>Verander de port naar <strong>161</strong>.</p>
+<p>Zet SNMP Version op <strong>SNMP V1/V2</strong></p>
+<p>Vul in Community <strong>MRTG</strong> in.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image38.png" alt=""></p>
+<p>Dit is later voor de PTRG Sensoren die we in het datacenter gebruiken.</p>
+<h3 id="103-security-counselor">10.3 Security Counselor</h3>
+<p>Op het NAS managementscherm start naar <strong>App center.</strong></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image39.png" alt=""></p>
+<p>Klik op bij de Sidebar op <strong>Security.</strong></p>
+<p>Druk op <strong>Install Security Counselor.</strong></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image40.png" alt=""></p>
+<p>Bij Security analytics druk je op <strong>No.</strong></p>
+<p>Ga voor een <strong>Advanced Security Policy.</strong></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image41.png" alt=""></p>
+<p>Druk daarna op <strong>Scan now.</strong></p>
+<p>Er gaat een scan starten die we gaan doorlopen.</p>
+<p>Los alle warnings op totdat je met deze 9 overblijft. Wij Beheren deze
+oplossingen zelf.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image42.png" alt=""></p>
+<p>Na deze stap sluit je het programma weer af.</p>
+<p>Geef de NAS een <strong>herstart</strong> om zeker te weten dat alle instellingen
+goed staan.</p>
+<p>**<br>
+**</p>
+<h2 id="11-notification-center">11 Notification center</h2>
+<p>Op het NAS managementscherm ga naar <strong>Control panel.</strong></p>
+<p>Start <strong>Notification Center.</strong></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image43.png" alt="">
+Druk bij overview op Email daarna op add
+SMPT Service</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image44.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image45.png" alt="">
+Neem de volgende gegevens over.</p>
+<p>SMTP Server: <strong>Relay.Reputy.nl</strong></p>
+<p>Secure Connection: <strong>none</strong></p>
+<p>Port Nummer: <strong>25</strong></p>
+<p>Email: <a href="mailto:NOC@montapacking.nl">NOC@montapacking.nl</a></p>
+<p>Ga via de sidebar naar System Notification rules.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image46.png" alt=""></p>
+<p>Druk op <strong>Alert Notifications.</strong></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image47.png" alt="">
+Druk op <strong>Create Rule.</strong></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image48.png" alt=""></p>
+<p>Geef De regel een naam en vink alle events aan.</p>
+<p>Druk op next.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image49.png" alt=""></p>
+<p>Vul enkel nog bij recepient <a href="mailto:servicedesk@monta.nl">servicedesk@monta.nl</a> in. De rest vult hij
+zelf aan</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image50.png" alt=""></p>
+<p>Nu heb je een regel gecreëerd die alle e-mails doorstuurt naar de
+servicedesk.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image51.png" alt=""></p>
+<p>Stel in de security counselor bij de security policy &quot;Basic Security
+Policy&quot; in.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image52.png" alt=""></p>
+<h3 id="bijlage-1-instellingen-xxxxx-nas01-nas-op-locatie">Bijlage 1 Instellingen XXXXX-NAS01 (NAS op locatie)</h3>
+<p>In onderstaand voorbeeld wordt uitgegaan van LEY21-NAS01. Voor een andere locatie zijn alleen de namen van de accounts en het NAS zelf anders.</p>
+<p><img src="../../../../Attachments/image-c6e12c23-8518-4c23-af45-546890c5cee0.png" alt="image.png"></p>
+<p>Maak op de switch een LAG aan op basis van LACP.
+<img src="../../../../Attachments/image-2fa2724e-ed33-40d5-9c0b-0b77dcd0d23e.png" alt="image.png"></p>
+<p>Maak user &quot;rs.ley21nas01&quot; (bedoeld voor CVP) aan en &quot;rs.ley21nas02&quot;
+(bedoeld voor server in datacentre).<br>
+Creëer shared folder &quot;CVPData&quot;, geef &quot;rs.ley21nas01&quot; en &quot;rs.ley21nas02&quot;
+RW rechten.<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image54.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p>Share te benaderen als
+<a href="file:///%5Cley21-nas01%5Ccvpdata">\\ley21-nas01\cvpdata</a><br>
+<br>
+QuFirewall geïnstalleerd (Via appcenter \ Security).</p>
+<p>Alleen toegang ingesteld op subnet van de locatie en die van het
+datacentre.<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/Operations/Handleiding-Inrichten-NAS-QNAP/media/image55.png" alt="Afbeelding met tafel Automatisch gegenereerde
+beschrijving"></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

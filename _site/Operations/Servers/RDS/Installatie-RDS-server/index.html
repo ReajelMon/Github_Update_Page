@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Installatie RDS server </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Installatie RDS server ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="installatie-rds-server">Installatie RDS server</h1>
+
+<h2 id="installatie-rds-server-1">Installatie RDS-server</h2>
+<h3 id="nieuwe-rds-aanmaken"><strong>Nieuwe RDS aanmaken</strong></h3>
+<p>Als er een cloon gemaakt wordt van een andere RDS haal dan eerst EDR en
+RMM hier van af, en installeer het daarna weer.<br>
+Pas bij de lokale groep administrators de locadmins-groep aan.<br>
+Pas het loginscript aan en voeg de RDS toe.<br>
+Pas de PRTG-kaart NOC3 aan.<br>
+Zet de sessies erbij:<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-RDS-Server/media/image1.jpeg" alt=""></p>
+<p>Als het een cloon is van een andere RDS zou het script &quot;Software
+restriction policy violation&quot; moeten werken.</p>
+<h3 id="software-op-rds"><strong>Software op RDS</strong></h3>
+<p>Er is diverse software geïnstalleerd op een RDS-server. O.a:<br>
+Office 365 32bits versie.<br>
+Deze wordt geïnstalleerd via
+\\mp-fs102\Software\Office365\Install\setup_OfficeStandard32.lnk&quot;.<br>
+Die verwijst naar :
+&quot;\\mp-fs102\Software\Office365\Install\setup.exe /configure
+&quot;\\mp-fs102\Software\Office365\Install\config_OfficeStandard32.xml&quot;<br>
+In de xml staat:</p>
+<p>&lt;Add OfficeClientEdition=&quot;32&quot; Channel=&quot;Current&quot;
+SourcePath=&quot;\\mp-fs102\Software\Office365\Install\OfficeStandard&quot;&gt;</p>
+<p>&lt;Product ID=&quot;O365ProPlusRetail&quot;&gt;</p>
+<p>&lt;Language ID=&quot;nl-nl&quot; /&gt;</p>
+<p>&lt;ExcludeApp ID=&quot;Access&quot; /&gt;</p>
+<p>&lt;/Product&gt;</p>
+<p>&lt;/Add&gt;</p>
+<p>&lt;Updates Enabled=&quot;TRUE&quot; Channel=&quot;Current&quot; /&gt;</p>
+<p>&lt;Display Level=&quot;None&quot; AcceptEULA=&quot;TRUE&quot; /&gt;</p>
+<p>&lt;Property Name=&quot;SharedComputerLicensing&quot; Value=&quot;1&quot; /&gt;</p>
+<p>&lt;Property Name=&quot;AUTOACTIVATE&quot; Value=&quot;1&quot; /&gt;</p>
+<p><a href="https://docs.microsoft.com/en-us/deployoffice/update-channels-changes">https://docs.microsoft.com/en-us/deployoffice/update-channels-changes</a></p>
+<p>Er is gekozen voor het Current Channel om maandelijkse updates te
+krijgen.</p>
+<p>MS Access 2010 runtime 32 bits versie.</p>
+<p>Deze wordt geïnstalleerd via
+Z:\Office365\Install\AccessRuntime\AccessRuntime_2010_x86.exe&quot;</p>
+<h3 id="deinstallatie-office-365"><strong>Deinstallatie Office 365</strong></h3>
+<p>Voor de deinstallatie van Office 365 kun je het best de removal tool
+gebruiken : <a href="https://aka.ms/diag_officeuninstall">https://aka.ms/diag_officeuninstall</a></p>
+<h3 id="software-restriction-policy-violation---alerts"><strong>Software restriction policy violation - alerts</strong></h3>
+<p>Om meldingen te krijgen dat er een executable op een RDS-server wordt
+gestart die niet in de whitelist staat van de &quot;Software Restricion
+policy&quot; dient onderstaand alert aangemaakt te worden.</p>
+<p>Kopieer de bestanden uit &quot;S:\8.0 Automatisering\2.2
+Servers\RDS\Script Software Restriction Policy&quot; naar
+&quot;C:\Scripts&quot;.<br>
+RM op de application-eventlog en kies &quot;Attach a task to this log&quot; en
+geef deze als naam
+&quot;Application_Microsoft-Windows-SoftwareRestrictionPolicies_865&quot;.<br>
+Blader naar &quot;C:\Scripts\SoftwareRestrictionPolicies-Warning.xml&quot;<br>
+Pas alles zo aan dat er bij Log &quot;Application , Source
+&quot;SoftwareRestrictionPolicies&quot; en Event 865 het programma
+&quot;C:\Scripts\mail-event.ps1&quot; gestart wordt en laat de taak draaien
+onder het script-account.<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-RDS-Server/media/image2.jpeg" alt=""></p>
+<p>De taak komt onder &quot;Event viewer tasks&quot; terecht.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

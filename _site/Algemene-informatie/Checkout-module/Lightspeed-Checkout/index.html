@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Lightspeed Checkout </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Lightspeed Checkout ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="lightspeed-checkout">Lightspeed Checkout</h1>
+
+<p>Met de checkout module kan de klant verschillende functionaliteiten tonen in zijn webshop bij het afrekenen.</p>
+<h2 id="belangrijk-bij-lightspeed-checkout">Belangrijk bij Lightspeed checkout</h2>
+<br>
+Lightspeed heeft geen specifieke app voor de checkout nodig. Wél moet je de checkout  'installeren' via de Order Import dataflow binnen de Montaportal:
+<p><img src="../../../Attachments/Order-import-install-knop-3fb54858-c553-47d9-b986-3bde8722371a.png" alt="Order-import-install-knop.png"></p>
+<h2 id="talen">Talen</h2>
+<p>De volgende talen worden ondersteund in de Lightspeed checkout:</p>
+<ul>
+<li>Nederlands</li>
+<li>Engels</li>
+</ul>
+<h2 id="configuratie">Configuratie</h2>
+<ol>
+<li>Zorg dat de doel-webshop al is gekoppeld via connector</li>
+<li>Zorg dat alle tarieven en verzendmethoden + opties juist staan in de Monta portal.</li>
+<li>Installeer de checkout module via de order-import dataflow.</li>
+<li>Test de checkout</li>
+</ol>
+<h2 id="algemene-informatie-en-functies">Algemene informatie en functies</h2>
+<p>Van de volgende functies is bekend dat Lightspeed het <strong>wel</strong> ondersteunt:</p>
+<ul>
+<li>Berekenen van verzendmethoden inclusief prijs</li>
+<li>Weergeven van verzendopties</li>
+<li>Leverdag kiezen (Alleen nieuwe lightspeed checkout)</li>
+<li>Weergeven van levertijden (Alleen nieuwe lightspeed checkout)</li>
+<li>Bedrag na korting is gebruikt voor berekening van de verzendkosten. Deze updaten ook bij verwijderen en toevoegen van kortingscodes</li>
+</ul>
+<p>Van de volgende standaard functies is bekend dat Lightspeed het <strong>niet</strong> ondersteunt:</p>
+<p>Van de volgende aanvullende functies is bekend dat Lightspeed het <strong>niet</strong> ondersteunt:</p>
+<ul>
+<li>UPS '	Altijd met UPS Express Saver verzenden '</li>
+</ul>
+<h2 id="known-issues--bugs">Known issues &amp; bugs</h2>
+<ul>
+<li>Gratis verzending coupons werken niet en hebben geen directe invloed op de prijs van verzendkosten.</li>
+</ul>
+<details closed="">
+<summary>De checkout wordt niet weergegeven</summary>
+De checkout module moet worden 'geactiveerd' in de order import dataflow binnen de Monta portal. Soms is er sprake van een bug waar de module al is geactiveerd.
+<p>Wanneer dit gebeurd kan je hem verwijderen met de 'Verwijder checkout service' knop.
+Als dit niet werkt kan de checkout handmatig worden verwijderd uit de database door IT.</p>
+<p><img src="../../../Attachments/Verwijderen-d3174d28-9fb8-4f89-a3db-ed196956ae43.png" alt="Verwijderen.png"></p>
+<p>Na het opnieuw installeren van de module zou hij weer moeten werken.</p>
+</details>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

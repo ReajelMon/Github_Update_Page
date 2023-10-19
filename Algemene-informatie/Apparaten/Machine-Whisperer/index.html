@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Machine Whisperer </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Machine Whisperer ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="machine-whisperer">Machine Whisperer</h1>
+
+<h2 id="wat-is-de-machine-whisperer">Wat is de Machine Whisperer?</h2>
+<p>Met de MachineWhisperer is het mogelijk om met PLC's te communiceren en hieruit Notificaties te maken die vervolgens worden opgeslagen en goed beschikbaar zijn via een API. De mobiele applicatie toont vervolgens de data</p>
+<p><img src="../../../Attachments/Untitled%20Diagram.drawio%20(1)-37e2ed35-08f4-41d7-8fb8-897c4ae1bb4c.png" alt="Untitled Diagram.drawio (1).png">
+Figuur 1 globaal overzicht</p>
+<h2 id="technische-hoofdstukken">Technische hoofdstukken</h2>
+<h2 id="overzicht-van-de-onderdelen-binnen-het-machinewhisperer-project">Overzicht van de onderdelen binnen het Machinewhisperer project:</h2>
+<p>De PLCInterpeter interpreteert data uit een de interne database van een PLC naar notificaties die in de PLCInterpreter kunnen worden ingesteld.</p>
+<p><strong>Backend</strong></p>
+<ul>
+<li>Machinewhisperer API</li>
+<li>GraphQL service</li>
+</ul>
+<p><strong>Frontend</strong></p>
+<ul>
+<li>Mobile applicatie</li>
+</ul>
+<p><strong>Instellingen</strong></p>
+<ul>
+<li>GoMonta Personeelsplanning Taakverdeling voor rollen</li>
+<li>MontaPortal Instellingen scherm</li>
+<li>PLCInterpreter</li>
+</ul>
+<p>In Figuur 1 is het overzicht van de backend en frontend van de applicatie, zonder instellingen om het overzichterlijker te houden. De MachineWhisperer API maakt gebruik van de database <strong>MontaMachineWhisperer</strong> op de server: <strong>mp-dev02.montapacking.nl</strong>. De API is vervolgens te vinden op <a href="https://machinewhisperer.monta.nl/api/swagger/index.html">https://machinewhisperer.monta.nl/api/swagger/index.html</a>.</p>
+<p>De Mobile app maakt, echter geen direct gebruik van de API. De mobile app maakt gebruik van de GraphQL service. Deze service is te vinden op <a href="https://machinewhisperer.monta.nl/graphql/">https://machinewhisperer.monta.nl/graphql/</a>. Hierdoor kan data uit meerdere API's gecombineerd worden tot een request.</p>
+<p>De Mobile app is in Visual Studio te builden via de standaard manier om Xamarin apps te builden.</p>
+<h2 id="plek-op-het-net---waar-is-welk-project">Plek op het net - waar is welk project?</h2>
+<ul>
+<li>De projecten zijn opgeslagen in 4 repositories die op de Azure Devops van Monta zijn opgeslagen.</li>
+<li>MachineWhispererAndroid <a href="https://dev.azure.com/MontaDevelopment/Montapacking/_git/MachineWhispererAndroid">https://dev.azure.com/MontaDevelopment/Montapacking/_git/MachineWhispererAndroid</a> (Development branch)</li>
+<li>MachineWhispererAPI <a href="https://dev.azure.com/MontaDevelopment/Montapacking/_git/MachineWhisperer">https://dev.azure.com/MontaDevelopment/Montapacking/_git/MachineWhisperer</a>
+(Development branch)</li>
+<li>MachineWhispererPLC <a href="https://dev.azure.com/MontaDevelopment/Montapacking/_git/MachineWhispererPLC">https://dev.azure.com/MontaDevelopment/Montapacking/_git/MachineWhispererPLC</a>
+(Development branch)</li>
+<li>MachineWhispererGraphQL <a href="https://dev.azure.com/MontaDevelopment/Montapacking/_git/MachineWhispererGraphQL">https://dev.azure.com/MontaDevelopment/Montapacking/_git/MachineWhispererGraphQL</a>
+(Development branch)</li>
+</ul>
+<p>Daarbuiten zijn er nog drie Monta sites die zijn aangepast voor het instellen van verschillende instellingen.</p>
+<ul>
+<li>MontaPortal - Site waar binnen het WCS een settings knop is toegevoegd, deze pagina is nog niet afgemaakt en staat nog niet live, de niet afgemaakte versie is vindbaar op: <a href="https://dev.azure.com/MontaDevelopment/Montapacking/_git/MontaPortal?path=%2F&amp;version=GBfeature%2Fmachinewhisperer&amp;_a=contents">click</a> onder de branchnaam feature/machinewhisperer</li>
+<li>MontaRestAPI - Backend API, die gebruikt wordt om Personeelsdata uit de personeelsplanning te halen.</li>
+<li>GoMonta - Site, waar in de personeelsplanning OperatorRole aan een gebruiker kan worden gegeven. Video met instructies hoe een nieuwe operator kan worden toegevoegd is hieronder toegevoegd, het nummer is gelijk aan de UserRoleId uit de MachineWhispererAPI.</li>
+</ul>
+<iframe width="600" height="450" src="https://www.loom.com/embed/5628e12c7d2f4ea5af94ce8292ef8b2e" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+<h2 id="hoe-werkt-het-per-project">Hoe werkt het per Project?</h2>
+<p>###MachineWhispererAPI</p>
+<p>MachineWhisperAPI is een .NET6 MVC project. de Models zitten in het Data project file, als aparte project file aangezien de models kunnen worden hergebruikt in de andere projecten (Maar dit gebeurt momenteel niet). De database wordt in deze applicatie benaderd en wordt a.d.h.v. Entity Framework met het <a href="https://entityframework.net/ef-code-first">Code First principe</a> bijgehouden.</p>
+<p>Al wil je de API testen kun je getters op  <a href="https://machinewhisperer.monta.nl/api/swagger/index.html">https://machinewhisperer.monta.nl/api/swagger/index.html</a> testen, of Posts doen. Bij posts moeten alle ID's ingevuld zijn met een bestaand ID, dus daar moet rekening mee worden gehouden voor het testen.</p>
+<p><img src="../../../Attachments/image-31b3b8dc-b56d-464a-995e-416d7a4397e3.png" alt="image.png"></p>
+<p>In de afbeelding hierboven is te zien welke Controllers er in het project zijn. In de rest van dit hoofdstuk wordt kort per Controller beschreven wat het doel is en wat extra informatie gegeven, als dat relevant is.</p>
+<p>Employee is de user van de app. Belangrijkste attribuut is de MontaId, wat het Id is waarmee de gebruiker wordt opgezocht in de MontaRestAPI, daarbuiten wordt de naam van de employee opgehaald vanuit de personeelsplanning. Voorderest is de employee nog niet veel gebruikt aangezien er nog niet bij wordt gehouden wie welke notificatie op zich neemt.</p>
+<p>LinkNotification wordt geset vanuit het MontaPortal instellingenscherm, hierin kan de description of het verantwoordelijke UserRoleId van een notificatie worden veranderd per afdeling.</p>
+<p>Machine is de algemene data over een specifieke Machine.</p>
+<p>MachineType is een groep Machines.</p>
+<p>NotificationAlert is een ALERT, dit is een kort bericht die de noodzakelijkheid van een Notificatie kan aantonen: bijvoorbeeld een alert kan ERROR of WARNING zijn.</p>
+<p>NotificationType is het type Notification, Het type notificatie wordt samen met de Alert in de PLCInterpreter per Notificatie meegegeven en verteld zo specifiek mogelijk wat de status van een machine is.</p>
+<p>Notification is de klasse</p>
+<p>UserRole is de manier hoe Users meestal worden benaderd, notificaties worden naar UserRoles gestuurd en niet naar individuele user bijvoorbeeld.</p>
+<p><img src="../../../Attachments/drawie.drawio%20(1)-e8ee99a8-a7d7-4107-92d9-1b93f1e1f368.svg" alt="drawie.drawio (1).svg">
+In de bovenstaande afbeelding is te zien welke manier de verbindingen tussen de Settingspage(MontaPortal) en de peroneelsplanning(GoMonta) zich verhouden. De settingspage veranderd de LinkNotification, waar per NotificationId kan worden ingesteld welke UserRoleId bij een NotificationId hoort. Echter is deze functionaliteit nog niet geheel geïmplementeerd, momenteel wordt data uit de LinkNotification nog niet gebruikt in het kiezen van de UserRole, wel wordt de LinkNotification aangemaakt, wanneer een nieuwe notificatie wordt gecreëerd.</p>
+<ul>
+<li><strong>Deployment</strong></li>
+</ul>
+<p>De deployment pipeline is op de MontaDevelopment Azure te vinden onder de naam &quot;MachineWhisperer&quot;. De release pipeline is &quot;MachineWhisperer_Prod&quot; en is een gedeelde Release met de GraphQL Release pipeline. De API en GraphQL worden samen gehost onder hetzelfde webadres (<a href="https://machinewhisperer.monta.nl">https://machinewhisperer.monta.nl</a>) intern worden ze gelijk gehost op het subdirectory /api en /graphql voor de API en GraphQL respectievelijk, hierdoor hoeft dat in de applicatie zelf niet te worden aangegeven, lokaal draaien de services daardoor niet op een subdirectory</p>
+<h3 id="graphql">GraphQL</h3>
+<p>GraphQL service is een query language, waardoor er gemakkelijk nieuwe requests kunnen worden gemaakt. De GraphQL service maakt gebruik van de MachineWhispererAPI en de MontaRestAPI (De API die o.a. de personeelplanning beschikbaar stelt) en combineert dit tot een request voor de client.
+Er is onderscheid tussen Queries en Mutations, dit is ook zichtbaar in de klasse in de app. In de Queries klasse zitten alle GET request en in de Mutations klasse zitten alle requests die data aanpassen.</p>
+<h3 id="android-xamarin-app">Android Xamarin app</h3>
+<p>Xamarin Android applicatie is een MVVM project.</p>
+<h3 id="plcinterpreter">PLCInterpreter</h3>
+<p>PLC interpreter is een service die naar het IP van een aangesloten PLC kan luisteren en op basis van welke values er in de interne database van de PLC zijn kan worden ingesteld welke Type notificatie wordt verstuurd.
+MontaPLCControl is een algemene .sln dat het lezen van PLC's wat gemakkelijker maakt. De logica van de applicatie is te vinden in PLCInterpreter .sln. Belangrijk is dat het juiste type PLC wordt geselecteerd, bij het testen is de S7-1200 gebruikt.</p>
+<p>Standaard kijkt de Interpreter naar de eerste 2 plekjes in de database memory of de value true of false is.</p>
+<h2 id="todo-lijst">Todo lijst</h2>
+<p>###Mobile app</p>
+<h4 id="oidccallbackactivity">OidcCallbackActivity</h4>
+<p>in het project MachineWhisper.Android en de klasse OidcCallbackActivity wordt gebruik gemaakt van de DataScheme van de medewerkersapp, wat is gekopieerd uit de medewerkersapp. Dit werkt als het de enige app is op een telefoon. Maar is mogelijk niet wenselijk voor de toekomst, in dat geval moet de MachineWhisperer app een eigen Datascheme krijgen.</p>
+<p>Een ander probleem is dat in de huidige versie als de MedewerkersApp en Machinewhisperer app beide zijn geinstalleerd blijft de telefoon vragen welke OidcCallbackActivity de gebruiker wilt gebruiken, die van de Medewerkersapp of van de Machinewhisperer. Waarschijnlijk kan dit ook opgelost worden door een eigen Datascheme te maken per app.</p>
+<h4 id="notificatie-afronden">Notificatie Afronden</h4>
+<p>Momenteel is het afronden van een Notificatie gedaan door een button, vervolgens is de Notificatie inactief en dus verwijderd. De uiteindelijke oplossing vereist een oplospagina waar eventueel tekst en foto's kunnen toegevoegd bij het oplossen van een notificatie.</p>
+<p>###MontaPortal</p>
+<h4 id="ui-maken">UI maken</h4>
+<p>In de Montaportal Settings page zijn pagina's en methodes aangemaakt voor het verwijderen en toevoegen van nieuwe machines en notificaties, echter is de UI nog niet aanwezig, buiten wat test UI. Dit moet nog worden geimplementeerd</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

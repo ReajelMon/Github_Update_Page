@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Office 365 automapping </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Office 365 automapping ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="office-365-automapping">Office 365 automapping</h1>
+
+<p><a href="https://practical365.com/exchange-server/removing-auto-mapped-mailbox-outlook/">https://practical365.com/exchange-server/removing-auto-mapped-mailbox-outlook/</a></p>
+<p>De reden dat het gedeelde postvak wel wordt weergegeven in Outlook, maar niet wordt weergegeven in de Outlook-accountinstellingen, is dat automatische toewijzing standaard is ingeschakeld wanneer een gebruiker toegang krijgt tot een gedeeld postvak of tot het postvak van een andere gebruiker.
+Wanneer automatische toewijzing is ingeschakeld, ontvangt Outlook extra informatie in het Autodiscover-antwoord waarin wordt aangegeven het extra postvak te openen.
+De optie voor automatische toewijzing kan alleen worden geconfigureerd op het moment dat de machtigingen worden verleend. Als u automatische toewijzing voor de toegang van een gebruiker tot een gedeeld postvak wilt verwijderen,
+moet u de postvakmachtigingen van de gebruiker verwijderen en de machtigingen opnieuw toevoegen. Dit moet ook worden uitgevoerd met PowerShell,
+omdat het Exchange Admin Center de optie om automatische toewijzing in of uit te schakelen bij het configureren van postvakmachtigingen niet beschikbaar stelt.</p>
+<p>Automatische toewijzing is een Exchange &amp;Amp Exchange Online-functie waarmee postvakken met machtigingen voor volledige toegang automatisch worden geopend in de Outlook-client van een gemachtigde.
+De instelling kan door een beheerder worden geconfigureerd wanneer machtigingen voor volledige toegang aan een gebruiker zijn toegewezen.
+Eenmaal ingeschakeld, bepalen de periodieke Autodiscover-aanvragen van de Outlook-client welke postvakken voor een gebruiker moeten worden toegewezen.
+Automatisch toegewezen postvakken worden door de Outlook-client geopend in een permanente status en kunnen niet door de gebruiker worden gesloten.
+Als gebruikers het automatisch toegewezen postvak van hun Outlook-client willen verwijderen, is beheerdersinterventie vereist om de machtiging Volledige toegang te verwijderen of de vlag voor automatische toewijzing te wissen.</p>
+<p>Het kan tot 60 minuten duren voordat het gedeelde postvak is verwijderd voor gebruikers in Outlook en de webversie van Outlook.
+Na het weghalen van de rechten op een mailbox is de inhoud na verloop van tijd niet meer te openen, maar de mailbox is nog wel te zien.
+Na het maken van een nieuw outlook profiel is de mailbox wel verdwenen.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

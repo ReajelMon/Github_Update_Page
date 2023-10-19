@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>VPN naar lokale Sophos </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="VPN naar lokale Sophos ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../../index.html">
+                <img id="logo" class="svg" src="../../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="vpn-naar-lokale-sophos">VPN naar lokale Sophos</h1>
+
+<h2 id="handleiding">Handleiding</h2>
+<p>Hieronder een korte omschrijving hoe je een gebruiker kunt toevoegen aan
+de VPN van een lokale router (in dit voorbeeld die van Molenaarsgraaf):</p>
+<p>Dit gaat op (bijna) op dezelfde manier als VPN naar het Datacenter:</p>
+<p>In AD heb ik twee groepen aangemaakt.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-VPN-naar-lokale-Sophos/media/image2.png" alt=""></p>
+<p>De namen spreken voor zich.</p>
+<p>Geef de gebruiker rechten op 1 van deze groepen (afhankelijk van wat er
+nodig is).</p>
+<p>De gebruikers in de groep Robots, kunnen alleen bij het Robot netwerk
+(firewall regels zijn aangemaakt).</p>
+<p>De gebruikers in IT Admin komen wel verder.</p>
+<p>Let op: Voor elke gebruiker (dus ook extern) via een AD account laten
+verlopen.</p>
+<p>Als de gebruiker in deze groep zit kan je naar:</p>
+<p><a href="https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgateway1.mol19.montapacking.it%2F&amp;data=04%7C01%7C%7Cb088fdd50ca149ad869008d8fac2adcd%7C00e56f3c7bb64f2981dd0655870d740b%7C0%7C0%7C637535061335509469%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;sdata=5GvMJUEhhDN%2Bm4JwbA7Tx7HHCOZ%2BGTfSGZC13Ed34mY%3D&amp;reserved=0">https://gateway1.mol19.montapacking.it/</a>
+en kan je inloggen met deze gebruiker.</p>
+<p>Daarna krijg je de melding van het koppelen van je authenticator (dit
+kan via de DOU app of bijv Microsoft Authenticator).</p>
+<p>Hierna is het anders</p>
+<p>Hieronder zie je het scherm waar je de software kan installeren. De rode
+streep is het complete pakket, dus de software en je VPN profiel.</p>
+<p>Als je al gebruikt maak van de VPN software moet je kiezen voor de
+blauwe versie. Die download alleen je profiel en plaats dit bij je
+huidige profiel.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-VPN-naar-lokale-Sophos/media/image3.png" alt=""></p>
+<p>Als dit is gedaan werkt het op de bekende manier.</p>
+<p>Maak je gebruik van meerdere vestigingen (Datacenter en Molenaarsgraaf)
+zie je onderstaande bij het verbinding maken.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-VPN-naar-lokale-Sophos/media/image4.png" alt=""></p>
+<p>PS: Er is nog één bekend issue, dat is dat het certificaat nog een error
+geeft. Dit moet nog door Netstream worden uitgezocht. De werking van VPN
+heeft hier geen last van.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

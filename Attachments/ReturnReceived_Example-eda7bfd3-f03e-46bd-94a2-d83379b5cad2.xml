@@ -1,0 +1,38 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<Returns>
+	<Return>
+		<OrderNumber>37461</OrderNumber>
+		<OrderReference>#3357DE</OrderReference>
+		<Date>2022-10-05</Date>
+		<Lines>
+		<Line>
+		<SKU>8719903057739</SKU>
+		<Quantity>1</Quantity>
+		<QA>False</QA>
+		<Comment/>
+		<ReturnReasonID/>
+		</Line>
+			<Line>
+				<SKU>8719903079274</SKU>
+				<Quantity>1</Quantity>
+				<QA>False</QA>
+				<Comment/>
+				<ReturnReasonID/>
+			</Line>
+		</Lines>
+	</Return>
+	<Return>
+		<OrderNumber>38417</OrderNumber>
+		<OrderReference>#7895NL</OrderReference>
+		<Date>2022-10-05</Date>
+		<Lines>
+			<Line>
+				<SKU>8719903001930</SKU>
+				<Quantity>1</Quantity>
+				<QA>False</QA>
+				<Comment/>
+				<ReturnReasonID/>
+			</Line>
+		</Lines>
+	</Return>
+</Returns>

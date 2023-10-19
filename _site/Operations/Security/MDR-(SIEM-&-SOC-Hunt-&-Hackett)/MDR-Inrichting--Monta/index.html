@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>MDR Inrichting  Monta </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="MDR Inrichting  Monta ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="mdr-inrichting--monta">MDR Inrichting  Monta</h1>
+
+<h3 id="inhoudsopgave">Inhoudsopgave</h3>
+<ul>
+<li><a href="#Inleiding">Inleiding </a></li>
+<li><a href="#Poorten">Poorten </a></li>
+<li><a href="#Chronicle_Data_Forwarder">Chronicle Data Forwarder</a></li>
+<li><a href="#Docker">Docker </a></li>
+<li><a href="#NXLog">NXLog </a></li>
+<li><a href="#Sysmon">Sysmon </a></li>
+<li><a href="#Windows_Event_Collector">Windows Event Collector </a></li>
+<li><a href="#Azure_Integratie">Azure Integratie </a></li>
+<li><a href="#SentinelOne_Syslog">SentinelOne Syslog </a></li>
+<li><a href="#Sophos_Syslog">Sophos Syslog </a></li>
+<li><a href="#Fortianalyzer_Syslog">Fortianalyzer Syslog </a></li>
+<li><a href="#F5_Syslog">F5 Syslog </a></li>
+<li><a href="#DNS">DNS </a></li>
+<li><a href="#IIS">IIS </a></li>
+<li><a href="#VMWare_ESXi_en_vCenter">VMWare ESXi en vCenter </a></li>
+<li><a href="#DUO">DUO </a></li>
+<li><a href="#Cisco_switches">Cisco switches</a></li>
+<li><a href="#SQL_Server">SQL Server </a></li>
+<li><a href="#Stamus_Netwerk_sensor">Stamus Netwerk sensor </a></li>
+<li><a href="#Canary">Canary </a></li>
+<li><a href="#MontaWMS">MontaWMS</a></li>
+</ul>
+<h3 id="inleiding">Inleiding</h3>
+<p>Medio begin 2023 is MDR ingericht wat een SIEM/SOC oplevert bij Hunt &amp; Hackett.<br>
+In dit document wordt de technische inrichting ervan beschreven.</p>
+<p><img src="../../../../Attachments/image-edde85d5-8565-4d4b-b900-7ee82230ac5d.png" alt="image.png"></p>
+<h3 id="poorten">Poorten</h3>
+<p><img src="../../../../Attachments/image-b14381c3-9c18-4156-a756-cc74f34050cd.png" alt="image.png"><br>
+Sysmon (HA Proxy) Windows Sysmon   11530<br>
+MontaWMS          Monta_Warehouse 11531</p>
+<h3 id="chronicle-data-forwarder">Chronicle Data Forwarder</h3>
+<p>Logging van diverse Monta-systemen wordt weggeschreven naar de Chronicle Data Forwarder die de gegevens middels een api doorstuurt naar de Chronicle SIEM.<br>
+Hiervoor zijn 2 Linux-servers aangemaakt met de namen MP-CDF01/MP-CDF02 met als OS “Ubuntu 20.04.2”.<br>
+Op de server is OpenSSL geïnstalleerd.<br>
+Op de server draait Docker.<br>
+Test of een bepaalde poort open staat op de CDF:<br>
+“Invoke-WebRequest <a href="http://193.53.249.251:10530">http://193.53.249.251:10530</a> -TimeoutSec 1 -Method POST -Body &quot;CDF connection test extern&quot;”.<br>
+Dit levert in powershell een timeout op maar in Chronicle is te zien of het aankomt.
+Op de MP-CDF01 draait ook HA-proxy voor het doorsturen van de data.<br>
+Met het commando &quot;docker update --restart always h2-haproxy&quot; is er voor gezorgd dat h2-haproxy start bij een herstart.<br>
+Middels het commando &quot;docker ps -a&quot; kan gekeken worden of de processen draaien.</p>
+<p><img src="../../../../Attachments/image-42e5e8f7-9028-43d4-b59c-22b9096f1efc.png" alt="image.png"></p>
+<h3 id="docker">Docker</h3>
+<p><strong>Docker Installatie</strong><br>
+Middels het commando : “sudo docker logs -f cfps” is te zien welke files geüpload worden vanaf de CDF.<br>
+Omdat dit heel veel regels genereert uit het verleden moet je docker herinstalleren om alleen de recente regels te kunnen zien:<br>
+Ga naar /home/chronicle/config en voer de volgende commando’s uit:<br>
+docker stop cfps<br>
+docker rm cfps<br>
+./run_cdf.sh<br>
+docker logs -f cfps</p>
+<p><strong>Docker Updaten</strong><br>
+docker exec -ti h2-haproxy /bin/sh<br>
+apt update<br>
+apt upgrade<br>
+apt clean</p>
+<p><strong>Algemene Docker commando‘s</strong><br>
+Docker stoppen :     sudo docker stop cfps<br>
+Docker starten :       sudo docker start cfps <br>
+Docker herstarten :  docker restart cfps\</p>
+<p>Netwerkverkeer bekijken op een poort:<br>
+Tcpdump port 10530</p>
+<h3 id="nxlog">NXLog</h3>
+<p>Op de meeste systemen wordt NXLog geïnstalleerd om data door te sturen.<br>
+Hierbij wordt met de cdf een connectie gemaakt op de betreffende poort.<br>
+In &quot;C:\program files\nxlog\conf\nxlog.conf&quot; staat de configuratie.<br>
+In &quot;C:\program files\nxlog\conf\data\nxlog.txt&quot; is te zien of de connectie met de cdf op de bewuste poort succesvol is.</p>
+<h3 id="sysmon">Sysmon</h3>
+<p>Middels Sysmon worden er events aangemaakt over processen en files.<br>
+Zie voor een overzicht : <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon#events">https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon#events</a>
+Dit kan dan weer via NXlog worden doorgestuurd.\</p>
+<p>Tijdens het traject is gebleken dat de actie &quot;Filedelete&quot; bij event 23 ervoor zorgt dat van elke file die gedelete wordt er een kopie neergezet wordt in C:\Sysmon.<br>
+Hierdoor liepen de C-schijven vol van de servers en werkstations.<br>
+Daarom is er op een bepaald moment een nieuwe config gemaakt waarbij de actie bij event 23 is omgezet van &quot;Filedelete&quot; naar &quot;Filedeletedetected&quot;.</p>
+<p>Op een server is Sysmon te installeren via &quot;\mp-fs102.montapacking.nl\software\Sysmon\Sysmon-install\1 Install sysmon.cmd&quot;.<br>
+Hierbij wordt de config gebruikt waarbij actie bij event 23 op &quot;Filedeletedetected&quot;.<br>
+Op een server waarbij er al een directory &quot;C:\sysmon&quot; is dient ook &quot;\mp-fs102.montapacking.nl\software\Sysmon\Sysmon-install\2. herstelscript_as_Admin.ps1&quot; gedraaid te worden waarbij de rechten op C:\sysmon meer open gezet worden zodat met treesize bestanden verwijderd kunnen worden.<br>
+Soms werkt dit script niet. Gebruik dan de handleiding &quot;\mp-fs102.montapacking.nl\software\Sysmon_Sysmon herstellen op de servers&quot;.</p>
+<p>Verder is gebleken dat de events 23 en 26 (beide met de actie &quot;Filedeletedetected&quot;) voor opstartproblemen kunnen zorgen bij servers.<br>
+Daarom wordt middels de GPO &quot;GP - Server Services&quot; het opstarten van de service op &quot;delayed&quot; gezet.<br>
+Op servers wordt vanaf 30-6-2023 alleen nog een config zonder de events 23 en 26 toegepast.\</p>
+<p>In powershell vanaf C:\windows kan met het commando &quot;sysmon64.exe -c | Out-File c:\scripts\resultaat.txt&quot; en text-file gemaakt worden waarin de actieve config bekeken kan worden.<br>
+Afhankelijk van de installatie kan het ook sysmon.exe zijn, en als C:\scripts niet bestaat kun je een andere directory gebruiken</p>
+<p>Voor desktops en laptops wordt sysmon middels &quot;Intune&quot; geïnstalleerd.</p>
+<p>Sysmon grondig deinstalleren : sysmon -u force</p>
+<h3 id="windows-event-collector">Windows Event Collector</h3>
+<p><strong>Eventcollector instellen</strong><br>
+De server MP-WEC01 (Windows Server 2019) is beschikbaar als Windows Event Collector.<br>
+De inrichting is uitgevoerd volgens : PE-WindowsEventLogs-230123-1245.pdf<br>
+Op de MP-WEC01 is het volgende uitgevoerd :</p>
+<p><img src="../../../../Attachments/image-78c403a2-7609-440e-a0be-e66b4e66c4c2.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-288400aa-705b-479c-999c-b6f9593b8afc.png" alt="image.png"></p>
+<p>Vervolgens is op de MP-WEC01 binnen de Eventviewer de volgende subscription aangemaakt.</p>
+<p><img src="../../../../Attachments/image-08292a70-8d63-4596-a28a-4aeea0c381ae.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-212500d2-e431-44c6-8341-581fcd1c59c9.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-f470d3bc-516d-4a07-97c0-c586c4b17ed8.png" alt="image.png"></p>
+<p>Om er voor te zorgen dat WinRM op HTTPS WS-Man requests gaat accepteren moet het volgende commando uitgevoerd worden : “winrm quickconfig -transport:https”.</p>
+<p><img src="../../../../Attachments/image-4e957ad2-de49-419d-bbdd-5387e4510028.png" alt="image.png"></p>
+<p>Daarna is bij het volgende commando “winrm enumerate winrm/config/listener” een certificaat-thumbprint te zien.</p>
+<p><img src="../../../../Attachments/image-1e6ebcc1-03b4-4def-8add-94582297a2cf.png" alt="image.png"></p>
+<p>Met het commando “netsh http show urlacl” zijn de poorten 5985 en 6986 te zien, met de waarden die middels de GPO zijn ingesteld.</p>
+<p><img src="../../../../Attachments/image-c8413f9d-12bc-423d-897c-5982ddc5163e.png" alt="image.png"></p>
+<p>Daarna zijn de volgende commando’s uitgevoerd:<br>
+•	enable-psremoting<br>
+•	winrm e winrm/config/listener<br>
+•	Test-NetConnection -Port 5985 -ComputerName mp-wec01.montapacking.nl<br>
+(dit is alleen maar een controle of alle instellingen goed geconfigureerd zijn)<br>
+•	winrm enum winrm/config/listener<br>
+•	winrm qc -q<br>
+•	wecutil qc /q</p>
+<p><strong>NXLog</strong></p>
+<p>Op de MP-WEC01 is een speciale configuratie van NXlog ingesteld.</p>
+<p>define WINEVTLOG_OUTPUT_DESTINATION_ADDRESS 10.10.202.24<br>
+define WINEVTLOG_OUTPUT_DESTINATION_PORT 10514</p>
+<p><img src="../../../../Attachments/image-15b5a0a5-b879-4b88-8b8e-646b2c2e7b3b.png" alt="image.png"></p>
+<p><output out_chronicle_winevtlog=""><br>
+Module      om_tcp<br>
+Host        %WINEVTLOG_OUTPUT_DESTINATION_ADDRESS%<br>
+Port        %WINEVTLOG_OUTPUT_DESTINATION_PORT%<br>
+Exec        $EventTime = integer($EventTime) / 1000000;<br>
+Exec        $EventReceivedTime = integer($EventReceivedTime) / 1000000;<br>
+Exec        $Message = to_json(); to_syslog_bsd();<br>
+</output></p>
+<p><route winevtlog_to_chronicle=""><br>
+Path    in_default_channels =&gt; out_chronicle_winevtlog<br>
+</route></p>
+<p>Op de MP-DC03 en MP-DC04 is ook een speciale configuratie gemaakt.
+Omdat deze servers geen lokale groepen hennen kan het lidmaatschap van de &quot;Event Log readers&quot; niet ingesteld worden.
+Daarom is in NXLOG het volgende toegevoegd :</p>
+<p>define WINEVTLOG_OUTPUT_DESTINATION_ADDRESS 10.10.202.24
+define WINEVTLOG_OUTPUT_DESTINATION_PORT 10514</p>
+<p>define POWERSHELL_OUTPUT_DESTINATION_ADDRESS 10.10.202.24
+define POWERSHELL_OUTPUT_DESTINATION_PORT 10515</p>
+<p><img src="../../../../Attachments/image-ff19612b-1641-40b2-b046-95a1f7c7b1bb.png" alt="image.png">
+<img src="../../../../Attachments/image-10c1e9ef-8857-44a5-ac24-bbd715094f9f.png" alt="image.png"></p>
+<p><strong>Servers instellen</strong></p>
+<p>Om er voor te zorgen dat alle servers de events naar de MP-WEB01 sturen dient de volgende GPO gemaakt te worden.</p>
+<p><img src="../../../../Attachments/image-bbe3dc2d-851e-4c02-b405-d7609a8f4382.png" alt="image.png"></p>
+<p><strong>Toubleshooting Event collector</strong></p>
+<p><img src="../../../../Attachments/image-7750629f-5798-429a-ac14-8676d13e34a7.png" alt="image.png"></p>
+<p>1a	Test-NetConnection -Port 5985 -ComputerName mp-wec01.montapacking.nl<br>
+Vanaf de MP-TEST03 geeft dit resultaat:
+<img src="../../../../Attachments/image-96e0e3d6-7f6c-4244-97b2-c3e0d1296108.png" alt="image.png"></p>
+<p>Zie ook : <a href="https://docs.huntandhackett.com/mdr/windows-event-logs#WindowsEventLogs-Troubleshooting">https://docs.huntandhackett.com/mdr/windows-event-logs#WindowsEventLogs-Troubleshooting</a></p>
+<h3 id="azure-integratie">Azure Integratie</h3>
+<p>In Azure is een script uitgevoerd waardoor de logging direct naar Chronicle geschreven kan worden.</p>
+<p><img src="../../../../Attachments/image-53a0b346-1561-4212-a11f-e175c5019db0.png" alt="image.png"></p>
+<p>Dit levert het volgende account op.</p>
+<p>HuntandHackettMDRSA-AzureAD</p>
+<p><img src="../../../../Attachments/image-5e957c0b-4951-4f36-b154-c63452037ef5.png" alt="image.png"></p>
+<h3 id="sentinelone-syslog">SentinelOne Syslog</h3>
+<p>Binnen SentinelOne is bij integraties een Syslog-server ingesteld.<br>
+Onderstaande instellingen geeft nog niet het verwachte test-resultaat :</p>
+<p><img src="../../../../Attachments/image-61e2a85f-9cc5-4a1e-bc49-09d24458ed31.png" alt="image.png"></p>
+<p>Er zijn 3 NAT-rules aangemaakt, TCP, UDP en beide:</p>
+<p><img src="../../../../Attachments/image-fa98ea02-179f-4407-b570-9394da3b5ad3.png" alt="image.png"></p>
+<p>Dat levert de volgende 3 Firewall-rules.</p>
+<p><img src="../../../../Attachments/image-ae6b5a05-cc15-4ec6-8c4c-c0b1a2a9d9ad.png" alt="image.png"></p>
+<p>In de Firewall-log van de dc-rou01 is het volgende verkeer te zien.</p>
+<p><img src="../../../../Attachments/image-ee9da2d0-7fef-4e2d-9647-29d82edc2f3f.png" alt="image.png"></p>
+<p>Het cloud-dashboard heeft een soortgelijk IP-nr</p>
+<p><img src="../../../../Attachments/image-10bce085-559f-42fd-8497-344e0a2b8808.png" alt="image.png"></p>
+<p>Voor Hunt en Hacket is er een SentinelOne account aangemaakt met een aangepaste rol H2-SOC.
+Deze is gebaseerd op de rol &quot;SOC&quot; met de volgende aanpassing:
+<img src="../../../../Attachments/image-164bce70-2bdb-413e-89ab-693f79cda96b.png" alt="image.png"></p>
+<p>Hierdoor is het voor Hunt en Hackett mogelijk om een API token te generen als ze inloggen met onderstaand account.</p>
+<p><img src="../../../../Attachments/image-12f250e7-7869-402b-9904-941388a1f10b.png" alt="image.png"></p>
+<p>Met dit API token kan met het genoemde account connectie gemaakt worden met de SentinelOne omgeving van Monta.<br>
+Dit is zowel nodig om de threats doorgestuurd te krijgen naar Hunt en Hackett als om acties uit te voeren in de SentinelOne omgeving.</p>
+<p>Dit API token moet elk half jaar opnieuw aangemaakt worden.</p>
+<h3 id="sophos-syslog">Sophos Syslog</h3>
+<p><img src="../../../../Attachments/image-a083a0d5-fb65-4f4a-b89b-61857bad6170.png" alt="image.png"></p>
+<h3 id="fortianalyzer-syslog">Fortianalyzer Syslog</h3>
+<p><img src="../../../../Attachments/image-d4216af4-fe67-4b79-a6dc-5e8a9e391327.png" alt="image.png"></p>
+<h3 id="f5-syslog">F5 Syslog</h3>
+<p><img src="../../../../Attachments/image-46ea8af0-74ed-4bb1-94a7-25d5e2c025ff.png" alt="image.png"></p>
+<p>De volgende firewall-rule is aangemaakt.</p>
+<p><img src="../../../../Attachments/image-1db9ffbc-0b0c-479c-9c4b-7b096753b7aa.png" alt="image.png"></p>
+<h3 id="dns">DNS</h3>
+<p>Zie ook het bestand : &quot;Monta Services BV\Serviceteam - IT Operations - Documenten\Operations\Servers\MDR\PE-DNS en DHCP 472154116-230123-1315.pdf&quot;<br>
+<img src="../../../../Attachments/image-d28bbcdb-4162-44e9-a939-2da75a6f41a5.png" alt="image.png"></p>
+<h3 id="iis">IIS</h3>
+<p>Zie ook bestand : &quot;Monta Services BV\Serviceteam - IT Operations - Documenten\Operations\Servers\MDR\PE-MicrosoftIIS-230123-1443.pdf&quot;</p>
+<p>Daarnaast moet als extra field “X-Forwarded-For” aangemaakt worden volgens &quot;How to use X-Forwarded-For header to log actual client IP address?&quot; (<a href="https://techcommunity.microsoft.com/t5/iis-support-blog/how-to-use-x-forwarded-for-header-to-log-actual-client-ip/ba-p/873115">https://techcommunity.microsoft.com/t5/iis-support-blog/how-to-use-x-forwarded-for-header-to-log-actual-client-ip/ba-p/873115</a>)</p>
+<h3 id="vmware-esxi-en-vcenter">VMWare ESXi en vCenter</h3>
+<p>Zie ook bestand : &quot;Monta Services BV\Serviceteam - IT Operations - Documenten\Operations\Servers\MDR\PE-VMWare ESXi vCenter 473235462-230123-1418.pdf&quot;</p>
+<p>Log in op de ESXi zelf dus bijvoorbeeld voor de EIN-ESX05 inloggen op <a href="https://10.10.100.120/">https://10.10.100.120/</a>
+Vul bij de remote syslog location “tcp://10.10.202.24:1514” in.</p>
+<p>Bij Vcenter log in op : <a href="https://mp-vcenter21.montapacking.nl:5480/#/ui/logging">https://mp-vcenter21.montapacking.nl:5480/#/ui/logging</a></p>
+<p>Onderstaande firewall rule aangemaakt omdat de ESX-systemen en Vcenter in het Management-LAN zitten.</p>
+<p><img src="../../../../Attachments/image-0884e0f6-34a1-47cc-a3e3-00d28740134d.png" alt="image.png"></p>
+<h3 id="duo">DUO</h3>
+<p>Zie ook bestand : &quot;Monta Services BV\Serviceteam - IT Operations - Documenten\Operations\Servers\MDR\PE-DUO-230123-1416.pdf&quot;
+Daarnaast is er binnen DUO een allowlist ingevoerd met IP-nummers van Google Chronicle.</p>
+<p><img src="../../../../Attachments/image-9c3a3e21-cd1f-4338-9cc4-9a50209a9822.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-51d417d9-743d-49f6-a05e-0ecf56a30b5d.png" alt="image.png"></p>
+<p>Zie het bestand : &quot;Monta Services BV\Serviceteam - IT Operations - Documenten\Operations\Servers\MDR\Allowlist DUO.txt</p>
+<h3 id="cisco-switches">Cisco switches</h3>
+<p>Zie ook bestand : &quot;Monta Services BV\Serviceteam - IT Operations - Documenten\Operations\Servers\MDR\PE-Cisco switches 512163905-230123-1415.pdf&quot;</p>
+<p><img src="../../../../Attachments/image-37bd0cc2-2131-4d80-b783-43cb0671ec35.png" alt="image.png"></p>
+<h3 id="sql-server">SQL Server</h3>
+<p><strong>Auditing</strong></p>
+<p>De website pentest.montaportal.nl is aangesloten op “AGTSTLISTENER\BACKENDTEST\Monta_backend”.
+Dit is het SQL-Enterprise-testcluster waarvan de servers MP-SQLTEST01 02 en 03 deel uit maken.
+Onder “Security \ Audits” is als “Audit destination” de “Apploication Log” ingesteld, waarna deze enabled is.</p>
+<p><img src="../../../../Attachments/image-69bcc22d-6e52-4406-a161-12e066776578.png" alt="image.png"></p>
+<p>Onder “Security \ Server Audit Specifications” is een specificatie aangemaakt en enabled.</p>
+<p><img src="../../../../Attachments/image-ee85b081-ac4a-44e3-929d-ae61edda63a3.png" alt="image.png"></p>
+<p>Hierin zijn Logins opgenomen.<br>
+Stel dat er met onjuiste credentials in gelogd wordt op de SQL Server dan komen hiervan events in de application log.<br>
+Middels         EXEC sp_readerrorlog 0, 1, 'Login failed'  is dat in de database te zien.</p>
+<p><img src="../../../../Attachments/image-df17c2a9-1dbd-4f90-b507-80a313ecbb92.png" alt="image.png"></p>
+<p>In de application log is dat ook terug te vinden.</p>
+<p><img src="../../../../Attachments/image-eaf81b49-c978-4dce-be99-7e815e4696fa.png" alt="image.png"></p>
+<p>Op de servers is NXLOG geïnstalleerd waarbij in de config onderstaande regel belangrijk is.<br>
+<output out_chronicle_winevtlog=""><br>
+Exec        to_syslog_bsd();</output></p>
+<p>Door Paul van Oordt is er een script gemaakt om nog veel meer te loggen.<br>
+Op een server waar nog niets is aangemaakt dient het script “Monta Services BV\Monta - Serviceteam - IT Operations - Documenten\Operations\Servers\MDR\Scripts SQL\audit update volledige aanmaak.sql” gedraaid te worden. Dit script bevat de volgende 6 stappen”:</p>
+<ol>
+<li>database audits stoppen</li>
+<li>server audit stoppen</li>
+<li>database audits verwijderen</li>
+<li>server audit verwijderen</li>
+<li>server audit aanmaken</li>
+<li>server audit sepcificatie aanmaken</li>
+</ol>
+<p>Op de overige 2 servers van het cluster dient het script “Monta Services BV\Monta - Serviceteam - IT Operations - Documenten\Operations\Servers\MDR\Scripts SQL\audit update allen voor overige servers in cluster.sql” gedraaid te worden. Dit bevat alleen de stappen 5 en 6.<br>
+De “Database Audit specification” op de inactieve node moet nog gekoppeld worden aan de audit.
+Regel dit als volgt:<br>
+Schakel SQL over naar de niet actieve node, bijv. de MP-SQLTest02.<br>
+Disable de “ChronicleDatabaseAuditSpecification_Monta_Backend”</p>
+<p><img src="../../../../Attachments/image-eb6d80d1-0f71-4403-989a-6366dadc90af.png" alt="image.png"></p>
+<p>Kies als Audit “ChronicleAudit”</p>
+<p><img src="../../../../Attachments/image-e84e0e28-d47c-41f1-9067-7e9d96e4e8b5.png" alt="image.png"></p>
+<p>Enable de “ChronicleDatabaseAuditSpecification_Monta_Backend” weer.<br>
+Check of de query SELECT TOP 3 * FROM tbleorder; in de application log terecht komt.</p>
+<p><strong>Sysmon SQL</strong></p>
+<p>Op alle SQL servers is sysmon geïnstalleerd via “\mp-fs102.montapacking.nl\software\ Sysmon\Sysmon-install\Install sysmon.cmd”.<br>
+Dit resulteert in een service sysmon64.<br>
+Deze genereert weer extra logging in de eventlog “Microsoft-Windows-Sysmon/Operational”</p>
+<p><img src="../../../../Attachments/image-22c2757a-7166-4f82-86fa-c7750d11f699.png" alt="image.png"></p>
+<p>Dit wordt dan weer met nxlog doorgestuurd naar de cdf.</p>
+<p><strong>NXlog SQL</strong></p>
+<p>Via \mp-fs102.montapacking.nl\software\ NXLog\nxlog-ce-3.1.2319.msi kan nxlog geïnstalleerd worden.<br>
+Vervolgens moet in “C:\Program Files\nxlog\conf” het bestand “nxlog.conf” vervangen door de inhoud van “nxlog SQL en sysmon.conf”.</p>
+<p><img src="../../../../Attachments/image-a8fb9fd3-b366-4c78-9081-d30aa464be84.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-1ac6fc28-8221-4002-9944-d48b2d43c236.png" alt="image.png"></p>
+<p><strong>Linux install S1 op CDF-servers</strong></p>
+<p>Installing the Linux Agent (<a href="https://euce1-swprd2.sentinelone.net/docs/en/installing-the-linux-agent.html">https://euce1-swprd2.sentinelone.net/docs/en/installing-the-linux-agent.html</a>)</p>
+<ol>
+<li>sudo dpkg -i SentinelAgent-Linux-22-2-2-2-x86-64-release-22-2-2_linux_v22_2_2_2.deb</li>
+<li>sudo /opt/sentinelone/bin/sentinelctl management token set eyJ1cmwiOiAiaHR0cHM6Ly9ldWNlMS1zd3ByZDIuc2VudGluZWxvbmUubmV0IiwgInNpdGVfa2V5IjogImY2NGEzMGEzNDIyNDczMTIifQ==</li>
+<li>Check SELinux : SEStatus
+Geen resultaat betekent dat het niet draait en dan kan de stap  download and run the policy script from Configuring SELinux. Overgeslagen worden.</li>
+<li>sudo /opt/sentinelone/bin/sentinelctl control start</li>
+<li>sudo /opt/sentinelone/bin/sentinelctl version</li>
+</ol>
+<h3 id="stamus-netwerk-sensor">Stamus Netwerk sensor</h3>
+<p>Zie de documentatie in : ”Monta Services BV\Team - Monta Aspect ICT - Documenten\General\Stamus Netwerk sensor”.<br>
+MP-STA02 commando’s<br>
+journalctl -f     lopende activiteiten bekijken<br>
+systemctl restart openvpn.service<br>
+systemctl -a | grep vpn    zoeken naar een service met vpn in de naam<br>
+systemctl -a overzicht alle draaiende services<br>
+sudo stamus_vpn_register ./vpn-conf-mp-sta01.tar.gz   installatie vpn connector<br>
+stamus_config  Configuratietool stamus.</p>
+<p>Verkeer bekijken : tcpdump -nel -c 50 not port 22 -i eth1</p>
+<p>Zie een schets van de situatie die als laatste gemaakt is:</p>
+<p><img src="../../../../Attachments/image-678a4889-3064-4057-ba94-b09f8d770521.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-3fe03095-d03a-4bf3-bce5-982461a4cd4a.png" alt="image.png"></p>
+<h3 id="canary">Canary</h3>
+<p>Er zijn 2 honeypots geïnstalleerd.<br>
+Deze zijn van het merk Canary<br>
+https://canary.tools<br>
+http://help.canary.tools\</p>
+<p>De MP-RDS10 is VM in het datacenter.<br>
+Er is ook een fysieke honeypot aangesloten in de patchruimte van Papland 16.<br>
+Daarnaast zijn er in sharepoint nog een aantal bestanden geplaatst.
+Op termijn wordt er ook nog niets met websites gemaakt.</p>
+<h3 id="montawms">MontaWMS</h3>
+<p>Voor belangrijke Monta-websites wordt er logging weggeschreven op servers die middels NXLog wordt doorgestuurd naar de CDF en Chronicle.<br>
+Omdat dit geen standaard output betreft heeft Chronicle hiervoor geen standaard parsing aan boord.<br>
+De parsing is door Hunt en Hackett gemaakt. Vervolgens heeft Hunt en Hackett regels hierop gemaakt zoals &quot;veel onjuiste inlogs gevolgd door een goede inlog&quot;.</p>
+<p><strong>Montaportal</strong><br>
+Op de MP-WEB32x wordt in F:\Logs\montaportal.nl de logging weggescheven.<br>
+De eventid's staan in: <a href="https://dev.azure.com/MontaDevelopment/Montapacking/_wiki/wikis/Montapacking.wiki/681/Logging">https://dev.azure.com/MontaDevelopment/Montapacking/_wiki/wikis/Montapacking.wiki/681/Logging</a></p>
+<p><strong>Rest.monta,nl (interne rest)</strong><br>
+In de directories &quot;\mp-fs106\appdata$\Logs\rest.monta.nl-v0&quot; en &quot;\mp-fs106\appdata$\Logs\rest.monta.nl-v1&quot; wordt de logging weggeschreven.<br>
+De eventid's staan in :
+<a href="https://dev.azure.com/MontaDevelopment/Montapacking/_wiki/wikis/Montapacking.wiki/704/Logging">https://dev.azure.com/MontaDevelopment/Montapacking/_wiki/wikis/Montapacking.wiki/704/Logging</a></p>
+<p><strong>Identity</strong><br>
+Op de MP-WEB34x wordt in F:\Logs\montaportal.nl de logging weggescheven.<br>
+De eventid's staan in : <a href="https://dev.azure.com/MontaDevelopment/Montapacking/_wiki/wikis/Montapacking.wiki/768/Logging">https://dev.azure.com/MontaDevelopment/Montapacking/_wiki/wikis/Montapacking.wiki/768/Logging</a></p>
+<p><strong>Api.monta.nl (externe API)</strong><br>
+Medio juni 2023 moet dit nog gemaakt worden.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

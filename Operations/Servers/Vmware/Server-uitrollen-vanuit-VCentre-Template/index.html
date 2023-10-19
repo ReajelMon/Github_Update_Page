@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Server uitrollen vanuit VCentre Template </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Server uitrollen vanuit VCentre Template ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="server-uitrollen-vanuit-vcentre-template">Server uitrollen vanuit VCentre Template</h1>
+
+<ul>
+<li><p>Log-in VCentre</p>
+</li>
+<li><p>Klik op VM's en Templates</p>
+</li>
+</ul>
+<blockquote>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Server-uitrollen-vanuit-VCentre-Template/media/image1.png" alt=""></p>
+</blockquote>
+<ul>
+<li>Zoek de template die je nodig hebt voor server 2016 of 2019 en klik
+met je rechter muisknop op New VM from this Template.<br>
+Gebruik de template met Server 2019 in de naam.</li>
+</ul>
+<blockquote>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Server-uitrollen-vanuit-VCentre-Template/media/image2.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+</blockquote>
+<ul>
+<li>Vul de naam in van de server die je gaat uitrollen MP-XXXXX en kik
+op next</li>
+</ul>
+<blockquote>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Server-uitrollen-vanuit-VCentre-Template/media/image3.png" alt=""></p>
+</blockquote>
+<ul>
+<li><p>Kies de gewenste ESX en klik op next</p>
+</li>
+<li><p>Kies de gewenste Datastore en klik op next (Medio eind 2020 gebruik
+de 3TB-datastores EIN03, EIN04, EIN05 en EIN07 bij voorkeur niet).</p>
+</li>
+<li><p>Vink Customize the operating system aan.</p>
+</li>
+<li><p>Kies de juiste Guest OS template en klik op next</p>
+</li>
+</ul>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Server-uitrollen-vanuit-VCentre-Template/media/image5.png" alt=""></p>
+<ul>
+<li>Vul de juiste IP gegevens in die je in de IP lijst hebt bepaald en
+klik op next</li>
+</ul>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Server-uitrollen-vanuit-VCentre-Template/media/image6.png" alt=""></p>
+<ul>
+<li><p>Klik in het volgende scherm op Finish</p>
+</li>
+<li><p>De server wordt aangemaakt.</p>
+</li>
+<li><p>Wanneer Vcentre klaar is kun je de server aanzetten.</p>
+</li>
+<li><p>Nadat de server opgestart is wacht je een aantal minuten de server
+zal uit zichzelf herstarten, Vcentre zal de server automatisch
+registreren in het domein en de juiste licentie code toewijzen aan
+de server.<br>
+Daarnaast wordt het IP adres ingesteld zoals je voorheen hebt
+opgegeven.</p>
+</li>
+</ul>
+<blockquote>
+<p><em>(Mocht dit niet goed werken dan dient alles handmatig ingesteld te
+worden.<br>
+Check dan ook nog even of adapter type op VMXNET3 staat. Zie ook het
+default wachtwoord voor Administrator in Passwordstate &quot;Server local
+Admin&quot; bij de notes.)</em><br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Server-uitrollen-vanuit-VCentre-Template/media/image7.png" alt="Afbeelding met tekst, schermafbeelding, monitor Automatisch
+gegenereerde
+beschrijving"></p>
+</blockquote>
+<ul>
+<li><p>Hernoem de netwerknaam naar LAN:<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Server-uitrollen-vanuit-VCentre-Template/media/image8.png" alt=""></p>
+</li>
+<li><p>Upgrade VMWaretools (soms wordt er om een reboot gevraagd, in
+sommige error-situatie komt VMWare met het voorstel om de VMWare-CD
+te mounten en kun je de installatie vanaf CD uitvoeren).</p>
+</li>
+<li><p>Zet &quot;Auto Update&quot; aan voor VMWare Tools voor de nieuwe VM.<br>
+Ga in de Vsphere client de nieuwe server , tabblad updates en check
+of &quot;Automatically upgrade on reboot&quot; aan staat.</p>
+</li>
+<li><p>Rond de installatie als volgt af :</p>
+</li>
+<li><p>C-schijf vergroten naar 100GB.</p>
+</li>
+<li><p>Maak een E-schijf aan om de applicatie op te installeren</p>
+</li>
+<li><p>Maak eventueel benodigde extra partities aan en kies hierbij
+voor Partition structuur voor GPT.</p>
+</li>
+<li><p>Wissel de DNS-servers om als de server in Rotterdam staat.</p>
+</li>
+<li><p>Remote Desktop aanzetten.</p>
+</li>
+<li><p>Server in de in de juiste OU in AD zetten (Standaard NLDC).</p>
+</li>
+<li><p>Groep LocalAdmin_MP-xxxxx maken in AD maken en hier rs.PRTG in
+zetten. Deze groep lid maken van de lokale admin-groep van de
+nieuwe server</p>
+</li>
+<li><p>Groep LocalRDS_MP-xxxxx maken in AD maken.
+Deze groep lid maken van de lokale groep &quot;Remote Desktop Users&quot; van de nieuwe server.</p>
+</li>
+<li><p>SentinelOne installeren.
+<a href="file://10.10.202.60/software/SentinelOne">\\10.10.202.60\software\SentinelOne</a>
+)</p>
+</li>
+<li><p>RMM
+(<a href="file://10.10.202.60/software/RMM/Agent-Server">\\10.10.202.60\software\RMM\Agent-Server</a>
+) installeren en Standaard Server Template toepassen.<br>
+(<em>Als de RMM-client reeds in de template zit dan alleen in het
+dashboard de naam wijzigen bijv. de MP-WEB-XXX).</em><br>
+<img src="../../../../Operations/Servers%5Cimages/Server-uitrollen-vanuit-VCentre-Template/media/image9.png" alt="">
+Draai binnen RMM de taak &quot;ResetAdministratorPassword(servers)
+handmatig.<br>
+<img src="../../../../Operations/Servers%5Cimages/Server-uitrollen-vanuit-VCentre-Template/media/image10.png" alt=""></p>
+</li>
+<li><p>Installeer sysmon via &quot;\mp-fs102.montapacking.nl\software\Sysmon\Sysmon-install\1 Install sysmon.cmd&quot;</p>
+</li>
+<li><p>Installeer NXlog via  het juiste script in &quot;\mp-fs102.montapacking.nl\software\NXLog\Server Installatie&quot;. Het kan nodig zijn er een script bij te maken. Zie de lijst met configuraties in &quot;\mp-fs102.montapacking.nl\software\NXLog&quot;</p>
+</li>
+<li><p>Controleer of 7Zip en Notepad ++ zijn geïnstalleerd.</p>
+</li>
+<li><p>Remote Scheduled Tasks Management aanzetten in de firewall.<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Server-uitrollen-vanuit-VCentre-Template/media/image11.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+</li>
+<li><p>Server in PRTG toevoegen (kloon een soortgelijke server) (ook
+bij node PAP16-PRTG01, dan alleen de server met een
+ping-sensor)). Zie voor de interval-instellingen van de sensors
+(om onnodige belasting te voorkomen :
+&quot;...\Handleidingen\Servers\Bijlagen\PRTG\PRTG Sensoren
+servers.xlsx&quot;.<br>
+Als er een probleem optreedt met het toevoegen van WMI-sensoren
+dan even de &quot;PRTG Probe Service&quot; op de actieve PRTG-server
+(meestal de MP-PRTG01) onder een domainadmin draaien totdat de
+sensoren goed staan.<br>
+Daarna de &quot;PRTG Probe Service&quot; weer onder &quot;rs.prtg&quot; laten
+draaien.</p>
+</li>
+<li><p>Server in juiste backup-pool toevoegen. Bij een SQL-server moet
+rs.veeam als login worden aangemaakt.</p>
+</li>
+<li><p>Windows updates uitvoeren.</p>
+</li>
+<li><p>Server (laten) toevoegen in lijst Remote Desktop Manager</p>
+</li>
+<li><p>Alleen de volgende cipher suites instellen bij een webserver die
+van buiten af bereikbaar is:<br>
+|   TLSv1.2:<br>
+|     ciphers:<br>
+|       TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 - strong<br>
+|       TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 - strong<br>
+|       TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 - strong<br>
+|       TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 -- strong</p>
+</li>
+</ul>
+<blockquote>
+<p>Bij een server die alleen van binnen Monta bereikbaar is kan gewoon de
+best practice van IIS Crypto voor cipher suites geaccepteerd worden.<br>
+<br>
+Dit kan uitgevoerd worden middels IISCrypto allereerst op het tabblad
+&quot;Schannel&quot;:<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Server-uitrollen-vanuit-VCentre-Template/media/image12.png" alt=""></p>
+</blockquote>
+<ul>
+<li>Vervolgens op het tabblad Cipher Suites (alleen in het geval van een
+server die van buitenaf bereikbaar is):<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Server-uitrollen-vanuit-VCentre-Template/media/image13.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></li>
+</ul>
+<blockquote>
+<p><a href="file://10.10.202.60/data/8.0%20Automatisering/1.0%20Software/8.0.0%20Diversen/IISCrypto.exe">\\10.10.202.60\data\8.0 Automatisering\1.0 Software\8.0.0
+Diversen\IISCrypto.exe</a></p>
+</blockquote>
+<p>Voeg NXlog en sysmon toe voor de logging naar de SIEM bij Hunt &amp; Hackett.</p>
+<p>Voor NXlog zie &quot;\mp-fs102.montapacking.nl\software\nxlog&quot;.<br>
+Installeer &quot;nxlog-ce-3.1.2319.msi&quot; en vervang in het bestand &quot;c:\program files\nxlog\conf\nxlog.conf&quot; de inhoud door de inhoud van betreffende configuratiefile uit &quot;\mp-fs102.montapacking.nl\software\nxlog&quot;.<br>
+Voor een standaard server zal dat de inhoud van &quot;nxlog-sysmon.conf&quot; zijn.</p>
+<p>Voor Sysmon zie &quot;\mp-fs102.montapacking.nl\software\Sysmon\Sysmon-install&quot;.
+Voer &quot;Install sysmon.cmd&quot; uit.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

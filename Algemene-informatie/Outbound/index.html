@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Outbound </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Outbound ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+  
+  <meta property="docfx:rel" content="../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="outbound">Outbound</h1>
+
+<p>Outbound is het versturen van goederen vanuit het magazijn.</p>
+<h2 id="flowchart">Flowchart</h2>
+<div class="mermaid">
+graph TD;
+place --> import
+verify --> pick
+ship --> collect
+deliver --> receive
+ship --> anonimise
+subgraph Consument
+place[Plaatst order]
+receive[Ontvangt order]
+end
+subgraph Monta software
+import[Importeert order in Monta] -->
+verify[Verifieert order]
+anonimise[Anonimiseren] -->
+archive[Archiveren]
+end
+subgraph Magazijn
+pick[Picken] -->
+echeck["Inpakken (echecken)"] -->
+ship[Verzenden]
+end
+subgraph Verzender
+collect[Ophalen] -->
+sort[Sorteren] -->
+deliver[Afleveren]
+end
+</div>
+<h2 id="order">Order</h2>
+<p>Een order kan op de volgende manier ontstaan:</p>
+<ul>
+<li>Via een koppeling uit een webshop, marketplace of ander systeem van een klant</li>
+<li>Handmatig aangemaakt worden op Montaportal</li>
+<li>Uit een Excel bestand geimport worden op Montaportal</li>
+<li>In GoMonta bij het uitruimen van locaties</li>
+</ul>
+<h3 id="typen-orders">Typen orders</h3>
+<p><u>B2B</u><br>
+Een order kan als B2B (business to business) gemarkeerd worden. Bepaalde instellingen zoals de verzender matrix, pakbon layout kunnen anders zijn voor B2B orders. Ook kunnen aparte verkooptarieven ingesteld worden.</p>
+<p><u>Value added logistics</u><br>
+Ook wel verpakkingsorders genoemd. Voor voorraad die afgeboekt moet worden bijvoorbeeld om te verpakking/om te pakken. In de verkooptarieven kan ingesteld worden dat deze orders niet gefactureerd moeten worden.</p>
+<p><u>Quarantaine orders</u><br>
+Orders om quarantaine voorraad af te boeken.</p>
+<h3 id="order-statussen">Order statussen</h3>
+<ol>
+<li>Verifying: een nieuwe order moet eerste geverifieerd worden.</li>
+<li>Blocked: de order kan niet verwerkt worden omdat er iets mis mee is of omdat deze handmatig geblokkeerd is.</li>
+<li>Backorder: de order kan niet verwerkt worden omdat er geen voorraad is.</li>
+<li>Etransit: de order staat in de wacht om op een datum in de toekomst verwerkt te worden.</li>
+<li>Queued: de order staat klaar om gepickt te worden.</li>
+<li>Picking: de order wordt gepickt.</li>
+<li>Picked/Packing: de order is gepickt en wordt ingepakt.</li>
+<li>Packed/Shipping: de order ingepakt, het verzendlabel wordt geprint.</li>
+<li>Shipped: het verzendlabel is geprint.</li>
+</ol>
+<p>De volgende statussen zijn beschikbaar als er een koppeling is met de verzender om de status van de verzending op te halen. Zie <a href="#order-afleverstatus">Verzenden - order afleverstatus</a>.</p>
+<ol start="10">
+<li>EnRoute: de order is ingescand bij de verzender.</li>
+<li>Delivered: de order is afgeleverd.</li>
+<li>AvailablePickup: de order is gereed voor afhalen bij een afhaalpunt van de verzender.</li>
+<li>Collected: de order is afgehaald bij een afhaalpunt van de verzender.</li>
+<li>Delivery failed: het afleveren van de order is mislukt, de order komt retour.</li>
+</ol>
+<p>Opmerkingen over de volgorde van de statussen die een order doorloopt:</p>
+<ul>
+<li>Een Picking order kan niet meer geblokkeerd worden. Om toch te voorkomen dat een order verzonden wordt kan de order op verzender &quot;Cancelled&quot; worden gezet. De producten worden dan via de retourverwerking weer op voorraad genomen.</li>
+<li>Een order kan van Picking en Packing teruggaan naar Backorder, als tijdens het picken blijkt dat de voorraad fysiek niet aanwezig is in het magazijn.</li>
+</ul>
+<h2 id="verifiëren">Verifiëren</h2>
+<p>Bij het verifiëren van een order gebeuren een aantal dingen.</p>
+<ol>
+<li>Dropship orders op verzonden zetten. Zie <a href="../../Algemene-informatie/Dropshipment">dropshipment</a>.</li>
+<li>Controle dubbel ordernummer</li>
+<li>Prepack instellen</li>
+<li><a href="#adres-normalisatie-en--validatie">Adres normalisatie en -validatie</a></li>
+<li>E-mailadressen hashen</li>
+<li>Geblokkeerde landen, postcodes, e-mailadressen, producten</li>
+<li>Toevoeg- en splitsproducten instellen</li>
+<li>Producten zoeken aan de hand van het SKU</li>
+<li>Order omzetten naar magazijn van de supplier</li>
+<li>Grote producten splitsen naar aparte order</li>
+<li>Douane informatie (pro forma) controleren. Zie <a href="#pro-forma-invoice">pro forma invoice</a>.</li>
+<li>Dangerous goods. Zie <a href="#gevaarlijke-goederen">verzenden - gevaarlijke goederen</a>.</li>
+<li>Shipper opties ingesteld bij het kanaal voor alle orders toepassen. Zie <a href="#verzender-opties">Verzender opties</a>.</li>
+<li>Order splitsen op prijs. Zie <a href="#orders-splitsen--deelverzendingen">Orders splitsen / deelverzendingen</a>.</li>
+<li>Instelling 'verzekerd verzenden vanaf orderwaarde' toepassen. Zie <a href="#verzekerd-verzenden">verzekerd verzenden</a>.</li>
+<li>Surprise pack per product. Bij een product kan ingesteld worden dat deze altijd een inpakinstructie moet krijgen. Zie <a href="#surprise-pack">Surprise pack</a>.</li>
+<li>Backorder controle. Zie <a href="#backorder-controle">backorder controle</a>. Er wordt gekeken of alle producten op voorraad zijn. Is dit niet geval, dan krijgt de order de status Backorder. Er wordt nog wel een verzender bepaald, maar geen geplande verzenddatum en de order wordt ook niet klaargezet voor het pickproces.</li>
+<li>Voorraad reserveren. Als een order geen backorder is wordt een voorraadreservering gemaakt. Bij backorders, <a href="#etransit">Etransit orders</a> en geblokkeerde orders wordt standaard ook een voorraadreservering gemaakt, maar dit is uit te schakelen. Voorraadreserveringen zorgen ervoor dat orders in de juiste volgorde verwerkt worden. Zie <a href="#voorraadreserveringen">voorraadreserveringen</a> voor meer informatie.</li>
+<li>Verzender bepalen. Er wordt een verzender bepaald voor de order. Zie <a href="#verzender-keuze">verzender keuze</a> voor meer informatie hierover.</li>
+<li>Geplande verzenddatum bepalen. Zie <a href="#geplande-verzenddatum">geplande verzenddatum</a>.</li>
+<li>Order klaarzetten voor het pickproces. De voorraad wordt afgeboekt en toegewezen aan de order. Zie ook <a href="#locatie-keuze">locatie keuze</a>.</li>
+</ol>
+<ul>
+<li>
+<ul>
+<li>Als een vertraging tussen koppelen en picken is ingesteld, wordt hier gecontroleerd wanneer voor het laatst gekoppeld is op de gekozen locaties. Als dit korter geleden is dan ingesteld, wordt de order in de wacht gezet. Vervolgens wordt elke drie minuten gecontroleerd of de order vrijgegeven kan worden.</li>
+</ul>
+</li>
+</ul>
+<h3 id="adres-normalisatie-en--validatie">Adres normalisatie en -validatie</h3>
+<p>Bij het verifiëren van een order wordt eerst het genormaliseerd en daarna gevalideerd.</p>
+<p>Afleveradres en factuuradres worden beide genormaliseerd. Het afleveradres wordt altijd geverifieerd, alleen bij zendingen naar een afhaalpunt wordt het factuuradres ook geverifieerd. Het factuuradres wordt namelijk doorgegeven bij afhaalpunten zendingen, hiermee controleert de verzender of ze het aan de juiste consument afgeven.</p>
+<h4 id="adresnormalisatie">Adresnormalisatie</h4>
+<p>Bij het normaliseren gebeurd het volgende:</p>
+<ul>
+<li>Het land, wat bijvoorbeeld ook ingevuld kan zijn als &quot;België&quot;, wordt omgezet naar de tweeletterige lancode</li>
+<li>De postcode wordt genormaliseerd: bij landen die een numerieke postcode hebben (bijv België en Duitsland) worden alle niet-numerieke tekens eruit gegooid. Bij landen die ook letters in de postcode hebben (bijv Nederland) wordt alle tekens die geen letter of cijfer zijn eruit gegooid.</li>
+<li>Bij Belgische en Nederlandse adressen:</li>
+<li>
+<ul>
+<li>Als er niet-numerieke tekens in het huisnummer staan worden die verplaatst naar de toevoeging</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Als er geen huisnummer is ingevuld (bijv omdat het hele adres in de straat staat) wordt geprobeerd het huisnummer af te splitsen.</li>
+</ul>
+</li>
+</ul>
+<h5 id="huisnummer-afsplitsen-bij-nederland-en-belgië">Huisnummer afsplitsen bij Nederland en België</h5>
+<p>Soms wordt het adres als één veld aangeleverd, dus straat + huisnummer (+ evt toevoeging) in één veld. Voor NL en BE proberen we het dan eerst te splitsen om te kunnen beoordelen of het huisnummer aanwezig en numeriek is is. Dit doen we volgens bepaalde regels van PostNL, die hier staan beschreven: <a href="https://www.postnl.nl/klantenservice/bestellen-en-downloaden/documentatie-downloaden/kix-code/">https://www.postnl.nl/klantenservice/bestellen-en-downloaden/documentatie-downloaden/kix-code/</a> (ToolKIX Pro voor software-ontwikkelaars en dan de Word handleiding in de zip).</p>
+<p>[[Doelgroep IT
+De &quot;RiskKIX-tabel&quot; (hierin staan de postcodes die een nummer in straatnaam hebben) moet handmatig worden bijgewerkt. Hoe dit moet staat in de IT wiki.</p>
+<h4 id="adresvalidatie">Adresvalidatie</h4>
+<p>Na het normaliseren wordt het adres gevalideerd. Als het adres niet geldig is, wordt de order geblokkeerd.</p>
+<ul>
+<li>Naam, straat, plaats en landcode moeten ingevuld zijn</li>
+<li>Landcode moet een geldige landcode zijn</li>
+<li>Het <u>format</u> van de postcode moet goed zijn (bijv in Belgie 4 cijfers). [[Doelgroep IT Hiervoor staan reguliere expressies in de landentabel.]]</li>
+<li>In NL en BE moet een huisnummer aanwezig zijn en dit moet een nummer zijn</li>
+<li>Extra adresvalidaties van de verzender: bij sommige verzenders worden nog extra verzender specifieke controles gedaan. Zie de pagina van de betreffende verzender welke controles gedaan worden.</li>
+</ul>
+<p>Bij het printen van het verzendlabel bij de <a href="#Echeck">Echeck</a> kan het zijn dat de verzender ook nog controles doet. (Als het label wordt opgehaald uit het systeem van de verzender.) Het kan zijn dat de verzender &quot;strenger&quot; is dan onze controles (zoals hierboven beschreven). Dan kan het label niet gemaakt worden en wordt de order <a href="#Jokers">joker</a>. De melding van de joker bevat de foutmelding die de verzender geeft. Hiermee kan het adres gecorrigeerd worden en kan opnieuw geprobeerd worden het verzendlabel te printen.</p>
+<h5 id="maximale-lengte-van-de-velden">Maximale lengte van de velden</h5>
+<p>De maximale lengte van de naam- en adresvelden bij Monta is 255 karakters. Meer karakters zullen afgekapt worden bij het importeren van de order of er zal een fout ontstaan bij het importeren.</p>
+<p>Elke verzender heeft ook limitaties voor het aantal karakters in de naam- en adresvelden. Zie hiervoor de pagina van de betreffende verzender.</p>
+<h2 id="orders-splitsen--deelverzendingen">Orders splitsen / deelverzendingen</h2>
+<p>Een order kan in meerdere delen verzonden worden. De order wordt dan gesplitst. Een order kan gesplitst worden op de volgende manieren:</p>
+<ol>
+<li>Splitsen van backorders</li>
+<li>Splitsen van backorders van specifieke suppliers</li>
+<li>Splitsen op waarde</li>
+<li>Splitsen over magazijnen</li>
+<li>Afsplitsen grote producten</li>
+<li>Handmatig op de montaportal</li>
+</ol>
+<p>Hoe zit het met de terugkoppeling naar de webshop bij gesplitste orders?</p>
+<h3 id="1-splitsen-van-backorders">1. Splitsen van backorders</h3>
+<p>Bij een kanaal kan worden ingeschakeld dat backorders gesplitst moeten worden. Dit kan ook bij een order worden meegegeven vanuit de koppeling.</p>
+<p>Hiermee kan het deel wat op voorraad is al meteen verzonden worden. Het deel wat niet op vooraad is kan dan later verzonden worden.</p>
+<p>Het splitsen wordt uitgevoerd bij de <a href="#backorder-controle">backorder controle</a>.</p>
+<p>Let op bij het inschakelen van het automatisch splitsen van backorders. Dit kan zorgen voor veel losse orders. Elke 3 minuten worden namelijk de backorders van nieuwe voorraad gecontroleerd. Dus als je een backorder hebt met 50 regels, en elke 5 minuten wordt een product op locatie gekoppeld, ontstaan er 50 losse orders.</p>
+<p>We zijn bezig om een knop te maken waarmee klanten op een zelf gekozen moment de backorders kunnen splitsen. Dit zit in scrum punt: #4291.</p>
+<h3 id="2-splitsen-van-backorders-van-specifieke-suppliers">2. Splitsen van backorders van specifieke suppliers</h3>
+<p>Zie <a href="#backorder-controle">backorder controle</a>.</p>
+<h3 id="3-splitsen-op-waarde">3. Splitsen op waarde</h3>
+<p>Om orders met hoge waarde te splitsen in meerdere orders met een lagere waarde. Om hoge importheffingen te voorkomen. Dit kan ingesteld worden in de Montaportal.</p>
+<h3 id="4-splitsen-over-magazijnen">4. Splitsen over magazijnen</h3>
+<p>Zie <a href="#verzenden-vanuit-meerdere-magazijnen">Verzenden vanuit meerdere magazijnen</a>.</p>
+<h3 id="5-afsplitsen-grote-producten">5. Afsplitsen grote producten</h3>
+<p>Het is mogelijk om automatisch grote producten af te splitsen naar losse orders. Omdat orders met één item (S orders) efficiënter verwerkt kunnen worden.</p>
+<p>Dit moet per klant ingesteld worden. Per magazijn is in te stellen vanaf welke afmetingen producten afgesplitst moeten worden bij de klanten waarbij dit ingeschakeld is.</p>
+<h3 id="6-handmatig-op-de-montaportal">6. Handmatig op de montaportal</h3>
+<p>De klant kan op de Montaportal handmatig een backorder splitsen.</p>
+<h3 id="factuurinformatie-meesplitsen">Factuurinformatie meesplitsen</h3>
+<p>Om te voorkomen dat een afgesplitste order geen factuurinformatie meer heeft (wat nodig is voor douane zendingen), kan ingeschakeld worden dat de factuur ook wordt gesplitst. Dit kan ingeschakeld worden op de Montaportal.</p>
+<p>Standaard staat dit uitgeschakeld omdat Monta niet zonder toestemming financiële informatie wil manipuleren.</p>
+<h2 id="backorder-controle">Backorder controle</h2>
+<p>Bij de backorder controle wordt gekeken of er voldoende beschikbare voorraad is om de order te verwerken.</p>
+<p>Hierbij gebeurd ook het volgende:</p>
+<ul>
+<li>Toevoegproducten verwijderen die geen backorder mogen veroorzaken</li>
+<li>Als bij de order staat ingesteld dat deze geen backorder mag worden, worden de producten waarvan geen voorraad is verwijderd uit de order</li>
+<li>Order verplaatsen (en evt splitsen) naar ander magazijn als dit ingesteld staat bij de supplier. Zie <a href="#verzenden-vanuit-meerdere-magazijnen">Verzenden vanuit meerdere magazijnen</a>.</li>
+<li>Producten in backorder splitsen naar aparte order als dit ingesteld staat bij de supplier. De aparte order op verzonden (dropship) zetten als dit ingesteld staat bij de supplier.</li>
+<li>Order verplaatsen of splitsen naar magazijn met voorraad. Zie <a href="#verzenden-vanuit-meerdere-magazijnen">Verzenden vanuit meerdere magazijnen</a>.</li>
+<li>Voorraad omboeken vanaf de wholesaler</li>
+<li>Backorders splitsen: per kanaal en order kan ingesteld worden of backorders gesplitst moeten worden.</li>
+</ul>
+<p>De backorder controle wordt uitgevoerd op de volgende momenten:</p>
+<ul>
+<li>Bij het verifiëren van een order</li>
+<li>Ongeveer 3 minuten nadat er nieuwe voorraad is ge-inbound van een product, worden alle backorders van dat product gecontroleerd</li>
+<li>Elke paar uur worden alle backorders gecontroleerd</li>
+</ul>
+<h3 id="voorraadreserveringen">Voorraadreserveringen</h3>
+<p>De voorraadreserveringen zorgen ervoor dat orders in de juiste volgorde verstuurd worden als ze deels in backorder zijn.</p>
+<p>Bijvoorbeeld:</p>
+<ul>
+<li>producten A en B hebben beide 1 stuks voorraad</li>
+<li>order 1 wordt geplaatst met 1x product A en 2x product B. Dus de order komt in backorder.</li>
+<li>order 2 wordt geplaatst met 1x product A. Deze order zou verstuurd kunnen worden omdat product A op voorraad is. Echter wordt de voorraad gereserveerd voor order 1.</li>
+</ul>
+<p>Bij een backorder op Montaportal is te zien welke voorraadreserveringen ervoor zorgen dat de order in backorder blijft staan.</p>
+<p>Het is ook mogelijk om een order te prioriteren. Zodat die toch verstuurd wordt ondanks dat een andere order de voorraad reserveert. Dit vanuit de lijst met reserveringen bij het gereserveerde product. Na het prioriteren zou de order binnen 5 minuten uit backorder moeten komen.</p>
+<h4 id="voorraadallocatie">Voorraadallocatie</h4>
+<p>Het is ook mogelijk om voorraad te reserveren zonder order. Dit kan door het maken van een voorraadallocatie.</p>
+<p>Met een voorraadallocatie is het ook mogelijk om voorraad beschikbaar te maken voor een specifiek kanaal. Door bij het aanmaken van de voorraadallocatie aan te geven dat één of meer kanalen de gealloceerde voorraad wél mogen gebruikt. Let op: om dit invloed te laten hebben op de voorraad die wordt doorgegeven in een voorraadkoppeling, moet het kanaal ook nog ingesteld worden in de voorraadkoppeling (full- en changed stock update).</p>
+<p>Een voorraadallocaties kan ook gebruikt worden om een deel van de voorraad beschikbaar te maken voor een retailer. Zie <a href="../../Algemene-informatie/Voorraadbeheer/Wholesale">wholesale</a>.</p>
+<h2 id="verzenden-vanuit-meerdere-magazijnen">Verzenden vanuit meerdere magazijnen</h2>
+<p>Voorraad van een klant kan in meerdere magazijnen worden opgeslagen. Het is ook mogelijk om vanuit meerdere magazijnen orders te verzenden.</p>
+<p>Hiervoor zijn twee opties die ingeschakeld kunnen worden bij een klant:</p>
+<ol>
+<li>Orders omzetten naar magazijn waar de voorraad is</li>
+<li>Orders splitsen naar magazijn waar de voorraad is</li>
+</ol>
+<p>Bij optie 1 wordt de order bij elkaar gehouden. Bij optie 2 wordt de order gesplitst als producten in de order in verschillende magazijnen liggen.</p>
+<p>Bij het controleren in welke magazijnen voorraad is wordt transit voorraad ook meegeteld. Omdat die snel beschikbaar komt.</p>
+<p>Het is ook mogelijk om bij een leverancier in te stellen dat de orders worden omgezet naar een specifiek magazijn.</p>
+<p>Om vanuit een magazijn te kunnen verzenden moet er een kanaal gemaakt zijn.</p>
+<p>Het omzetten/splitsen wordt uitgevoerd bij de <a href="#backorder-controle">backorder controle</a>.</p>
+<h2 id="geplande-verzenddatum">Geplande verzenddatum</h2>
+<p>Een order die beschikbaar is om te verzenden krijgt een geplande verzenddatum toegewezen. Dit is het moment waarop de order uiterlijk verwerkt moet zijn.</p>
+<p>Als start datum-tijd wordt gebruikt de datum dat de order is aangemaakt/binnengekomen in het systeem, dat deze uit backorder is gekomen of is gedeblokkeerd. Er kan ook een 'gewenste afleverdatum' worden meegeven in de order. Die wordt dan omgerekend naar een verzenddatum en gebruikt als start datum-tijd.</p>
+<p>Dan wordt gekeken of de order nog voor de cutofftijd is binnengekomen. Zo ja, dan moet de order op de startdatum verwerkt worden, zo niet een dag later. Voor B2c en B2b orders kan een aparte cutofftijd worden ingesteld.</p>
+<p>Als er extra verzenddagen staan ingesteld, wordt dit aantal dagen er bij op geteld. Extra verzenddagen kunnen meegegeven worden in de order vanuit de koppeling en/of ingesteld zijn bij het kanaal. Als beide het geval zijn, wint de waarde die is meegegeven in de order. Zie verder <a href="../../Algemene-informatie/Koppelingen/1.-Koppelingen-dataflow#verzenderkeuze-importeren">Koppelingen - verzender keuze importeren</a>.</p>
+<p>Het tijdstip van de geplande verzenddatum is de afhaaltijd van de verzender. Als de afhaaltijd is verstreken en de verzender heeft het vinkje 'niet gebruiken na afhaaltijd' dan wordt een alternatieve verzender ingesteld.</p>
+<h3 id="feestdagen">Feestdagen</h3>
+<p>Monta houd rekening met dagen waarop niet gewerkt wordt. Orders krijgen dan een geplande verzenddatum van een dag later. IT kan feestdagen toevoegen.</p>
+<p>[[Doelgroep IT
+De feestdagen staan in tabel tblShipperAdditionalTransitTimeNationalHoliday.
+]]</p>
+<h3 id="etransit-uitgestelde-verzending">Etransit (uitgestelde verzending)</h3>
+<p>De order kan een verzenddatum in de toekomst hebben. Als daarbij is aangegeven dat de order niet eerder verzonden mag worden, komt deze in een wachtstatus. Deze wachtstatus noemen we Etransit.</p>
+<h3 id="geplande-verzenddatum-vanuit-de-koppeling-of-montaportal">Geplande verzenddatum vanuit de koppeling of Montaportal</h3>
+<p>Het is ook mogelijk dat de geplande verzenddatum vanuit de koppeling wordt meegegeven. Ook kan de klant op de Montaportal bij een order een uitgestelde geplande verzenddatum invullen.</p>
+<p>Hiervoor zijn twee opties bij een kanaal:</p>
+<ol>
+<li>Altijd de geplande verzenddatum van de order gebruiken. Hiermee nemen we de geplande verzenddatum over die in de koppeling wordt meegegeven. Nadeel is dat de klant een geplande verzenddatum kan meegeven die niet realistisch is waardoor we overdues krijgen waar we niets aan kunnen doen.</li>
+<li>De geplande verzenddatum van de order gebruiken als deze later is dan de geplande verzenddatum door ons berekend. Hiermee nemen we de geplande verzenddatum over die in de koppeling wordt meegegeven, alleen als die later is dan de geplande verzenddatum die we zelf zouden uitrekenen. Dit voorkomt dus dat er een onrealistische geplande verzenddatum wordt meegegeven in de order.</li>
+</ol>
+<p>De tweede optie kan ook bij individuele orders worden ingeschakeld. Dit wordt gebruikt als de klant op de Montaportal bij een order een geplande verzenddatum in de toekomst invult.</p>
+<h2 id="picken">Picken</h2>
+<p>Picken is het ophalen van de producten voor een order uit het magazijn. Dit kan op de volgende manieren:</p>
+<ul>
+<li>Met de scanner</li>
+<li>Met een pick-to-light stelling</li>
+<li>Individuele pickbon voor order</li>
+<li>Pickbon voor meerdere orders</li>
+</ul>
+<p>Bij het verifiëren van een order kiest het systeem van welke locaties een order gepickt moet worden.</p>
+<h3 id="locatie-keuze">Locatie keuze</h3>
+<p>Als een product in een order op meerdere locaties ligt wordt als volgt de locatie gekozen.</p>
+<ul>
+<li>Als het een Food product betreft wordt de locatie met de eerste verstrijkende THT gekozen.</li>
+<li>Dan wordt er gekeken of er locaties zijn waarop meerdere orderregels gepickt kunnen worden. Deze locaties worden eerst gekozen over de andere locaties.</li>
+<li>Vervolgens wordt e​​erst van handmatig bereikbare locaties afgeboekt.</li>
+<li>Vervolgens wordt eerst van de locaties met de kleinste voorraad afgeboekt (zodat je die eerst leeg maakt). Tenzij de order in één keer gepickt kan worden van een grote locatie, dan wordt die gekozen om het aantal picks laag te houden.</li>
+<li>Er is een uitzondering voor pick-to-light: als één van de producten in een pick-to-light stelling ligt wordt geprobeerd alleen locaties in de pick to light stelling te kiezen (zodat de hele order in pick to light komt). Dit wint van kleinste locatie, maar <em>niet</em> van THT. Dus als ergens in het magazijn een oudere batch ligt komt de order niet op de pick to light.​</li>
+<li>Er is een uitzondering voor meerdere verdiepingen: als producten in een order op meerdere verdiepingen liggen, dan wordt geprobeerd de order op één verdieping te picken. Dit wint niet van handmatig bereikbaar, maar wel van locaties met de minste voorraad.</li>
+</ul>
+<p>Er kan ook bij een klant, op kanaalniveau, in GoMonta een afwijkende pickvoorkeur opgegeven worden. Hier kan gekozen worden voor de volgende opties:</p>
+<ul>
+<li>FIFO: Dan krijgt niet eerst de handmatige locatie en de locatie met de minste voorraad de voorkeur, maar de locatie waar voorraad op staat die het langst geleden is geinbound. Dit wint ook van batch/tht bij food producten. <strong>LET OP: als voorraad die later is geinbound wordt bijgeplaatst op een locatie met voorraad die eerder is geinbound, wordt vanaf dat moment de latere inbounddatum aangehouden. Dit geld ook inbounds vanuit retouren.</strong></li>
+<li>Bulk: Hierdoor krijgt altijd de locatie met genoeg voorraad de voorkeur, ongeacht bereikbaarheid, THT datum of batch. Als een normale locatie dus niet genoeg voorraad heeft krijgt de bulklocatie/grote locatie de voorkeur. Op deze manier blijft het aantal picks laag en hoeven er minder locaties bijgevuld te worden.</li>
+<li>Bulk dan FIFO: deze optie combineert de twee opties, door eerst te kijken naar de beschikbaarheid van producten en dan op tht-datum.</li>
+</ul>
+<h3 id="picken-met-de-scanner">Picken met de scanner</h3>
+<p>Met de scanner kunnen de orders efficiënt en papierloos gepickt worden. Dit werkt als volgt:</p>
+<ul>
+<li>De orderpicker kiest een verdieping en <a href="#pickstromen">pickstroom</a>. Per verdieping in pickstroom zijn te zien hoeveel orders er vandaag nog gedaan moeten worden.</li>
+<li>De orderpicker scant een krat of kar.</li>
+<li>Er worden orders toegewezen. Zie <a href="#volgorde-van-orders-picken">volgorde van orders picken</a> voor meer informatie hierover.</li>
+<li>De scanner geeft aan naar welke locatie de orderpicker moet gaan en hoeveel producten daar gepakt moeten worden. Zie <a href="../../Algemene-informatie/Voorraadbeheer#looproute">voorraadbeheer - looproute</a> voor meer informatie over de volgorde waarin van de locaties gepickt moet worden.</li>
+<li>De orderpicker scant de barcode van het product ter bevestiging. Zie <a href="#pickactie-bevestigen">pickactie bevestigen</a> voor meer informatie hierover.</li>
+<li>Als meerdere orders tegelijk gepickt worden met meerdere kratten op een kar, wordt aangegeven hoeveel producten er in welke krat gelegd moeten worden. Ter bevestiging moet de krat gescand worden.</li>
+<li>Als alle producten gepickt zijn is de pickronde klaar. Afhankelijk van de pickstroom moeten de gepickte orders afgeleverd worden bij de <a href="#echeck">Echeck</a>, <a href="#put-to-light">Put-to-light</a> of <a href="#echeck-wall">Echeck wall</a>.</li>
+</ul>
+<h4 id="pickstromen">Pickstromen</h4>
+<p>In een pickstroom worden orders verzameld die op een bepaalde manier gepickt moeten worden.</p>
+<table>
+<thead>
+<tr>
+<th>S (Bulk)</th>
+<th>HM (Bulk)</th>
+<th>M</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../Attachments/S-678e2068-5fd2-44ce-90d6-58f474f7be47.png" alt="S.png"></td>
+<td><img src="../../Attachments/HM_Small-74dd2284-fa89-4f49-8d4e-0cac24330a85.png" alt="HM_Small.png"></td>
+<td><img src="../../Attachments/M%20-%20small-008bf88e-7254-49f4-8bb4-87c1f46f1a2a.png" alt="M - small.png"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>LM</th>
+<th>L</th>
+<th>Pallets</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../Attachments/LM%20-%20small-4c4ea770-24fc-4627-a089-b37b4ca1c0df.png" alt="LM - small.png"></td>
+<td><img src="../../Attachments/L%20-%20Small-05618f9b-d7c1-4d5c-a243-b311434562ff.png" alt="L - Small.png"></td>
+<td><img src="../../Attachments/Pallet%20-%20small-fdf91cd3-2445-430e-a335-16f0ac3fb929.png" alt="Pallet - small.png"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>BulkXL (In development) (Bulk)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../Attachments/BulkXL%20-%20small-ae309929-bc19-46e8-a17e-16d4e0fbe8a0.png" alt="BulkXL - small.png"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>In bovenstaande afbeelding representeert het fruit het aantal orderlines in een order.</li>
+</ul>
+<p><u>S orders</u><br>
+Orders die bestaan uit één item van één product (en evt <a href="#echeck-toevoegproducten">echeck toevoegproducten</a>). Het maakt niet uit hoe groot het product is. Er kunnen meerdere S orders van verschillende producten <a href="#bulkpicken">in bulk gepickt worden</a> in een grote krat. Bij de <a href="#echeck">Echeck</a> kan een willekeurig product uit de krat gepakt worden om te versturen.</p>
+<p>Omdat S orders het meeste efficiënt verwerkt kunnen worden zijn er mogelijkheden om meer S orders te creeëren:</p>
+<ul>
+<li>Producten die in veel orders zitten kunnen bij de echeck gelegd worden zodat ze niet meegepickt hoeven te worden. Zie <a href="#echeck-toevoegproducten">echeck toevoegproducten</a>.</li>
+<li>Grote producten kunnen afgesplitst worden naar aparte orders. Zie <a href="#5-afsplitsen-grote-producten">Afsplitsen grote producten</a>.</li>
+</ul>
+<p><u>HM orders</u><br>
+Orders die bestaan uit meer dan één item van één product (en evt <a href="#echeck-toevoegproducten">echeck toevoegproducten</a>). Er kunnen meerdere orders tegelijk <a href="#bulkpicken">in bulk gepickt worden</a> in een grote krat. Hierbij kunnen ook S orders van dat product meegepickt worden. Bij de echeck kan een willekeurig product uit de krat gepakt worden om te versturen. De <a href="#echeck">Echeck</a> geeft dan aan hoeveel producten er nog bij gepakt moeten worden.</p>
+<p><u>M orders</u><br>
+Orders die bestaan uit meerdere producten. Ze kunnen op de volgende manieren gepickt worden.</p>
+<ul>
+<li>Meerdere tegelijk in een pickronde met meerdere kratten op een kar</li>
+<li>Meerdere tegelijk in één krat en daarna uitsorteren met <a href="#put-to-light">Put-to-light</a></li>
+<li>Meerdere tegelijk in één krat en daarna uitsorteren met een <a href="#echeck-wall">Echeck wall</a></li>
+</ul>
+<p>Als een order te grote producten bevat, wordt deze LM of L order. Hiervoor worden bij het magazijn maximale afmetingen van een M order ingesteld. Het volume van de producten wordt ook gecontroleerd met het volume van de ingestelde afmetingen.</p>
+<p><u>LM orders</u><br>
+Orders die bestaan uit meerdere producten waarvan een product groter is dan bepaalde afmetingen. Het proces verloopt verder hetzelfde als bij M orders.</p>
+<p><u>L orders</u><br>
+Orders met grote of veel producten. Deze worden per order gepickt.</p>
+<p><u>Gelijksoortige orders</u><br>
+Orders met dezelfde samenstelling van producten. Aangezien ze makkelijk uit te sorteren zijn kunnen ze ook in bulk gepickt en bij de echeck uitgesorteerd worden.</p>
+<p><u>Pallets picken</u><br>
+De scanner bied de optie om hele pallets te picken. Orders komen beschikbaar voor pallet picken als:</p>
+<ul>
+<li>Alle orders die van de locatie gepickt moeten worden S, HM, HL orders zijn.</li>
+<li>Een locatie helemaal wordt leeg gepickt OF het aantal bestelde producten op de locatie is hoger dan de instelling &quot;Gedeeltelijke pallet drempelwaarde&quot;,</li>
+<li>De locatie het type palletlocatie heeft,</li>
+<li>De locatie zich bevind in een pallet zone.</li>
+</ul>
+<p><u>B2B orders</u><br>
+Er kan ingesteld worden dat orders per stuk gepickt kunnen worden door ze op de scanner te kiezen uit een lijst. Er kan ingesteld worden aan welke criteria een order moet voldoen om in deze pickstroom te komen. Dit kan op volume, aantal producten, aantal regels en alleen voor bepaalde klanten.</p>
+<p><u>BulkXL</u></p>
+<p>In deze pickstroom worden de verzendlabels geplakt tijdens het picken. Op deze manier wordt het picken en Echecken samengevoegd.
+Deze pickstroom is ingericht voor orders met grote artikelen (XL orders), met artikelen die zijn gemarkeerd als <code>eigen verpakking drager</code>.</p>
+<p>Zie voor meer informatie: <a href="../../Algemene-informatie/Outbound/BulkXL-pickstroom">BulkXL pickstroom</a>.
+<br></p>
+<h4 id="pickstromen-op-basis-van-specifieke-hardware">Pickstromen op basis van specifieke Hardware</h4>
+<p>Bij het gebruik van specifieke hardware, zijn soms aparte pickstromen of filters mogelijk om maximaal gebruik te kunnen maken van deze hardware. Voorbeelden zijn sorteeroplossingen zoals <a href="https://vragen.monta.nl/Docs/Algemene-informatie/Apparaten/Echeckwall/">Echeckwall</a>, <a href="https://vragen.monta.nl/Docs/Algemene-informatie/Apparaten/Echeckwall/">PutToLight</a> en verpakkingsmachines zoals de  <a href="https://vragen.monta.nl/Docs/Algemene-informatie/Apparaten/Monta-Pacman/">Monta Pac-Man</a> en de <a href="https://vragen.monta.nl/Docs/Algemene-informatie/Apparaten/BVM/">BVM machine</a>.</p>
+<p><u>Echeckwall pickstroom en Echeckwall XL pickstroom</u><br>
+Gedetailleerder info over de Echeckwall pickstroom  is te vinden op deze <a href="https://vragen.monta.nl/Docs/Algemene-informatie/Outbound/Pickstromen-op-basis-van-specifieke-Hardware/#echeckwall-pickstroom">pagina</a>
+En de informatie over de Echeckwall XL pickstroom is te vinden op deze <a href="https://vragen.monta.nl/Docs/Algemene-informatie/Outbound/Pickstromen-op-basis-van-specifieke-Hardware/#echeckwall-xl-pickstroom">pagina</a>. In grote lijnen vormen de Echeckwall en Echeckwall XL aparte pickstromen die bestaan naast de bestaande pickstromen.</p>
+<p><u>Put To Light pickstroom</u><br>
+Gedetailleerder info over de Echeckwall pickstroom  is te vinden op deze [pagina]</p>
+<p><u>Inpakmachines Monta Pac-man en BVM </u><br>
+Om te picken specifiek voor de Monta Pac-man en de BVM machine zijn geen aparte pickstromen, maar het zijn meer filters over bestaande pickstromen. Meer details over picken voor de Monta Pac-man is te vinden op deze <a href="https://vragen.monta.nl/Docs/Algemene-informatie/Outbound/Pickstromen-op-basis-van-specifieke-Hardware/#monta-pac-man-verpakkingsmachine">pagina</a>.
+En meer informatie over picken voor de BVM machine is te vinden op deze <a href="https://vragen.monta.nl/Docs/Algemene-informatie/Outbound/Pickstromen-op-basis-van-specifieke-Hardware/#bvm-verpakkingsmachine">pagina</a>.</p>
+<h4 id="orders-die-niet-via-de-scanner-gepickt-worden">Orders die niet via de scanner gepickt worden</h4>
+<p>+Er zijn ook orders die niet via de scanner gepickt worden.</p>
+<ul>
+<li>Echeck only orders: zie <a href="#echeck-toevoegproducten">Echeck toevoegproducten</a> en evt de pagina <a href="../../Algemene-informatie/Outbound/Echeck-only">Echeck only</a></li>
+<li>Prepack orders die al ingepakt zijn: zie <a href="#prepack">Prepack</a>.</li>
+</ul>
+<h4 id="filters">Filters</h4>
+<p>Het is mogelijk om in de scanner te filteren om alleen bepaalde orders te picken. Dit kan op:</p>
+<ul>
+<li>Verzender</li>
+<li>Klant</li>
+<li>Runners</li>
+<li>Highcare</li>
+<li>Pick-to-light. Als backup voor als de pick-to-light stelling niet gebruikt kan worden.</li>
+</ul>
+<h4 id="highcare">Highcare</h4>
+<p>Orders met producten die van highcare locaties gepickt moeten worden kunnen gepickt worden met een optie in de scanner.</p>
+<h4 id="picken-van-niet-handmatige-locaties">Picken van niet handmatige locaties</h4>
+<p>Standaard kan er niet gepickt worden van niet-handmatig bereikbare locaties. De voorraad moet eerst gereplenisht worden naar handmatig bereikbare locaties om de orders te kunnen picken. Zie <a href="../../Algemene-informatie/Voorraadbeheer#niet-handmatig-bereikbaar">Voorraadbeheer - niet handmatig bereikbaar</a>.</p>
+<p>Bij de instellingen van het magazijn kan ingeschakeld worden dat er gepickt mag worden van niet-handmatige locaties. Er hoeft dan niet ge-replenisht te worden om orders te versturen die van niet-handmatige bereikbare locaties gepickt moeten worden.</p>
+<p>Als dit ingeschakeld is kunnen de order gepickt worden met een optie in de scanner.</p>
+<p>Er kan ook ingesteld worden dat de niet-handmatig bereikbare orders mee-gepickt worden met de handmatig bereikbare orders.</p>
+<h4 id="pickactie-bevestigen">Pickactie bevestigen</h4>
+<p>Om een pickactie te bevestigen moet de barcode van het product gescand worden. Bij sommige producten is dit niet mogelijk. Hiervoor kan bij een product ingesteld worden dat een pickacties bevestigd kan worden door de locatie te scannen. Er kan ook bij de klant ingesteld worden dat alle producten gepickt mogen worden door de locatie te scannen.</p>
+<p>Als een product niet gescand kan worden, of als er niet voldoende aanwezig is, moet een joker gemaakt worden. Zie <a href="../../Algemene-informatie/Outbound/Jokers">Jokers</a> voor meer informatie.</p>
+<h4 id="bevestiging-lege-locatie">Bevestiging lege locatie</h4>
+<p>Het is mogelijk dat bij het leegpicken van een locatie om een bevestiging gevraagd wordt of de locatie inderdaad leeg is. Dit kan ingesteld worden bij de instellingen van het magazijn.</p>
+<p>Er kan ingesteld worden dat een notificatie gestuurd wordt als de orderpicker aangeeft dat de locatie leeg is, terwijl er administratief nog voorraad op staat.</p>
+<p>Er wordt geen cycle count gemaakt oid, het sturen van de notificatie is het enige wat er mee gedaan wordt.</p>
+<h4 id="volgorde-van-orders-picken">Volgorde van orders picken</h4>
+<p>Het picken via de scanner start met het kiezen van een verdieping en pickstroom. Het kan zijn dat er bij een verdieping en pickstroom meer orders open staan dan in één pickronde gepickt kunnen worden. Het systeem maakt dan een keuze welke orders als eerste gepickt worden.</p>
+<p>In GoMonta kan ingesteld worden welke volgorde hierbij wordt gehanteerd.</p>
+<p>In de verschillende volgordes kunnen de volgende facturen worden meegenomen. Afhankelijk van de ingestelde volgorde heeft de ene of de andere factor meer invloed.</p>
+<ul>
+<li>Geplande verzenddatum: de geplande verzenddatum van de order geeft aan wanneer deze uiterlijk verwerkt moet zijn.</li>
+<li>Dichtsbijzijnde locatie: orders die dicht bij elkaar liggen eerst picken. Dit zorgt voor korte pickrondes</li>
+<li>Kanaal pickvolgorde: per kanaal kan een prio voor picken worden ingesteld.</li>
+<li>Aantal orders van een klant: de orders van klanten waarvoor de meeste orders open staan worden eerste gepickt.</li>
+<li>In pickproces gekomen datum en tijd: om de orders die het langste open staan als eerste te picken.</li>
+</ul>
+<h3 id="pickkratten">Pickkratten</h3>
+<p>Bij het picken wordt een krat gescand waarmee artikelen door het magazijn verplaatst kunnen worden en waarmee het systeem deze kan herkennen. Op deze manier blijven de orders toegewezen aan die krat altijd traceerbaar.</p>
+<p>De Pick kratten worden gebruikt om individuele orders te lopen. Afhankelijk van het type orders en de afmetingen van de artikelen kan Monta® adviseren in het aantal en type kratten die de klant kan aanschaffen.</p>
+<p><img src="../../Attachments/image-c765d4de-6d7c-4d92-be49-01bb97f40e7a.png" alt="image.png"></p>
+<h3 id="pickkarren">Pickkarren</h3>
+<p>In het monta systeem kan je werken met drie verschillende pickkarren:</p>
+<table>
+<thead>
+<tr>
+<th>Bulkpickkar (Krat)</th>
+<th>Multi order kar</th>
+<th>Vaste krat Multi order kar*</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../Attachments/image-4da3dfb5-a3a9-4fc8-a4a2-196e5a03635d.png" alt="image.png"></td>
+<td><img src="../../Attachments/image-80a71252-6171-4e8e-8aa0-9c4067ab218b.png" alt="image.png"></td>
+<td><img src="../../Attachments/image-04ba7b3d-446f-4d2d-95d6-8df1d60d36e1.png" alt="image.png"></td>
+</tr>
+<tr>
+<td>Deze karren worden gebruikt voor het verwerken van bulkPickroutes als bijvoorbeeld de S-orders.</td>
+<td>Dit is een kar waarop de bovenstaande kratten kunnen worden geplaatst. Deze karren worden gebruikt voor het verwerken van Multi order pickroutes als de M-orders.</td>
+<td>Dit zijn karren waarbij de kratten/ kratcodes vastzitten op de karlocaties.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="nadere-toelichting-vaste-krat-multi-order-kar">Nadere toelichting Vaste krat Multi order kar*</h4>
+<p>Er zijn situaties waarbij de kratjes vast op de Multi order kar zitten. Bijvoorbeeld als er heel veel kratjes op de Multi order kar zijn, of bijvoorbeeld bij afwijkende Multi order karren zoals bij vloerbedekking picks.
+Als het voor de logistieke operatie niet bezwaarlijk is de hele kar bij de Echeck neer te zetten voor het Echecken van orders, dan is een Vaste krat Multi order kar een mogelijkheid. Door de kratten fysiek vast te zetten op de kar kunnen we er zeker van zijn dat de kratjes altijd bij de kar blijven. Vervolgens kan worden ingesteld welke kratbarcodes bij welke kar positie barcodes horen. Dan zal bij het starten van een pickronde de vraag om kratjes te koppelen aan karlocaties worden overgeslagen.</p>
+<p>Voordelen: Het koppelen van kratjes aan karlocaties is niet meer nodig, dit scheelt tijd</p>
+<p>Nadelen: Er zijn totaal gezien iets meer pickkarren nodig, omdat de kar pas opnieuw voor picken gebruikt kan worden als het Echecken klaar is.</p>
+<p>Als er een joker is op een van de kratjes, is alleen dat kratje niet langer beschikbaar voor nieuwe picks. Dit blokkeert dus niet de andere kratjes op de pickkar.
+Vooralsnog is er geen scherm voor het configureren van de Vaste krat Multi order kar. Zo lang kan een mailtje worden gestuurd naar techniek@monta.nl met een daarin de karlocatiecodes en de kratbarcodes die aan elkaar gekoppeld kunnen worden.</p>
+<p>Onderstaand enkele mogelijke toepassingen:</p>
+<p><img src="../../Attachments/PickkarVasteKratjesVloerbedekking_300-67efea3a-9788-41bd-9a2b-6aaee955ae0a.JPG" alt="PickkarVasteKratjesVloerbedekking_300.JPG">   <img src="../../Attachments/PickkarVasteKratjes_300_vol-4a026601-7780-4ddd-876a-315c5c749a1a.JPG" alt="PickkarVasteKratjes_300_vol.JPG"></p>
+<p><br><br></p>
+<h3 id="pick-to-light">Pick-to-light</h3>
+<p>Een pick-to-light is een stelling waarbij elke locatie is voorzien van een klein display. Hierbij geeft het display aan hoeveel producten er gepickt moeten worden.</p>
+<p>Pick to light is handig voor kleine producten waarvan er veel in een stelling kunnen.</p>
+<p>Voor meer informatie zie <a href="../../Algemene-informatie/Apparaten/Pick-To-Light">Apparaten - Pick to light</a>.</p>
+<h3 id="runner-orders">Runner orders</h3>
+<p>Orders kunnen als runner gemarkeerd worden. Dit betekend dat ze snel verwerkt moeten worden. De runner orders moeten apart gepickt worden, zodat hier een medewerker op gezet kan worden.</p>
+<p>Orders kunnen op de volgende manier runner worden:</p>
+<ul>
+<li>Specifieke orders kunnen in GoMonta als runner gemarkeerd worden.</li>
+<li>Er kan ingesteld worden dat orders die x minuten voor de afhaaltijd binnenkomen automatisch runner worden.</li>
+</ul>
+<h3 id="bulkpicken">Bulkpicken</h3>
+<p>Bij bepaalde pickstromen is het mogelijk meerdere orders tegelijk te picken. Zie <a href="#pickstromen">pickstromen</a> voor meer informatie.</p>
+<p>Alleen orders met dezelfde geplande verzenddatum komen in een bulkpick. Hierbij kunnen wel orders van verschillende afhaaltijden in één bulkpick komen. Met een instelling in GoMonta kan dit voorkomen worden, evt een x aantal minuten voor de afhaaltijd.</p>
+<h2 id="put-to-light-en-echeck-wall">Put-to-light en echeck wall</h2>
+<p>Met Put-to-light en een echeck wall kunnen in bulk gepickte producten uitgesorteerd worden naar individuele orders.</p>
+<p>Voor meer informatie zie <a href="../../Algemene-informatie/Apparaten/Put-To-Light">Apparaten - Put to light</a> en <a href="../../Algemene-informatie/Apparaten/Echeckwall">Apparaten - Echeck wall</a>.</p>
+<h2 id="echeck">Echeck</h2>
+<p>Bij de echeck (inpakstation) gebeurd het volgende.</p>
+<ul>
+<li>Een order wordt geopend door een krat te scannen waar orders op gepickt zijn of een papieren pickbon te scannen.</li>
+<li>De producten worden gescand om te controleren dat de order compleet is.</li>
+<li>
+<ul>
+<li>Aantikken/klikken ipv scannen is ook mogelijk: zie <a href="#product-aanklikken-ipv-scannen">Product aanklikken ipv scannen</a></li>
+</ul>
+</li>
+<li>De dragers (verpakkingsmateriaal / dozen) worden gescand. Hierbij wordt ook bijgehouden welk product in welke collo gaat.</li>
+<li>De verzender wordt opnieuw bepaald omdat de afmetingen en gewichten van de colli definitief bekend zijn. Zie <a href="#verzender-keuze">verzender keuze</a> voor meer informatie hierover.</li>
+<li>Het verzendlabel wordt geprint.</li>
+<li>Eventuele extra dingen worden geprint (pakbon, retourlabel, etc).</li>
+</ul>
+<p>Als er iets mis gaat wordt de order een <a href="#Jokers">Joker</a>.</p>
+<h3 id="dragers">Dragers</h3>
+<p>Bij het echecken van een order moet ook een drager (doos) gescand worden. Bij het kanaal van de order staat ingesteld welke dragers mogelijk zijn.</p>
+<p>Door elke doos te scannen wordt aangegeven uit hoeveel colli de order bestaat. Een drager heeft afmetingen en gewicht ingesteld. Hiermee wordt per collo het definitieve gewicht en de afmetingen van de order bepaald. Dit wordt weer gebruikt om de juiste verzender te kiezen.</p>
+<p>Het magazijn kan in GoMonta dragers toevoegen en de eigenschappen van dragers aanpassen.</p>
+<h4 id="past-door-de-brievenbus">Past door de brievenbus</h4>
+<p>De afmetingen van de drager zijn leidend voor de afmetingen van de colli. Deze afmetingen bepalen of een order door de brievenbus kan. Als een order door de brievenbus kan, zorgt dit voor lagere verzendkosten.</p>
+<p>Omdat niet altijd automatisch te bepalen is of alle colli van een zending wel of niet door de brievenbus passen, wordt dit gevraagd bij de echeck. De vraag wordt alleen gesteld als het nodig is:</p>
+<ul>
+<li><p>Als bij de drager van alle colli het vinkje 'Is flexibele drager' staat <strong>uit</strong>geschakeld, wordt de vraag niet gesteld. De check kan dan bepalen a.h.v. de maten van de drager of het door de brievenbus past of niet.</p>
+</li>
+<li><p>Als bij de drager van alle colli het vinkje 'Is flexibele drager' staat <strong>in</strong>geschakeld, wordt naar de inhoud van de drager gekeken (productmaten). Als er maar één product in de drager zit, kan de maat van dat product gebruikt worden om te bepalen of een drager door de brievenbus past. Als er meerdere producten in een drager zitten, kan dit niet betrouwbaar berekend worden. de echeck zal dit dan vragen middels een dialoog venster.</p>
+</li>
+</ul>
+<p><img src="../../Attachments/drager.drawio%20(1)-6558d6d2-002a-4e21-b074-9e12e6341bdc.png" alt="drager.drawio (1).png"></p>
+<p>Zie ook <a href="#1-mogelijke-verzenders">Verzender keuze - mogelijke verzenders</a>.</p>
+<p>Bij een kanaal kan ook ingesteld worden dat als een order uit één product bestaat (S order) én het product past door de brievenbus, het verplicht is om een drager te kiezen die door de brievenbus past. Zodat zoveel mogelijk geprofiteerd wordt van de lagere verzendkosten voor buspost.</p>
+<h4 id="voorraadbeheer">Voorraadbeheer</h4>
+<p>Bij een drager kan ingesteld worden dat éen of meerdere producten afgeboekt moeten worden als een drager gescand wordt.</p>
+<p>De voorraadafboeking van de drager wordt toegevoegd aan de pickbon van de order. Zodat als de pickbon van de order wordt teruggeboekt (bijvoorbeeld bij het annuleren van een order), de drager ook weer wordt teruggeboekt op voorraad.</p>
+<h5 id="dragerlocaties-per-echeck-station">Dragerlocaties per Echeck station</h5>
+<p>Bij een Echeck station moet ingesteld worden van welke dragerlocaties voorraad afgeboekt moet worden als er een order verwerkt wordt.
+Na het scannen van een drager tijdens het Echecken zal gecontroleerd of er op de betreffende dragerlocaties voorraad beschikbaar is. Dit heeft twee mogelijke resultaten:</p>
+<ul>
+<li>Er is voorraad van de gescande drager op een gekoppelde drager locatie</li>
+</ul>
+<p>De drager kan gebruikt worden en wordt afgeboekt van de gekoppelde drager locatie met de laagste voorraad</p>
+<ul>
+<li>Er is geen voorraad van de gescande drager op een gekoppelde drager locatie</li>
+</ul>
+<p>Na het scannen van de drager wordt er een melding getoond dat de gescande drager niet op voorraad is op aan het Echeck station gekoppelde dragerlocaties</p>
+<p><strong>Instellingen</strong></p>
+<p>In GoMonta moet bij een Echeck station ingesteld worden welke dragerlocaties bij dat Echeck station horen. Dit kan door naar “Admin Dashboard” te gaan, vervolgens kan het gewenste Echeck station op te zoeken en kunnen de locaties toegevoegd worden.</p>
+<ol>
+<li>Selecteer het juiste magazijn</li>
+<li>Zoek het gewenste Echeck station op</li>
+<li>Bewerk het gewenste Echeck station</li>
+<li>Voeg de gewenste dragerlocaties toe</li>
+</ol>
+<p>Per magazijn kan dit in- en uitgeschakeld worden door een Toggle-feature, neem contact met servicedesk om dit in te schakelen.</p>
+<h3 id="pallets">Pallets</h3>
+<p>Een pallet is een speciaal type drager die ook gescand kan worden bij de echeck. Op een pallet worden geen producten geplaats, maar andere dragers. Op die manier wordt bijgehouden welke producten in welke doos zitten en welke doos op welke pallet staat.</p>
+<p>Of een order pallet dragers heeft is ook van invloed op de verzender die gekozen wordt.</p>
+<h3 id="pakbon">Pakbon</h3>
+<p>Bij het echecken van de order wordt een pakbon gegenereerd en opgeslagen bij de order. Als dit bij het kanaal staat ingeschakeld wordt de pakbon ook uitgeprint.</p>
+<p>Het is ook mogelijk om een pakbon per doos en per pallet te maken. Dit kan ingeschakeld worden in het echeck scherm.</p>
+<h3 id="dooslabels">Dooslabels</h3>
+<p>Het is ook mogelijk om aan het eind van het echecken automatisch dooslabels te laten printen met de tekst &quot;Doos 1 van 20&quot;. Dit kan ingeschakeld worden bij het kanaal.</p>
+<h3 id="echeck-toevoegproducten">Echeck toevoegproducten</h3>
+<p>Producten die in veel orders voorkomen kunnen bij de echeck gelegd worden. Ze hoeven dan niet gepickt te worden waardoor meer S en HM orders ontstaan die efficiënter (in bulk) gepickt kunnen worden.</p>
+<p>Zie <a href="../../Algemene-informatie/Voorraadbeheer#echeck-locaties">Voorraadbeheer - Echeck locaties</a>.</p>
+<p>Als producten op echeck locaties worden gelegd, kan het ook gebeuren dat er orders komen van producten die alleen op echeck locaties liggen. Deze hoeven dan niet via de scanner gepickt te worden. We noemen dit 'echeck only' orders. Op het hoofdscherm van de echeck staat een knop waarmee deze orders te vinden zijn. De knop gaat knipperen als er 'echeck only' orders beschikbaar zijn.</p>
+<h3 id="echeck-only">Echeck Only</h3>
+<p>Op dit concept van 'Echeck only' is een concept gebaseerd dat het voor klanten met weinig SKUs en redelijk veel orders mogelijk maakt om alle producten op Echecklocaties te leggen, waardoor de hele stap van orderpicken wordt overgeslagen. Dit concept kan leiden tot hoge productiviteit, omdat een complete processtap wordt overgeslagen. Een 'echeck only' order wordt gestart in het Echeck scherm, de producten worden gepakt vanuit een 'echeck only' locatie en gescand, waarbij de scan direct de echeck scan is. Voorbeelden van 'echeck only' zijn hier te vinden; <a href="../../Algemene-informatie/Outbound/Echeck-only">Echeck only</a>.</p>
+<h3 id="surprise-pack">Surprise pack</h3>
+<p>Bij een order kunnen extra inpakopties meegegeven worden. Bijvoorbeeld &quot;inpakken in Kerst inpakpapier&quot; of een persoonlijke tekst op een kaartje.</p>
+<p>Monta breed zijn een aantal inpakopties gedefinieerd [[Doelgroep IT (in tblSurprisePackTypen)]]. Zo'n optie kan per kanaal beschikbaar worden gemaakt en hierbij kunnen een instructie en een code ingesteld worden. Per optie wordt ook het tarief ingesteld in de verkooptarieven.</p>
+<p>De surprise pack optie kan op twee manieren bij een order meegegeven worden:</p>
+<ul>
+<li>Vanuit de koppeling. Aan de hand van de code die bij het kanaal bij de surprise pack optie staat ingesteld.</li>
+<li>Bij het kanaal kan ook ingesteld worden dat een surprise pack optie aan alle orders toegevoegd moet worden.</li>
+</ul>
+<p>Bij het meegeven van de surprise pack optie kan ook een tekst meegegeven worden. Dit is dan bijvoorbeeld de persoonlijk tekst die op een kaartje geprint moet worden.</p>
+<p>De surprise pack bij een order kan ook aan een specifieke orderregel gekoppeld worden. Voor het geval er bijv. twee dezelfde parfumfles één in cadeaupapier voor mannen en één in cadeaupapier voor vrouwen ingepakt moet worden.</p>
+<p>Als een order met surprise pack geopend wordt in de Echeck, wordt een label geprint met de instructie en de tekst. Voordat het verzendlabel geprint wordt, wordt nog een popup getoond met de waarschuwing dat het een surprise pack order betreft. Deze melding moet weggeklikt worden, pas dan worden de verzendlabels geprint.</p>
+<h4 id="tekst-printen-op-kaartje">Tekst printen op kaartje</h4>
+<p>De surprise pack tekst kan op een kaartje geprint worden met inpakoptie &quot;Tekst op kaartje op Echeck documentprinter&quot;.</p>
+<p>Als deze optie gekozen is bij een order, wordt bij het echecken een melding getoond dat het kaartje in de printer gelegd moet worden. Dit moet in de 'manuele invoer' van de printer. De printer pakt deze automatisch ipv de papierlade als er iets in ligt. Als op OK geklikt wordt, wordt de tekst op het kaartje geprint.</p>
+<p>Hiervoor moet bij het kanaal een Word template ingesteld staan waarvan de bestandsnaam begint met: &quot;SurprisePack&quot;.</p>
+<p>Het template moet in A4 zijn. Als het kaartje kleiner is, moet dit verticaal in het midden bovenaan geplaatst worden. Zie plaatje hieronder.</p>
+<p><img src="../../Attachments/image-2b6bf8aa-9145-499f-8bea-70930e900c6b.png" alt="image.png"></p>
+<h3 id="retourlabel-meesturen">Retourlabel meesturen</h3>
+<p>Zie <a href="../../Algemene-informatie/Retouren#retour-label">Retouren - Retour label</a>.</p>
+<h3 id="bulk-echecken">Bulk echecken</h3>
+<p>Als bij de echeck een krat gescand wordt waar meerdere orders op gepickt zijn (zie bulkpicken), worden drie lijstjes getoond: orders nog te echecken, orders ge-echeckt en orders die joker zijn.</p>
+<p>Er kan een willekeurig product uit de krat gepakt en gescand worden. Het systeem zoekt dan een order uit het lijstje nog te echecken en opent het scherm om deze order te echecken.</p>
+<h3 id="fastlane">Fastlane</h3>
+<p>Bij bulk echecken is er de mogelijkheid om de verzendlabels van alle orders in één keer te printen. Dit kan als voldaan is aan de volgende voorwaarden.</p>
+<ul>
+<li>Alle orders moeten dezelfde samenstelling hebben</li>
+<li>De gebruiker moet shiftleader zijn</li>
+<li>Het moet ingeschakeld staat voor het echeck station</li>
+</ul>
+<h3 id="skip-echeck">Skip echeck</h3>
+<p>In de echeck app is ook een optie om het echecken over te slaan. Dan hoeft alleen het aantal dozen ingevuld te worden.</p>
+<p>Hoe stel je deze optie in?</p>
+<h3 id="samenstelling-gesplitste-producten">Samenstelling gesplitste producten</h3>
+<p>De echeck heeft ook de optie om te laten zien welke producten bij elkaar horen vanuit de splits en toevoegproducten.</p>
+<h3 id="product-aanklikken-ipv-scannen">Product aanklikken ipv scannen</h3>
+<p>Er is ook de mogelijkheid dat producten aangetikt kunnen worden ipv gescand om ze te echecken.</p>
+<p>Dit kan voor alle producten ingeschakeld worder door bij de klant de instelling in te schakelen dat alle producten gepickt moeten worden door de locatie te scannen.
+Het is ook mogelijk om dit voor specifieke producten in te stellen. Dan moet er per product ingesteld worden dat een product aan te klikken is in de echeck.
+Dit is ook te doen via de product import. De naam van het veld is hier &quot;IsClickableInEcheck&quot;.</p>
+<h3 id="serienummer-registratie">Serienummer registratie</h3>
+<p>Het is mogelijk om bij een product in te stellen dat bij het echecken om een serienummer gevraagd wordt.</p>
+<p>Bij het scannen van een serienummer mogen niet de SKU of de barcodes gescand worden.</p>
+<p>De klant kan een lijst uploaden met toegestane serienummers, om te voorkomen dat het verkeerde wordt gescand als serienummer.</p>
+<h2 id="jokers">Jokers</h2>
+<p>Worden gemaakt als er iets mis gaat bij het picken of echecken.</p>
+<p>Zie <a href="../../Algemene-informatie/Outbound/Jokers">Jokers</a>.</p>
+<h2 id="prepack">Prepack</h2>
+<p>Met prepack kunnen gepickte en ingepakte orders vastgehouden worden voor verzenden. Een order kan op vier manier gemarkeerd worden als prepack:</p>
+<ul>
+<li>Per order met een knop in GoMonta</li>
+<li>Alle orders van een bepaald afleveradres via het adresboek op de Montaportal.</li>
+<li>Per order in Montaportal</li>
+<li>Via de REST Api in de Order endpoint</li>
+</ul>
+<p>Als een order gemarkeerd is als prepack wordt er geen verzendlabel geprint maar een prepacklabel.</p>
+<p>Op Montaportal moet de order vrijgegeven worden voor verzending. Hierbij moet ook een datum aangegeven worden. Op deze datum wordt de order zichtbaar onder de knop 'Prepack' in het echeck hoofdscherm en kan het verzendlabel geprint worden.</p>
+<p>Als een Etransit order wordt gemarkeerd als  een Prepack order dan wordt de order van Etransit afgehaald. De originele Etransit datum kan teruggevonden worden in de logs van de order.</p>
+<h2 id="verzenden">Verzenden</h2>
+<p>Bij de echeck wordt het verzendlabel van de order geprint.</p>
+<h3 id="verzender-keuze">Verzender keuze</h3>
+<p>Op twee momenten in het proces wordt voor een order een verzender gekozen. Bij het verifiëren en bij het echecken. De keuze die bij het verifiëren wordt gemaakt is een inschatting. De definitieve afmetingen en gewicht van de colli zijn namelijk pas bekend na het kiezen van de drages bij de echeck.</p>
+<p>Het kiezen van een verzender bestaat uit twee stappen.</p>
+<ol>
+<li>Eerst wordt bepaald welke verzenders mogelijk zijn</li>
+<li>Uit de mogelijke verzenders wordt de voorkeursverzender gekozen.</li>
+</ol>
+<p>Hieronder worden deze stappen verder uitgelegd.</p>
+<p>Bij een order wordt in een attachment beschreven hoe de keuze voor een verzender tot stand is gekomen.</p>
+<h4 id="1-mogelijke-verzenders">1. Mogelijke verzenders</h4>
+<p>De volgende controles worden gedaan om te bepalen of een verzender mogelijk is voor een order.</p>
+<ul>
+<li>Mag een verzender automatisch gekozen worden. Een verzender heeft de eigenschap of deze automatisch gekozen mag worden. Dit kan ook per verzender per klant ingesteld worden. Als de verzender deze eigenschap heeft, zal de verzender niet gekozen worden voor de order als dit niet expliciet is aangegeven vanuit de koppeling of op Montaportal.</li>
+<li>Keuze vanuit de koppeling/Montaportal. Het kan dat de consument in de webshop al een verzender heeft gekozen. Of dat in de Montaportal bij de order een verzender is aangegeven. Andere verzenders mogen dan niet gekozen worden.</li>
+<li>Mag een eenmaal gekozen verzender worden aangepast. Bepaalde verzenders (zoals pickup points) mogen niet meer aangepast worden als ze eenmaal gekozen zijn.</li>
+<li>Minimale verzekerde waarde. Bij een order kan een minimale verzekerde waarde ingesteld worden. Alleen de verzenders die dit kunnen bieden zijn dan mogelijk.</li>
+<li>Past door brievenbus. Een buspost verzender is alleen mogelijk als de zending door de brievenbus past. Dit wordt als volgt gecontroleerd:</li>
+<li>
+<ul>
+<li>van alle dragers wordt gecontroleerd of ze wel of niet flexibel zijn, een drager zoals een zak wordt als flexibel gezien, een doos niet</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>is een drager flexibel dan worden alle producten gecontroleerd of de afmetingen binnen de buspost afmetingen vallen [drager wordt niet gecontroleerd]</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>is een drager niet flexibel dan wordt de drager gecontroleerd of het binnen de buspost afmetingen valt [producten worden niet gecontroleerd]</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>bij geen van de gekozen dragers mag het vinkje 'past nooit door de brievenbus' ingeschakeld staan</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>bij de echeck mag niet op &quot;nee&quot; geklikt zijn bij de vraag &quot;past het door de brievenbus?&quot;. Zie <a href="#past-door-de-brievenbus">Echeck - past door de brievenbus</a>.</li>
+</ul>
+</li>
+<li>Max afmetingen. Een verzender kan maximale afmetingen hebben. Alle dragers en producten in de order moeten binnen deze afmetingen vallen. Een product kan afwijkende afmetingen hebben speciaal voor de verzending. Bijvoorbeeld een hondenmand die uitgevouwen op voorraad ligt, maar opgevouwen kan worden voor de verzending.</li>
+<li>Max volume. Een verzender kan een maximaal volume hebben. Het volume van elke collo moet binnen dit volume vallen. In de shipping matrix (dus per kanaal) kan ook per verzender per land een max volume ingesteld zijn.</li>
+<li>Max gewicht. Een verzender kan een maximaal gewicht hebben. Het gewicht van alle collo en producten moet hier binnen vallen. Bij de mogelijke verzenders van een kanaal kan ook een maximaal gewicht ingesteld zijn.</li>
+<li>Max lengte. Bij de mogelijke verzenders van een kanaal kan ook een maximale lengte ingesteld zijn.</li>
+<li>Min gewicht. Een verzender kan een minimaal gewicht hebben. De collo moet dan zwaarder zijn.</li>
+<li>Max omvang (2xH + 2xB + 1xL). Een verzender kan een maximale omvang hebben. Alle collo en producten moeten dan binnen deze omvang vallen.</li>
+<li>Pallets. Als de order pallets heeft mag alleen met een pallet verzender verzonden worden. Als een order geen pallets heeft, mag niet met een palletverzender verzonden worden.</li>
+<li>Postbus. Verzenden naar postbussen is alleen mogelijk met PostNL.</li>
+<li>Mogelijke landen. Per verzender staat ingesteld welke landen mogelijk zijn.</li>
+<li>Big/small. Van sommige verzender is er een grotere variant: de maximale afmetingen en/of gewicht zijn groter, maar de verzending is ook duurder. Deze grotere variant is alleen mogelijk als de kleine variant niet mogelijk is.</li>
+</ul>
+<h4 id="2-voorkeursverzender-kiezen">2. Voorkeursverzender kiezen</h4>
+<p>Uit de mogelijke verzenders wordt een voorkeursverzender gekozen. Het kiezen van een voorkeursverzender gaat met de volgende stappen. De volgorde is hierbij van belang.</p>
+<ol>
+<li>Shipper per materiaal. Er kan ingesteld worden dat bepaalde producten met een bepaalde verzender verzonden moeten worden. Als dit ingesteld staat voor een product in de order, krijgt die verzender de voorkeur.</li>
+<li>Niet gebruiken na afhaaltijd. Bij een verzender bij een kanaal kan ingesteld worden dat de verzender niet gebruikt moet worden na de afhaaltijd. Zodat een andere verzender die nog wel afhaalt de voorkeur krijgt, zodat de order dezelfde dag nog verstuurd kan worden. Dit kan er dus voor zorgen dat een order die wel door de brievenbus past, toch met pakketpost verstuurd wordt, omdat de afhaaltijd van buspost al is verstreken.</li>
+<li>Niet gebruiken bij geen levering volgende werkdag. Bij een verzender bij een kanaal kan ingesteld worden dat de verzender niet de voorkeur moet krijgen als deze niet de volgende dag levert. Wordt vaak gebruikt om op vrijdag een andere verzender te kiezen als de voorkeursverzender niet op zaterdag levert. Of er de volgende dag geleverd kan worden met een bepaalde verzender, wordt uitgerekend met de <a href="#Aflevermoment">Afleverdag berekening</a>.</li>
+<li>Buspost. Buspost verzenders krijgen de voorkeur omdat die goedkoper zijn.</li>
+<li>Shipping matrix. Per kanaal kan ingesteld worden welke verzender de voorkeur heeft voor een land. Deze instelling kan anders zijn voor B2b en B2c orders.</li>
+<li>Default shipper. Per kanaal staat een standaard verzender ingesteld.</li>
+</ol>
+<h3 id="verzenders">Verzenders</h3>
+<p>Voor elke verzender die is aangesloten is een subpagina met informatie over die verzender.</p>
+<p>Zie de pagina <a href="../../Algemene-informatie/Outbound/Verzenders">Verzenders</a> voor een lijst met de verzenders die zijn aangesloten.</p>
+<h4 id="verzender-opties">Verzender opties</h4>
+<p>Extra opties zoals 'niet bij de buren leveren'.</p>
+<p>Verzender opties kunnen als volgt worden toegevoegd bij een order:</p>
+<ul>
+<li>Vanuit de koppeling</li>
+<li>Door bij een kanaal in te stellen dat een shipper optie bij alle orders moet worden toegevoegd, of bij orders die voldoen aan bepaalde voorwaarden.</li>
+</ul>
+<h4 id="verzekerd-verzenden">Verzekerd verzenden</h4>
+<p>Bij een order kan een verzekerd bedrag ingesteld worden. Het systeem kiest dan een verzender die voor dit bedrag verzekerd kan verzenden.</p>
+<h4 id="gevaarlijke-goederen">Gevaarlijke goederen</h4>
+<p>Bij het verifiëren van een order wordt gekeken of een product in de order gemarkeerd staat als 'dangerous good'. Als ook het vinkje 'dangerous goods doorgeven aan verzender' staat ingeschakeld, dan wordt de PostNL shipper optie 'ADR' toegevoegd aan de order.</p>
+<details>
+<summary>Meer toelichting: </summary>
+<h5 id="wat-is-een-dangerous-good">Wat is een ‘dangerous good’?</h5>
+<p>Dangerous goods zijn goederen met o.a. een GHS label of UN number. Het komt op uiteenlopende producten voor, bijvoorbeeld schoonmaakartikelen en powerbanks.</p>
+<p><img src="../../Attachments/image-f9e7bd54-9f08-4db7-862a-4985d99dd484.png" alt="image.png"></p>
+<p>Binnen Monta moeten de gegevens van gevaarlijke goederen geregistreerd gaan worden. Daarvoor zijn de volgende wijzigingen in onze applicaties gemaakt:</p>
+<h5 id="inbound">Inbound</h5>
+<p>In de inbound is een knopje ‘dangerous product’ gemaakt. Dit knopje kan ingeschakeld worden als de inboundmedewerker een gevaarlijk product aan het inbounden is (product met GHS-label of UN-number). De medewerker hoeft hierbij geen details op te geven, deze knop is bedoeld om aan te geven dat een product gevaarlijk is. Vervolgens moeten de details in een ander proces opgegeven worden (verderop meer hierover).</p>
+<p>Overigens zal de klant (koppeling van webshop) in de meeste gevallen ervoor zorgen dat een gevaarlijk product al gemarkeerd wordt voordat het geleverd wordt. Dit knopje zal dan al aan staan bij het inbounden. Als een product eenmaal als gevaarlijk gemarkeerd is, kan de markeren niet meer via de inbound eraf gehaald worden.</p>
+<p><img src="../../Attachments/image-606b307d-4e86-49f8-9d7e-46b561583e0c.png" alt="image.png"></p>
+<h5 id="montaportal">Montaportal</h5>
+<p>Op de product detail pagina van Montaportal is een nieuw knopje beschikbaar wanneer een product als gevaarlijk gemarkeerd is. Ook is er een melding zichtbaar wanneer het systeem detecteert dat gegevens missen.</p>
+<p><img src="../../Attachments/image-e0213f9a-8927-4402-8b3b-d52d059aa380.png" alt="image.png"></p>
+<p>Wanneer er op ‘details’ geklikt wordt, opent een venster waarin de gegevens van het product ingevoerd kunnen worden. De gegevens kunnen overgenomen worden van het product, of van de Safety Data Sheet (SDS) welke eveneens opgegeven moet worden.</p>
+<p>De ingevoerde gegevens zijn goed wanneer:</p>
+<p>GHS label opgegeven is -of- UN-number</p>
+<p>Maar het natuurlijk ook mogelijk om alle velden in te vullen. Echter, meestal bevat een product slechts één van de classificaties.</p>
+<p><img src="../../Attachments/image-b82e2f3d-64d6-4b05-949e-9ea2a4090703.png" alt="image.png"></p>
+<h5 id="gomonta">GoMonta</h5>
+<p>Voor de vestigingen is in GoMonta een export functionaliteit toegevoegd om inzicht te geven in de gevaarlijke goederen in een magazijn.</p>
+<p>Allereerste zal het opvallen dat er een nieuw Montamannetje zichtbaar is in GoMonta. Dit mannatje zal op de homepage tevoorschijn komen wanneer er in het magazijn materialen liggen met ontbrekende gegevens. Door op de tekstwolk te klikken zal er een export gedownload worden. De export is ook te downloaden door te navigeren naar ‘Voorraadbeheer =&gt; Materialen =&gt; knopje opties =&gt; Export Dangerous Goods’.</p>
+<p><img src="../../Attachments/image-5c174d26-5adf-4bf8-a89f-427c87448e5c.png" alt="image.png"></p>
+<p>In de export zijn diverse gegevens van dangerous goods te zien:</p>
+<ul>
+<li>Materiaal gegevens</li>
+<li>Locaties waar de materialen liggen + type locatie + voorraad/totaal gewicht/totaal volume op locatie</li>
+<li>GHS, SDS, ADR, Packing Group en UN-number gegevens</li>
+</ul>
+<p>Mateiralen met ontbrekende gegevens zijn rood gemarkeerd.</p>
+<p><img src="../../Attachments/image-ff531613-c15c-4066-80f9-555043a417cc.png" alt="image.png"></p>
+</details>
+<h3 id="order-afleverstatus">Order afleverstatus</h3>
+<p>Met veel verzenders is er een koppeling om de status van de verzending te importeren als orderstatus. Zie <a href="#order-statussen">order statussen</a>.</p>
+<p>Elke verzender heeft een eigen lijst van statussen. Elke status van een verzender is gekoppeld aan een order status.</p>
+<p>Er zijn twee soorten koppelingen voor de statuskoppeling. De verzender kan de status naar Monta sturen en Monta kan de status ophalen bij de verzender. Bij tweede type (Monta haalt de status op bij de verzender) moeten we voorkomen dat we eindelijk de statussen van een order blijven opvragen. Daarom stoppen we met het ophalen als we de status DeliveryFailed, Delivered of Collected hebben opgehaald.</p>
+<p>Soms blijft een order hangen in de EnRoute of AvailablePickup. Om dit op te schonen worden orders die 14 dagen op EnRoute staan of 30 dagen op AvailablePickup, op &quot;Delivered (?)&quot; gezet.</p>
+<p><a href="../../Algemene-informatie/Retouren#retourlabel-afleverstatus">De afleverstatus kan ook geimporteerd worden voor retourlabels.</a></p>
+<h3 id="aflevermoment">Aflevermoment</h3>
+<p>Bij een order wordt ook een aflevermoment berekend en getoond op Montaportal. Dit aflevermoment wordt als volgt berekend:</p>
+<ol>
+<li>Eerst wordt de afleverdag bepaald. Monta houd hiervoor zelf een tabel[[Doelgroep IT: (tblShipperTransitTimeCountryPostcode)]] bij met per verzender, bestemming land en evt postcode range het aantal transit dagen. Ook houd Monta een tabel met feestdagen bij per land[[Doelgroep IT: (tblShipperAdditionalTransitTimeNationalHoliday)]]. Per verzender/land verschilt het of er op zaterdag/zondag geleverd wordt, dit staat in de programmacode.</li>
+<li>Het aflevertijdstip op die dag wordt opgehaald uit het systeem van de verzender als die koppeling gemaakt is.</li>
+</ol>
+<h3 id="pro-forma-invoice">Pro forma invoice</h3>
+<p>Bij een order naar een niet-EU land wordt automatisch de benodigde douane documentatie (pro forma invoice) in orde gemaakt. Daarnaast wordt de informatie digitaal doorgegeven aan de verzender bij het maken van het label.</p>
+<p>De benodigde informatie moet hiervoor wel aanwezig zijn in het systeem. Is dat niet het geval, dan wordt de order geblokkeerd. De melding geeft aan welke informatie ontbreekt.</p>
+<p>Benodigd zijn bij elk product: de HS-tarief codes, de country of origin en een verkooprijs en valuta. De verkoopprijzen en valuta worden geïmporteerd uit de webshop. Kortingsregels op de factuur worden verwerkt in de verkoopprijzen van de producten op de pro forma invoice.</p>
+<p>Bij gesplitste producten bestaat de optie om het originele product te vermelden op de pro forma invoice.</p>
+<p>Het template van de pro forma invoice is vast. Verzenders willen deze namelijk in een gestandaardiseerd format ontvangen.</p>
+<p>Zie ook <a href="../../Algemene-informatie/Outbound/Versturen-buiten-de-EU">versturen buiten de EU</a>.</p>
+<h4 id="ontbrekende-prijzen">Ontbrekende prijzen</h4>
+<p>Om een pro forma invoice te maken moet van elk product in de order de prijs bekend zijn. Voor de meeste orders importeren we de factuur uit de webshop, dus is de prijs bekend. Maar als er producten toegevoegd worden aan de order, is er geen prijs bekend. Dit kan bijvoorbeeld het geval zijn bij splits- en toevoegproducten.</p>
+<p>Om dit op te lossen zijn er twee opties:</p>
+<ul>
+<li>Bij een product splitsing kan worden ingesteld dat het originele product op de pro forma moet staan, ipv de onderliggende producten. De prijs van het originele product is dan bekend omdat die wel verkocht is in de webshop.</li>
+<li>Bij een product kan ingesteld worden dat deze met een bepaalde prijs automatisch moet worden toegevoegd op de pro forma invoice.</li>
+</ul>
+<p>Het is ook mogelijk om bij een product in te stellen dat de prijs die vanuit de webshop is meegekomen moet worden vervangen door een andere prijs.</p>
+<h4 id="douane-statements">Douane statements</h4>
+<p>Het is mogelijk douane statements op de pro forma invoice te plaatsen. Dit kan zorgen voor lage importtarieven. Bijvoorbeeld voor als een handelsovereenkomst aanwezig is. De douane statements kunnen ingesteld worden op de Montaportal.</p>
+<h2 id="anonimiseren">Anonimiseren</h2>
+<p>Een periode nadat de order verzonden is wordt deze geanonimiseerd. Deze periode is standaard 90 dagen, klanten kunnen ervoor kiezen dit langer of korter te zetten.</p>
+<p>Bij het anonimiseren worden de persoonsgegevens van de order verwijderd. Dit zijn naam, straat, huisnummer, huisnummer toevoeging, e-mailadres en telefoonnummer.</p>
+<p>De beveiligde (gehashte) versie van het e-mailadres wordt wel bewaard. Omdat hetzelfde e-mailadres altijd hetzelfde gehashte e-mailadres oplevert, kan toch na het anonimiseren nog gevonden worden welke orders vanuit hetzelfde e-mailadres besteld zijn.</p>
+<h2 id="archiveren">Archiveren</h2>
+<p>Een bepaalde periode nadat de order verzonden is wordt deze gearchiveerd. Deze periode is 90 dagen. Bepaalde informatie van de order zoals bijlagen en logs worden dan verwijderd. Dit om de hoeveelheid dataopslag beperkt te houden.</p>
+<p>Zoekwoorden:
+,o
+,ou
+,out
+,outb
+,outbo
+,outbou
+,outboun
+,outbound</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

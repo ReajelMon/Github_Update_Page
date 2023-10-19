@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>PRTG </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="PRTG ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="prtg">PRTG</h1>
+
+<h3 id="algemeen">Algemeen</h3>
+<p>PRTG wordt gebruikt om alles rond servers, netwerken etc. te monitoren.</p>
+<h3 id="sms">SMS</h3>
+<p>PRTG heeft de mogelijkheid om sms-jes te sturen als notificatie.<br>
+Er zijn 2 sjablonen gedefinieerd:<br>
+SMS , hierbij wordt alleen buiten kantoortijden een sms gestuurd<br>
+SMS altijd , hierbij wordt op elk tijdstip een sms gestuurd.</p>
+<h3 id="rabbitmq">RabbitMQ</h3>
+<p>Zie : <a href="https://blog.cdemi.io/monitoring-rabbitmq-in-prtg/">https://blog.cdemi.io/monitoring-rabbitmq-in-prtg/</a> <br>
+Op de Linux-server moet het account PRTG aangemaakt worden.
+Naast de standaard Linux-sensoren dienen de volgende sensoren aangemaakt te worden om RabbitMQ goed te kunnen monitoren.<br>
+Voor al deze sensoren geldt dat de HTTP User Name prtg is met het wachtwoord uit passwordstate.
+De sensor is een ptfsensor :<br>
+<img src="../../../Attachments/image-775b817f-64f7-414b-a93f-49b3775118c0.png" alt="image.png"></p>
+<p><strong>Messages in Queue</strong><br>
+URL : <a href="http://mp-rabbitmq10.montapacking.nl:15672/api/overview%5C">http://mp-rabbitmq10.montapacking.nl:15672/api/overview\</a> <br>
+XML Node : queue_totals/messages<br>
+Primary Channel : Queues (#)</p>
+<p><strong>Consumers</strong><br>
+URL : <a href="http://mp-rabbitmq10.montapacking.nl:15672/api/overview%5C">http://mp-rabbitmq10.montapacking.nl:15672/api/overview\</a> <br>
+XML Node : object_totals/consumers<br>
+Primary Channel : Consumers (#)</p>
+<p><strong>Connections</strong><br>
+URL : <a href="http://mp-rabbitmq10.montapacking.nl:15672/api/overview%5C">http://mp-rabbitmq10.montapacking.nl:15672/api/overview\</a> <br>
+XML Node : object_totals/connections<br>
+Primary Channel : Connections (#)</p>
+<p>Voor de onderstaande sensoren geldt dat het type een httpsensor is:
+<img src="../../../Attachments/image-e2b19342-0b00-4dcd-b5c7-dd7631c316a1.png" alt="image.png"></p>
+<p><strong>Is one ore more connections State Blocked?</strong><br>
+URL : <a href="http://mp-rabbitmq10.montapacking.nl:15672/api/connections">http://mp-rabbitmq10.montapacking.nl:15672/api/connections</a> <br>
+<img src="../../../Attachments/image-5183bbe9-7982-43e0-bf1b-78334f6e536d.png" alt="image.png"></p>
+<p><strong>RabbitMQ10 - Alarm Status</strong><br>
+URL : <a href="http://mp-rabbitmq10.montapacking.nl:15672/api/health/checks/alarms">http://mp-rabbitmq10.montapacking.nl:15672/api/health/checks/alarms</a> <br>
+<img src="../../../Attachments/image-b3309615-254f-4022-96aa-6c3929819a68.png" alt="image.png"></p>
+<h3 id="sensoren-voor-linux-webservers-bij-transip">Sensoren voor Linux webservers bij TransIP</h3>
+<p>Voor de webservers bij TransiP is de community-name : 209ijvfwer0df92jd<br>
+Na aanraden van sensoren en deze toevoegen zijn de volgende aanpassingen gemaakt:<br>
+Sesnor traffic local host verwijderen.<br>
+De Linux Gemiddeld Belasting moet een waarde hebben onder het aantal cores.<br>
+Hiervoor is bij 8 cores een hoge waarschuwingsgrens van 6 ingesteld en een hoge foutgrens van 8.<br>
+De Virtuele memory = Fysieke memory + swap space.<br>
+Voor de swap space hanteren we een lage waarschuwingsgrens van 50 en een lage foutgrens van 10.</p>
+<h3 id="sensoren-voor-office-licenties">Sensoren voor Office licenties</h3>
+<p>In &quot;\mp-prtg01\c$\Program Files (x86)\PRTG Network Monitor\Custom Sensors\EXEXML&quot; staat een powershell-script
+&quot;LicenseOffice365Count_Common.ps1&quot;.</p>
+<p>Hierin worden de volgende 3 parameters gebruikt :<br>
+param (<br>
+[string]$User =&quot;&quot;,<br>
+[string]$Pass = &quot;&quot;,<br>
+[string]$Sku = &quot;&quot;<br>
+)</p>
+<p>In de sensor wordt de sku opgegeven.
+<img src="../../../Attachments/image-0f07e53b-5322-4a7a-bfa4-37650768815d.png" alt="image.png"></p>
+<p>Bij de settings van de credentials voor Windows Systems worden de usernaam en password opgegeven.
+<img src="../../../Attachments/image-33ee095e-7b54-4447-9335-c595385d64cd.png" alt="image.png"></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

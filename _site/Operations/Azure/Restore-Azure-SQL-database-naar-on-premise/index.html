@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Restore Azure SQL database naar on premise </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Restore Azure SQL database naar on premise ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="restore-azure-sql-database-naar-on-premise">Restore Azure SQL database naar on premise</h1>
+
+<h2 id="handleiding-restore-azure-sql-database-naar-on-premise">Handleiding Restore Azure SQL database naar on-premise</h2>
+<p>Een restore van de database “db-voorraad-001” werkt niet via de SQL Studio Manager omdat deze een Memory exception geeft door het grote aantal regels.<br>
+Daarom moet voor de restore het command-line tool sqlcmd gebruikt worden.</p>
+<p>Onderstaande handleiding gaat uit van de productieomgeving:</p>
+<p>Server : tcp:srv-sql-weu-001.database.windows.net,1433<br>
+Database : db-vooraad-001<br>
+Aantal regels : 450000 (op 6-3-2022)<br>
+Maak als volgt connectie met SQL Management Studio:</p>
+<p><img src="../../../Attachments/image-92a97fc4-04b4-4ac7-ac09-45bae7ef35f5.png" alt="image.png"></p>
+<h2 id="export-data">Export data</h2>
+<h3 id="tabel-met-data-aanmaken-voor-import-in-een-andere-database">Tabel met data aanmaken voor import in een andere database</h3>
+<p>RM Source database, Generate scripts, Selecteer specifieke tabel.
+<img src="../../../Attachments/image-ece11c88-c90f-4550-880b-fad3cf0ef483.png" alt="image.png">
+Kies dan “Save as script file” en klik op “Advanced”.<br>
+Kies bij “Types of data to script” voor “Schema en data”.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-restore-Azure-SQL-Database-naar-on-premise/media/image2.png" alt=""></p>
+<p>Dit levert een query op die zowel de tabel aanmaakt als de data er
+inzet.</p>
+<p>Je hebt nu de tabel met data in de gewenste database.</p>
+<p>Voorbeeld van een dergelijke query :</p>
+<p>SET ANSI_NULLS ON<br>
+GO<br>
+SET QUOTED_IDENTIFIER ON<br>
+GO<br>
+CREATE TABLE [dbo].[tbltest2](
+[ID] [smallint] NULL,[Naam] [nchar](10) NULL) ON [PRIMARY]<br>
+GO<br>
+INSERT [dbo].[tbltest2] ([ID], [Naam]) VALUES (1, N'Jasper ')<br>
+GO</p>
+<h3 id="tabel-zonder-data-aanmaken-voor-import-in-een-andere-database">Tabel (zonder data) aanmaken voor import in een andere database</h3>
+<p>Zie &quot;Tabel met data aanmaken in andere database&quot; maar dan met &quot;Schema
+only&quot;.<br>
+Dit levert een query op die de tabel aanmaakt.<br>
+Maak een nieuw query aan op de gewenste database en voer bovenstaande
+query uit.<br>
+Je hebt nu een lege tabel in de nieuwe database.</p>
+<h3 id="alleen-data-kopiëren-van-de-ene-tabel-naar-de-andere">Alleen data kopiëren van de ene tabel naar de andere</h3>
+<p>Zie &quot;Tabel met data aanmaken in andere database&quot; maar kies dan voor Data
+only.<br>
+Maak een nieuw query aan op de gewenste database en voer bovenstaande
+query uit.<br>
+Voorwaarde is wel dat een lege tabel al eerder is aangemaakt.</p>
+<h2 id="import-data">Import data</h2>
+<h3 id="tabel-met-data-restoren-in-een-andere-database-via-sql-management-studio">Tabel met data restoren in een andere database via SQL Management Studio</h3>
+<p>Maak een nieuw query aan op de gewenste database (kan zowel on-premise
+zijn als in SQL Azure) en voer de query uit die met de export gemaakt is.</p>
+<h3 id="tabel-met-data-restoren-in-een-andere-database-via-sqlcmd">Tabel met data restoren in een andere database via sqlcmd</h3>
+<p><a href="https://stackoverflow.com/questions/431913/how-do-you-import-a-large-ms-sql-sql-file/431915#431915">sql server - How do you import a large MS SQL .sql file? - Stack
+Overflow</a></p>
+<p>sqlcmd -S [servername] -d [databasename] -i [scriptfilename] -a
+32767</p>
+<p>Bijvoorbeeld vanaf de MP-MGMT12:</p>
+<p>sqlcmd -S MP-DEV02\DEVSQLSERVER -d Monta_Backend_Dev -i “C:\Scripts\Script om tblvoorraad aan te maken\script.sql” -a 32767</p>
+<p>of</p>
+<p>sqlcmd -S MP-SQL04\TEST_BACKEND -d Monta_Backend -i “C:\Scripts\Script om tblvoorraad aan te maken\script.sql” -a 32767</p>
+<p>Een test-restore van ruim 280000 regels duurde slechts 3 minuten.
+Een test-restore van ruim 450000 regels duurde slechts 5 minuten.</p>
+<h2 id="section"></h2>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

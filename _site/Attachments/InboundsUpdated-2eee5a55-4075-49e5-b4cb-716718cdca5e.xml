@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Inbounds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Inbound>
+    <Id>12874682</Id>
+    <Type>Inbound</Type>
+    <Created>2022-06-28T08:11:39.68</Created>
+    <InboundGroupReference>REF67898/384161</InboundGroupReference>
+    <InboundForecastGroupReference>PO67898/384161</InboundForecastGroupReference>
+    <InboundForecastGroupComment>On it's way</InboundForecastGroupComment>
+    <InboundForecastGroupSupplierCode>SUPP1</InboundForecastGroupSupplierCode>
+    <Sku>748912</Sku>
+    <Barcodes>
+      <Barcode>12378946789</Barcode>
+    </Barcodes>
+    <Quantity>3</Quantity>
+    <Quarantaine>false</Quarantaine>
+    <InboundForecastReference>REF456</InboundForecastReference>
+    <ReturnedEorderWebshopOrderId xsi:nil="true" />
+  </Inbound>
+  <Inbound>
+    <Id>12874686</Id>
+    <Type>Inbound</Type>
+    <Created>2022-06-28T08:11:44.523</Created>
+    <InboundGroupReference>REF67898/384161</InboundGroupReference>
+    <InboundForecastGroupReference>On it's way</InboundForecastGroupReference>
+    <InboundForecastGroupComment>On it's way</InboundForecastGroupComment>
+    <InboundForecastGroupSupplierCode>SUPP2</InboundForecastGroupSupplierCode>
+    <Sku>123456</Sku>
+    <Barcodes>
+      <Barcode>123456789123</Barcode>
+    </Barcodes>
+    <Quantity>2</Quantity>
+    <Quarantaine>false</Quarantaine>
+    <InboundForecastReference>REF123</InboundForecastReference>
+    <ReturnedEorderWebshopOrderId xsi:nil="true" />
+  </Inbound>
+</Inbounds>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Sophos inrichten </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Sophos inrichten ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="sophos-inrichten">Sophos inrichten</h1>
+
+<p><strong>Technisch ontwerp Vernieuwing infrastructuur</strong></p>
+<h2 id="uitleg">Uitleg</h2>
+<p>In deze documentatie</p>
+<h2 id="installatie-sgxxx">Installatie SGxxx</h2>
+<p>Geef een PC het IP-nummer 192.168.0.2 en sluit de Sophos SGxxx aan via
+eth0/LAN op hetzelfde netwerk.
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image1.png" alt=""></p>
+<p>Benader de Sophos SGxxx via <a href="https://192.168.0.1:4444">https://192.168.0.1:4444</a></p>
+<p>Vul de basic system setup in.<br>
+Hostname : afkortinglocatie-rou01.montapacking.nl , bijv
+we30.rou01.montapacking.nl<br>
+Zet account (admin) in PasswordState.</p>
+<p>Wijzig het IP-nummer van de Sophos in het IP-nummer van de locatie dus
+bijv 172.18.4.1<br>
+Sluit</p>
+<p>Voer setup uit en vul de DHCP-reeks in van VLAN 1.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image2.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image3.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image4.png" alt="">
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image5.png" alt=""></p>
+<p>Na Finish krijgt de Sophos het nieuwe IP-nummer. Zet de PC vervolgens op
+DHCP. Deze krijgt nu een IP-nummer uit de DHCP-reeks van de nieuwe
+locatie. Hierna is de Sophos te benaderen via bijv
+<a href="https://172.18.4.1:4444">https://172.18.4.1:4444</a>.</p>
+<h2 id="management--high-availability">Management \ High Availability:</h2>
+<p>Zet deze uit:</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image6.png" alt=""></p>
+<h2 id="interfaces--routing">Interfaces &amp; Routing</h2>
+<p>Eth0 omzetten naar eth3 en hernoemen naar 01-DATA.<br>
+Verplaats de utp-kabel van eth0 naar eth3.<br>
+De rest van de VLANs aanmaken volgens IP plan (bij interfaces).</p>
+<h3 id="interfaces-aanmaken-"><strong>Interfaces aanmaken</strong> :</h3>
+<p>ETH0:</p>
+<p>Internet-01 (Master)</p>
+<p>ETH1:</p>
+<p>Internet-02 (Slave)</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image7.png" alt=""></p>
+<p>ETH3:</p>
+<p>01-DATA (Default)</p>
+<p>20-Wifi</p>
+<p>25-Gast</p>
+<p>30-Voice</p>
+<p>99-Security</p>
+<p>Zie voor details configuratie andere Sophos en IP-lijst -- plan van de
+betreffende locatie.</p>
+<p>Voorbeeld 20-Wifi</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image8.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image9.png" alt=""></p>
+<h4 id="tabblad-uplink-balancing">Tabblad Uplink Balancing:</h4>
+<p>Active Interfaces:</p>
+<p>Internet-01 (Master)</p>
+<p>Internet-02 (Slave)</p>
+<p>Internet-03 (4G)</p>
+<p>Stel het gewicht in :
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image10.png" alt=""></p>
+<h3 id="section"></h3>
+<h3 id="quaility-of-service-qos">Quaility of Service (QoS)</h3>
+<h4 id="mp-gast-knijpen">MP-Gast knijpen</h4>
+<p>Zie &quot;S:\8.0 Automatisering\2.1 Netwerk\Sophos QoS.pdf&quot;</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image11.png" alt=""></p>
+<p>Sluit nu op de Internet poort (eth3) een [extra]{.underline}
+netwerk-kabel aan naar het &quot;gewone&quot; netwerk van de locatie waar je bent.
+De sophos heeft nu een internet-connectie en via de laptop/computer met
+een IP-nr in de Sophos-reeks kun je de Sophos blijven beheren.</p>
+<h4 id="download-throttling-rule">Download Throttling rule</h4>
+<p>Om er voor te zorgen dat bij het downloaden niet de gehele lijn dicht
+getrokken kan worden dient er een download throttling rule aangemaakt te
+worden. Maak bij &quot;interfaces &amp; routing&quot;onder Q0s op het tabblad Traffic
+Selectors eerst een traffic selector aan van any-&gt;any-&gt;any.<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image12.png" alt=""></p>
+<p>Maak nu een throttling rule aan op de hoofdverbinding.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image13.png" alt=""></p>
+<p>Upload en download wordt altijd vanuit de UTM gezien. Dus in dit geval
+download vanaf het internet naar de UTM. Dus de throttling rule bouden
+aan Internet.</p>
+<h2 id="section-1"></h2>
+<h2 id="sum">SUM:</h2>
+<p>Voor het koppelen aan de SUM ga naar Management / Central Management:</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image14.png" alt=""></p>
+<p>Resultaat moet worden:</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image15.png" alt=""></p>
+<p>Shared Secret Key staat in PasswordState.<br>
+Refresh page indien resultaat nog niet getoond wordt.</p>
+<p>Log in op <a href="https://10.10.202.17:4422">https://10.10.202.17:4422</a></p>
+<p>De nieuwe Sophos verschijnt automatisch in de SUM.</p>
+<p>Voeg het nieuwe netwerk toe aan de sum bij &quot;Configuration \
+Definitions&quot; (clone van andere vestiging). Het gaat dan om de 3 VLAN-en
+: VLAN01, 20 en 30. Voeg ook de verbindingen toe (bijv
+&quot;Loc_Mol19_WAN01_Glasvezel&quot; en &quot;Loc_Mol19_WAN02_BVDSL&quot; in Mgraaf).<br>
+Deploy nu deze 3 nieuwe netewrken vanaf de SUM naar alle andere
+routers.<br>
+Voeg deze netwerken en verbindingen toe aan &quot;Loc_montapacking&quot;.<br>
+<br>
+Ga nogmaals naar &quot;Configuration \ Definitions&quot; tabblad network, zet het
+antal getoonde definitions op 100 en vink all regels aan met een hoog
+aantal (en selecteer daarbij ook alle definitions van de betreffende
+locatie). kies bij action voor voor &quot;deploy to gateways&quot;. Sleep bij
+&quot;Select Gateways&quot; dan de nieuwe Sophos (bijv br04-rou01) als doel.
+Herhaal dit voor het tabblad services</p>
+<h2 id="dhcp">DHCP</h2>
+<p>DHCP-reeksen instellen volgens Default IP-plan.<br>
+Zie Sophos andere vestiging en het IP-plan. Clonen werkt het snelst.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image16.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<h4 id="network-protection--nat">Network Protection \ NAT:</h4>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image17.png" alt=""></p>
+<h4 id="network-protection--voip">Network Protection \ VOIP:</h4>
+<p>Zorg er voor dat zowel SIP als H.323 uit staan.</p>
+<h3 id="section-2"></h3>
+<h2 id="dns">DNS:</h2>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image18.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image19.png" alt=""></p>
+<h2 id="settings">Settings</h2>
+<h3 id="management--ssh">Management \ SSH</h3>
+<p>Bij management -- System settings het SSH wachtwoord instellen en
+allowed Networks instellen., maar de Shell access kan aan blijven staaan
+(wens netstream). <img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image20.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<h3 id="management--notifications">Management \ Notifications</h3>
+<p>Zet op het tabblad Advanced SMTP aan:
+<img src="../../../../Attachments/image-522937cc-821a-4802-9a65-7f0ca36427d7.png" alt="image.png"></p>
+<h2 id="site-to-site-vpn--ipsec">Site to Site VPN \ IPsec</h2>
+<h3 id="remote-gateway">Remote Gateway:</h3>
+<p>Eerst een remote gateway aanmaken en daarna de connectie.</p>
+<p>NLDC-VPNGW aanmaken, preshared key staat in de IP-lijst tabblad &quot;NLDC |
+PSK Keys&quot;</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image21.png" alt=""></p>
+<h3 id="section-3"></h3>
+<h3 id="connections">Connections</h3>
+<p>Int-NLDC-VPN aanmaken. Bji local networks alle 4 de VLAN's toevoegen
+(Gast is hierbij niet van toepassing). Doel is dat ook voice en security
+vanaf datacentre te beheren zijn (Aspect kan dan als Admin-Aspect
+inloggen en locaties beheren).</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image22.png" alt=""></p>
+<p>Op de DC-ROU01 moet &quot;site to site vpn&quot; ook aangemaakt worden.<br>
+Eerst moet bij &quot;remote gateways&quot; de nieuwe gateway toegevoegd worden en
+vervolgens bij connections. Bij de remote networks moeten alle 4 de
+VLAN's toegevoegd worden (Gast is hierbij niet van toepassing).</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image23.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image24.png" alt=""></p>
+<p>[]{#_Toc528686303 .anchor}Algemeen<br>
+De rechten worden vanuit AD verleend via de groep &quot;APPS --
+SophosAdmin&quot;.<br>
+Op elke Sophos is een AD koppeling gemaakt met de &quot;MP-DC03&quot; en de
+MP-DC04. Hierbij wordt gebruik gemaakt van het &quot;rs.sophos&quot; account (zie
+MontaPassword).<br>
+In de Sophos wordt er een Sync uitgevoerd en een nieuwe locale groep is
+aangemaakt: &quot;ADAdmin&quot;. Deze wordt in de WebAdmin Settings toegevoegd bij
+&quot;Allowed Administrators&quot;</p>
+<p>Bij &quot;Allowed Networks&quot; zal &quot;Loc_Montapacking_ITSupport&quot; worden
+toegevoegd.</p>
+<h3 id="section-4"></h3>
+<h2 id="definitions-and-users">Definitions and Users</h2>
+<h3 id="service-definitions">Service Definitions</h3>
+<p>Voeg bij de service definition &quot;Email Messaging&quot; &quot;SV_SMTPSSL (live.com)
+toe&quot;.</p>
+<h3 id="users--groups"><strong>Users &amp; Groups</strong>.</h3>
+<p>[]{#_Toc528686307 .anchor}Maak bij de users &quot;localuser-netstream&quot; aan
+met het wachtwoord uit passwordstate.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image25.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p>Maak bij Groups de group ADAdmin in en kies in ID de groep
+&quot;APPS-SophosAdmin&quot;</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image26.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<h3 id="authentication-services">Authentication services</h3>
+<h4 id="tabblad-global-settings">Tabblad Global Settings.</h4>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image27.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<h4 id="tabblad-servers">Tabblad Servers</h4>
+<p>Maak bij Definitions and Users \ authentication services -- Servers
+onderstaande server aan.<br>
+Vul bij Bind &quot;CN=rs.sophos,OU=RS,OU=MontaUser,DC=montapacking,DC=nl&quot; in
+.<br>
+Verder SSL aanvinken en poort 636 gebruiken (ldaps)<br>
+Wachtwoord staat in MontaPassword</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image28.png" alt=""></p>
+<h4 id="tabblad-advanced">Tabblad Advanced</h4>
+<p>Voeg de groep &quot;APPS-SophosAdmin&quot; toe.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image29.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p>**<br>
+**</p>
+<h2 id="management">Management</h2>
+<h3 id="webadmin-settings--afbeelding-met-tekst-automatisch-gegenereerde-beschrijving">Webadmin settings.  <img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image30.png" alt="Afbeelding met tekst Automatisch gegenereerde beschrijving"></h3>
+<p>Het is belangrijk om bij &quot;Allowed Administrators&quot;
+&quot;localuser-netsrteam&quot;en bij &quot;Allowed networks&quot; &quot;Netstream-DNS&quot; toe te
+voegen.<br>
+Hiermee kan Netstream op afstand support leveren.</p>
+<h3 id="notifications">Notifications</h3>
+<h4 id="tabblad-global">Tabblad Global</h4>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image31.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<h3 id="tabblad-notifications">Tabblad Notifications.</h3>
+<p>Bij Up2Date notificatie Patterns uitzetten.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image32.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<h4 id="tabblad-advanced-1">Tabblad Advanced</h4>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image33.png" alt=""></p>
+<h3 id="snmp">SNMP</h3>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image34.png" alt=""></p>
+<h2 id="network-protection">Network Protection</h2>
+<h4 id="intrusion-prevention">Intrusion Prevention</h4>
+<h4 id="tabblad-global-1">Tabblad Global</h4>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image35.png" alt=""></p>
+<h4 id="tabblad-anti-portscan">Tabblad Anti-portscan</h4>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image36.png" alt=""></p>
+<h4 id="tabblad-exceptions">Tabblad Exceptions</h4>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image37.png" alt=""></p>
+<h2 id="network-services">Network services</h2>
+<h4 id="ntp">NTP</h4>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image38.png" alt=""></p>
+<h2 id="section-5"></h2>
+<h2 id="network-protection-1">Network protection</h2>
+<h3 id="firewall">Firewall:</h3>
+<h4 id="tabblad-rules">Tabblad Rules</h4>
+<p>Op elke firewall regel Logging aanzetten.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image39.png" alt=""></p>
+<p>Hoe meer bekend is van de alarm-IP-nrs des te specifieker kan de
+firewall rule, bijvoorbeeld die van Oosterhout is optimaal:</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image40.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image41.png" alt=""></p>
+<p>Alleen bij MP-GAST zijn de VPN-Protocols toegevoegd zodat klanten
+eventueel verbinding kunnen maken met de eigen omgeving.</p>
+<p>Regel 9 waarin voor MP-GAST DNS naar Google-DNS wordt open gezet moet
+aangezet worden als bij DHCP bij MP-GAST als DNS1 en 2 die van Google
+worden gebruikt.</p>
+<p>Als regel 23 is aangezet kan bij &quot;Network Protection -- Firewall --
+tabblad ICMP &quot; &quot;Gateway Ping Visible&quot; worden uitgezet.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image42.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image43.png" alt=""></p>
+<h3 id="-">** **</h3>
+<h4 id="speciale-rules"><strong>­Speciale Rules</strong>:</h4>
+<p>+------------------+---------------------+-----------------------+-----+
+| <strong>Locatie        |                     |                       |     |
+| gebonden:</strong>      |                     |                       |     |
++==================+=====================+=======================+=====+
+| <strong>Source</strong>       | <strong>Services</strong>        | <strong>Destinations</strong>      | *   |
+|                  |                     |                       | <em>Ac |
+|                  |                     |                       | tio |
+|                  |                     |                       | n</em>* |
++------------------+---------------------+-----------------------+-----+
+| Weide 30         | 2222 (DirectAdmin)  | DN                    | Al  |
+|                  |                     | S_<a href="http://www.montapacking.nl">www.montapacking.nl</a> | low |
+| 01-Internal      |                     |                       |     |
+| (Network)        |                     |                       |     |
++------------------+---------------------+-----------------------+-----+
+| Weide 30         | 51292, 52737, 53165 | Any                   | Al  |
+|                  | en 10001 (Alarm)    |                       | low |
+| 01-Internal      |                     |                       |     |
+| (Network)        |                     |                       |     |
++------------------+---------------------+-----------------------+-----+
+| Polderweg Oost   | Any (Alarm)         | Any­                   | Al  |
+| 19               |                     |                       | low |
+|                  |                     |                       |     |
+| Mol19_Host_Alarm |                     |                       |     |
+| (172.16.5.30)    |                     |                       |     |
++------------------+---------------------+-----------------------+-----+
+| 01-Internal      | 554,8002 en 9001    | Any                   |     |
+| (Network)        | (Camera Systeem)    |                       |     |
+|                  |                     |                       |     |
+| 20-Wifi          |                     |                       |     |
+| (Network)        |                     |                       |     |
+|                  |                     |                       |     |
+| 30-Voice         |                     |                       |     |
+| (Network)        |                     |                       |     |
+|                  |                     |                       |     |
+| 99-Security      |                     |                       |     |
+| (Network)        |                     |                       |     |
++------------------+---------------------+-----------------------+-----+
+| Host_O           | OOS                 | Hos                   | Al  |
+| OS4_Alarm_intern | 4_SV_Alarm_Centrale | t_OOS4_Alarm_Centrale | low |
+| (172.25.11.80)   | (8998) en           | (193.105.50.208)      |     |
+|                  | OOS4_               | host_                 |     |
+|                  | SV_Alarm_management | OOS4_Alarm_Management |     |
+|                  | (3001)              | (83.161.219.254)      |     |
++------------------+---------------------+-----------------------+-----+</p>
+<p>Waspik Alarm en CCTV</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image44.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image45.png" alt=""></p>
+<h4 id="tabblad-icmp">Tabblad ICMP</h4>
+<h5 id="ping-settings">Ping settings</h5>
+<p>Dit kan alleen als de firewall-regel voor ping vanaf loc_montapacking
+aan staat.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image46.png" alt=""></p>
+<h4 id="section-6"></h4>
+<h4 id="section-7"></h4>
+<h4 id="tabblad-country-blocking"><strong>Tabblad Country Blocking</strong>:</h4>
+<p>Betekenissen:</p>
+<p>From Traffic geblokkeerd vanuit het land<br>
+To Traffic geblokkeerd naar het land</p>
+<p>All Traffic geblokkeerd vanuit en naar het land</p>
+<p>Off Traffic toegestaan zowel vanuit als naar het land</p>
+<p>+----------------------+-----------------------+-----------------------+
+| <strong>Continent</strong>        | <strong>Default</strong>           | <strong>Uitzonderingen</strong>    |
++======================+=======================+=======================+
+| North America        | From                  |                       |
++----------------------+-----------------------+-----------------------+
+| South America        | From                  |                       |
++----------------------+-----------------------+-----------------------+
+| Europe               | From                  | <strong>Deny (All)</strong>:       |
+|                      |                       |                       |
+|                      |                       | Russian               |
+|                      |                       |                       |
+|                      |                       | <strong>Allowed (Off)</strong>:    |
+|                      |                       |                       |
+|                      |                       | Belgium               |
+|                      |                       |                       |
+|                      |                       | France                |
+|                      |                       |                       |
+|                      |                       | Germany               |
+|                      |                       |                       |
+|                      |                       | Great Britain         |
+|                      |                       |                       |
+|                      |                       | Luxembourg            |
+|                      |                       |                       |
+|                      |                       | Netherlands           |
++----------------------+-----------------------+-----------------------+
+| Middle East          | From                  |                       |
++----------------------+-----------------------+-----------------------+
+| Africa               | From                  |                       |
++----------------------+-----------------------+-----------------------+
+| Asia                 | From                  | <strong>Deny (All):</strong>       |
+|                      |                       |                       |
+|                      |                       | China                 |
++----------------------+-----------------------+-----------------------+
+| Oceania              | From                  |                       |
++----------------------+-----------------------+-----------------------+
+| Antarctica           | From                  |                       |
++----------------------+-----------------------+-----------------------+</p>
+<h3 id="tabblad-country-blocking-exceptions-op-ip-nummer-kunnen-er-whitelists-worden-toegevoegd">Tabblad Country Blocking Exceptions:** **Op IP-nummer kunnen er whitelists worden toegevoegd.</h3>
+<h2 id="logging--reporting">Logging &amp; reporting</h2>
+<h4 id="log-settings">Log settings</h4>
+<p>Remote Syslog aanzetten en Iview-server toevoegen:</p>
+<p>DNS_SV_mp-iview.montapacking.nl</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image47.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image48.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image49.png" alt=""></p>
+<h2 id="firmware-updaten">Firmware updaten</h2>
+<p>Firmware updaten kan lokaal op de Sophos maar ook vanuit de SUM.<br>
+Klik vanuit de SUM op &quot;monitoring \ versions&quot; en dan update firmware.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Sophos-Inrichten/media/image50.png" alt=""></p>
+<h2 id="backup">Backup</h2>
+<p>De Backup wordt automatisch wekelijks vanuit de SUM gemaakt. Hiervoor
+behoeft op de Sophos niets ingesteld te worden.</p>
+<h2 id="bijlage--definitions-via-sum-deployed">Bijlage : Definitions (via SUM deployed):</h2>
+<h4 id="networks">Networks:</h4>
+<p>+-----------------------+---------+---------------------+------------+
+| <strong>Omschrijving:</strong>     | <strong>Wa    | <strong>Omschrijving:</strong>   | *          |
+|                       | arde:</strong> |                     | <em>Waarde:</em>* |
++=======================+=========+=====================+============+
+| <strong>Algemeen:</strong>         |         |                     |            |
++-----------------------+---------+---------------------+------------+
+| DNS_ap                | 10.10   | Loc_AspectICT_Netw  | 145.13     |
+| p.e-commerceradar.com | .202.26 |                     | 1.155.0/27 |
+|                       |         |                     |            |
+| -                    |         |                     |            |
+| ap                    |         |                     |            |
+| p.e-commerceradar.com |         |                     |            |
++-----------------------+---------+---------------------+------------+
+| DNS_                  | 10.10   | Loc_Datacenter_Netw | 10.1       |
+| app.justfulfilment.nl | .202.54 |                     | 0.202.0/24 |
+|                       |         |                     |            |
+| -                    |         |                     |            |
+| app.justfulfilment.nl |         |                     |            |
++-----------------------+---------+---------------------+------------+
+| DNS_ga                | (by     | Loc_RoutIT_Netw     | 89.        |
+| teway.montapacking.nl | DNS)    |                     | 146.0.0/16 |
+|                       |         |                     |            |
+| -                    |         |                     |            |
+| ga                    |         |                     |            |
+| teway.montapacking.nl |         |                     |            |
++-----------------------+---------+---------------------+------------+
+| DNS_SV_               | 10.10   |                     |            |
+| mp003.montapacking.nl | .202.13 |                     |            |
+|                       |         |                     |            |
+| -                    |         |                     |            |
+| mp003.montapacking.nl |         |                     |            |
+|                       |         |                     |            |
+| -                    |         |                     |            |
+| webse                 |         |                     |            |
+| rvice.montapacking.nl |         |                     |            |
+|                       |         |                     |            |
+| -                    |         |                     |            |
+| statusmon             |         |                     |            |
+| itor.montapacking.nl\ |         |                     |            |
+| -urenregistr          |         |                     |            |
+| atie.montapacking.nl\ |         |                     |            |
+| -                     |         |                     |            |
+| processmo             |         |                     |            |
+| nitor.montapacking.nl |         |                     |            |
+|                       |         |                     |            |
+| -                    |         |                     |            |
+| emailse               |         |                     |            |
+| rvice.montapacking.nl |         |                     |            |
++-----------------------+---------+---------------------+------------+
+| DNS_SV_mp-            | 10.10   |                     |            |
+| ftp01.montapacking.nl | .202.21 |                     |            |
++-----------------------+---------+---------------------+------------+
+| DNS_relay.reputy.nl   | (by     |                     |            |
+|                       | DNS)    |                     |            |
+| - relay.reputy.nl    |         |                     |            |
++-----------------------+---------+---------------------+------------+
+| DNS_GoogleDNS-1       | 8.8.8.8 |                     |            |
++-----------------------+---------+---------------------+------------+
+| DNS_GoogleDNS-2       | 8.8.4.4 |                     |            |
++-----------------------+---------+---------------------+------------+
+| <strong>Locatie gebonden:</strong> |         |                     |            |
++-----------------------+---------+---------------------+------------+
+| L                     | xx.x    | Loc_&lt;l            | 172        |
+| oc_&lt;locatie&gt;_ADSL | x.xx.xx | ocatie&gt;_Netw_VL01 | .xx.4.0/22 |
++-----------------------+---------+---------------------+------------+
+| L                     | xx.x    | Loc_&lt;l            | 172        |
+| oc_&lt;locatie&gt;_VDSL | x.xx.xx | ocatie&gt;_Netw_VL20 | .xx.0.0/23 |
++-----------------------+---------+---------------------+------------+
+| Loc                   | xx.x    |                     |            |
+| _&lt;locatie&gt;_B-VDSL | x.xx.xx |                     |            |
++-----------------------+---------+---------------------+------------+
+| Loc_\                | xx.x    | Loc_Montapacking    | Alle       |
+| &lt;locatie&gt;_Glasvezel | x.xx.xx |                     | locaties   |
++-----------------------+---------+---------------------+------------+
+| Lo                    | xx.x    |                     |            |
+| c_&lt;locatie&gt;_Ziggo | x.xx.xx |                     |            |
++-----------------------+---------+---------------------+------------+
+| Loc_NOORD_WAN03_4G    | 62.12   | Loc_Mon             | Alle IT    |
+|                       | .26.117 | tapacking_ITSupport | locaties   |
++-----------------------+---------+---------------------+------------+
+| Loc_ZUID_WAN03_4G     | 92.6    |                     |            |
+|                       | 5.0.247 |                     |            |
++-----------------------+---------+---------------------+------------+
+|                       |         |                     |            |
++-----------------------+---------+---------------------+------------+
+| Host_Mol19_Alarm      | 172.    |                     |            |
+|                       | 16.5.30 |                     |            |
++-----------------------+---------+---------------------+------------+
+|                       |         |                     |            |
++-----------------------+---------+---------------------+------------+</p>
+<h4 id="services">Services:</h4>
+<hr>
+<p><strong>Algemeen:</strong></p>
+<hr>
+<p>SV_SMTPSSL (live.com)      587</p>
+<p><strong>Router NLDC:</strong></p>
+<p>SV_PRTG                    8443</p>
+<p>SV_SUM                     4433</p>
+<p><strong>Locatie gebonden:</strong></p>
+<p>WEI30_SV_Alarm             Group</p>
+<p>WEI30_SV_Alarm_01          51292</p>
+<p>WEI30_SV_Alarm_02          52737</p>
+<p>WEI30_SV_Alarm_03          53165</p>
+<p>OOS4_SV_Alarm_Centrale     8998</p>
+<h2 id="oos4_sv_alarm_management---3001">OOS4_SV_Alarm_Management   3001</h2>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Intervallen per koppeling </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Intervallen per koppeling ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="intervallen-per-koppeling">Intervallen per koppeling</h1>
+
+<h2 id="interval">Interval</h2>
+<p>Veel van onze koppelingen draaien op een  x interval.
+Dit interval kan verschillen per koppeling; per platform.
+Het verschilt wordt vaak veroorzaakt door het max aantal requesten die we mogen doen richting het platform.
+Hieronder is een overzicht te zien van alle intervallen.</p>
+<h3 id="overzicht">overzicht</h3>
+<table>
+<thead>
+<tr>
+<th>platform</th>
+<th>Dataflow</th>
+<th>Interval (in minuten)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amazon</td>
+<td>Full stock update to Amazon</td>
+<td>1440</td>
+</tr>
+<tr>
+<td>Amazon</td>
+<td>Order import from Amazon</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Amazon</td>
+<td>Order status update to Amazon</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Amazon</td>
+<td>Product match Amazon</td>
+<td>120</td>
+</tr>
+<tr>
+<td>Amazon</td>
+<td>Stock updates to Amazon for products with changed stock</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Bigcommerce</td>
+<td>Full stock update to BigCommerce</td>
+<td>1440</td>
+</tr>
+<tr>
+<td>Bigcommerce</td>
+<td>Import orders from BigCommerce</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Bigcommerce</td>
+<td>Order update to BigCommerce</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Bigcommerce</td>
+<td>Product match BigCommerce</td>
+<td>1440</td>
+</tr>
+<tr>
+<td>Bigcommerce</td>
+<td>Product match Changed for BigCommerce</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Bigcommerce</td>
+<td>Stock updates to BigCommerce for products with changed stock</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Bol</td>
+<td>Changed Product Match Bol.com</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Bol</td>
+<td>Full stock update to Bol.com</td>
+<td>720</td>
+</tr>
+<tr>
+<td>Bol</td>
+<td>Order import from Bol.com</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Bol</td>
+<td>Order status update to Bol.com</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Bol</td>
+<td>Product match Bol.com</td>
+<td>60</td>
+</tr>
+<tr>
+<td>Bol</td>
+<td>Stock updates to Bol.com for products with changed stock</td>
+<td>15</td>
+</tr>
+<tr>
+<td>CCV shop</td>
+<td>Full stock update to CCVShop</td>
+<td>1440</td>
+</tr>
+<tr>
+<td>CCV shop</td>
+<td>Import orders from CCV Shop</td>
+<td>15</td>
+</tr>
+<tr>
+<td>CCV shop</td>
+<td>Import product information from CCV Shop</td>
+<td>720</td>
+</tr>
+<tr>
+<td>CCV shop</td>
+<td>Order status shipped update to CCVShop</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Channable</td>
+<td>Full stock update to Channable</td>
+<td>1440</td>
+</tr>
+<tr>
+<td>Channable</td>
+<td>Changed stock update to Channable</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Chananble</td>
+<td>Import orders from Channable</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Channable</td>
+<td>Import product information from Channable</td>
+<td>120</td>
+</tr>
+<tr>
+<td>Channable</td>
+<td>Order status shipped update to Channable</td>
+<td>15</td>
+</tr>
+<tr>
+<td>CCV shop</td>
+<td>Stock updates to CCVShop for products with changed stock</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Lightspeed</td>
+<td>Changed Product Match Lightspeed Ecommerce</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Lightspeed</td>
+<td>Full stock update to Lightspeed eCommerce</td>
+<td>1440</td>
+</tr>
+<tr>
+<td>Lightspeed</td>
+<td>Order import Lightspeed Ecommerce</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Lightspeed</td>
+<td>Product match Lightspeed ecommerce</td>
+<td>120</td>
+</tr>
+<tr>
+<td>Lightspeed</td>
+<td>Stock updates to Lightspeed ecommerce for products with changed stock</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Lightspeed</td>
+<td>Stock updates to Lightspeed ecommerce for products with changed stock</td>
+<td>15</td>
+</tr>
+<tr>
+<td>LeroyMerlin</td>
+<td>Order status shipped update to LeroyMerlin</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Magento</td>
+<td>Changed Product Match Magento</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Magento</td>
+<td>Create refunds in Magento2</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Magento</td>
+<td>Full stock update to Magento2</td>
+<td>1440</td>
+</tr>
+<tr>
+<td>Magento</td>
+<td>Import orders from Magento2</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Magento</td>
+<td>Order status update to Magento2</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Magento</td>
+<td>Product import from Magento2</td>
+<td>60</td>
+</tr>
+<tr>
+<td>Magento</td>
+<td>Product match Magento2</td>
+<td>120</td>
+</tr>
+<tr>
+<td>Magento</td>
+<td>Stock updates to Magento2 for products with changed stock</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Magento</td>
+<td>Stock updates to Magento2 from inbounds only</td>
+<td>15</td>
+</tr>
+<tr>
+<td>MyOnlineStore</td>
+<td>Changed Product Match MyOnlineStore</td>
+<td>30</td>
+</tr>
+<tr>
+<td>MyOnlineStore</td>
+<td>Changed stock update to MyOnlineStore</td>
+<td>15</td>
+</tr>
+<tr>
+<td>MyOnlineStore</td>
+<td>Full stock update to MyOnlineStore</td>
+<td>1440</td>
+</tr>
+<tr>
+<td>MyOnlineStore</td>
+<td>Product Match MyOnlineStore</td>
+<td>120</td>
+</tr>
+<tr>
+<td>Prestashop</td>
+<td>Changed Product Match PrestaShop</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Prestashop</td>
+<td>Full stock update to PrestaShop</td>
+<td>1440</td>
+</tr>
+<tr>
+<td>Prestashop</td>
+<td>Import orders from PrestaShop</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Prestashop</td>
+<td>Order updates to PrestaShop</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Prestashop</td>
+<td>Product match PrestaShop</td>
+<td>120</td>
+</tr>
+<tr>
+<td>Prestashop</td>
+<td>Stock updates to PrestaShop with changed stock</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Shopify</td>
+<td>Changed Product Match Shopify</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Shopify</td>
+<td>Full stock update to Shopify</td>
+<td>1440</td>
+</tr>
+<tr>
+<td>Shopify</td>
+<td>Import orders from Shopify</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Shopify</td>
+<td>Import product information from Shopify</td>
+<td>720</td>
+</tr>
+<tr>
+<td>Shopify</td>
+<td>Order status shipped to Shopify</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Shopify</td>
+<td>Product match Shopify</td>
+<td>120</td>
+</tr>
+<tr>
+<td>Shopify</td>
+<td>Stock updates to Shopify for products with changed stock</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Shopware</td>
+<td>Changed Product Match Shopware</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Shopware</td>
+<td>Full stock update to Shopware</td>
+<td>1440</td>
+</tr>
+<tr>
+<td>Shopware</td>
+<td>Import orders from Shopware</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Shopware</td>
+<td>Order updates to Shopware</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Shopware</td>
+<td>Product match Shopware</td>
+<td>120</td>
+</tr>
+<tr>
+<td>Shopware</td>
+<td>Stock updates to Shopware for products with changed stock</td>
+<td>15</td>
+</tr>
+<tr>
+<td>woocommerce</td>
+<td>Changed Product Match Woocommerce</td>
+<td>30</td>
+</tr>
+<tr>
+<td>woocommerce</td>
+<td>Full stock update to WooCommerce</td>
+<td>1440</td>
+</tr>
+<tr>
+<td>woocommerce</td>
+<td>Order import from Woocommerce</td>
+<td>5</td>
+</tr>
+<tr>
+<td>woocommerce</td>
+<td>Order status shipped update to WooCommerce</td>
+<td>15</td>
+</tr>
+<tr>
+<td>woocommerce</td>
+<td>Product match WooCommerce</td>
+<td>120</td>
+</tr>
+<tr>
+<td>woocommerce</td>
+<td>Stock updates to WooCommerce for products with changed stock</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

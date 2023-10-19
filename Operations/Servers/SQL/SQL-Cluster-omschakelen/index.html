@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SQL Cluster omschakelen </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="SQL Cluster omschakelen ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="sql-cluster-omschakelen">SQL Cluster omschakelen</h1>
+
+<h3 id="inleiding">Inleiding</h3>
+<p>Er draaien 3 SQL-servers in een cluster. De MP-SQL10 staat in Eindhoven
+en de MP-SQL20 en MP-SQL21 staan in Rotterdam. Middels AlwaysOn High
+Avalability worden de databases op de 3 servers gesynchroniseerd. Een
+van de 3 servers is Primary, de MP-SQL20 is Secundary. De MP-SQL21 wordt
+gebruikt als read-only-database maar niet om de primary database te
+draaien.<br>
+Dit is te zien via &quot;Microsoft SQL Server Management Studio&quot;, maar het
+benaderen van de SQL database is niet nodig voor het oplossen van
+eventuele problemen met het SQL-cluster.</p>
+<p>Daarnaast wordt er gebruikt gemaakt van Microsoft Failover Cluster.<br>
+De Cluster-naam MP-SQLCLus02 verwijst in DNS naar 10.10.202.118</p>
+<p>Alle software van Montapacking verwijst echter naar een Listener met de
+naam MP-SQLList2. In DNS verwijst dit naar IP-nr 10.10.202.123<br>
+<br>
+Op de MP-MGMT11 kan vanuit &quot;Adminstrative Tools&quot; de &quot;Failover Cluster
+Manager&quot; gestart worden.<br>
+Maak connectie met de &quot;MP-SQLClus02.montapacking.nl&quot; als deze er nog
+niet is.<br>
+Als dat niet lukt, log dan in op de MP-SQL10 of de MP-SQL20 (afhankelijk
+welke server benaderbaar is) en probeer het daar.</p>
+<p>In het failovercluster draaien rollen met de databases op een bepaalde
+node.</p>
+<p><img src="../../../../Operations/Servers%5Cimages/Handleiding-SQL-Cluster-omschakelen/media/image1.png" alt=""></p>
+<p>De Listener maakt deel uit van de Availability group &quot;Monta_Maindb&quot;. Als
+de availability groep, zoals in bovenstaand voorbeeld op &quot;MP-SQL10&quot;
+draait dan zal de listener ook op die server actief zijn en daarmee ook
+het IP-nr 10.10.202.123</p>
+<h3 id="failover-als-beide-sql-cluster-nodes-nog-benaderbaar-zijn">Failover als beide SQL-Cluster nodes nog benaderbaar zijn</h3>
+<p>Als beide SQL-Cluster-nodes nog benaderbaar zijn en je wil overschakelen
+naar de andere node dan kun het best de rol &quot;Monta-Maindb&quot;
+overschakelen. Het duurt dan maximaal een minuut voordat alle
+Monta-applicaties weer verbinding kunnen maken.</p>
+<p>Start vanuit &quot;Administrative Tools&quot; de Failover Cluster Manager. Maak
+connectie met &quot;MP-SLCLus02.montapacking.nl&quot;. Open &quot;Roles&quot;<br>
+Via rechtermuisnop op de database kun je kiezen voor &quot;Move -- Select
+Node -- MP-SQL20&quot;</p>
+<p><img src="../../../../Operations/Servers%5Cimages/Handleiding-SQL-Cluster-omschakelen/media/image2.png" alt=""></p>
+<p>Het herstarten van de MP-SQL10 heeft hetzelfde resultaat als
+bovenstaande.</p>
+<p>E.e.a. is ook te regelen via de SQL Management Studio, zie bijlage 1.</p>
+<h3 id="bijlage-1-alwayson-high-availibilty-cluster">Bijlage 1 AlwaysOn high Availibilty Cluster</h3>
+<p>Dit is te beheren door met een SQL Management Studio (bijv. op de
+MP-MGMT11) een connectie te maken met MP-SQL10\Backend of
+MP-SQL10\Backend. Je kunt ook verbinding maken met
+MP-SQLList2\BACKEND, je komt dan op de actieve server terecht. Alleen
+op de actieve server zijn de databases te benaderen. Dit betreft medio
+februari 2021 3 productie-databases en 1 testdatabase.</p>
+<p><img src="../../../../Operations/Servers%5Cimages/Handleiding-SQL-Cluster-omschakelen/media/image3.png" alt=""></p>
+<p>Middels Show Dashboard kan de status bekeken worden.</p>
+<p><img src="../../../../Operations/Servers%5Cimages/Handleiding-SQL-Cluster-omschakelen/media/image4.png" alt=""></p>
+<p>Het is ook mogelijk binnen &quot;AlwaysOn High Availibilty&quot; een failover van
+een database uit te voeren.</p>
+<p>Log in op de MP-SQL10 of de MP-SQL20, in dit voorbeeld gaan we uit er
+van uit dat MP-SQL20 Primary moet worden.</p>
+<p>Start &quot;Microsft SQL Server Management Studio&quot;, maak verbinding met
+MP-SQL20\BACKEND. Check in &quot;Always On High Availablilty &quot;of de MP-SQL20
+de Primary is. Zo niet voer dan een Failover uit voor alle 3 de
+productiedatabases</p>
+<p><img src="../../../../Operations/Servers%5Cimages/Handleiding-SQL-Cluster-omschakelen/media/image5.png" alt=""></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

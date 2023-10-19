@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Installatie Webservers </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Installatie Webservers ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="installatie-webservers">Installatie Webservers</h1>
+
+<h2 id="inhoud">Inhoud</h2>
+<ul>
+<li><p><a href="#algemeen">Algemeen</a></p>
+</li>
+<li><p><a href="#iis-inrichting">IIS Inrichting</a></p>
+</li>
+<li><p><a href="#failover-cluster">Failover Cluster</a></p>
+</li>
+<li><p><a href="#wsfc-foutmelding-oplossen">WSFC-foutmelding oplossen</a></p>
+</li>
+<li><p><a href="#webcluster">Webcluster</a></p>
+</li>
+<li><p><a href="#algemene-clusterinrichting">Algemene clusterinrichting</a></p>
+</li>
+<li><p><a href="#_Toc90975210">DFS</a></p>
+</li>
+<li><p><a href="#shared-configuratie-in-iis.">Shared Configuratie in IIS.</a></p>
+</li>
+<li><p><a href="#websites-aanmaken">Websites aanmaken</a></p>
+</li>
+<li><p><a href="#quorum">Quorum </a></p>
+</li>
+<li><p><a href="#livezet-scripts">Livezet-scripts</a></p>
+</li>
+<li><p><a href="#testen">Testen</a></p>
+</li>
+<li><p><a href="#log-cleaner">Log Cleaner</a></p>
+</li>
+<li><p><a href="#country-blocking-exceptions">Country Blocking Exceptions</a></p>
+</li>
+<li><p><a href="#website-van-buitenaf-bereikbaar-maken">Website van buitenaf bereikbaar maken</a></p>
+</li>
+<li><p><a href="#docker">Docker</a></p>
+</li>
+</ul>
+<h3 id="section"></h3>
+<h3 id="algemeen">Algemeen</h3>
+<p>Voor alle webservers gelden de paragrafen &quot;IIS Inrichting&quot;, &quot;Websites
+inrichten&quot; en &quot;livezet-scripts&quot;.<br>
+Voor de webclusters komt daar nog het hoofdstuk &quot;Webcluster&quot; bij.</p>
+<h3 id="iis-inrichting">IIS Inrichting</h3>
+<p>Server Standaard inrichten.<br>
+IIS Installeren.<br>
+Bij IIS installatie bij Role Services bij Security &quot;Request Filtering&quot;
+en &quot;IP and Domain Restrictions&quot; en &quot;Windows Authentication&quot;
+aanvinken.<br>
+Bij Common HTTP Features onderstaande installeren :</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-Webservers/media/image1.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p>en bij Application Development de onderstaande opties:<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-Webservers/media/image2.png" alt=""></p>
+<p>Bij Health and Diagnostics de “request monitor”
+<img src="../../../../Attachments/image-ead3c54f-33d3-4c5e-9508-a8b540f2c708.png" alt="image.png"></p>
+<p>Hierdoor is het mogelijk om in IIS onder Worker Processes te dubbelklikken op een application pool en dan zie je wat er draait. Hiermee kan een developer analyseren welke functie in een website het betreft.</p>
+<p>Start IIS en installeer &quot;Microsoft Web platform&quot;, installeer de
+extension (kan via &quot;Get New Web Platform Components&quot; helemaal rechts,
+als dit niet werkt kan dit ook via
+<a href="https://www.microsoft.com/web/downloads/platform.aspx">https://www.microsoft.com/web/downloads/platform.aspx</a> ).<br>
+Selecteer daarna rechts &quot;Get New Web Platform Components&quot;, installeer
+dan &quot;URL Rewrite&quot;</p>
+<p>Vraag aan Development welke versie van dotnet-hosting gewenst is er
+installeer deze vanuit \\mp-fs102\Software\.NET<br>
+<br>
+Download en installeer de Log Parser op de
+webserver: <a href="https://www.microsoft.com/en-us/download/details.aspx?id=24659">https://www.microsoft.com/en-us/download/details.aspx?id=24659</a></p>
+<p>Stel de protocollen in met het tool &quot;S:\8.0 Automatisering\1.0
+Software\8.0.0 Diversen\IISCrypto.exe&quot; als onderstaand:<br>
+<br>
+<img src="../../../../Operations/Servers%5Cimages/Installatie-Webservers/media/image3.png" alt=""></p>
+<p>Onderstaande alleen als bekend is dat de website dan nog goed
+benaderbaar is.<br>
+Anders de best practice van IIS Crypto accepteren.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-Webservers/media/image4.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p>Zie verder ook : &quot;Montapacking\Monta - IT-Support -
+Documenten\Security\SSL Certificaten\SSL TLS en Cipher suites.docx&quot;</p>
+<p>Stel uploadReadaheadsize in.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-Webservers/media/image5.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving">
+**<br>
+**</p>
+<p><strong>Als het om een web-cluster gaat installeer dan eerst het
+failover-cluster en het web-cluster</strong></p>
+<h4 id="failover-cluster">Failover Cluster</h4>
+<p>Bij gebruik van SentinelOne is het belangrijk dat het pad
+%Systemroot%\Cluster ge-exclude is in SentinelOne.</p>
+<p>Installatie: Failover Cluster en IIS installeren (IIS zoals
+bovenstaand).<br>
+Bij een Failover-cluster kunnen de extra benodigde IP-adressen alleen
+via Powershell toegevoegd worden.<br>
+Commando: .. Add-ClusterResource -Name 10.10.202.xxx -ResourceType &quot;IP
+Address&quot; -Group &quot;Cluster Group&quot; (Cluster groep niet vervangen door
+naam cluster)<br>
+Het gaat dan om de Other resources uit onderstaand plaatje:<br>
+<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-Webservers/media/image6.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-Webservers/media/image7.png" alt="">In de Failover Cluster Manager kun je
+vervolgens de IP-adressen verder configureren en online brengen.<br>
+Stel hierbij de policies als onderstaand in :</p>
+<p>Voeg nog een File share witness toe.<br>
+Maak hiervoor eerst op de MP-DMZ01 (VM op de EIN-ESX05) in de folder
+&quot;C:\Quorum&quot; een nieuwe directory aan &quot;Quorum-WebClusxx&quot;. Geef hier de
+lokale administrators full control-rechten op evenals de CNO (dus bijv.
+MP-Webclusxx$). Maak een hidden share voor deze directory met Everyone Full Control.</p>
+<p>Kies in Failover Mangement &quot;Configure custom Quorum settings&quot; en
+&quot;configure a file share witness&quot;, laat deze verwijzen naar
+\\mp-dmz01\Quorum_WebClusxx$.<br>
+H E E L ... B E L A N G R I J K , stel bij de properties van de file
+share witness in dat als een restart unsuccesfull is er <strong>geen</strong>
+failover plaats moet vinden.<br>
+<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-Webservers/media/image8.png" alt=""><br>
+<br>
+<br>
+Laat de webserver in Rotterdam elke woensdag en zaterdag rebooten na
+05:00 (na het installeren van de patches om 04:00).</p>
+<h3 id="wsfc-foutmelding-oplossen">WSFC-foutmelding oplossen</h3>
+<p>The backup operation for the cluster configuration data has been
+canceled. The cluster Volume Shadow Copy Service (VSS) writer received
+an abort request. Zie
+<a href="https://wiki.montapacking.nl/index.php?title=SentinelOne">https://wiki.montapacking.nl/index.php?title=SentinelOne</a></p>
+<p>Op een failover cluster kan event 1544 &quot;The backup operation for the
+cluster configuration data has been canceled. The cluster Volume Shadow
+Copy Service (VSS) writer received an abort request.&quot; optreden.</p>
+<p>Onderstaande commando's lossen dit op: (Doe dit op beide cluster nodes)</p>
+<p>sentinelctl unprotect -k &quot;passphrase&quot;</p>
+<p>sentinelctl config -p agent.vssConfig.vssProtection -v false</p>
+<p>sentinelctl config -p agent.vssSnapshots -v false</p>
+<p>sentinelctl protect</p>
+<p>sentinelctl config -p agent.vssConfig.enableLogsWriterVssWriter -v false
+-k &quot;passphrase&quot;</p>
+<p>De vss-instellingen zijn als volgt te bekijken : sentinelctl config
+vssConfig</p>
+<h3 id="webcluster">Webcluster</h3>
+<h4 id="algemene-clusterinrichting">Algemene clusterinrichting</h4>
+<p>Het Webcluster bestaat uit 2 servers die samen een Failover Cluster
+vormen. Hiermee worden 3 cluster-IP-nr's beschikbaar gemaakt.<br>
+Het eerste IP-nummer is beschikbaar voor algemene doeleinden, het tweede
+voor websites in het montapacking.nl-domein, het derde voor websites in
+het montaportal.nl-domein.<br>
+Middels DFS worden de bestanden van de website op beide cluster-servers
+gelijk gehouden.<br>
+Tot slot is er in IIS een shared configuratie gedefinieerd waarbij er
+gebruik gemaakt wordt van de config-files van de webserver die op een
+schijf staat die met DFS gesynchroniseerd wordt.</p>
+<p>[]{#_Toc90975210 .anchor}DFS</p>
+<p>Installeer DFS (Alleen DFS Replication) en stel DFS in op de folders
+&quot;E:\IISConfig&quot;, &quot;E:\WWWRoot&quot; (doe dit niet voor &quot;F:\Logs&quot; omdat
+webservers vaak zeer veel logfiles bevatten). Edit de Membershipstatus
+en vul er de foldernaam in.<br>
+Herstart de servers, pas daarna gaat DFS werken.</p>
+<h4 id="shared-configuratie-in-iis">Shared Configuratie in IIS.</h4>
+<p>Open &quot;Shared configuration&quot;, kies rechts voor Export configuration en
+exporteer naar &quot;E:\IISConfig&quot;.<br>
+Vul het wachtwoord in uit het wachtwoordenboek (hierdoor kan altijd een
+shared config terug gezet worden van een filebackup).<br>
+Vink vervolgens &quot;Enable shared configuration&quot; aan, stel
+&quot;E:\IISConfig&quot; en vul de usernaam en het wachtwoord NIET in.<br>
+Vervolgens wordt er gevraagd om de encryption key, geef hier het
+wachtwoord in op.<br>
+Op de andere server van het cluster behoeft alleen gekozen te worden
+voor &quot;Enable shared configuration&quot;, en dan het encryption wachtwoord.</p>
+<p>Bij het overzetten van een website van een weblcuster naar een ander
+webcluster kan het nodig zijn om een export van de configuratie te maken
+en die in te lezen op het nieuwe webcluster.</p>
+<p>Stel ook de shared log in op F:\Logs\Inetpub</p>
+<h3 id="websites-aanmaken">Websites aanmaken</h3>
+<p>Selecteer de server en importeer bij Server Certificates het certificaat
+voor montapacking en voor montaportal en voor monta.nl (dit is vanuit
+Passwordstate te downloaden).<br>
+Kies de personal store.<br>
+Dit moet op <strong>beide</strong> webservers in een cluster uitgevoerd worden.</p>
+<p>Maak een account aan met de naam site.xxxxx (niet langer dan 20 posities) in &quot;Montauser\Sites&quot;.
+Zet password op never expires.
+Maak een directory aan onder E:\WWWroot met de naam van de website en geef het site-account schrijfrechten. Geef ook rs.devops schrijfrechten en geef de groep IT Full Control-rechte.</p>
+<p>Voer het commando &quot;C:\Windows\Microsoft.NET \Framework64\v4.0.30319\Aspnet_regiis.exe -ga montapacking\site.xxxxxxx&quot; uit om het site-account rechten te geven op de .NET-map.</p>
+<p>Maak de website aan. Sitename en Hostname gelijk houden.<br>
+Maak (bij de cluster-webservers) eerst (op een aparte partitie) de directory F:\Logs aan met als rechten &quot;Everyone - Modify&quot; en &quot;Lokale
+Administrators - Full Control&quot;.<br>
+Maak vervolgens onder F:\logs een subdirectory aan met de naam van de website.<br>
+Share F:\Logs met &quot;Share Permissions&quot; met de groep IT Read-rechten en
+Administrators Full Control, &quot;Security Permissions &quot;Everyone -
+Modify&quot; en &quot;Administrators - Full Control&quot;.</p>
+<p>Maak in IIS voor elke website een website aan onder Sites.</p>
+<p>De Default Web Site mag worden verwijderd.<br>
+<br>
+Voeg, indien nodig, bij de bindings type https toe met het SSL certicaat
+van de betreffende website (bij een cluster moeten eerst de extra
+IP-adressen gemaakt zijn).<br>
+Als er verschillende certificaten op één en hetzelfde IP-nr worden
+gebruikt (bijv. cdn.montaporal.nl en montaportal.nl op dezelfde server
+dan moet &quot;Require Server Name Inidication&quot; aangezet worden. <a href="https://https.cio.gov/sni/">The
+HTTPS-Only Standard - Server Name Indication
+(cio.gov)</a></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-Webservers/media/image9.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"><br>
+<br>
+Wijzig ten slotte in de application pool de identity naar een
+monta-account.<br>
+Stel het volgende in bij Advanced settings :<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-Webservers/media/image10.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving">\</p>
+<p>In geval van databasetoegang maak in AD onder
+&quot;Montagroep\Databases\Prod&quot; de groepen &quot;DB-Prod-xxxxx-Owner&quot; en
+&quot;&quot;DB-Prod-xxxxx-RW&quot; aan.<br>
+Probeer eerst met het site-account in de groep RW of read-write-rechten
+voldoende zijn voor de applicatie.</p>
+<p>Maak in SQL op de database bij security de user &quot;DB-Prod-xxxxx-RW&quot; aan.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-Webservers/media/image11.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p>Het account IUSR moet ook leesrechten krijgen op de wwwroot-map.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-Webservers/media/image12.png" alt=""></p>
+<p>Binnen sommige websites zijn applications gemaakt, die kun je onder een
+eigen applicationpool laten draaien, die dan eerst aangemaakt moet
+worden. Stel bij weinig gebruikte websites de &quot;Idle Time-out (minutes)
+binnen de application pool in op 1740. Overweeg bij de Logging ETW aan
+te zetten, dit levert events op in de windows-logs. Je kunt ook op
+site/application-nivo via Error Pages , edit feature settings - detailed
+errors aanzetten, dan krijg je bij het browsen meer info bij fouten.</p>
+<p>Maak een A-record aan voor de website in DNS.</p>
+<p>Om te testen kun je er een Default.htm inzetten:<br>
+&lt;!doctype html&gt;<br>
+&lt;html lang-&quot;nl&quot;&gt;<br>
+&lt;head&gt;<br>
+&lt;meta charset=&quot;utf-8&quot;&gt;<br>
+&lt;title&gt;Testomgeving Printing2&lt;/title&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+Testpagina Printing2&lt;br/&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;<br>
+<br>
+Maak een Netwerk Definitie aan in de SUM als het een interne website
+betreft.<br>
+Vraag development de securityheaders goed te zetten, zie
+<a href="https://securityheaders.com/">https://securityheaders.com/</a> en
+<a href="https://geekflare.com/http-header-implementation/">https://geekflare.com/http-header-implementation/</a><br>
+Bij stateless websites kunnen er meerdere worker-processen worden
+ingesteld via de advanced settings van de application-pool. Overleg met
+de maker van de website wat in te stellen.</p>
+<p>Maak in PRTG onder websites een sensor aan voor http en voor iis.</p>
+<h3 id="quorum">Quorum</h3>
+<p>We gebruiken een fileshare whitness naar de EIN-MGMT01 voor het LAN en
+de MP-DMZ01 voor het DMZ.</p>
+<h3 id="securityheaders">Securityheaders</h3>
+<p>Stel voor de website de volgende securityheaders in onder HTTP Response Headers</p>
+<p>Name: X-frame-Options Value DENY<br>
+Name: Content-Security-policy Value default-src 'self';<br>
+Name: X-XSS-Protection Value 1;mode=block<br>
+Name: X-Content-Type-Options Value nosniff<br>
+Name: Strict-Transport-Security Value max-age=31536000; includeSubDomains; preload<br>
+name: Referrer-Policy Value no-referrer</p>
+<h3 id="livezet-scripts">Livezet-scripts</h3>
+<p>Een overzicht van de websites staat in
+Teams\Monta-IT-Support\NLDC\Webservers.<br>
+<br>
+Installeer op de webserver 7-zip.</p>
+<p><strong>Als er gebruik gemaakt wordt van livezetten via een Devops pipeline is onderstaande niet nodig</strong></p>
+<p><strong>Zet de gebruiker montapacking\rs.scriptadmin in de lokale
+administrators group.</strong></p>
+<p>Maak in de directory E:\livezetten per website 3 mappen aan:<br>
+xxxxxx.xxxxxxx.nl-tmp<br>
+xxxxxx.xxxxxxx.nl-logs<br>
+xxxxxx.xxxxxxx.nl-backup<br>
+Maak een share aan voor de directory Livezetten met de groep IT en de
+lokale administrators met Full Control voor de share permissies en voor
+security.<br>
+Maak het account rs.devops lid van de groep localadmin_webserverxxxx.</p>
+<p>Vanuit Azure Devops zorgt Development er voor dat de content in
+&quot;xxxxxx.xxxxxxx.nl-tmp&quot; gezet wordt en dat het livezet-script wordt
+aangeroepen.<br>
+Kopieer de bestanden naar \\mp-xxxx\LiveZetten\xxxxxxxxx.nl-tmp van
+de betreffende website.</p>
+<p>Maak voor elke website een scheduled taak aan op de betreffende
+webserver.</p>
+<ul>
+<li><p>Tab - General</p>
+</li>
+<li><p>De naam van de taak zetten we op &quot;SetLive-[<em>websitenaam</em>]&quot;</p>
+</li>
+<li><p>Verander bij &quot;When running the task, use the following user
+account&quot; de credentials van de juiste rs-user. (Wachtwoord in
+MontaPassword)</p>
+</li>
+<li><p>Selecteer &quot;Run Whether user is logged on or not&quot;</p>
+</li>
+<li><p>Selecteer &quot;Run with highest privileges&quot;</p>
+</li>
+<li><p>Tab -- Actions</p>
+</li>
+<li><p>Action - &quot;Start a program&quot;</p>
+</li>
+<li><p>Details -- &quot;E:\IISConfig\Scripts\
+SetLive-[<em>websitenaam</em>].cmd</p>
+</li>
+</ul>
+<p>montapacking\rs.scriptadmin</p>
+<p>In de map \\mp-webxx\LiveZetten\xxxxxxxxxx.nl-logs zijn logs te
+vinden van het SetLive script.<br>
+Er worden backups gemaakt in de map
+\\mp-webxx\LiveZetten\xxxxxxxxxxx.nl-backup.<br>
+Je kunt dus een backup terugzetten door de files uit een backup in de
+xxxxxxxxxxxxx.nl-tmp map te zetten en weer het
+&quot;SetLive-xxxxxxxxxxxxx.nl&quot; script te draaien.</p>
+<p>Onderstaande wordt nu geconfigureerd middels de GPO &quot;GP - Remote
+Scheduled Tasks&quot; en hoeft dus niet meer handmatig geconfigureerd te
+worden op de Webserver zelf.</p>
+<p><em>Zorg er voor, bij windows server 2019 dat onderstaande aan staat bij de
+firewall:</em></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-Webservers/media/image13.png" alt=""></p>
+<p>De werking van &quot;remote scheduled tasks&quot; kan getest worden door op de
+mp-proc04 een setlive-script te maken.</p>
+<p>Maak in <a href="file://mp-proc04/c$/scripts">\\mp-proc04\c$\scripts</a>
+daarvoor een setlivebatchfile aan (zie aanwezige batchfiles als
+voorbeeld) en maak in de task scheduler een map aan voor de nieuwe
+webserver (cluster) met daarin een taak die verwijst naar de aangemaakt
+batchfile.<br>
+<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-Webservers/media/image14.png" alt=""></p>
+<h3 id="section-1"></h3>
+<h3 id="testen">Testen</h3>
+<p>Kopieer het bestand &quot;Monta - IT -
+General\Handleidingen\Servers\Bijlagen\Webservers\ Default.htm&quot;
+naar E:\WWWroot\sitenaam op de server en pas de inhoud aan naar de
+site.</p>
+<p>Bij een nieuwe website kan in DNS een verwijzing gemaakt worden aar de
+website.<br>
+De website is nu te testen via bijv <a href="http://www.website.nl">http://www.website.nl</a> of
+<a href="https://www.website.nl">https://www.website.nl</a></p>
+<p>Als het om een bestaande website gaat moet er een alias gemaakt worden
+en ingesteld als hostnaam in IIS. In onderstaand voorbeeld is dat
+pietjepuk.montapacking.nl<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-Webservers/media/image15.png" alt=""></p>
+<p>Registreer vervolgens pietjepuk in DNS onder het betreffende IP-nr.<br>
+Om de nieuwe website van buitenaf op bijv. pietjepuk.montapacking.nl te
+kunnen testen moet er een exrta IP-nr in de externe DNS gezet worden.</p>
+<p>Een alternatief is om in de lokale hostfile een verwijzing te maken naar
+het nieuwe IP-nummer.</p>
+<h3 id="log-cleaner">Log Cleaner</h3>
+<p>Maak een logcleaner-taak aan op de MP-PROC04 onder de map Efulfilment \
+Filecleaner.<br>
+De actie is bijvoorbeeld :
+C:\Scripts\UniversalFileCleaner\UniversalFileCleaner.exe -tn
+&quot;MpWeb100LogsCleaner&quot; --path \\mp-web100\Logs --days 30
+--removeFilesInSub --removeSubMap</p>
+<h3 id="section-2"></h3>
+<h3 id="country-blocking-exceptions">Country Blocking Exceptions</h3>
+<p>Voor de webservers waarom de externe api en de montaportal draaien wordt
+er ni de firewall (dc-rou01) een exception gemaakt zodat deze servers
+vanuit landen benaderd kunnen worden waarvoor country-blocking aan
+staat.<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-Webservers/media/image16.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-Webservers/media/image17.png" alt=""></p>
+<h3 id="website-van-buitenaf-bereikbaar-maken">Website van buitenaf bereikbaar maken</h3>
+<p>Websites die van buitenaf bereikbaar moeten zijn worden op de volgende
+manier ontsloten.</p>
+<ol>
+<li><p>Klanten / Consumenten maken via internet connectie met een webserver
+in het DMZ.</p>
+</li>
+<li><p>Vestigingen van montapacking maken ook via internet connectie met
+een webserver in het DMZ.</p>
+</li>
+<li><p>Servers in het LAN in het datacentre maken direct via de Sophos
+Firewall DC-ROU01 connectie met het DMZ.</p>
+</li>
+</ol>
+<blockquote>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-Webservers/media/image18.png" alt=""></p>
+</blockquote>
+<p>Maak de volgende instellingen</p>
+<ul>
+<li><p>Kies in de NLDC-IP-lijst op het tabblad &quot;NorthC | ExternIP&quot; een
+IP-nummer voor de website.</p>
+</li>
+<li><p>Maak op de SUM netwerk-definities voor deze webserver of dit
+webcluster, zie als voorbeeld &quot;DNS_MP-WebClus-01&quot; en alle
+definities die daar in zitten. Gebruik hiervoor de interne adressen
+van de server (dus in de 192.168.201-reeks). Deploy deze naar alle
+routers.</p>
+</li>
+<li><p>Om er voor te zorgen dat de locaties de website kunnen vinden dient
+er in de SUM een netwerkdefinitie aangemaakt te worden voor de
+website die verwijst naar het externe nummer (dus in de 192.53.249.x
+reeks). Deploy deze definities naar alle routers. In de DHCP-scope
+van het DATA-VLAN in alle locale routers staat de Sophos-router als
+eerste DNS-server. Een device die bijvoorbeeld
+&quot;rest.montapacking.nl&quot; wil resolven zal dat eerst bij de Sophos
+uitvoeren en die verwijst naar het externe IP-nr waardoor de
+connectie &quot;buitenom&quot; gaat.</p>
+</li>
+<li><p>Maak op de DC-ROU01 eerst een additional address aan voor het
+externe IP-nr (bijv &quot;4.249.53.193.a2b.ein1.montapacking.it&quot;) onder
+Interfaces en dan tabblad &quot;Additional addresses&quot;.</p>
+</li>
+<li><p>Maak daarna 2 NAT-rules aan voor bijv
+&quot;DNS_MP-WebClus03-Montapacking&quot;, één voor HTTP en één voor HTTPS
+en gebruik hierbij het &quot;NorthC externe IP-adres&quot;.<br>
+Vink aan dat er firewall rules gemaakt moeten worden.</p>
+</li>
+<li><p>Maak voor de betreffende website in de externe DNS
+(<a href="https://www.transip.nl/cp/">https://www.transip.nl/cp/</a>) een A-record aan.</p>
+</li>
+<li><p>Kies op de webserver bij de website voor &quot;Edit bindings&quot; en maak
+een binding aan voor HTTP en één voor HTTPS.</p>
+</li>
+<li><p>Servers toevoegen aan firewall-rule 75</p>
+</li>
+<li><p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-Webservers/media/image19.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+</li>
+<li><p>Indien er &quot;IP Adress and Domain restrictions&quot; actief zijn moeten er
+externe IP-nummers worden toegevoegd (in het LAN betreft de de
+interne IP-reeksen).</p>
+</li>
+</ul>
+<p>De website is nu voor klanten, consumenten en Monta-vestigingen
+bereikbaar.</p>
+<p>Om er voor te zorgen dat Servers in het LAN in het datacenter direct
+naar de DMZ gaan dient er voor de website een A-record aangemaakt te
+worden in de domain-DNS (MP-DC03/DC04) naar het interne nummer (dus in
+de reeks 192.168.201.x).</p>
+<p>Overleg met Development of er een URL-rewrite nodig is om van HTTP naar
+HTTPS over te schakelen als de website aangeroepen wordt op http.</p>
+<p>Indien nodig stel dan het volgende in:</p>
+<p>Voor ASP.NET :<br>
+Maak een URL-rewrite aan van HTTP naar HTTPS zodat bij het aanroepen van
+een website op http deze naar https overschakelt (indien nodig).<br>
+Kopieer hiervoor een deel van de webconfig van een andere server die dat
+al heeft.<br>
+Kopieer hiervoor de inhoud van &quot;Monta - IT-Support -
+Documenten\Servers\Webservers\Redirect-webconfig.txt&quot; in de
+webconfig van de website.</p>
+<p>Voor ASP.NET Core :<br>
+Dit werkt niet met een url-rewrite maar met een startup-class:</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Installatie-Webservers/media/image20.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p>Voeg evt Deny/allow rules toe op IP-reeksen in IIS bij &quot;IP Adress and
+Domain restrictions&quot; onder de betreffende website. Zie als voorbeeld
+software.montapacking.nl</p>
+<h3 id="docker">Docker</h3>
+<p>Docker kan op aanvraag van Development toegepast worden, standaard wordt
+dit niet gebruikt.<br>
+Zie voor de installatie van Docker: <a href="https://montanl.sharepoint.com/sites/Serviceteam-IT/Gedeelde%20documenten/General/Handleidingen/Servers/Handleiding%20Installatie%20Docker.docx">Handleiding Installatie
+Docker</a></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

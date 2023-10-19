@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Stappenplan nieuwe website via F5 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Stappenplan nieuwe website via F5 ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="stappenplan-nieuwe-website-via-f5">Stappenplan nieuwe website via F5</h1>
+
+<h2 id="inhoudsopgave">Inhoudsopgave</h2>
+<p><a href="#inleiding">Inleiding</a></p>
+<p><a href="#checlist">Checlist</a></p>
+<ul>
+<li><p><a href="#lan-webservers">1. Lan-Webservers</a></p>
+</li>
+<li><p><a href="#f5-bigip">2. F5 BIGIP</a></p>
+</li>
+<li><p><a href="#sophos">3. Sophos</a></p>
+</li>
+<li><p><a href="#prtg">4. PRTG</a></p>
+</li>
+</ul>
+<p><a href="#lan-webservers">1. LAN-Webservers </a></p>
+<ul>
+<li><p><a href="#deployen-van-nieuwe-webserver-voor-pool-template-vm-ware">1.1 Deployen van nieuwe webserver voor Pool-Template (VM-Ware)</a></p>
+</li>
+<li><p><a href="#bijwerken-windows-updates">1.2 Bijwerken Windows Updates </a></p>
+</li>
+<li><p><a href="#aanmaken-nieuwe-website-in-iis">1.3 Aanmaken nieuwe website in IIS </a></p>
+</li>
+<li><p><a href="#installeren-juiste-.net-software">1.4 Installeren juiste .NET software </a></p>
+</li>
+<li><p><a href="#template-maken-voor-webservergroep">1.5 Template maken voor webservergroep </a></p>
+</li>
+<li><p><a href="#deployen-van-3-nieuwe-webservers-voor-pool-mp-web-xx-vm-ware">1.6 Deployen van 3 nieuwe webservers voor Pool MP WEB xx (VM-Ware) </a></p>
+</li>
+<li><p><a href="#aanmaken-nieuw-server-certificaat">1.7 Aanmaken nieuw server certificaat </a></p>
+</li>
+<li><p><a href="#aanpassen-iis-op-elke-server">1.8 Aanpassen IIS op elke server </a></p>
+</li>
+<li><p><a href="#installeer-rmm-op-elke-server-en-check-of-de-server-goed-wordt-weergegeven-in-sentinel-one">1.9 Installeer RMM op elke server en check of de server goed wordt weergegeven in Sentinel One </a></p>
+</li>
+</ul>
+<p><a href="#f5---bigip">2. F5 - BIGIP </a></p>
+<ul>
+<li><p><a href="#certificaat-installeren">2.1 Certificaat installeren </a></p>
+</li>
+<li><p><a href="#aanmaken-http-profiel">2.2 Aanmaken HTTP-profiel </a></p>
+</li>
+<li><p><a href="#aanmaken-ssl-server-profiel">2.3 Aanmaken SSL-Server profiel</a></p>
+</li>
+<li><p><a href="#aanmaken-ssl-client-profiel">2.4 Aanmaken SSL-Client profiel</a></p>
+</li>
+<li><p><a href="#aanmaken-monitor">2.5 Aanmaken Monitor </a></p>
+</li>
+<li><p><a href="#aanmaken-nodes">2.6 Aanmaken Nodes </a></p>
+</li>
+<li><p><a href="#aanmaken-pools">2.7 Aanmaken Pools </a></p>
+</li>
+<li><p><a href="#aanmaken-irules-datagroup">2.8 Aanmaken IRules Datagroup </a></p>
+</li>
+<li><p><a href="#aanmaken-irules">2.9 Aanmaken iRules </a></p>
+</li>
+<li><p><a href="#aanmaken-virtual-server">2.10 Aanmaken Virtual Server </a></p>
+</li>
+<li><p><a href="#aanmaken-http-https-redirect">2.10.1 Aanmaken HTTP HTTPS redirect </a></p>
+</li>
+</ul>
+<p><a href="#sophos">3. Sophos </a></p>
+<ul>
+<li><p><a href="#dns--en-netwerk-definities-aanmaken">3.1 DNS- en netwerk-definities aanmaken</a></p>
+</li>
+<li><p><a href="#stappenplan-internet-definitie">3.1.1 Stappenplan internet-definitie </a></p>
+</li>
+<li><p><a href="#stappenplan-vestiging-definitie">3.1.2 Stappenplan vestiging-definitie </a></p>
+</li>
+</ul>
+<p><a href="#prtg">4. PRTG </a></p>
+<h2 id="inleiding">Inleiding</h2>
+<p>In dit document vind je een stappenplan/checklist om een nieuwe website
+via de F5 BIGIP te configureren.</p>
+<h2 id="checlist">Checlist</h2>
+<ol>
+<li><h2 id="lan-webservers">Lan-Webservers</h2>
+</li>
+<li><p>Deployen van nieuwe webserver voor Pool-Template (VM-Ware)</p>
+</li>
+<li><p>Bijwerken Windows Updates</p>
+</li>
+<li><p>Aanmaken nieuwe website in IIS</p>
+</li>
+</ol>
+<blockquote>
+<p>(zie handleiding ...)</p>
+</blockquote>
+<ol start="4">
+<li><p>Installeren juiste .NET software<br>
+(zie handleiding ...)</p>
+</li>
+<li><p>Template maken voor webservergroep</p>
+</li>
+<li><p>Deployen van 3 nieuwe webservers voor Pool MP WEB xx (VM-Ware)</p>
+</li>
+<li><p>Aanmaken nieuw server certificaat</p>
+</li>
+<li><p>Aanpassen IIS op elke server</p>
+</li>
+<li><p>Installeer RMM op elke server en check of de server goed wordt
+weergegeven in Sentinel One</p>
+</li>
+</ol>
+<pre><code class="lang-{=html}">&lt;!-- --&gt;
+</code></pre>
+<ol start="2">
+<li><h2 id="f5-bigip">F5 BIGIP</h2>
+</li>
+<li><p>Certificaat installeren</p>
+</li>
+<li><p>Aanmaken HTTP-Profiel</p>
+</li>
+<li><p>Aanmaken SSL-Server profiel</p>
+</li>
+<li><p>Aanmaken SSL-Client profiel</p>
+</li>
+<li><p>Aanmaken Monitor</p>
+</li>
+<li><p>Aanmaken Nodes</p>
+</li>
+<li><p>Aanmaken Pools</p>
+</li>
+<li><p>Aanmaken IRules Datagroup</p>
+</li>
+<li><p>Aanmaken IRules</p>
+</li>
+<li><p>Aanmaken Virtual Server</p>
+</li>
+<li><p>Aanmaken HTTP HTTPS redirect</p>
+</li>
+<li><h2 id="sophos">Sophos</h2>
+</li>
+<li><p>Aanmaken DNS-entry voor de website in het DMZ-WEB-vlan
+(192.168.201.xx)</p>
+</li>
+<li><p>Aanmaken interface op de DC-ROU01</p>
+</li>
+<li><p>Aanmaken netwerkdefenities op de SUM.</p>
+</li>
+<li><p>Aanmaken NAT-rule op de DC-ROU01</p>
+</li>
+<li><p>Registreren bij Trans-IP (optioneel: alleen bij extern gebruik
+op DNS-name)</p>
+</li>
+<li><h2 id="prtg">PRTG</h2>
+</li>
+</ol>
+<h2 id="1-lan-webservers">1. LAN-Webservers</h2>
+<h2 id="11-deployen-van-nieuwe-webserver-voor-pool-template-vm-ware">1.1 Deployen van nieuwe webserver voor Pool-Template VM-Ware</h2>
+<ul>
+<li>Log in op de VM-Ware vSphere console en deploy een nieuwe VM met het
+template &quot;Windows 2019 Webserver&quot;. Kies hiervoor een naam in de
+trant van &quot;Windows Pool MP Web 30&quot; (dit wordt straks nl. de naam van
+het template).</li>
+</ul>
+<h3 id="12-bijwerken-windows-updates">1.2 Bijwerken Windows Updates</h3>
+<h3 id="13-aanmaken-nieuwe-website-in-iis">1.3 Aanmaken nieuwe website in IIS</h3>
+<p>(zie handleiding ...)</p>
+<p>Maak in AD een site-account aan met de naam van de website.<br>
+Maak onder E:\WWWRoot een submap aan met de naam van de website.<br>
+Disable de inheritance van de rechten (convert to explicit) en zet er de volgende rechten op.</p>
+<table>
+<thead>
+<tr>
+<th>Account/Groep</th>
+<th>Rechten</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IT</td>
+<td>FC</td>
+</tr>
+<tr>
+<td>site.xxxx</td>
+<td>Modify</td>
+</tr>
+<tr>
+<td>IUSR</td>
+<td>Modify</td>
+</tr>
+<tr>
+<td>Administrators</td>
+<td>FC</td>
+</tr>
+<tr>
+<td>SYSTEM</td>
+<td>FC</td>
+</tr>
+</tbody>
+</table>
+<p>Voeg in IIS de nieuwe website toe.<br>
+Alleen binding https tenzij http expliciet noodzakelijk is.<br>
+Vink &quot;Require Server Name Indication&quot; aan.<br>
+Stel bij de application pool bij advanced settings het account waaronder de application pool draait in op het site.xxx - account.</p>
+<p>Voeg deze site ook toe op de template-server.<br>
+Converteer de template-server naar een virtual server.<br>
+Herhaal bovenstaande stappen met als enige uitzondering dat de binding op http kan worden gezet (de template-server heeft geen certificaten).<br>
+Converteer de server weer terug naar een template.\</p>
+<h3 id="14-installeren-juiste-net-software">1.4 Installeren juiste .NET software</h3>
+<p>(zie handleiding ...)</p>
+<h3 id="15-template-maken-voor-webservergroep">1.5 Template maken voor webservergroep</h3>
+<p>Maak nu van de geïnstalleerde server weer een VM-Ware template om in de
+toekomst op eenvoudige wijze een node aan de pool toe te kunnen voegen.</p>
+<h3 id="16-deployen-van-3-nieuwe-webservers-voor-pool-mp-web-xx-vm-ware">1.6 Deployen van 3 nieuwe webservers voor Pool MP WEB xx (VM-Ware)</h3>
+<h3 id="17-aanmaken-nieuw-server-certificaat">1.7 Aanmaken nieuw server certificaat</h3>
+<p>Maak in de IIS bij servercertificaten een Self-Signed certificate aan.
+Geef hierbij als Friendly Name de servernaam op.</p>
+<h3 id="18-aanpassen-iis-op-elke-server">1.8 Aanpassen IIS op elke server</h3>
+<p>Nu moet er op elke node nog iets aangepast worden in de IIS settings.<br>
+Omdat elke server zijn eigen ip-adres heeft dient dit per website
+gecorrigeerd te worden.<br>
+Ook moet het in 1.8 aangemaakte certificaat nog gekoppeld worden aan
+elke website.</p>
+<h3 id="19-installeer-rmm-op-elke-server-en-check-of-de-server-goed-wordt-weergegeven-in-sentinel-one">1.9 Installeer RMM op elke server en check of de server goed wordt weergegeven in Sentinel One</h3>
+<p>Installeer RMM op de server. Deze ligt in de map C:\Install.</p>
+<h2 id="f5---bigip">F5 - BIGIP</h2>
+<h3 id="21-certificaat-installeren">2.1 Certificaat installeren</h3>
+<p>Onder System \ Certificate Management kunnen SSL-certificaten
+geïmporteerd worden.<br>
+Bijvoorbeeld Wildcard-Montapacking-nl-2021 en ook de bijbehorende chain
+(intermediate en root in een cert-bestand achter elkaar geplakt).</p>
+<p><img src="../../../Attachments/image-a6615815-0ecf-4b48-875c-cfdc9a547b31.png" alt="image.png"></p>
+<p>Klik op Import</p>
+<p><img src="../../../Attachments/image-aced4c35-9c12-4a0b-b875-3f41201a24af.png" alt="image.png"></p>
+<p>Selecteer het Import Type (bij een pfx kies je voor PKCS 12, bij een
+chain kies je voor Certificate).</p>
+<p><img src="../../../Attachments/image-650520a8-54ec-4651-9174-bf77b4bea7eb.png" alt="image.png"></p>
+<p>Vul de naam in,</p>
+<p>Selecteer het bestand en type het daarbij behorende wachtwoord in.</p>
+<p>Druk hierna op &quot;Import&quot;.</p>
+<h3 id="22-aanmaken-http-profiel">2.2 Aanmaken HTTP-profiel</h3>
+<p>Onder &quot;Local traffic \ Profiles \ Services \ HTTP \&quot; staan de
+HTTP-profielen.</p>
+<p>Per website maken we hier een HTTP-profiel.</p>
+<ul>
+<li><p>Kies in het overzicht voor &quot;create&quot;,<br>
+<img src="../../../Attachments/image-7005da66-e1a4-4396-af31-f905cec8207d.png" alt="image.png"></p>
+</li>
+<li><p>Vul de Name in, kies het &quot;Parent Profile&quot; HTTP-Generic.</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-199caff6-6a42-4fce-bad6-bfa809743090.png" alt="image.png"></p>
+<ul>
+<li>Klik onderaan het formulier op &quot;Finished&quot;</li>
+</ul>
+<p><img src="../../../Attachments/image-149407e6-f6fd-480b-9702-b19a563328c9.png" alt="image.png"></p>
+<h3 id="23-aanmaken-ssl-server-profiel">2.3 Aanmaken SSL-Server profiel</h3>
+<p>Onder &quot;Local traffic \ Profiles \ SSL \&quot; staan de SSL-profielen.<br>
+Kies hier voor Server om een server-certificaat aan te maken.</p>
+<ul>
+<li>Kies in het overzicht voor &quot;create&quot;,</li>
+</ul>
+<p><img src="../../../Attachments/image-59729dfb-6663-4954-89d5-eb1751c5cbfb.png" alt="image.png"></p>
+<ul>
+<li>Vul de Name in, kies het &quot;Parent Profile&quot; en zet de &quot;configuration&quot;
+op &quot;Advanced&quot;,</li>
+</ul>
+<p><img src="../../../Attachments/image-d33985a7-21c1-40e8-b0d7-c76612adb752.png" alt="image.png"></p>
+<ul>
+<li>Zet het vinkje aan achter &quot;Server Name&quot; en vul de SNI in.</li>
+</ul>
+<p><img src="../../../Attachments/image-3fc97045-8404-40cc-8696-dc9d489fd974.png" alt="image.png"></p>
+<ul>
+<li>Klik onderaan het formulier op &quot;Finished&quot;</li>
+</ul>
+<p><img src="../../../Attachments/image-fcc93130-b655-4b99-ae81-3f401018c04c.png" alt="image.png"></p>
+<ul>
+<li>Maak nu ook eenzelfde profiel met &quot;-monitor&quot; achter de naam voor de
+monitor van deze website.</li>
+</ul>
+<h3 id="24-aanmaken-ssl-client-profiel">2.4 Aanmaken SSL-Client profiel</h3>
+<p>Onder &quot;Local traffic \ Profiles \ SSL \&quot; staan de SSL-profielen.<br>
+Kies hier voor Client om een client-certificaat aan te maken.</p>
+<ul>
+<li>Kies in het overzicht voor &quot;create&quot;,</li>
+</ul>
+<p><img src="../../../Attachments/image-90ed0a80-0d1a-4f49-862a-4aaad2fe9437.png" alt="image.png"></p>
+<ul>
+<li>Vul de Name in en kies het Parent Profile (Dit is mede afhankelijk
+van het certificaat wat je wilt gebruiken).</li>
+</ul>
+<p><img src="../../../Attachments/image-25e11fe2-5bf1-43c5-a62f-a43ab2ea2b72.png" alt="image.png"></p>
+<ul>
+<li>Klik onderaan het formulier op &quot;Finished&quot;</li>
+</ul>
+<p><img src="../../../Attachments/image-c7491ecd-7e66-4368-9d95-82989b2310e0.png" alt="image.png"></p>
+<h3 id="25-aanmaken-monitor">2.5 Aanmaken Monitor</h3>
+<p>Per website dient er een monitor aangemaakt te worden op https.<br>
+Hier wordt een get-commando verzonden naar de website.<br>
+Ook dienen we het serverssl-profiel uit 2.2 hier weer in te stellen.<br>
+Op die manier wordt er gecontroleerd op de SNI op de webserver</p>
+<ul>
+<li><p>Ga naar &quot;Local traffic \ Monitors&quot;</p>
+</li>
+<li><p>Klik in het overzicht op &quot;create&quot;</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-267f4493-59d3-4151-bb99-39b7f62f5e98.png" alt="image.png"></p>
+<ul>
+<li>Vul de Name. Description in en kies bij &quot;Type&quot; voor HTTPS,</li>
+</ul>
+<p><img src="../../../Attachments/image-24c31a12-5c03-45b2-9086-c5b0e838f03b.png" alt="image.png"></p>
+<ul>
+<li>Vul bij &quot;Send string&quot; het juiste GET-commando in</li>
+</ul>
+<p><img src="../../../Attachments/image-6b3ac868-c839-4c20-9980-54a84c8a5d52.png" alt="image.png"></p>
+<p>In dit voorbeeld is het GET /
+HTTP/1.1\r\nHost:<strong>finance.monta.nl</strong>\r\nConnection:Close\r\n\r\n</p>
+<ul>
+<li>Vul bij &quot;Recieve String&quot; het antwoord in waarop gecontroleerd moet
+worden.</li>
+</ul>
+<p><img src="../../../Attachments/image-4bf31a47-3102-42c6-bf59-474156710e24.png" alt="image.png"></p>
+<p>In dit voorbeeld is dat HTTP/1.1 200 OK</p>
+<ul>
+<li>Selecteer bij SSL Profile het juiste serverssl-profiel</li>
+</ul>
+<p><img src="../../../Attachments/image-31241c26-aa43-4561-ab3d-7cce0280fa5f.png" alt="image.png"></p>
+<ul>
+<li>Selecteer bij &quot;Alias Service Port&quot; HTTPS</li>
+</ul>
+<p><img src="../../../Attachments/image-8b700ecb-9245-4330-9f14-10c0a87a09d3.png" alt="image.png"></p>
+<p>Klik onderaan het formulier op &quot;Finished&quot;</p>
+<ul>
+<li><img src="../../../Attachments/image-85fcf237-6bd0-495b-8e4e-e69d7569e2b9.png" alt="image.png"></li>
+</ul>
+<h3 id="26-aanmaken-nodes">2.6 Aanmaken Nodes</h3>
+<p>Alle te gebruiken webservers dienen eenmaal aangemaakt te worden als
+Node<br>
+Hierin geven we het ip-adres op van we lan-webserver.</p>
+<ul>
+<li>Ga naar &quot;Local traffic \ Nodes \ Node List &quot;,</li>
+</ul>
+<p><img src="../../../Attachments/image-e0059260-e901-4fb4-97f2-008d256bcefc.png" alt="image.png"></p>
+<h3 id="27-aanmaken-pools">2.7 Aanmaken Pools</h3>
+<p>Om Blue-Green in te richten hebben we voor elke website 2 pools nodig.</p>
+<ul>
+<li><p>Ga naar &quot;Local traffic \ Pools \ Pool List &quot;,</p>
+</li>
+<li><p>Klik in het overzicht op &quot;create&quot;</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-ebb4c710-0196-47da-b9b3-9908c2d4d36c.png" alt="image.png"></p>
+<ul>
+<li>Vul de Name en Description in en selecteer de juiste &quot;Health
+Monitor&quot;</li>
+</ul>
+<p><img src="../../../Attachments/image-380050a9-993c-4e72-94ca-89e537c54181.png" alt="image.png"></p>
+<ul>
+<li>Vul bij &quot;Load Balancing Method&quot; Ratio (Member) in.</li>
+</ul>
+<p><img src="../../../Attachments/image-ce91333b-9446-4185-9a9e-54eb9723b3ab.png" alt="image.png"></p>
+<ul>
+<li>Klik nu bij &quot;New Members&quot; op de radio-button &quot;Node List&quot; en
+selecteer hier de eerste Node voor deze pool (in dit voorbeeld is
+dat de MP-WEB300).</li>
+</ul>
+<p><img src="../../../Attachments/image-30326a2e-4d6a-42d4-8fae-f39307f31a12.png" alt="image.png"></p>
+<ul>
+<li><p>Kies bij &quot;Service Port&quot; voor HTTPS.</p>
+</li>
+<li><p>Klik hier op &quot;ADD&quot;.</p>
+</li>
+<li><p>Doe dit ook voor de andere webservers in deze pool (in dit voorbeeld
+is dat de MP-WEB302)<br>
+Het resultaat ziet er dan zo uit.</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-b1f4d193-d3bf-461d-aa72-7c1723d6a0b3.png" alt="image.png"></p>
+<ul>
+<li><p>De Pool voor Blue is nu klaar.</p>
+</li>
+<li><p>Klik onderaan het formulier op &quot;Repeat&quot; om een zelfde pool aan te
+maken voor Green</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-99a12792-c485-44f7-99db-fe700510ce07.png" alt="image.png"></p>
+<ul>
+<li><p>Geef als Name nu een Green-variant op.</p>
+</li>
+<li><p>Selecteer bij &quot;Health Monitor&quot; nu &quot;HTTPS-443&quot; (of als die niet werkt
+&quot;Gateway-ICMP&quot;). <em>Hierdoor kunnen de ontwikkelaars op de
+green-machine altijd zien wat er fout is in de website.</em></p>
+</li>
+<li><p>De &quot;Load Balancing Method mag voor Green op &quot;Round Robbin&quot; blijven
+staan.</p>
+</li>
+<li><p>Klik nu bij &quot;New Members&quot; op de radio-button &quot;Node List&quot; en
+selecteer hier de eerste Node voor deze pool (in dit voorbeeld is
+dat de MP-WEB301).</p>
+</li>
+<li><p>Klik daarna op &quot;Finished&quot;</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-fea66b34-a8f7-4b37-8ee6-84dfcfc8d0cc.png" alt="image.png"></p>
+<h3 id="28-aanmaken-irules-datagroup">2.8 Aanmaken IRules Datagroup</h3>
+<p>Om de IRules te kunnen gebruiken hebben we eerst een datagroep voor
+Green nodig.<br>
+Deze maken we als volgt aan.</p>
+<ul>
+<li><p>Ga naar &quot;Local traffic \ iRules \ Data Group List &quot;,</p>
+</li>
+<li><p>Klik in het overzicht op &quot;create&quot;</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-39ddbccb-08cc-499b-a034-6fe53c9247fc.png" alt="image.png"></p>
+<ul>
+<li>Vul de Name in en selecteer bij &quot;Type&quot; Address</li>
+</ul>
+<p><img src="../../../Attachments/image-c60c62a9-dcd6-4839-9e55-de1552d0a05a.png" alt="image.png"></p>
+<ul>
+<li>Vul bij &quot;Records&quot; de gegevens van de mp-dosp02.montapacking.nl in.<br>
+Klik hierna op &quot;Add&quot;. Dit ziet er dan als volgt uit.</li>
+</ul>
+<p><img src="../../../Attachments/image-40dc17ef-c8fb-47a0-95a9-8e58adbb5b6a.png" alt="image.png"></p>
+<ul>
+<li>Klik daarna op &quot;Finished&quot;</li>
+</ul>
+<p><img src="../../../Attachments/image-fd76cae9-a798-4c7d-8d5c-884a246e7294.png" alt="image.png"></p>
+<h3 id="29-aanmaken-irules">2.9 Aanmaken iRules</h3>
+<p>Nu kunnen we met de in 2.7 aangemaakte Data Group een iRule aanmaken.</p>
+<ul>
+<li><p>Ga naar &quot;Local traffic \ iRules \ iRule List&quot;,</p>
+</li>
+<li><p>Klik in het overzicht op &quot;create&quot;</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-f7e0dd01-90e5-4edb-9a29-440c5aa7c58e.png" alt="image.png"></p>
+<ul>
+<li>Geef onderstaande expressie in, in het veld &quot;Definition&quot;, en
+verander de namen van de Data Group en de Pool.</li>
+</ul>
+<p><img src="../../../Attachments/image-fab372ae-50b9-4665-bbb2-af77b3d07af1.png" alt="image.png"></p>
+<p><strong>De expressie is:</strong></p>
+<p>when CLIENT_ACCEPTED {</p>
+<p>if { [class match [IP::client_addr] equals
+<strong>DG-Pool-Finance-Green]</strong> } {</p>
+<p>pool <strong>Pool-Finance.monta.nl-Green</strong></p>
+<p>}</p>
+<p>}</p>
+<ul>
+<li>Klik daarna op &quot;Finished&quot;</li>
+</ul>
+<p><img src="../../../Attachments/image-c1df4546-c57b-42f1-ba37-ed6867230be8.png" alt="image.png"></p>
+<h3 id="210-aanmaken-virtual-server">2.10 Aanmaken Virtual Server</h3>
+<ul>
+<li><p>Ga naar &quot;Local traffic \ Virtual Servers \ Virtual Server List &quot;,</p>
+</li>
+<li><p>Klik in het overzicht op &quot;create&quot;</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-79d6316e-f11c-457c-b87b-c3661648d88f.png" alt="image.png"></p>
+<ul>
+<li>Vul de Name in geef bij &quot;Destination Address /Mask&quot; het ip-adres op
+waarop de F5 moet luisteren in het DMZ-WEB-vlan,</li>
+</ul>
+<p><img src="../../../Attachments/image-4a4944e0-adf8-4da1-b290-4b90102e40ba.png" alt="image.png"></p>
+<ul>
+<li><p>Selecteer bij &quot;Service Port&quot; HTTPS en zet de configuration op
+Advanced.</p>
+</li>
+<li><p>Selecteer bij &quot;Protocol Profle (client)&quot; de tcp-mobile-optimized en
+bij &quot;HTTP Profile (Client)&quot; het gewenste profiel.</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-d870ead5-bd09-485a-96bc-8fc64633143f.png" alt="image.png"></p>
+<ul>
+<li>Selecteer bij &quot;SSL Profile (Client)&quot;het gewenste client-profiel van
+de website. En selecteer bij &quot;SSL Profile (Server) het gewenste
+sslserver profiel.</li>
+</ul>
+<p><img src="../../../Attachments/image-ef04897d-5154-456a-b33e-f1b15a7a1f62.png" alt="image.png"></p>
+<ul>
+<li>Selecteer bij &quot;VLAN and Tunnel Traffic&quot; Enabled on, en selecteer bij
+de VLAN's DMZ-WEB</li>
+</ul>
+<p><img src="../../../Attachments/image-d86f6ee1-4abf-44a3-a1d0-33d254dd54d0.png" alt="image.png"></p>
+<ul>
+<li><p>Zet de &quot;Source Address Translation&quot; op Auto Map.</p>
+</li>
+<li><p>Selecteer onder het kopje &quot;Resources&quot; bij IRules de gewenste iRule.</p>
+</li>
+<li><p>En bij Default Pool de gewenste pool</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-afed1181-2eca-46de-80b7-251fb59fb2c9.png" alt="image.png"></p>
+<ul>
+<li>Klik daarna op &quot;Finished&quot;</li>
+</ul>
+<p><img src="../../../Attachments/image-525e079c-69dc-41c5-bdd3-64ab64dc73d7.png" alt="image.png"></p>
+<h4 id="aanmaken-http-https-redirect">Aanmaken HTTP HTTPS redirect</h4>
+<p>Op een Virtual Server kunnen we ook een http -&gt; https rewrite
+aanmaken.<br>
+Dit doen we als volgt</p>
+<ul>
+<li><p>Ga naar &quot;Local traffic \ Virtual Servers \ Virtual Server List &quot;,</p>
+</li>
+<li><p>Klik in het overzicht op &quot;create&quot;</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-e62a5477-0cbb-48eb-aaf8-d95fc69725fc.png" alt="image.png"></p>
+<ul>
+<li>Vul de Name in geef bij &quot;Destination Address /Mask&quot; het ip-adres op
+waarop de F5 moet luisteren in het DMZ-WEB-vlan,</li>
+</ul>
+<p><img src="../../../Attachments/image-f5dee564-4443-4076-86f8-5ab2b1c78958.png" alt="image.png"></p>
+<ul>
+<li><p>Selecteer bij &quot;Service Port&quot; <strong>HTTP</strong> en zet de configuration op
+Advanced.</p>
+</li>
+<li><p>Selecteer bij &quot;Protocol Profile (client)&quot; de tcp-mobile-optimized en
+bij &quot;HTTP Profile (Client)&quot; http-redirect</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-3866d8f6-1580-4806-910b-2fcf03027193.png" alt="image.png"></p>
+<ul>
+<li>Selecteer bij &quot;VLAN and Tunnel Traffic&quot; Enabled on, en selecteer bij
+de VLAN's DMZ-WEB</li>
+</ul>
+<p><img src="../../../Attachments/image-57e9da48-50e3-4539-9d6a-00692e9af484.png" alt="image.png"></p>
+<ul>
+<li><p>Zet de &quot;Source Address Translation&quot; op Auto Map.</p>
+</li>
+<li><p>Selecteer hierna bij iRules de _sys_https_redirect rule.</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-d9050040-0b0b-44f8-89d5-96689772ce21.png" alt="image.png"></p>
+<ul>
+<li>Klik daarna op &quot;Finished&quot;</li>
+</ul>
+<p><img src="../../../Attachments/image-0bbd7376-faef-4811-b9e9-9ce9f6ad6fa2.png" alt="image.png"></p>
+<h2 id="sophos-1">Sophos</h2>
+<h3 id="31-dns--en-netwerk-definities-aanmaken">3.1 DNS- en netwerk-definities aanmaken</h3>
+<p>Om de websites benaderbaar te maken moeten er DNS- en netwerk-definities aangemaakt worden.
+Hierbij dient onderscheid gemaakt te worden tussen websites die ook vanaf internet voor klanten/consumenten benaderbaar moeten zijn en websites die alleen voor vestigingen nodig zijn.
+Zie onderstaande afbeelding.</p>
+<p><img src="../../../Attachments/image-c37b0361-24d9-4c9c-9778-d907cf81b8c2.png" alt="image.png"></p>
+<p>Op de F5 staan alle websites in DMZ-WEB, maar omdat er voor de vestigingen een VPN-DMZ gemaakt is kunnen ze net als de servers in het DC LAN van de interne DNS-definitie gebruik maken.  Voor websites die van buitenaf bereikbaar moeten er een extern IP-nr uitgetrokken worden wat bij TransIP wordt geregistreerd. Daarnaast moet er voor de DC-ROU01 een netwerk-definitie aangemaakt worden die gebruikt kan worden in een NAT-rule. Zie onderstaand voorbeeld.</p>
+<table>
+<thead>
+<tr>
+<th>Definitie</th>
+<th>Klant/cons vestiging</th>
+<th>Interne DNS</th>
+<th>TransIP</th>
+<th>Lokale Firewalls</th>
+<th>DC-ROU01</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>api.monta.nl</td>
+<td>Klant/cons</td>
+<td>192.168.201.38</td>
+<td>193.53.249.25</td>
+<td>Geen definitie</td>
+<td>193.53.249.25</td>
+</tr>
+<tr>
+<td>finance.monta.nl</td>
+<td>Vestiging</td>
+<td>192.168.201.62</td>
+<td>Niet</td>
+<td>Geen definitie</td>
+<td>Niet</td>
+</tr>
+</tbody>
+</table>
+<h4 id="section"></h4>
+<h4 id="311-stappenplan-website-van-buitenaf-bereikbaar">3.1.1 Stappenplan website van buitenaf bereikbaar</h4>
+<ol>
+<li><p>Registreer in de interne DNS het DMZ-adres van de Virtuele server
+van de website.</p>
+</li>
+<li><p>Reserveer in de IP-lijst op het tabblad &quot;NorthC | ExternIP&quot; een
+extern IP-nr voor de website.</p>
+</li>
+<li><p>Maak op de DC-ROU01 bij &quot;Interfaces \ Additional addresses&quot; een
+nieuwe interface aan voor het nieuwe IP-nr (clone een bestaande).</p>
+</li>
+<li><p>Maak op de SUM een netwerkdefinitie met bij als naam
+&quot;DNS_VS-api.monta.nl&quot; met het DMZ-WEB IP-nr aan en deploy deze
+alleen naar de dc-rou01.</p>
+</li>
+<li><p>Maak op de dc-rou01 een NAT-rule aan voor het nieuwe externe IP-nr
+en stel deze als &quot;Any via HTTPS naar DNS-VS-api.monta.nl&quot;.</p>
+</li>
+<li><p>Registreer bij TransIP het nieuwe IP-nr.</p>
+</li>
+</ol>
+<h4 id="312-stappenplan-website-alleen-vanaf-vestigingen-bereikbaar">3.1.2 Stappenplan website alleen vanaf vestigingen bereikbaar</h4>
+<ol>
+<li><p>Registreer in de interne DNS het DMZ-adres van de Virtuele server
+van de website.</p>
+</li>
+<li><p>Er zijn verder geen acties nodig omdat zowel de vestigingen als de servers in het DC LAN de interne DNS-definitie gebruiken en daarmee bijvoorbeeld “addressvalidation.monta.nl” vinden op ip-nr 192.168.201.80</p>
+</li>
+</ol>
+<h3 id="section-1"></h3>
+<h2 id="prtg-1">PRTG</h2>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

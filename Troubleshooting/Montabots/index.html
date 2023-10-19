@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Montabots </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Montabots ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+  
+  <meta property="docfx:rel" content="../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="montabots">Montabots</h1>
+
+<p><img src="../../Attachments/Montabot_150-af5ec980-e59b-491d-abf4-5678ddd15f68.png" alt="Montabot_150.png"></p>
+<h2 id="keuzeboom-troubleshooting-montabots">Keuzeboom troubleshooting Montabots</h2>
+<p>Gebruik de keuzeboom om de correcte oplsossing te vinden voor het probleem</p>
+<div class="mermaid">
+graph TD;
+subgraph Keuzeboom troubleshooting Montabots
+product_info[Er is iets mis] --ja-->open_orders[Staan er nog orders open?] --ja-->staat_planner_rood[Staat de planner op rood of is hij uitgevallen?] --ja-->instellingen[staan alle instellingen goed?] --ja-->planner_uitgevallen[is de planner uitgevallen?] --nee-->order_block[Is er een order die het proces blocked?] --ja-->L_order[L order controleren]
+end
+subgraph Oplossingen
+open_orders_oplossing[Er is geen werk beschikbaar, <br> ga naar Monta Bot Cockpit extra informatie]---staat_planner_rood_oplossing[Planner opnieuw opstarten, <br> ga naar het uitvallen van de  Montabotplanner of Montabotheffer service]---
+instellingen_oplossing[Zet de instellingen terug naar standaard, <br> ga naar oplossing 2 verkeerde instellingen in Monta Bot Cockpit]---
+planner_uitgevallen_oplossing[Opnieuw opstarten, <br> ga naar oplossing 1 services]---
+order_block_oplossing[Controleer supervisor op binnenkomende opdrachten, <br> ga naar het uitvallen van de Montabotplanner of Montabotheffer service]
+end
+open_orders-->open_orders_oplossing
+staat_planner_rood-->staat_planner_rood_oplossing
+instellingen-->instellingen_oplossing
+order_block-->order_block_oplossing
+</div>
+<p>De Montabots zijn Autonome Mobiele Robots (AMR's) van het merk <a href="https://lowpad.com/">Lowpad</a>. De Montabots worden gebruikt voor het transporteren van opslagrekken. Een Montabot is in staat een rek op te tillen, ergens heen te rijden en weer neer te zetten. De Montabots hebben sensoren waardoor ze afremmen voor obstakels. Hierdoor is het mogelijk voor Monta medewerkers om in dezelfde ruimte te werken als de Montabots. Wel is het goed de veiligheid flyer te bekijken voordat je in het Montabot gebied gaat werken.  <a href="https://vragen.montapacking.nl/Docs/Algemene-informatie/Apparaten/Montabots/Veiligheid-Montabots/">Deze flyer is hier te vinden</a>  en hangt op bij de ingangen van de Montabot gebieden.</p>
+<p>Naast deze pagina met algemene informatie is er ook een <a href="https://vragen.monta.nl/Docs/Handleidingen/Montabots/">handleiding</a> en een pagina met <a href="https://vragen.monta.nl/Docs/Algemene-informatie/Apparaten/Montabots/">algemene informatie</a></p>
+<h2 id="trouble-shooting-videos">Trouble shooting videos</h2>
+<p>Onderstaand een aantal filmpjes over issues die soms optreden en hoe je die kunt oplossen</p>
+<h3 id="montabot-aan-en-uitzetten">Montabot aan en uitzetten</h3>
+<p>::: video</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/0125de9593b74843a59a085c606bdf72" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+:::
+<h3 id="montabot-is-lokalisatie-kwijt">Montabot is lokalisatie kwijt</h3>
+<p>::: video</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/637c4593bd3545b89327f617668ceee4" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+:::
+<h3 id="montabot-knippert-blauw">Montabot knippert blauw</h3>
+<p>::: video</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/16dc95f024874f64a8ed689fb9456965" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+:::
+<h3 id="montabot-knippert-rood">Montabot knippert rood</h3>
+<p>::: video</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/2155a4a9146a4f6f95dc4d38ed199a39" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+:::
+<p>Bij een rood knipperende montabot is er sinds half 2022 ook de mogelijkheid een reset knop te gebruiken die op de montabot zit. Deze knop kan gebruikt worden als het obstakel inmiddels weg is en de montabot weer zou kunnen gaan rijden.
+::: video</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/8200d2602eec41fb89fd52228330b886" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+:::
+<h3 id="montabot-is-offline">Montabot is offline</h3>
+<p>::: video</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/d07661378e4f4754bd25796f0078eaa0" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+:::
+<h2 id="stappenplan-troubleshooting-lowpads">Stappenplan troubleshooting Lowpads</h2>
+<p>Als er geen meldingen worden gemaakt in <a href="#Elastic">Elastic</a> of de <a href="#Logfile">logfile</a>. Dan kan er iets mis zijn met een van de Montabot instellingen of services.</p>
+<h3 id="het-uitvallen-van-de-montabotplanner-of-montabotheffer--service">Het uitvallen van de <strong>&quot;MontabotPlanner&quot;</strong> of <strong>&quot;MontabotHeffer&quot;</strong>  service</h3>
+<p>Dit kan voorkomen bij het verwerken van een order met een hoge aantal aan artikelen (een <strong>&quot;L&quot;</strong> order). De redenen hiervoor is omdat het systeem de berekening van de hoeveelheid artikelen niet rond kan krijgen met de beschikbare capaciteit. Dit is te controleren via een stappenplan.</p>
+<h4 id="1-controleren-van-l-orders">1. Controleren van <strong>&quot;L&quot;</strong> orders</h4>
+<p>In het <a href="https://gomonta.montapacking.nl/WMS/Outbound">outbound dashboard van GoMonta</a> kun je <strong>&quot;Picking Info&quot;</strong> sorteren. Kijk op de 2de en 3de verdieping  voor LXL orders. Selecteer een order ID in de lijst en controleer of het bestaat uit een groot aantal artikelen. Wanneer dit het geval is moet aan de shiftleader doorgegeven worden welke order het is, vervolgens moet deze uitgeprint worden en handmatig gepickt worden.</p>
+<p><img src="../../Attachments/msedge_OrowY0UxnW-baf2415c-abbe-435e-8f71-2994ac9756d1.png" alt="msedge_OrowY0UxnW.png">
+<img src="../../Attachments/msedge_3xN4CrUD7T-8c2df5b3-967b-4cd2-bcc7-6fd669b0bc3e.png" alt="msedge_3xN4CrUD7T.png">
+<img src="../../Attachments/msedge_inzbNgDJRC-7fbe6810-18a8-4251-9fcc-3ec008f6a315.png" alt="msedge_inzbNgDJRC.png"></p>
+<h4 id="11-oplossing-1-services">1.1 Oplossing 1 &quot;Services&quot;:</h4>
+<h5 id="stap-1-verbinden-met-mp-proc03monatpackingnl">Stap 1 verbinden met &quot;mp-proc03.monatpacking.nl&quot;</h5>
+<p>Als er geen meldingen meer binnenkomen in <a href="#Elastic">Elastic</a> is het altijd verstandig om  met <strong>&quot;mp-proc03.montapacking.nl&quot;</strong> te verbinden.</p>
+<p><img src="../../Attachments/msedge_Lx0Jm0aP9z-fdb0d562-0a73-4730-ba72-1522819db289.png" alt="msedge_Lx0Jm0aP9z.png"></p>
+<h5 id="stap-2-openen-van-services">Stap 2 openen van services</h5>
+<p>Wanneer je ingelogd bent op <strong>&quot;mp-proc03.monatpacking.nl&quot;</strong> wil je de Windows-toets indrukken.</p>
+<p><img src="../../Attachments/msedge_bxEa9E65gQ-fb5cb9a6-757c-4a07-98fd-0ece076502e1.png" alt="msedge_bxEa9E65gQ.png"></p>
+<p>Vervolgens wil je zoeken naar <strong>&quot;Services&quot;</strong></p>
+<p><img src="../../Attachments/msedge_hlAlPlxFrh-cfd0d98e-ca13-4612-a5b2-dc5e9ab545db.png" alt="msedge_hlAlPlxFrh.png"></p>
+<p><strong>&quot;Services&quot;</strong> openen door dubbelklikken of entertoets te drukken.</p>
+<h5 id="stap-3-starten-van-montabotplanner--montabotheffer">Stap 3 starten van <strong><em>&quot;MontabotPlanner&quot;</em></strong> &amp; <em><strong>&quot;MontabotHeffer&quot;</strong></em></h5>
+<p>Controleer of de <strong><em>&quot;MontabotPlanner&quot;</em></strong> &amp; <em><strong>&quot;MontabotHeffer&quot;</strong></em> services <em><strong>running</strong></em> zijn.
+Dat kun je doen door te zoeken naar de zoekterm <strong><em>Montabot</em></strong> binnen <strong>services</strong>. Wanneer de <strong><em>&quot;MontabotPlanner&quot;</em></strong> of <em><strong>&quot;MontabotHeffer&quot;</strong></em> weergegeven zijn controleer je de status. Als er bij de status geen <em><strong>running</strong></em> wil je het proces opnieuw starten. Dit doe je door het selecteren van de services en dan rechter muisknop te klikken. Vervolgens wil je op de optie <strong>&quot;Start&quot;</strong> klikken. Hiermee start je de services opnieuw op.</p>
+<p><img src="../../Attachments/image-e629dd2a-5507-40ff-9afa-75f5c55e2178.png" alt="image.png"></p>
+<h4 id="12-oplossing-2-verkeerde-instellingen-in-monta-bot-cockpit">1.2 Oplossing 2 Verkeerde instellingen in &quot;Monta Bot Cockpit&quot;</h4>
+<p>Er kunnen verkeerde instellingen in <a href="#Monta-Bot-Cockpit">Monta Bot Cockpit</a> ingesteld zijn. Om deze app te open kun je applicatie <a href="#Monta-Bot-Cockpit">downloaden</a> of via teamviewer connectie maken met de Lowpad outbound PC (MONPC 1197).
+<img src="../../Attachments/msedge_TEqxm0nVYi-9bbd8fe9-dc34-4204-9e3d-7fa9383fd312.png" alt="msedge_TEqxm0nVYi.png"></p>
+<h5 id="stap-1-openen-van-de-instellingen">Stap 1 openen van de instellingen</h5>
+<p>Om dit te controleren moet in het startscherm de <strong>tandwieloptie</strong> gekozen worden.
+<img src="../../Attachments/msedge_EtxqfQgNqD-4e732c31-dd5f-4663-bc51-77a7323b161b.png" alt="msedge_EtxqfQgNqD.png"></p>
+<h5 id="stap-2-controleren-van-de-instellingen">Stap 2 Controleren van de instellingen</h5>
+<p>Nadat je op het <strong>tandwiel</strong> geklikt hebt worden de instellingen weergegeven.
+Controleer of de volgende instellingen kloppen:</p>
+<p>Echeckwalls:</p>
+<ul>
+<li><strong>Montabot Blauw</strong> staat <strong>aan</strong></li>
+<li><strong>Montabot Geel</strong> staat <strong>aan</strong></li>
+</ul>
+<p><strong>Let op!</strong></p>
+<p><strong>De knoppen van Algemeen, inbound, outbound, pickeiland en replenish</strong></p>
+<p><strong>Geven de status aan waar ze naartoe veranderen als je erop klikt</strong></p>
+<p><strong>Dus als er staat uitschakelen betekent dat het ingeschakeld is</strong></p>
+<p>Algemeen: <strong>ingeschakeld</strong></p>
+<p>Inbound:    <strong>ingeschakeld</strong></p>
+<p>Outbound:   <strong>ingeschakeld</strong></p>
+<p>Pickeiland: <strong>ingeschakeld</strong></p>
+<p>Replenish:   <strong>Uitgeschakeld</strong></p>
+<p><strong>Hieronder een afbeelding van de correcte instellingen</strong></p>
+<p><img src="../../Attachments/msedge_Zkkwp8Nc6x-b9803e22-79c0-4cc3-9668-cd7eacc8a412.png" alt="msedge_Zkkwp8Nc6x.png"></p>
+<p>Controleer of de instellingen kloppen met de afbeelding .</p>
+<h4 id="13-geen-vrije-posities-beschikbaar">1.3 geen vrije posities beschikbaar</h4>
+<p>Het kan voorkomen dat de Montabots geen vrije posities beschikbaar heeft op een verdieping. Om dit te controleren moet er gekeken worden in de <a href="#Monta-Bot-Cockpit"><strong>&quot;Monta Bot Cockpit&quot;</strong></a>. Om deze app te open kun je applicatie <a href="#Monta-Bot-Cockpit">downloaden</a> of via teamviewer connectie maken met de Lowpad outbound PC (MONPC 1197).
+<img src="../../Attachments/msedge_TEqxm0nVYi-9bbd8fe9-dc34-4204-9e3d-7fa9383fd312.png" alt="msedge_TEqxm0nVYi.png"></p>
+<h5 id="stap-1-open-monta-bot-cockpit">stap 1 open &quot;Monta Bot Cockpit&quot;</h5>
+<p><img src="../../Attachments/msedge_JcGpal2uxn-c94f3f2c-b9da-40a4-9d60-58d0c487b9e1.png" alt="msedge_JcGpal2uxn.png"></p>
+<h5 id="stap-2-klik-op-dashboard">stap 2 Klik op &quot;Dashboard&quot;</h5>
+<p><img src="../../Attachments/msedge_pUdCjwhesc-87d1908e-147f-41d5-b0be-9630b85f63a7.png" alt="msedge_pUdCjwhesc.png"></p>
+<h5 id="stap-3-bekijk-vrije-posities-per-verdieping">stap 3 Bekijk vrije posities per verdieping</h5>
+<p><img src="../../Attachments/msedge_Jcq6Cz9hJr-08ad1a04-1ff8-49a1-9ddf-0753d45dfbc3.png" alt="msedge_Jcq6Cz9hJr.png"></p>
+<p>Kijk per verdieping of er nog vrije posities zijn, zo niet meldt dit bij de shiftleader.</p>
+<p>##pickeiland</p>
+<h2 id="extra-informatie">Extra informatie</h2>
+<h3 id="elastic">Elastic</h3>
+<p>Elastic werkt als een meldingscentrum  voor de Lowpads. Wanneer er geen meldingen binnenkomen is er iets mis met de de Montabots.</p>
+<h3 id="monta-bot-cockpit">Monta Bot Cockpit</h3>
+<p><img src="../../Attachments/image-d85088d0-54ef-4efc-b062-fe747bcc7566.png" alt="image.png"></p>
+<p>Monta Bot Cockpit is een applicatie van Monta waarmee je informatie en instellingen kan zien van de Montabots. De applicatie kan je downloaden via het bedrijfsportaal.</p>
+<h3 id="monta-bot-cockpit-1">Monta Bot Cockpit</h3>
+<p><img src="../../Attachments/ApplicationFrameHost_AFDEs8tU6v-b51f0e6c-0aee-4c3c-8057-2392d0d7ff90.png" alt="ApplicationFrameHost_AFDEs8tU6v.png"></p>
+<h3 id="monta-bot-cockpit-extra-informatie">Monta Bot Cockpit extra informatie</h3>
+<p>In &quot;Monta Bot Cokpit&quot; kun je meer informatie krijgen over het aantal rekken dat gehaald kan worden. Soms komt het voor dat deze op 0 staat. Dit kan betekenen dat er op het moment geen orders zijn. Wanneer er wel orders zijn en het getal is 0 kan het betekenen dat er iets mis met de Montabots in dat geval is het aangeraden om te kijken of een <a href="#het-uitvallen-van-de-**%22montabotplanner%22**-of-**%22montabotheffer%22**--service">service</a> is uitgevallen.</p>
+<p><img src="../../Attachments/image-25e39745-9187-46bb-80c0-e21c5b963ba2.png" alt="image.png"></p>
+<h3 id="inloggen-lowpad-supervisor-via-mp-proc02montapackingnl">Inloggen Lowpad supervisor via &quot;mp-proc02.montapacking.nl&quot;</h3>
+<p>Met Lowpad supervisor krijg je meer informatie te zien over de huidige positie van de Montabots.</p>
+<p><img src="../../Attachments/image-e3471286-90eb-40b8-a814-96ecca334c37.png" alt="image.png"></p>
+<p>Wanneer je ingelogd bent op &quot;mp-proc02.montapacking.nl&quot; kun je per verdieping inloggen met de volgende links:</p>
+<p>verdieping 1</p>
+<p><a href="https://lowpad01.monta.nl/account/login">https://lowpad01.monta.nl/account/login</a></p>
+<p>verdieping 2</p>
+<p><a href="https://lowpad02.monta.nl/account/login">https://lowpad02.monta.nl/account/login</a></p>
+<p>verdieping 3</p>
+<p><a href="https://lowpad03.monta.nl/account/login">https://lowpad03.monta.nl/account/login</a></p>
+<p><img src="../../Attachments/msedge_FfscuWEkTu-d5769d5c-ceac-47c8-9275-dd8768f1bfb9.png" alt="msedge_FfscuWEkTu.png"></p>
+<p><img src="../../Attachments/msedge_miPWI8yMrs-4fa9404b-9f4b-43bd-bb7c-86271e4e4f75.png" alt="msedge_miPWI8yMrs.png"></p>
+<p><img src="../../Attachments/msedge_fqtrlpm5ZV-ba6116e6-13f3-4989-842e-ea2e6a8157a6.png" alt="msedge_fqtrlpm5ZV.png"></p>
+<p><img src="../../Attachments/msedge_tFwm4k8b1E-04749a93-218f-4fb2-a65c-ce8cfd967b72.png" alt="msedge_tFwm4k8b1E.png"></p>
+<h3 id="transportrek-op-de-2e-verdieping-met-niet-gepickte-orders">Transportrek op de 2e verdieping met niet gepickte orders</h3>
+<p>Het kan voorkomen dat een transportrek op de 2e verdieping is geplaatst, met orders die niet gepickt zijn. Om dit op te lossen moet dit rek weer terug naar de 3e verdieping. Dan zal het tranportrek bij het pickeiland worden geplaatst om de orders te picken.</p>
+<p>Hiervoor moet handmatig een lift opdracht worden ingeschoten. Momenteel kan dit alleen in de database worden gedaan.</p>
+<p>Dit moet worden gedaan in tblLiftJobGroups.</p>
+<p><img src="../../Attachments/image-732b6b07-d7fa-4050-b7fb-776eb09981da.png" alt="image.png"></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

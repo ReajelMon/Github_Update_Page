@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>LedControl handleiding </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="LedControl handleiding ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="ledcontrol-handleiding">LedControl handleiding</h1>
+
+<p>Dit is de handleiding om een LedControl systeem op te zetten.</p>
+<hr>
+<h2 id="benodigde-hardware">Benodigde hardware</h2>
+<ul>
+<li>Voeding</li>
+<li>Ledcontrollers</li>
+<li>Ledstrips</li>
+<li>Pc</li>
+</ul>
+<p>Gebruik een voeding die het wattage van de ledstrip aan kan! (Voor de Havana pixel strip is dit 14,4W per meter)</p>
+<p>Sluit de voeding als volgt aan op de ledcontroller en de ledstrips om knipperen van de ledstrips te voorkomen:</p>
+<p><img src="../../../Attachments/image-f0b1b5ed-0d04-49a6-bcfe-afb290c6c861.png" alt="image.png"></p>
+<hr>
+<h2 id="ledcontroller-instellingen">LedController instellingen</h2>
+<h3 id="showtec-spi-2-install">Showtec SPI-2 Install</h3>
+<p>De instellingen van de ledcontroller kunnen gedaan worden op de controller zelf of via de webpagina van de controller.</p>
+<p>Neem de volgende instellingen over</p>
+<p><img src="../../../Attachments/image-d1052661-cc4a-4777-ae37-631054967c90.png" alt="image.png"></p>
+<p>Vul bij <code>LED Quantity</code> het aantal meter van de ledstrip keer 10 (elke 10 centimeter is apart aanstuurbaar).</p>
+<p>Let op dat de <code>Universe</code> bij de 2 ports verschillend zijn, <code>DMX Address</code> maakt niet uit.</p>
+<p>Als er niets is aangesloten op een van de uitgangen vul 1 in bij <code>LED Quantity</code> 0 is niet toegestaan.</p>
+<p>Volledige handleiding: <a href="https://www.highlite.com/en/mwdownloads/download/link/id/17426620/">https://www.highlite.com/en/mwdownloads/download/link/id/17426620/</a></p>
+<hr>
+<h3 id="showtec-net-23-pocket">Showtec NET-2/3 Pocket</h3>
+<p>Ook deze controller heeft een web interface wat het instellen wat makkelijker maakt.</p>
+<p>De username is <code>Admin</code> en het wachtwoord is <code>Admin</code>.</p>
+<p>Neem de volgende instellingen over:</p>
+<p><img src="../../../Attachments/image-01b0b137-c409-41dc-971d-abbaf5a48d66.png" alt="image.png"></p>
+<p>Let weer goed op bij <code>Network</code> dat deze verschilt bij de 2 uitgangen.</p>
+<p>Volledige handleiding: <a href="https://www.huss-licht-ton.de/images/products_download/Manual_34954_1.pdf">https://www.huss-licht-ton.de/images/products_download/Manual_34954_1.pdf</a></p>
+<p>Bij het instellen van DMX adressen in de lampen is het belangrijk dat er goed doorgeteld wordt. Bijvoorbeeld 2 lampen met 3 adressen, lamp 1 start op adres 1, lamp 2 start op adres 4, enzovoorts.</p>
+<p>Belangrijk! bij beide uitgangen wordt er begonnen met tellen vanaf 1.</p>
+<hr>
+<h2 id="database-instellingen">Database instellingen</h2>
+<h3 id="controllers-instellen">Controllers instellen</h3>
+<p>De tabellen staan in de Monta_Backend database</p>
+<p>De eerste tabel die ingesteld moet worden is <code>tblDmxController</code></p>
+<p><img src="../../../Attachments/image-c7803b35-6899-455b-ba52-6262ce2f8e8c.png" alt="image.png"></p>
+<p>Het <code>LocalIpAddress</code> is niet verplicht om in te vullen</p>
+<p>Vervolgens kan de tabel <code>tblDmxUniverses</code> ingesteld worden</p>
+<p><img src="../../../Attachments/image-78378e08-71ea-4107-8771-0df54e4898af.png" alt="image.png"></p>
+<p>In deze tabel moet voor elke uitgang van de controller een rij toegevoegd worden, voorbeeld:</p>
+<p><img src="../../../Attachments/image-a145d0d3-e7f3-4472-93e1-62c8d1ab2f46.png" alt="image.png"></p>
+<p>Het <code>ControllerId</code> is het <code>Id</code> uit tabel <code>tblDmxController</code></p>
+<p>De waardes <code>Universe</code> en <code>SegmentQty</code> komt overeen met de instelling in de controller.</p>
+<p>De waarde <code>Order</code> kan gebuikt worden om aan te geven welke uitgang eerst komt zoals bij een trap.</p>
+<hr>
+<h3 id="groepen-maken">Groepen maken</h3>
+<p>In de tabel <code>tblDmxWarehouseGroup</code> kunnen nu groepen gemaakt worden.</p>
+<p><img src="../../../Attachments/image-e9238e77-d65a-42d0-a290-41cc3fb94068.png" alt="image.png"></p>
+<p>De <code>Name</code> die hier ingesteld wordt is ook de naam die op MontaPortal getoond wordt.</p>
+<p>Met <code>IsActive</code> kan een groep aan of uit gezet worden</p>
+<p>Nu we de groepen hebben kunnen er subgroepen gemaakt worden in de tabel <code>tblDmxGroups</code>.</p>
+<p><img src="../../../Attachments/image-971e7503-fc59-42c8-87ae-61070cfb797f.png" alt="image.png"></p>
+<p>De <code>DisplayName</code> die hier ingesteld wordt is ook de naam die op MontaPortal getoond wordt.</p>
+<p>Het <code>GroupId</code> is het <code>Id</code> uit de tabel <code>tblDmxWarehouseGroup</code>.</p>
+<p>Het <code>GroupTypeId</code> kan meerdere waardes hebben hieronder een lijst van de mogelijkheden</p>
+<ul>
+<li>1 = controller, de groep bestaat uit een volledige uitgang</li>
+<li>2 = segmenten, de groep bestaat uit bepaalde segmenten van controlleruitgangen</li>
+<li>3 = sensoren, de groep bestaat uit segmenten en is specifiek bedoeld voor LedSensorControl</li>
+<li>4 = dmx kanalen, de groep (of eigenlijk lamp) bestaat uit een aantal kanalen, altijd 3 of 4!</li>
+</ul>
+<p>Het <code>ControllerId</code> moet altijd ingevuld worden, dit kunnen er ook meerdere zijn.</p>
+<p>De <code>Segments</code> hoeven alleen bij <code>GroupTypeId</code> 2 en 3 ingevuld worden. Een aantal segmenten kan bij elkaar horen zoals bij een traptrede. Om dit te doen kun je de segmenten zo noteren:</p>
+<p><img src="../../../Attachments/image-c63b1c88-7e53-446f-a8f3-ba84c670bef6.png" alt="image.png"></p>
+<p>Bij elkaar horende segmenten worden doorgeteld met <code>-</code> en gescheiden segmenten door <code>,</code>.</p>
+<p>Om segmenten goed aan te sturen moeten de segmenten doorgeteld worden, als er 4 uitgangen gebruikt worden (2 controllers) begin je dus niet overnieuw met tellen bij een volgende uitgang maar wordt er doorgeteld.</p>
+<p>De <code>Channels</code> wordt alleen ingevuld bij <code>GrouptypeId</code> 4. Kanalen worden alleen gescheiden door <code>,</code> en kunnen alleen bestaan uit 3 of 4 kanalen (RGB en RGBW)</p>
+<p>Controllers kunnen bij meerdere groepen horen mits die groepen hetzelfde <code>GroupTypeId</code> hebben.</p>
+<hr>
+<h3 id="scenes">Scenes</h3>
+<p>In de tabel <code>tblDmxWarehouseScenes</code> staan de scenes die gemaakt kunnen worden in MontaPortal.</p>
+<p>Hier is het niet nodig om iets toe te voegen.</p>
+<hr>
+<h2 id="montaportal">MontaPortal</h2>
+<p>In MontaPortal moet er een thumbnail worden toegevoegd om duidelijk te maken waar de verlichting zicht bevindt.
+Deze afbeelding moet dezelfde naam hebben als de <code>Name</code> zoals die in de database in tabel <code>tblDmxWarehouseGroup</code> staat.</p>
+<p>De afbeelding moet in de map <code>\\mp-web320.montapacking.nl\cdn.montaportal.nl\PublicFiles\Images\Hardware afbeeldingen\LedControl</code> staan. (Graag zoveel mogelijk in dezelfde stijl als Molenaarsgraaf)</p>
+<hr>
+<h2 id="lokale-pc">Lokale PC</h2>
+<p>Om het LedControl programma te kunnen runnen moet er een pc lokaal in het pand zijn om de ledcontrollers aan te sturen.
+Het programma LedControl moet met 1 argument aangeroepen worden, dit argument is het WarehouseId waar de pc zich bevindt.</p>
+<p>Bij het LedSensorControl programma hoeft dat niet omdat dit programma specifiek voor Molenaarsgraaf is en niet op andere locaties wordt gebruikt.</p>
+<p>De Pc moet toegang hebben tot MontaWebserviceREST en de ledcontrollers.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

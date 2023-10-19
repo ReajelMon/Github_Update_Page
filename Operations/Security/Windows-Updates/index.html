@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Windows Updates </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Windows Updates ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="windows-updates">Windows Updates</h1>
+
+<p>In &quot;Monta Services BV\Serviceteam - IT Operations - Documenten\Operations\Security\Overzicht patch tuesdays.xlsx&quot; staan de datums van de Windows Updates.</p>
+<p>Op de woensdag na patch tuesday moet ingesteld worden dat een aantal servers in ieder geval gaan rebooten.</p>
+<p>Wijzig in RMM onder patchmanagement - feature policy de &quot;Server-0250-met-reboot&quot;.</p>
+<p><img src="../../../Attachments/image-ee38236a-c4c4-4b56-abd6-e318409c590c.png" alt="image.png"></p>
+<p>Zet bij Installation Schedule Reboot op always.</p>
+<p><img src="../../../Attachments/image-6585f893-3f13-4bb4-8bdc-8a1cfffa60ef.png" alt="image.png"></p>
+<p>Stel in RMM een reboot in om 05:00 voor de MP-WEB205 en MP-WEB220.</p>
+<p>Check op donderdag in PRTG en RMM of er servers niet goed opgekomen zijn.
+Start deze via VMWare.</p>
+<p>Check welke servers net herstart zijn (behalve de MP-DMZ01, MP-BACK01, MP-FS100, MP-FS200 en MP-LOG01) en herstart deze of plan er een herstart voor in.</p>
+<p>Check vervolgens in RMM via Patchmanagement / Workflow de status van de patch jaartal-maandnummer.
+Zet alle filters op alle opties en vul bijvoorbeeld 2023-06 in.<br>
+Het gaat dan om de security updates voor Server 2012R2 en Server 2019.</p>
+<p><img src="../../../Attachments/image-4901c5e2-32fc-454a-b81d-5858d6876a31.png" alt="image.png">
+<img src="../../../Attachments/image-8287f4b0-06ec-4e2d-abb1-46b4464270a0.png" alt="image.png">
+<img src="../../../Attachments/image-37fde864-0a6f-46d7-8df8-1adda8b063a2.png" alt="image.png"></p>
+<p>Voeg aan het document &quot;Monta Services BV\Serviceteam - IT Operations - Documenten\Operations\Security\Windows Updates Servers status per maand.docx&quot; een hoofdstuk toe ne neem daar alle servers op die niet de status Installed hebben.</p>
+<p>Vaak zijn het dezelfde servers waarvan de updates niet goed gegaan zijn.
+Hiervoor loopt bij N-able een reeds lang lopende case : 02189857</p>
+<p>&quot;Monta Services BV\Serviceteam - IT Operations - Documenten\Operations\Servers\Algemeen\N-able cases\Case 02189857 Regarding 20 servers patches not installed with different errors&quot;</p>
+<p>Laat de reboot instellin gop &quot;Always&quot; staan tot en met zaterdag.
+Als er op zaterdag van de servers in &quot;Server-0250-met-reboot&quot; voldoende servers Windows Updates geïnstalleerd hebben zet dan de instelling dan weer terug naar &quot;When Required&quot;.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

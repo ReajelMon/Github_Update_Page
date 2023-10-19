@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Troubleshooting </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Troubleshooting ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  <meta property="docfx:rel" content="../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="troubleshooting">Troubleshooting</h1>
+
+<table>
+<thead>
+<tr>
+<th><center><img src="../Attachments/troubelshooting50x50-26432bc7-1812-4111-8c62-6573aebc3cee.png" alt="troubelshooting50x50.png"></center></th>
+</tr>
+</thead>
+</table>
+<p>Deze pagina beschrijft problemen die je kan tegenkomen.</p>
+<p><a href="../Troubleshooting/EcheckWall"><img src="../Attachments/TroubleshootingEcheckwall175175-ffe339de-3a8a-4947-95d3-fcd44dd1dbff.png" alt="TroubleshootingEcheckwall175175.png"></a> <a href="../Troubleshooting/PUTL"><img src="../Attachments/TroubleshootingPUTL175175-5f23b2e8-3304-4e9b-a695-e6689a3db7e0.png" alt="TroubleshootingPUTL175175.png"></a> <a href="../Troubleshooting/Montabots"><img src="../Attachments/troubleMontabots175x175-89710504-4ff6-4f69-b929-fa3a4885e898.png" alt="troubleMontabots175x175.png"></a> <a href="../Troubleshooting/ProGlove"><img src="../Attachments/TroubleshootingProGlove_175%20(5)-c03bb6e9-7450-447a-8270-b48086be8e74.png" alt="TroubleshootingProGlove_175 (5).png"></a></p>
+<h2 id="koppelingen">Koppelingen</h2>
+<h3 id="er-staan-orders-in-backorder-terwijl-ik-een-voorraadkoppeling-heb">Er staan orders in backorder terwijl ik een voorraadkoppeling heb</h3>
+<p>Dit kan de volgorde oorzaken hebben:</p>
+<ol>
+<li><p>Er zijn meerdere webshops met een voorraadkoppeling en het laatste item is ongeveer tegelijkertijd in meerdere webshops verkocht. Als een product in één webshop verkocht is, duurt het namelijk ongeveer een kwartier voordat de voorraad in de andere webshops ook bijgewerkt is. Een oplossing kan zijn om de laatste stuks maar in één webshop aan te bieden. Dit kan door het maken van een stock allocatie. Zie <a href="../Algemene-informatie/Outbound#voorraadallocatie">Algemene informatie - Outbound - Voorraad allocatie</a>.</p>
+</li>
+<li><p>Er is voorraad opgeboekt in de webshop door een ander proces dan de voorraadkoppeling van Monta. Veelvoorkomend is dat als een order in het webshopsysteem geannuleeerd wordt, het webshopsysteem de voorraad van de order opboekt.</p>
+</li>
+</ol>
+<h2 id="picken">Picken</h2>
+<h3 id="de-juiste-orders-worden-niet-als-eerste-gepickt">De juiste orders worden niet als eerste gepickt!</h3>
+<ol>
+<li>Het is belangrijk dat orderpickers de juiste verdieping en pickstroom kiezen.</li>
+<li>Zorg ervoor dat de juiste pickstijl gekozen is in GoMonta</li>
+<li>Bij bulkpicken worden orders van verschillende afhaaltijden toegewezen. Dit kan ervoor zorgen dat die ene order net voor de afhaaltijd in een pickronde met veel orders terechtkomt. Het picken van verschillende afhaaltijden bij bulkpicken is uit te schakelen in GoMonta, evt een x aantal minuten voor de afhaaltijd.</li>
+</ol>
+<p>Voor meer info zie: <a href="../Algemene-informatie/Outbound#volgorde-van-orders-picken">Algemene informatie - Outbound - Picken - volgorde van orders picken</a>.</p>
+<h3 id="er-staan-geen-orders-op-de-scanner">Er staan geen orders op de scanner</h3>
+<p>Controleer of de instelling &quot;alleen overdue picken&quot; niet is ingeschakeld.</p>
+<h2 id="voorraad">Voorraad</h2>
+<h3 id="er-staan-nog-te-koppelen-tt01-labels-die-niet-gekoppeld-of-verwijderd-kunnen-worden">Er staan nog te koppelen TT01 labels die niet gekoppeld of verwijderd kunnen worden</h3>
+<p>Het kan soms gebeuren dat er meerdere koppellabels zijn van hetzelfde product, en één van de koppellabels dubbel gekoppeld wordt.</p>
+<p>Het saldo op de TT01 locatie is dan lager geworden dan het aantal op openstaande TT01 labels, waardoor de laatste labels niet gekoppeld of verwijderd kunnen worden omdat er geen voorraad is.</p>
+<p>Met de volgende query kan gevonden worden welke labels dubbel gekoppeld zijn:</p>
+<pre><code>select tblVoorraad.VoorraadID, tblVoorraad.Hoeveelheid, tblVoorraad.Aanmaakdatum, tblVoorraad.Inslag, tblVoorraad.Referentie, sum(tblvoorraadtransitokoppeloplocatie.aantal) as gekoppeld
+from tblVoorraad
+left join tblVoorraadTransitoKoppelOpLocatie on tblVoorraad.VoorraadID = tblVoorraadTransitoKoppelOpLocatie.InboundVoorraadID
+where Materiaal = ?
+and Locatie = ?
+and TypeBoeking = 1
+group by tblVoorraad.VoorraadID, tblVoorraad.Hoeveelheid, tblVoorraad.Aanmaakdatum, tblVoorraad.Inslag, tblVoorraad.Referentie
+having sum(tblvoorraadtransitokoppeloplocatie.aantal) &gt; tblVoorraad.Hoeveelheid
+</code></pre>
+<p>In tblVoorraadTransitoOpLocatie kan dan één van de records omgehangen worden naar het TT01 label wat niet gekoppeld en verwijderd kan worden. Door het InboundVoorraadID aan te passen.</p>
+<h2 id="echeck-wall">Echeck wall</h2>
+<p>Info over Echeckwall troubleshooting is <a href="../Troubleshooting/EcheckWall">hier</a> te vinden</p>
+<h2 id="put-to-light">Put-To-Light</h2>
+<p>Info over Put-To-Light troubleshooting is <a href="../Troubleshooting/PUTL">hier</a> te vinden</p>
+<p><a href="../Troubleshooting/Montabots">Montabots</a></p>
+<h2 id="montabots">Montabots</h2>
+<p>Verschillende issues die kunnen optreden zijn uitgewerkt qua oplossingen in filmpjes</p>
+<h3 id="montabots-aan-en-uitzetten"><a href="../Troubleshooting/Montabots#montabot-aan-en-uitzetten">Montabots aan en uitzetten</a></h3>
+<h3 id="montabot-is-lokalisatie-kwijt"><a href="../Troubleshooting/Montabots#montabot-is-lokalisatie-kwijt">Montabot is lokalisatie kwijt</a></h3>
+<h3 id="montabot-knippert-blauw"><a href="../Troubleshooting/Montabots#montabot-knippert-blauw">Montabot knippert blauw</a></h3>
+<h3 id="montabot-knippert-rood"><a href="../Troubleshooting/Montabots#montabot-knippert-rood">Montabot knippert rood</a></h3>
+<h3 id="montabot-is-offline"><a href="../Troubleshooting/Montabots#montabot-is-offline">Montabot is offline</a></h3>
+<h2 id="internetverbindingen-en-wifi">Internetverbindingen en wifi</h2>
+<p>Zie &quot;Emergency Monta&quot; document in Teams: Serviceteam - IT algemeen - Algemeen. Hierin staat informatie over de verbindingen en telefoonummers van (wifi)leveranciers.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

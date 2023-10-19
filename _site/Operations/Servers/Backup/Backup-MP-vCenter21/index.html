@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Backup MP vCenter21 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Backup MP vCenter21 ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="backup-mp-vcenter21">Backup MP vCenter21</h1>
+
+<h2 id="inleiding">Inleiding</h2>
+<p>Om eventueel een restore uit te kunnen voeren van de vCenter-server is het handig om deze te backuppen.<br>
+De MP-vCenter21 staat echter in het management-vlan.<br>
+Dit document beschrijft wat er extra ingesteld moet worden om deze server met Veaam te kunnen backuppen.<br>
+De MP-VCenter21 is toegevoegd aan de job &quot;Zaterdagbackup_Weekly_Rotterdam&quot;.<br>
+Dit levert een VM-backup op, maar hieruit kun je niet alleen de configuratie restoren.<br>
+Daarnaast wordt er daarom een configuratie-backup vanuit mp-vcenter21 naar de c-schijf van de MP-VEEAM02 gemaakt.<br>
+Dit document beschrijft hoe e.e.a. ingericht moet worden.</p>
+<h2 id="backup-mp-vcenter21-1">Backup MP-vCenter21</h2>
+<p>Op de vcenter-server (benaderen via poort 5480 en dan tabblad &quot;backup&quot; is aangegeven dat de backuplocatie &quot;nfs://10.10.99.117/vcbackup&quot; is.<br>
+10.10.99.117 is het IP-nr van de mp-veeam02.<br>
+<img src="../../../../Attachments/image-a3a79217-4c9b-456f-b228-a6b5ed3a42ca.png" alt="image.png">
+Op de MP-VEEAM02 moet aangegeven worden dat het management-vlan via de gateway van het backup-vlan benaderd moet worden.<br>
+Anders werkt de communicatie tussen de mp-vcentre21 en de mp-veeam02 niet.<br>
+Hiervoor moet een persistent route worden toegevoegd:<br>
+route -p add 10.10.100.0 MASK 255.255.255.0 10.10.99.2<br>
+Door het backuppen van de C-schijf van de MP-VEEAM02 wordt de vcenter21-backup gebackupd.</p>
+<p>Met netstat -rn is de static route te zien.
+<img src="../../../../Attachments/image-73742e91-9483-4f7f-982f-7d22ff2962c0.png" alt="image.png"></p>
+<p>Voor het backuppen van de vcenter server moeten de poorten 111 en 2049 voor tcp/udp open staan naar de veaam-proxy-servers op het backup-adres.<br>
+<img src="../../../../Attachments/image-1275784c-396e-4094-aad1-c149df4de55b.png" alt="image.png"></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

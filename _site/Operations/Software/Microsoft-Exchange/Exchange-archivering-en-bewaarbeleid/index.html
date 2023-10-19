@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Exchange archivering en bewaarbeleid </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Exchange archivering en bewaarbeleid ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="exchange-archivering-en-bewaarbeleid">Exchange archivering en bewaarbeleid</h1>
+
+<p>Voor persoonlijke mailboxen kan onder &quot;In place archief&quot; archivering ingeschakeld worden.
+Voor gedeelde mailboxen moet dat middels een powershell-script. S:\8.0 Automatisering\6.0 Aspect-ICT\Scripts\Enable-RemoteArchive.ps1
+Dit dient uitgevoerd te worden middels een powershell-commandprompt op de server waarop de Azure AD Connect draait (Medio okt 2020 is dit de MP-DC03).
+Commando is : .\Enable-RemoteArchive.ps1 -Identity 'Dev', waarbij 'Dev' de naam is van de mailbox . Dit levert echter een foutmelding op omdat het script niet digital signed is.</p>
+<p>Voer het daarom als volgt uit : powershell -ExecutionPolicy ByPass -File Enable-RemoteArchive.ps1
+Vervolgens wordt om de Identity gevraagd, geef daarbij de naam van de mailbox op.
+Er komt niet echts van OK, maar na enige tijd (na de AzureAD (AAD) Connect-synchronisatie) is online te zien dat het archief geactiveerd is.</p>
+<p>De gedeelde mailbox moet eenmaal via OWA geopend worden om een bepaalde foutmelding weg te krijgen??????.</p>
+<p>Zie voor het volledige verhaal ook <a href="https://docs.microsoft.com/en-us/office365/troubleshoot/archive-mailboxes/cannot-provision-deprovision">https://docs.microsoft.com/en-us/office365/troubleshoot/archive-mailboxes/cannot-provision-deprovision</a></p>
+<p>Er kan een bewaarbeleid actief gemaakt worden door bijv. &quot;Default MRM Policy&quot; aan te zetten bij een betreffende mailbox.
+Bij het aanmaken van een mail kan dan het bewaarbeleid gekozen worden.</p>
+<p><img src="../../../../Attachments/image-2794e266-603a-43bb-88a6-c63de98fdd6e.png" alt="image.png"></p>
+<p>Om er voor te zorgen dat op een complete mailbox een bewaarbeleid wordt toegepast moet er een nieuwe bewaarbeleid aan gemaakt worden, bijvoorbeeld &quot;Delete after 1 week&quot; (Onder compliancebeheer - bewaarbeleid).</p>
+<p>Dit beleid kan dan op een postvak gezet worden waar dit voor geldt.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

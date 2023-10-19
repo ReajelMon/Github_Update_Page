@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Koppeling maken MijnWebWinkel </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Koppeling maken MijnWebWinkel ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../../index.html">
+                <img id="logo" class="svg" src="../../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="koppeling-maken-mijnwebwinkel">Koppeling maken MijnWebWinkel</h1>
+
+<p><a href="https://www.mijnwebwinkel.nl/support-resources/vraag-antwoord/hoe-maak-ik-een-token-aan-voor-mijn-verzendpartner">Vraag aan de klant de Merchant token</a>. Monta is geen erkende verzendpartner, de klant moet dus een algemene token genereren.</p>
+<h3 id="1-platform-settings"><strong>1) Platform settings</strong></h3>
+<p>Maak de platform Settings aan in de <code>tblRelatieSystemConnectionPlatformMyOnlineStoreSettings</code> en onthoud de ID / MyOnlineStorePlatformSettingsID</p>
+<h3 id="2-relatie-system-connections"><strong>2) Relatie System Connections</strong></h3>
+<p>Maak de relatiesystemconnections (inactief) aan in tblRelatieSystemConnections.  Dit zijn de dataflows die ondersteund worden:
+| ID |  DESCRIPTION|
+|--|--|
+|29|Product Information Import - MyOnlineStore (Mijnwebwinkel)  |
+|31|Order Import - MyOnlineStore (Mijnwebwinkel)  |
+|33|Order Update - MyOnlineStore (Mijnwebwinkel)  |
+|132|Product Match - MyOnlineStore (Mijnwebwinkel)  |
+|133|Full Stock Update - MyOnlineStore (Mijnwebwinkel)  |
+|134|Changed Stock Update - MyOnlineStore (Mijnwebwinkel)  |
+|146|Changed Product Match - MyOnlineStore (Mijnwebwinkel)  |</p>
+<p>en noteer van de nieuwe regels die je hebt aangemaakt het ID. Dit is nu het RelatieSystemConnection ID (RSCID).</p>
+<p>###<strong>3) RSC Type settings</strong>
+Maak de type settings aan voor elke dataflow die je wilt gebruiken. Ga hiervoor naar de tabellen:</p>
+<p>Product Match: <code>tblRelatieSystemConnectionTypeMyOnlineStoreSettings</code> en <code>tblRelatieSystemConnectionTypeProductMatchMyOnlineStoreSettings</code> <br></p>
+<p>Product Information Import:<code>tblRelatieSystemConnectionTypeProductInformationImportMyOnlineStoreSettings</code> <br></p>
+<p>Order Import:<code>tblRelatieSystemConnectionTypeMyOnlineStoreSettings</code><br></p>
+<p>Order update:<code>tblRelatieSystemConnectionTypeMyOnlineStoreSettings</code> <br></p>
+<p>Full Stock Update:
+<code>tblRelatieSystemConnectionTypeStockUpdateMyOnlineStoreSettings</code> <br></p>
+<p>Changed Stock Update:
+<code>tblRelatieSystemConnectionTypeStockUpdateMyOnlineStoreSettings</code><br></p>
+<p>Changed Product
+Match:<code>tblRelatieSystemConnectionTypeMyOnlineStoreSettings</code><br></p>
+<p>###<strong>4) Dataflow settings</strong>
+Maak de dataflow settings aan voor elke dataflow die je wilt gebruiken.
+Vergeet hier de tblRelatieSystemConnectionDataFlowOrderUpdateStatussesOnly niet.</p>
+<p>###<strong>5) Maak een backgroundjob aan</strong>
+Dit kan met de volgende query:</p>
+<pre><code>insert into tblBackgroundJob(SecondaryId, JobId, JobGuid, BackgroundJobTypeId, CustomerId, Created, MachineName)
+values('MyOnlineStore',{PK van tblRelatieSystemConnectionPlatformMyOnlineStoreSettings}, NEWID(), 1, {Relatie-id van de klant}, GETDATE(), 'MP-WEB08')
+</code></pre>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Automatisch opstarten Intel Celeron na stroomwegval </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Automatisch opstarten Intel Celeron na stroomwegval ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="automatisch-opstarten-intel-celeron-na-stroomwegval">Automatisch opstarten Intel Celeron na stroomwegval</h1>
+
+<p>De Intel Celeron wordt veel gebruikt achter TV schermen om data en informatie te tonen. Het is natuurlijk niet handig als deze apparaten handmatig opgestart moeten worden, omdat ze vaak op lastig te bereiken plekken hangen.
+De chipset heeft een functie om bij het krijgen van stroom op de DC input poort de pc op te starten. Dit werkt iets anders dan we gewend zijn bij optiplexen en NUC’s.
+Na het openen van de bios tijdens het opstarten (F2) navigeer je via chipset naar PCH-IO Configuration. Hier vindt je de instelling “State After G3”. Als je wilt dat de pc automatisch opstart moet deze instelling op “S0 State” gezet worden.</p>
+<p><img src="../../../../Attachments/MicrosoftTeams-image%20(1)-1ada8fc0-8a1d-4356-be06-d110dd694614.png" alt="MicrosoftTeams-image (1).png">
+Navigeer in de bios naar Chipset</p>
+<p><img src="../../../../Attachments/MicrosoftTeams-image%20(2)-a5f41c88-9487-4cb6-b97c-48e4aaa30b91.png" alt="MicrosoftTeams-image (2).png">
+kies menu PCH-IO Configuration</p>
+<p><img src="../../../../Attachments/MicrosoftTeams-image%20(3)-79338a2e-370a-4c4f-ab51-251a79d192e4.png" alt="MicrosoftTeams-image (3).png">
+Kies State After G3</p>
+<p><img src="../../../../Attachments/MicrosoftTeams-image%20(4)-5907bf94-71e1-4d65-afc0-0ffe69aca455.png" alt="MicrosoftTeams-image (4).png">
+Kies S0 State als je wilt dat de PC automatisch opnieuw opstart</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

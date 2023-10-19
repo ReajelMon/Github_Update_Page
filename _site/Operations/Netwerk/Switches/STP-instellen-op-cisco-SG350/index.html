@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>STP instellen op cisco SG350 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="STP instellen op cisco SG350 ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="stp-instellen-op-cisco-sg350">STP instellen op cisco SG350</h1>
+
+<p><strong>Spanning Tree Protocol (STP) instellen op cisco SG350</strong></p>
+<p>Log in op de betreffende SG350 switch</p>
+<p>Zet de display mode op advanced i.p.v. basic dit doe je door rechts
+bovenin op het drop down menu te klikken zie afbeelding:</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/STP-instellen-op-SG350/media/43585fc229f74ad6c8d04fbe3cbc7179034ee47d.png" alt=""></p>
+<p>Ga naar spanning tree STP Status &amp; Global Settings en neem de
+instellingen over</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/STP-instellen-op-SG350/media/78613bdae13851c775e8e6e6bb7df357414e7232.png" alt=""></p>
+<p>Ga naar STP Interface Settings en disable STP op alle poorten die niet
+worden doorgelust naar andere switches met andere woorden poorten die
+naar normale apparaten zullen gaan / wifi zenders.</p>
+<p>Neem hiervoor de instellingen over zoals op de afbeelding:</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/STP-instellen-op-SG350/media/baa4bde5028b6bb131ee01e41f23d1d29aea7a98.png" alt=""></p>
+<p>Je kunt de instellingen na het aanpassen van 1 poort overnemen voor
+meerdere poorten je doet dit door de zojuist geconfigureerde poort aan
+te vinken en vervolgens te klikken op copy settings.</p>
+<p>Geef dan aan welke poorten je dit naar toe gekopieerd te willen hebben
+door de nummers van de poorten in te vullen(voorbeeld) 2-24</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/STP-instellen-op-SG350/media/67687f29c0562e93e77edde4458cf2ac77bab99c.png" alt=""></p>
+<p>De poorten waarbij je <strong>wel</strong> gaat doorlussen naar andere switches
+schakel je STP wel op aan!</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/STP-instellen-op-SG350/media/b1d360eb754ebf986f7943fc332fe91b7f11284c.png" alt=""></p>
+<p>Dit doe je op alle switches in je netwerk tot het cirkeltje rond is.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

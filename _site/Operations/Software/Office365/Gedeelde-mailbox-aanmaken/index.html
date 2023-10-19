@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Gedeelde mailbox aanmaken </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Gedeelde mailbox aanmaken ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="gedeelde-mailbox-aanmaken">Gedeelde mailbox aanmaken</h1>
+
+<ul>
+<li><p><a href="#inleiding">Inleiding </a></p>
+</li>
+<li><p><a href="#Exchange-Online">Exchange Online </a></p>
+</li>
+<li><p><a href="#dfs-replicatie-stoppen">Active Directory </a></p>
+</li>
+<li><p><a href="#Aanmaak-gedeelde-mailbox-met-zelfde-prefix-in-de-naam">Aanmaak gedeelde mailbox met zelfde prefix in de naam </a></p>
+</li>
+</ul>
+<h3 id="inleiding">Inleiding</h3>
+<p>Indien het een nieuw domein betreft registreerd dat dan eerst in Office 365 volgens : <br>
+<a href="https://vragen.monta.nl/Docs/Operations/Software/Office365/Domein-aanmaken-in-Office-365/index.html?q=domein">https://vragen.monta.nl/Docs/Operations/Software/Office365/Domein-aanmaken-in-Office-365/index.html?q=domein</a></p>
+<h3 id="exchange-online">Exchange Online</h3>
+<p>De gedeelde mailbox moet eerst in Exchange Online aangemaakt worden en daarna in on-premise-AD.<br>
+Door in AD de “User Logon Name” gelijk te maken aan de “User Principal Name” zoals deze in Azure AD te zien is wordt synchronisatie met AD ingesteld.<br>
+De “User Principal Name”  is te zien in Azure AD onder Users.</p>
+<p><img src="../../../../Attachments/image-e011486d-45df-486d-82b0-3a742b4fc883.png" alt="image.png"></p>
+<p>Ga in het Exchange Admin Center naar “Mailboxes”.<br>
+Hier voor “Add a shared mailbox” en vul alle gegevens in.<br>
+Gebruik mailadressen zoals bij andere shared mailboxen.</p>
+<h3 id="active-directory">Active Directory</h3>
+<p>Voorbeeldteksten:<br>
+Montafulfilment.com | Info<br>
+montafulfilment.com<br>
+MBX_Montafulfilment_COM_Info<br>
+MBXGG_Montafulfilment_COM_Info<br>
+MBXGG_Montafulfilment_COM_Info@montafulfilment.com\
+SMTP:info@montafulfilment.com\</p>
+<p>Maak in AD onder “Montagroep\Mail” een User aan met bijv : “MBX_Monta_Molenaarsgraaf_Planning” als naam en houdt de “User logon name” gelijk aan de “User principal name” in office 365 en zet deze op disabled.</p>
+<p><img src="../../../../Attachments/image-7ff4593f-8007-4a9c-9d38-631caf8f5958.png" alt="image.png"></p>
+<p>Vul op het tabblad General het mailadres in en pas de Display naam aan zoals onderstaand:
+<img src="../../../../Attachments/image-2da960ad-5673-4e3e-9bf9-d3884ae13e91.png" alt="image.png"></p>
+<p>Stel bij de Attribute Editor het proxyAddresses als volgt in:</p>
+<p><img src="../../../../Attachments/image-7cdfa112-7a48-4ec9-bf92-bd08137f7e46.png" alt="image.png"></p>
+<p>Als bij de attribute editor in AD het veld proxyaddresses ontbreekt dan kan dit enige tijd duren voordat dit zichtbaar wordt.</p>
+<p>In de GUI kan het ook ingesteld worden door onder email-adressess en dan op “Manage email address types” klikken, maar dan krijg je een foutmelding dat het in AD gewijzigd moet worden.</p>
+<p><img src="../../../../Attachments/image-2dfa8c53-573e-4c74-b78a-2b33e9157e52.png" alt="image.png"></p>
+<p>Maak in AD onder “Montagroep\Mail” ook een groep aan bijvoorbeeld: “MBXGG_Monta_Molenaarsgraaf_Planning”<br>
+Vul het email-veld (hiermee wordt het een exchange-securitygroep).</p>
+<p><img src="../../../../Attachments/image-197dc554-3b2e-44d8-8f77-acda60602358.png" alt="image.png"></p>
+<p>Sync dit met AD via de geplande taak op de mp-proc04.<br>
+Voeg de betreffende gebruikers toe bij Delegation en bij Full access.</p>
+<p><img src="../../../../Attachments/image-07565198-4383-4fa8-9b28-aa469d2a9299.png" alt="image.png"></p>
+<p>Als je de MBXGG-groep toevoegt bij Delegation krijgen mensen wel de rechten maar de mailbox verschijnt niet automatisch in Outlook, die moet je dan met de hand toevoegen.</p>
+<h3 id="aanmaak-gedeelde-mailbox-met-zelfde-prefix-in-de-naam">Aanmaak gedeelde mailbox met zelfde prefix in de naam</h3>
+<p>Als er al een mailbox marketing@monta.nl bestaat en je wilt bijvoorbeeld marketing@montafulfilment.nl aanmaken, dan levert dat bij de aanmaak via de GUI een foutmelding op.<br>
+Er wordt dan toch geprobeerd marketing@monta.nl aan te maken.</p>
+<p>De oplossing is om eerst een shared mailbox marketing2@montafulfilment.nl aan te maken.<br>
+Er wordt dan een gebruikersnaam marketing2@monta.nl aangemaakt.<br>
+In &quot;Azure AD - Users&quot; kan de User Principal Name dan aangepast worden naar marketing@montafulfilment.nl</p>
+<p><img src="../../../../Attachments/image-ff614f0d-c776-4652-b483-548c64cc36eb.png" alt="image.png"></p>
+<p>Daarna kan in Echange online de alias aangepast worden :</p>
+<p><img src="../../../../Attachments/image-5c1a485e-cf70-4ed9-a3d7-29a0510a6488.png" alt="image.png"></p>
+<p>Daarnaast kan ook het email-adres aangepast worden.</p>
+<p><img src="../../../../Attachments/image-54f7c087-118c-44db-b1be-dea068b43f5f.png" alt="image.png"></p>
+<p>Daarna kan de handleiding verder vervolgd worden vanaf “Active Directory”.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

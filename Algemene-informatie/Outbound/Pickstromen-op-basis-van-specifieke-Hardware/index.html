@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Pickstromen op basis van specifieke Hardware </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Pickstromen op basis van specifieke Hardware ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="pickstromen-op-basis-van-specifieke-hardware">Pickstromen op basis van specifieke Hardware</h1>
+
+<h2 id="echeckwall-pickstroom">Echeckwall pickstroom</h2>
+<p><a href="https://vragen.montapacking.nl/Docs/Algemene-informatie/Apparaten/Echeckwall/"><img src="../../../Attachments/Echeckwall_150-2a00af01-5c85-4e91-9577-09d53a6a2a16.png" alt="Echeckwall_150.png"></a></p>
+<p>Alleen orders die passen in de Echeckwall vakjes worden ingepland. Orders die daarbuiten vallen komen in de reguliere M, S of HM-order pickstroom. Orders die in de Echeckwall passen komen niet meer in de reguliere M-order pickstroom.</p>
+<p>Het in-uitschakelen van de Echeckwall pickroute kan door IT gedaan worden in het veld tblMagazijnLocatieVerdieping.EcheckwallEnabled</p>
+<p>Verder kan per relatie ingesteld worden dat een relatie NIET via de echeckwall gepickt moet worden (<a href="https://gomonta.montapacking.nl/Office/Relatie/Index">https://gomonta.montapacking.nl/Office/Relatie/Index</a>)</p>
+<p><img src="../../../Attachments/klantUitsluitenVanEcheckwall-0552d2bd-70ac-4d7d-beb6-285d6c831de7.JPG" alt="klantUitsluitenVanEcheckwall.JPG"></p>
+<p>Er kan worden gekozen of S-orders wel of niet meegenomen worden in de Echeckwall pickstroom. Dit omdat het niet in alle gevallen logistiek gezien handig is S-orders mee te picken.
+Dit kan via het magazijn instellingen scherm in gomonta (<a href="https://gomonta.montapacking.nl/WMS/Shift/WarehouseSettings#PutToLightAndEcheckwall">https://gomonta.montapacking.nl/WMS/Shift/WarehouseSettings#PutToLightAndEcheckwall</a>) onder het kopje 'Put to Light en Echeckwall picken'. Door het getal 0 in te vullen bij 'Maximale aantal S-orders in Echeckwall pickroute ', worden S-orders niet meer meegenomen in de Echeckwall pickroute</p>
+<p><img src="../../../Attachments/EcheckwallInstellingen-029f59d8-52b2-45cb-a559-b6770c639674.JPG" alt="EcheckwallInstellingen.JPG"></p>
+<p>Wanneer M of HM orders veel items bevatten, is het soms raadzaam ze niet via de echeckwall te verwerken in verband met het grote aantal scans tijdens sorteren. Via de instelling  'Maximaal aantal items in Echeckwall order' kunnen orders met veel items uitgesloten worden van de Echeckwall pickroute.</p>
+<p><img src="../../../Attachments/EcheckwallInstellingen-029f59d8-52b2-45cb-a559-b6770c639674.JPG" alt="EcheckwallInstellingen.JPG"></p>
+<h2 id="echeckwall-xl-pickstroom">Echeckwall XL pickstroom</h2>
+<p><a href="https://vragen.montapacking.nl/Docs/Algemene-informatie/Apparaten/Echeckwall/"><img src="../../../Attachments/Echeckwall_150-2a00af01-5c85-4e91-9577-09d53a6a2a16.png" alt="Echeckwall_150.png"></a></p>
+<p>De Echeckwall XL pickstroom werkt vrijwel hetzelfde als de <a href="https://vragen.monta.nl/Docs/Algemene-informatie/Outbound/Pickstromen-op-basis-van-specifieke-Hardware/#echeckwall-pickstroom">Echeckwall pickstroom</a> die hierboven beschreven is. Waarbij in de Echeckwall XL pickstroom de LM en HLM orders worden meegenomen. Een Echeckwall XL pickstroom is alleen beschikbaar op een verdieping als reguliere Echeckwall is ingeschakeld EN er is een EcheckwallXL (tblEcheckwallStelling.EcheckwallXL = true voor deze verdieping) dan komt de EcheckwallXL pickstroom beschikbaar Verder kan de beschrijving van de <a href="https://vragen.monta.nl/Docs/Algemene-informatie/Outbound/Pickstromen-op-basis-van-specifieke-Hardware/#echeckwall-pickstroom">Echeckwall Pickstroom</a> gevolgd worden.</p>
+<h2 id="put-to-light-pickstroom">Put To Light pickstroom</h2>
+<p><a href="https://vragen.monta.nl/Docs/Algemene-informatie/Apparaten/Put-To-Light/"><img src="../../../Attachments/Put-to-light_150-ddcac856-096e-4da1-b4a1-e2e746afbda8.png" alt="Put-to-light_150.png"></a></p>
+<p>PutToLight is in te schakelen door een aantal hoger dan 0 in te vullen bij 'Put to Light Aantal orders' in het instellingen scherm per magazijn/verdieping (<a href="https://gomonta.montapacking.nl/WMS/Shift/WarehouseSettings#PutToLightAndEcheckwall">https://gomonta.montapacking.nl/WMS/Shift/WarehouseSettings#PutToLightAndEcheckwall</a>)
+PutToLight orders zijn ook zichtbaar in de reguliere M en HM pickstromen. (er is een wens om dit aan te passen)</p>
+<p><img src="../../../Attachments/PutToLightlInstellingen-6b738da4-213f-4be0-8db1-ca98e371df6a.JPG" alt="PutToLightlInstellingen.JPG"></p>
+<p>Wanneer M of HM orders veel items bevatten, is het soms raadzaam ze niet via de Put To Light te verwerken in verband met het grote aantal scans tijdens sorteren.
+M-orders of HM-orders met veel items kunnen worden uitgesloten door 'Maximaal aantal items in een order' in te stellen. Ook kan via 'Put to Light Maximale afmetingen' ingesteld worden dat orders met te grote producten niet in de Put To Light pickstroom gepland worden</p>
+<h2 id="monta-pac-man-verpakkingsmachine">Monta Pac-man verpakkingsmachine</h2>
+<p><a href="https://vragen.monta.nl/Docs/Algemene-informatie/Apparaten/Monta-Pacman/"><img src="../../../Attachments/Montapacker_150-40368f16-55e7-4b9c-93d7-2e01b90b77fc.png" alt="Montapacker_150.png"></a></p>
+<p>In de verify wordt via een stapelalgoritme bepaald of de producten van de order niet te groot zijn voor de maximale afmetingen die de Monta Pac-man machine aan kan. Ook wordt in de verify gekeken of de producten niet te klein zijn voor de minimale afmetingen van de Monta Pac-man.
+Deze afmetingen van de monta pac man zijn door IT instelbaaar in tblMontapackerContainerSettings
+Ook een totaal ordergewicht &gt; 15 kg wordt uitgesloten. Dat is nu nog hardcoded.
+Orders naar landen met proforma (tblCountryCodes.ProFormaInvoiceRequired) worden uitgesloten omdat het printen van douane documenten lastig is op de machine. Als aan alle voorwaarden voldaan is tijdens het verifieren van de order, krijgt de order dan ReadyToPickState Montapacker (nr19), dit is niet echt een pickstroom, maar een filtermogelijkheid over bestaande pickstromen.
+Over het algemeen kunnen dan orders uit de volgende pickstromen onder dit filter vallen.</p>
+<p>S</p>
+<p>M</p>
+<p>HM</p>
+<p>Zie ook deze <a href="https://vragen.monta.nl/Docs/Algemene-informatie/Apparaten/Monta-Pacman/#pickstroom-voor-monta-pacman">pagina</a> voor meer info.</p>
+<p><img src="../../../Attachments/montapacker_pickstroom-c4e2652d-48e3-4d6c-a269-0d2d27aa699e.png" alt="montapacker_pickstroom.png"></p>
+<h2 id="bvm-verpakkingsmachine">BVM verpakkingsmachine</h2>
+<p><a href="https://vragen.monta.nl/Docs/Algemene-informatie/Apparaten/BVM/"><img src="../../../Attachments/BWM%20Inpakmachine_150-5ba1604e-5c81-49cc-bb67-de74a411a032.png" alt="BWM Inpakmachine_150.png"></a></p>
+<p>De BVM verpakkingsmachine pickstroom is in te schakelen door bij de outbound magazijninstellingen de verpakkingmachine aan te zetten. (<a href="https://gomonta.montapacking.nl/WMS/Shift/WarehouseSettings#PickingSizes">https://gomonta.montapacking.nl/WMS/Shift/WarehouseSettings#PickingSizes</a>)</p>
+<p><img src="../../../Attachments/image-ade34e4f-5147-4913-b632-e946eb5c9cf6.png" alt="image.png"></p>
+<p>Een orders moet aan de volgende eisen voldoen om in de pickstroom te komen:</p>
+<ul>
+<li>De order moet een S-orders zijn.</li>
+<li>De afmetingen van order moeten groter zijn dan 140 bij 90 bij 1 mm.</li>
+<li>De afmetingen van order moeten kleiner zijn dan 500 bij 400 bij 100 mm.</li>
+<li>De klant moet toestaan dat de orders ingepakt mogen worden door de verpakkingsmachine. Dit is in te stellen in het relatie instellingenscherm.
+<img src="../../../Attachments/image-41019596-6a8e-474a-8ab5-4fc30e27c45a.png" alt="image.png"></li>
+<li>Als een order een toevoegproduct heeft, dan moet deze toegestaan zijn voor de verpakkingsmachine. Dit kan worden ingesteld in het product instellingenscherm.<img src="../../../Attachments/image-8375767a-acff-4789-bba4-6765f32c34e1.png" alt="image.png"></li>
+</ul>
+<p>Orders die geschikt zijn voor de BVM machine zijn te herkennen via onderstaande pickstroom op de scanner</p>
+<p><img src="../../../Attachments/image-8336c887-2294-4959-9de9-9914ccf6796e.png" alt="image.png"></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

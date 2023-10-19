@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Storingen oplossen </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Storingen oplossen ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+  
+  <meta property="docfx:rel" content="../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="storingen-oplossen">Storingen oplossen</h1>
+
+<p>Dit document beschrijft storingen die kunnen optreden en hoe ze opgelost kunnen worden.</p>
+<h2 id="inhoudsopgave">Inhoudsopgave</h2>
+<p><a href="#PRTG">PRTG</a></p>
+<p><a href="#Servers-Algemeen">Servers Algemeen</a></p>
+<p><a href="#Internetverbindingen">Internetverbindingen</a></p>
+<p><a href="#Werkplek">Werkplek</a></p>
+<p><a href="#Traagheid">Traagheid</a></p>
+<h3 id="prtg">PRTG</h3>
+<p>Via <a href="https://noc.monta.tech:8443/">https://noc.monta.tech:8443/</a> kun je inloggen in PRTG met het &quot;gewone monta-account&quot;.</p>
+<h3 id="servers-algemeen">Servers Algemeen</h3>
+<p>Als in PRTG een server rode sensoren heeft en de server lijkt een relatie met de storing te hebben, dan kun je de server herstarten door er met RDP op in te loggen (met het admin-account). Lukt dat niet of heb je er geen rechten op dan kun je met VMWare altijd een server herstarten (eerst met admin-account inloggen op de mp-mgmt12). Zie hiervoor : <a href="https://vragen.monta.nl/Docs/Operations/Servers/Vmware/VMWare-servers-stoppen-en-starten/index.html?q=vmware">https://vragen.monta.nl/Docs/Operations/Servers/Vmware/VMWare-servers-stoppen-en-starten/index.html?q=vmware</a></p>
+<h3 id="internetverbindingen">Internetverbindingen</h3>
+<p>Zie het volgende document in Teams: Serviceteam - IT Algemeen - General\Emergency\Emergency Monta.docx</p>
+<h3 id="werkplek">Werkplek</h3>
+<p>Er zijn 9 werkplekservers de MP-RDS01 t/m de MP-RDS09. De MP-RDS01 en de MP-RDS02 hebben extra rollen t.o.v. de overige RDS-servers. Als de MP-RDS01 en MP-RDS02 niet goed functioneren is de complete werkplek niet bereikbaar.<br>
+Het benaderen van de werkplek van buiten de Monta-vestigingen wordt geregeld door de server MP-RDSGW01.<br>
+Op de server MP-SQL07 staat de database RD_FARM, als deze database niet benaderbaar is werkt de complete werkplek niet.</p>
+<h3 id="traagheid">Traagheid</h3>
+<p>Traagheid in het systeem kan veroorzaakt worden in de volgende onderdelen:</p>
+<ul>
+<li><a href="#database">Database</a></li>
+<li><a href="#rabbitmq">RabbitMQ</a></li>
+<li><a href="#webservices">Webservices</a></li>
+</ul>
+<p>Het is ook mogelijk om <a href="#systemen-uitschakelen">systemen uit te schakelen</a>. Om uit te sluiten dat dat systeem de oorzaak is van de traagheid of om de druk op het systeem te verminderen.</p>
+<h4 id="database">Database</h4>
+<h5 id="vastgelopen-transactie">Vastgelopen transactie</h5>
+<p>Met het commando &quot;DBCC OPENTRAN&quot; kan gekeken worden of een transactie open staat. Voer dit commando een paar keer achter elkaar uit. Als je dan telkens hetzelfde &quot;SPID&quot; ziet terugkomen, dan is dat de vastgelopen transactie.</p>
+<p>Voer de volgende queries uit om meer informatie te krijgen over de open transactie:</p>
+<pre><code>DBCC INPUTBUFFER ({spid})
+sp_who2 {spid}
+</code></pre>
+<p>Vervolgens kun je de open transactie 'killen' met het commando: <code>KILL {spid}</code></p>
+<h5 id="trage-query">Trage query</h5>
+<p>De stored procedure <code>sp_whoisactive</code> geeft een overzicht van alle queries die op dat moment worden uitgevoerd.</p>
+<p>Als vaak/veel dezelfde query te zien is, kan deze query de oorzaak zijn van de traagheid. Dit kan de volgende oorzaken hebben:</p>
+<ul>
+<li><p>Een verkeerd query plan. SQL server kan een verkeer query plan in de cache hebben waardoor een query traag is. De query plan cache kan geleegd worden met het commando: <code>DBCC FREEPROCCACHE</code>.</p>
+</li>
+<li><p>Een software update. De oplossing is dan een oudere versie terugzetten. Of de code aan te passen zodat de query niet meer of minder vaak wordt uitgevoerd. Zie <a href="#als-een-software-update-nodig-is">als een software update nodig is</a>.</p>
+</li>
+</ul>
+<h5 id="teveel-connecties">Teveel connecties</h5>
+<p>Het kan ook gebeuren dat een applicatie niet goed de database verbindingen sluit. Waardoor op een gegeven moment de limiet van het aantal database verbindingen bereikt wordt. Dan komt de foutmelding: &quot;Timeout expired. The timeout period elapsed prior to obtaining a connection from the pool. This may have occurred because all pooled connections were in use and max pool size was reached&quot;.</p>
+<p>Met de volgende query zijn alle openstaande connecties per applicatie per server te zien.</p>
+<pre><code>SELECT program_name, host_name, COUNT(*)
+FROM sys.dm_exec_sessions as es
+CROSS APPLY sys.dm_exec_input_buffer(es.session_id, null) as ib
+WHERE es.session_id &gt; 50
+GROUP BY program_name, host_name
+</code></pre>
+<p>Standaard is de limiet 100 connecties.</p>
+<p>Dit probleem kan veroorzaak worden door:</p>
+<ul>
+<li><p>Een afhankelijkheid die vastgelopen is, bijvoorbeeld de RabbitMQ of de PrintingApi. Zie de volgende hoofdstukken.</p>
+</li>
+<li><p>Een recente software update. De oplossing is dan een oudere versie terugzetten.</p>
+</li>
+<li><p>Een software update van langer geleden. Bijvoorbeeld een stuk code wat niet goed de database verbinding sluit wat nu vaker wordt aangeroepen. De oplossing is dan de code aan te passen zodat de database verbinding wordt gesloten. Zie <a href="#als-een-software-update-nodig-is">als een software update nodig is</a>.</p>
+</li>
+</ul>
+<h4 id="rabbitmq">RabbitMQ</h4>
+<p>Het kan gebeuren dat de/een RabbitMQ is vastgelopen/volgelopen waardoor hij geen nieuwe berichten meer accepteert. De interne Webservice loopt dan ook vast.</p>
+<p>In PasswordState zijn de logingegevens te vinden van de RabbitMQ admin panels (poort 15672). Op deze panels zou te vinden moeten zijn als iets is vastgelopen. Als het panel traag reageert is dat ook een signaal dat de server is volgelopen.</p>
+<p>De oplossing kan zijn om de RabbitMQ servers opnieuw op te starten.</p>
+<p>Als dit niet helpt (of als het probleem terugkomt), moet de code aangepast worden zodat er geen berichten meer naar RabbitMQ gestuurd worden. Zie <a href="#als-een-software-update-nodig-is">als een software update nodig is</a>.</p>
+<p>We gaan nog iets bouwen dat we de RabbitMQ communicatie centraal kunnen uitschakelen zonder dat een software update nodig is.</p>
+<h4 id="webservices">Webservices</h4>
+<p>Als de melding &quot;Error communicating with webservice&quot; optreed, kan het zijn dat de PrintingApi vastgelopen is. De PrintingApi opnieuw livezetten kan dan helpen.</p>
+<h4 id="systemen-uitschakelen">Systemen uitschakelen</h4>
+<p>Bepaalde systemen kunnen tijdelijk uitgeschakeld worden om de belasting op het systeem te verminderen.</p>
+<p>Verify: log in op de mp-proc03 en stop de MontaWindowsService. Als de MontaWindowsService niet stopt, kun je deze geforceerd afsluiten in de Task Manager. Disable ook de Scheduled task &quot;StartMontaWindowsServices&quot; in het mapje &quot;Monta&quot;. Deze taak start namelijk de service weer op.</p>
+<p>RelatieSystemsConnector: stop de application pool op de mp-web340.</p>
+<h3 id="als-een-software-update-nodig-is">Als een software update nodig is</h3>
+<p>Let op dat je de software update gaat toepassen in de versie die op dat moment live staat.</p>
+<p>Het kan zijn dat er in de master een nieuwere versie staat dan wat er op dat moment live staat. Je kunt dan beter niet die versie gebruiken. Want dan zet je misschien nieuwe bugs live. Het is dan beter om te resetten naar de versie die op dat moment live staat en die aan te passen en te releasen.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

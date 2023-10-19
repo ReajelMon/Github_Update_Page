@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SSL certificaten aanvragen en vervangen </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="SSL certificaten aanvragen en vervangen ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="ssl-certificaten-aanvragen-en-vervangen">SSL certificaten aanvragen en vervangen</h1>
+
+<h2 id="inhoudsopgave">Inhoudsopgave</h2>
+<ul>
+<li><p><a href="#inleiding">Inleiding </a></p>
+</li>
+<li><p><a href="#Intermediate-certificaten">Intermediate certificaten </a></p>
+</li>
+<li><p><a href="#certificaat-aanvraag-via-directadmin">Certificaat aanvraag via Directadmin </a></p>
+</li>
+<li><p><a href="#csr-aanmaken-in-directadmin">CSR aanmaken in DirectAdmin </a></p>
+</li>
+<li><p><a href="#certificaat-aanvraag-afronden-in-directadmin">Certificaat aanvraag afronden in DirectAdmin </a></p>
+</li>
+<li><p><a href="#installatie-certificaat">Installatie certificaat </a></p>
+</li>
+<li><p><a href="#installatie-root--en-intermediate-certificaten">Installatie root- en intermediate certificaten </a></p>
+</li>
+<li><p><a href="#inschakelen-ssl">Inschakelen SSL </a></p>
+</li>
+<li><p><a href="#certificaat-aanvragen-via-iis">Certificaat aanvragen via IIS </a></p>
+</li>
+<li><p><a href="#certificaat-aanvraag-afronden-in-iis">Certificaat aanvraag afronden in IIS </a></p>
+</li>
+<li><p><a href="#certificaat-aanvragen-bij-xolphin">Certificaat aanvragen bij Xolphin </a></p>
+</li>
+<li><p><a href="#certificaat-vervangen-extra-informatie">Certificaat vervangen extra informatie </a></p>
+</li>
+<li><p><a href="#diverse-servers">Diverse servers </a></p>
+</li>
+<li><p><a href="#mp-app01">MP-APP01 </a></p>
+</li>
+<li><p><a href="#mp-app02">MP-APP02 </a></p>
+</li>
+<li><p><a href="#mp-app03">MP-APP03 </a></p>
+</li>
+<li><p><a href="#mp-voip01">MP-VOIP01 </a></p>
+</li>
+<li><p><a href="#ftp-servers">FTP-servers </a></p>
+</li>
+<li><p><a href="#mp-prtg01-en-mp-prtg02">MP-PRTG01 en MP-PRTG02 </a></p>
+</li>
+<li><p><a href="#del-prtg01">DEL-PRTG01 </a></p>
+</li>
+<li><p><a href="#werkplek-omgeving">Werkplek-omgeving </a></p>
+</li>
+<li><p><a href="#sectigo-code-signing">Sectigo Code Signing </a></p>
+</li>
+<li><p><a href="#Firewalls">Firewalls </a></p>
+</li>
+<li><p><a href="#name-hero-omgeving">Name Hero omgeving</a></p>
+</li>
+</ul>
+<h2 id="inleiding">Inleiding</h2>
+<p>Voor de beveiliging van websites wordt gebruik gemaakt van
+SSL-certificaten.<br>
+Hierbij worden een aantal keuzes gemaakt die bij elke aanvraag weer
+opnieuw bekeken moeten worden.</p>
+<ol>
+<li><p>Zo min mogelijk wildcard-certificaten.</p>
+</li>
+<li><p>Organisatie-validatie bij websites waarop gebruikers inloggen.</p>
+</li>
+<li><p>RSA-2048 bij websites waarop gebruikers inloggen, RSA-4096 voor
+websites waarop geen gebruikers inloggen.</p>
+</li>
+<li><p>Geldigheid voor 5 jaar (tenzij de verwachting is dat de website geen
+5 jaar meer in de lucht zal blijven)</p>
+</li>
+</ol>
+<h2 id="intermediate-certificaten">Intermediate certificaten</h2>
+<p>Er is iets vreemds aan de hand met de intermediate certificaten van Sectigo.<br>
+Deze kun je downloaden bij Xolphin.<br>
+Soms echter verschijnt bij de websites het certificaat &quot;Sectigo RSA...&quot; met een andere Fingerprint.</p>
+<p><img src="../../../Attachments/image-0dddef17-1ca2-48e2-888e-92f769133197.png" alt="image.png"></p>
+<p>Op de site &quot;https://www.ssl247.com/knowledge-base/detail/sectigo-intermediate-certificates/ka03l0000015lEyAAI/&quot; zijn de intermediates ook te downloaden.
+<img src="../../../Attachments/image-4fabe9e3-52b7-46cb-90bb-8963f58aa276.png" alt="image.png">
+Hierbij heeft &quot;Sectigo RSA...&quot; wel een fingerprint die begint met &quot;72 A3...&quot;.
+In de BIG-IP is er een certificaat &quot;Cert-Chain-Monta-2022&quot; aangemaakt met een fingerprint die begint me &quot;7F:A4..&quot;<br>
+<img src="../../../Attachments/image-b7d9f38e-08c1-4c78-89f1-cabb2f3bf31a.png" alt="image.png"></p>
+<p>Daarnaast is ook een certificaat aangemaakt die van de site &quot;https://www.ssl247.com/&quot; met de naam &quot;Sectigo-RSA-EV-Bundle&quot;.</p>
+<p><img src="../../../Attachments/image-13b62371-30fd-426a-8a82-fb0490a0b894.png" alt="image.png"></p>
+<p>Helaas is niet te voorspellen welk certificaat een website nodig heeft, dit is een kwestie van uitproberen.</p>
+<h2 id="certificaat-aanvraag-via-directadmin">Certificaat aanvraag via Directadmin</h2>
+<h3 id="csr-aanmaken-in-directadmin">CSR aanmaken in DirectAdmin</h3>
+<p>Voor een website die op een van de TransIP-webservers draait zoals
+monta.nl kan het certificaat aangevraagd worden via Directadmin.<br>
+Show All Users - Login as montanl -- SSL Certificates.</p>
+<p><img src="../../../Attachments/image-a6169fa2-f05e-4305-a9ac-1f72f770f2e7.png" alt="image.png"></p>
+<p>Dit levert een CSR (Certificate request) op.<br>
+Hiermee kan bij <a href="https://www.xolphin.nl/cp">Xolphin Control Panel</a> een
+certificaat aangevraagd worden.</p>
+<h3 id="section"></h3>
+<h3 id="certificaat-aanvraag-afronden-in-directadmin">Certificaat aanvraag afronden in DirectAdmin</h3>
+<p>De installatie is beschreven in : <a href="https://www.sslcertificaten.nl/support/DirectAdmin/DirectAdmin_-_Installatie_certificaat?highlight=directadmin">DirectAdmin - Installatie certificaat
+(sslcertificaten.nl)</a>
+en wordt in dit document overgenomen.</p>
+<p>Na uitgifte ontvang je het certificaat per e-mail. Je kunt het
+certificaat ook downloaden in het Control Panel.</p>
+<p>Het certificaatbestand heeft dezelfde naam als de domeinnaam waarvoor
+het is aangevraagd, bijvoorbeeld www_sslcertificaten_nl.crt,</p>
+<h4 id="installatie-certificaat">Installatie certificaat</h4>
+<ol>
+<li><p>Log in op het DirectAdmin control panel.</p>
+</li>
+<li><p>Ga naar Advanced Features → SSL Certificates.</p>
+</li>
+<li><p>Selecteer de onderste radio button in de linker kolom, bij Paste a
+pre-generated certificate and key. Hiermee wordt straks het eigen
+certificaat gebruikt, in plaats van het niet vertrouwde standaard
+certificaat. De Private Key staat al voor ingevuld in het veld Paste
+a pre-generated certificate and key.</p>
+</li>
+<li><p>Kopieer het toegezonden certificaat, inclusief begin- en eindregels
+en alle streepjes, en plak het onder de private key, zodanig dat er
+geen lege regels tussen zitten. Klik vervolgens op Save.<br>
+<br>
+<img src="../../../Attachments/image-ce5fa577-00e2-4900-b277-90867ce50370.png" alt="image.png"></p>
+</li>
+<li><p>De melding Certificate and Key Saved verschijnt. Het certificaat is
+geïnstalleerd. Installeer nu ook de intermediate certificaten.</p>
+</li>
+</ol>
+<h4 id="-">** **</h4>
+<h4 id="installatie-root--en-intermediate-certificaten">Installatie root- en intermediate certificaten</h4>
+<p>Voor de door Xolphin geleverde certificaten moeten ook de root en
+intermediate certificaten worden geïnstalleerd. Deze worden meestal
+meegezonden met het certificaat, maar ze kunnen ook worden gedownload
+vanuit het control panel. Om de root en intermediate certificaten te
+installeren onder DirectAdmin:</p>
+<ol>
+<li><p>Login op het DirectAdmin control panel.</p>
+</li>
+<li><p>Ga naar Advanced Features* →* SSL Certificates.</p>
+</li>
+<li><p>Klik helemaal onderaan de pagina op &quot;Click Here&quot; naast &quot;Click here
+to paste a CA Root Certificate&quot;.</p>
+</li>
+<li><p>Zet een vinkje naast Use a CA Cert.</p>
+</li>
+<li><p>Verwijder de huidige inhoud uit het veld.</p>
+</li>
+<li><p>Kopieer en plak eerst het intermediate certificaat, daaronder het
+root certificaat. Zorg dat er geen lege regels tussen zitten. Het
+moet er als volgt uit komen te zien:<br>
+<br>
+In het geval van Montapacking is dit<br>
+-----BEGIN CERTIFICATE-----<br>
+&lt;gecodeerde data Sectigo_RSA_Domain_Validation_Secure_Server_CA&gt;<br>
+-----END CERTIFICATE-----<br>
+-----BEGIN CERTIFICATE-----<br>
+&lt;gecodeerde data USERTrust_RSA_Certification_Authority&gt;<br>
+-----END CERTIFICATE-----</p>
+</li>
+<li><p>Klik op Save.</p>
+</li>
+</ol>
+<h4 id="inschakelen-ssl">Inschakelen SSL</h4>
+<p>Binnen DirectAdmin staat SSL niet standaard aan, zet deze aan. Het
+inschakelen van SSL staat hieronder beschreven.</p>
+<ol>
+<li><p>Log in op het DirectAdmin control panel.</p>
+</li>
+<li><p>Ga naar Advanced Features → SSL Certificates.</p>
+</li>
+<li><p>Bovenin de pagina kun je controleren of SSL al is ingeschakeld en
+krijg je de mogelijkheid dit in te schakelen indien nodig.
+Controleer de huidige instelling, is SSL Disabled, klik dan
+op here in de zin You can enable it here.</p>
+</li>
+</ol>
+<p><img src="../../../Attachments/image-e22e0f02-8fb4-4d94-befd-9ad2f8915966.png" alt="image.png"></p>
+<ol start="4">
+<li>Zet vervolgens een vinkje bij Secure SSL en klik op de knop Save.</li>
+</ol>
+<p><img src="../../../Attachments/image-d0c7c59b-ccb6-4829-b7df-6e821a9c1acb.png" alt="image.png"></p>
+<ol start="5">
+<li>Ga vervolgens wederom naar Advanced Features → SSL Certificates. SSL
+is nu ingeschakeld.</li>
+</ol>
+<p><img src="../../../Attachments/image-878be701-b8a5-478c-a48e-2a394c3e7ef1.png" alt="image.png"></p>
+<p>Daarnaast kan het zo zijn dat er een aparte map voor https wordt
+gebruikt. Via het hoofdscherm kan dat worden gecontroleerd door te gaan
+naar het item Domain Setup, en hier te kiezen voor het betreffende
+domein.<br>
+<br>
+<img src="../../../Attachments/image-f6ffa52a-bf26-45f8-8e17-611f604cfd14.png" alt="image.png"></p>
+<p>Omdat er meestal geen private_html folder wordt gebruikt moet
+onderstaand vinkje ook worden aangezet.<br>
+Bij het item voor het instellen van de private_html folder zal moet hier
+de symlink worden aangegeven. Houd er rekening mee dat hiermee ook de
+fysieke private_html wordt verwijderd, met daarin eventueel aanwezige
+gegevens.<br>
+<br>
+<img src="../../../Attachments/image-8da7b718-0656-416c-bb99-35653f474406.png" alt="image.png"></p>
+<p>Alle stappen voor de installatie van het certificaat zijn voltooid. Zorg
+dat de certificaatbestanden goed zijn beveiligd, en bewaar een backup
+van de private key en het certificaat op een veilige plek.</p>
+<p>Controleer met de <a href="https://www.sslcheck.nl/">SSLCheck</a> of het
+certificaat juist is geinstalleerd en zorg voor een optimale
+configuratie van het SSL certificaat met <a href="https://www.sslcertificaten.nl/support/FAQ/Tips_en_Tricks">deze tips en
+instellingen.</a><br>
+Pas via een SSLCheck zie je of het intermediate en het root-certificaat
+in de juiste volgorde staan.</p>
+<h2 id="section-1"></h2>
+<h2 id="certificaat-aanvragen-via-iis">Certificaat aanvragen via IIS</h2>
+<h3 id="csr-aanvragen-in-iis">CSR aanvragen in IIS</h3>
+<p>De CSR-aanvraag kan alleen afgemaakt worden op dezelfde server als waarop de CSR-aanvraag is uitgevoerd.<br>
+Je kunt hier bijvoorbeeld de MP-MGMT12 voornemen.</p>
+<p>Een certificaat aanvragen via IIS werkt als volgt:<br>
+Op server-nivo</p>
+<p>Start IIS -&gt; Server Certificates -&gt; Create Certificate Request : vul
+alle gegevens in.<br>
+Kies bij sites waarop (bijna) geen gebruikers inloggen voor RSA met een
+bit-lenght = 4096.<br>
+Voor sites waarop wel gebruikers inloggen zoals de montaportal en
+gomonta kies van voor 2048.</p>
+<p><img src="../../../Attachments/image-7e512120-9bf5-4faf-b886-50da77ff5641.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-4a9f44be-36af-4271-a91b-b0c860cccbcc.png" alt="image.png"></p>
+<p>Dit levert een file op die de gegevens bevat voor de aanvraag bij
+Xolphin.</p>
+<h3 id="certificaat-aanvraag-afronden-in-iis">Certificaat aanvraag afronden in IIS</h3>
+<p>Ga naar de server waarop de CSR is aangevraagd en kies binnen IIS voor
+Server Certificates -&gt; Complete Certificate Request. In het volgende
+scherm verwacht IIS een cer-bestand, er is een crt-bestand, maar dit kan
+gewoon gebruikt worden (kies dus alle bestandstypen).<br>
+Geef als friendly-name bijvoorbeeld *.montaportal.nl-2020 op, gebruik
+hier het jaartal van uitgifte, en kies de Personal Store.<br>
+Exporteer vervolgens het certificaat als pfx-file (bijvoorbeeld
+Wildcard-MontaReturns-com-2021.pfx), dit kan weer geïmporteerd worden op
+andere webservers. Zet hierop het wachtwoord uit Passwordstate (&quot;Xolphin
+(SSLcertificaten.nl)&quot; en dan in de notes)<br>
+Voeg vervolgens het pfx-bestand toe in Passwordstate bij (&quot;Xolphin
+(SSLcertificaten.nl)&quot;).<br>
+Zorg ervoor dat in &quot;Montapacking\Monta - IT -- General\ Webservers
+montapacking.xlsx&quot; tabblad &quot;Certificaten overzicht&quot; bijgehouden wordt op
+welke server het certificaat geïnstalleerd is.</p>
+<p>Maak vervolgens op websites die via de BIG-IP lopen het certificaat actief zoals beschreven in : <a href="https://vragen.monta.nl/Docs/Operations/F5-Bigip/Certificaat-vernieuwen/">https://vragen.monta.nl/Docs/Operations/F5-Bigip/Certificaat-vernieuwen/</a></p>
+<p>Als de website niet via de BIG-IP loopt maak dan het nieuwe certificaat actief op de website door bij de
+bindings te verwijzen naar het nieuwe certificaat.<br>
+Als je vervolgens op &quot;view&quot; klikt kun je de nieuwe einddatum zien.</p>
+<p><img src="../../../Attachments/image-61e937ce-7965-4d20-b18e-88ff7d981bce.png" alt="image.png"></p>
+<p>Bij het benaderen van de website is het wellicht nodig om de website
+even te herstarten vanuit IIS voordat de nieuwe einddatum zichtbaar
+wordt..</p>
+<h2 id="certificaat-op-een-webcluster-of-een-webpool-het-certificaat">Certificaat op een webcluster of een webpool het certificaat</h2>
+<p>Let er op dat je het certificaat op alle servers importeert en actief maakt
+(anders merk je pas bij een failover dat de website met een verlopen certificaat werkt).</p>
+<p>Verwijder tenslotte alle certificaat-bestanden die tijdens het proces
+ergens op schijf opgeslagen zijn.<br>
+<br>
+Het proces is verder ook allemaal beschreven op :
+<a href="https://www.sslcertificaten.nl/support/IIS/IIS_-_Installatie_certificaat">https://www.sslcertificaten.nl/support/IIS/IIS_-_Installatie_certificaat</a>�</p>
+<h2 id="section-2"></h2>
+<h2 id="certificaat-aanvragen-bij-xolphin">Certificaat aanvragen bij Xolphin</h2>
+<p>Login bij <a href="https://www.xolphin.nl/cp">Xolphin Control Panel</a></p>
+<p>Er zijn 3 mogelijkheden:</p>
+<ul>
+<li>Een compleet nieuw certificaat aanvragen.</li>
+<li>Een certificaat opnieuw aanvragen waarvan het abonnement afloopt.</li>
+<li>Een certificaat heruitgeven waarvan het abonnement nog loopt.</li>
+</ul>
+<p>In onderstaand voorbeeld is te zien dat het certificaat gekocht is met een abonnement van 5 jaar.<br>
+Omdat een certificaat maar 398 dagen geldig is moet er 4 keer een heruitgifte uitgevoerd worden.</p>
+<p><img src="../../../Attachments/image-20761314-90c1-48db-8419-1a48ea1c8d14.png" alt="image.png"></p>
+<p><br>
+Gaat het om een nieuw certificaat of is het abonnement verlopen kies dan
+voor.</p>
+<ul>
+<li>Nieuwe aanvraag -- SSL Certificaat.<br>
+Kies voor enkel domein of wildcard en dan het volgende product</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Wat</strong></th>
+<th><strong>Domein Validatie</strong></th>
+<th><strong>Organisatie validatie</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enkel domein</td>
+<td>Sectico PositiveSSL</td>
+<td>Sectico InstantSSL</td>
+</tr>
+<tr>
+<td>Wildcard domein</td>
+<td>Sectico PositiveSSL</td>
+<td>Sectico PremiumSSL</td>
+</tr>
+</tbody>
+</table>
+<p>Kies 5 jaar tenzij de verwachting is dat de website geen 5 jaar meer in
+de lucht zal blijven.<br>
+Plak de CSR en voeg gratis domein www / non-www toe indien dit van
+toepassing is.</p>
+<p>Gebruik als BV : Monta Services B.V.<br>
+Gebruik als adres : Weide 30 4206CJ Gorinchem.</p>
+<p>Kvk-nummer: [11045086]<br>
+<br>
+Xophin moet vaststellen dat Monta werkelijk de eigenaar is van het
+domein.<br>
+Hiervoor kan een mail gestuurd worden naar een aantal vaste mailadressen
+zoals <a href="mailto:servicedesk@monta.nl">servicedesk@monta.nl</a>.<br>
+Dit kan ook door binnen DNS (TransIP) een CNAME aan te maken met de
+gegevens die Xolphin aangeeft. Dit moet dan als volgt in DNS gezet
+worden :<br>
+_09271eef49af21380ccb1228dc04d2e2.montareturns.com als
+_09271eef49af21380ccb1228dc04d2e2 als naam (dus montareturns.com
+weghalen).<br>
+c613a844368ded0143892563f57f664c.c897436d76182392dd45e6675ba86a8f.comodoca.com.
+als waarde (belangrijk dat achter comoda.com een punt staat)..</p>
+<p><img src="../../../Attachments/image-e6cb319f-adcf-4d6a-9cd1-4bb91c228991.png" alt="image.png">
+<br>
+Er wordt vervolgens een mail met het certificaat gestuurd naar support
+als het certificaat klaar is.<br>
+Het certificaat kan dan ook gedownload worden vanuit <a href="https://www.xolphin.nl/cp/certificaten">Xolphin Control
+Panel</a>.<br>
+Download dan het crt-bestand.</p>
+<p>Zoals gezegd kan een certificaat maar maximaal 398 dagen geldig zijn.<br>
+Daarom moet steeds na een jaar een heruitgifte uitgevoerd worden. Dit werkt ook weer met een
+CSR-aanvraag.<br>
+Kies voor &quot;Heruitgeven&quot; en plak de CSR in het juiste veld. Je zult zien dat er dan geen kosten in rekening worden gebracht.
+<img src="../../../Attachments/image-d2e7434b-cfbb-4980-b04d-ef318f1a64b1.png" alt="image.png"></p>
+<h2 id="section-3"></h2>
+<h2 id="certificaat-vervangen-extra-informatie">Certificaat vervangen extra informatie</h2>
+<h3 id="diverse-servers">Diverse servers</h3>
+<h4 id="mp-app01">MP-APP01</h4>
+<p>In IIS website &quot;Passwordstate&quot; alle https-bindings.</p>
+<h4 id="mp-app02">MP-APP02</h4>
+<p>Op de MP-APP02 draait SVN voor Development (De website is te benaderen
+via <a href="https://svn.montapacking.nl:8443/">https://svn.montapacking.nl:8443/</a>)<br>
+Het certificaat is in te stellen via &quot;Visual SVN Server Manager&quot; op de
+mp-app02.<br>
+<br>
+<img src="../../../Attachments/image-2827e210-0fa8-45c7-a9d9-c01f6126ef25.png" alt="image.png"></p>
+<h4 id="mp-app03">MP-APP03</h4>
+<p>Op de MP-APP03 draaien applicaties voor Finance.<br>
+Op deze server moet het monta.nl-certificaat geplaatst worden.\</p>
+<p>Voor Lucanet dient het als volgt in de
+Middels de “LucaNet.Server Administrator” kan e.e.a. ingesteld worden.
+E:\Lucanet\Software.bin\LucaNet.exe lns://lucanet.monta.nl/goto/LNSA<br>
+Master ww in Passwordstate.
+Op onderstaande manier is https ingesteld:
+<img src="../../../Attachments/image-0b7eea16-5a2e-44cd-86e7-937906455036.png" alt="image.png"></p>
+<p>Voor Easysystems wordt de default website gebruikt met speciale poorten.<br>
+Hiervoor moet op de &quot;normale&quot; manier het certificaat vernieuwd worden:
+<img src="../../../Attachments/image-7f36ab06-9bab-4b09-967a-a028a42fea70.png" alt="image.png"></p>
+<h4 id="mp-voip01">MP-VOIP01</h4>
+<p>Certificaat voor webservers is een pfx-bestand.
+Via <a href="https://www.sslshopper.com/ssl-converter.html">https://www.sslshopper.com/ssl-converter.html</a> dit converteren naar
+pem.<br>
+Dit pem-bestand in 2 stukken verdelen:<br>
+RSA-Private-key in voip.montapacking.nl-key.pem, en Certificate in
+voip.montapacking.nl-crt.pem<br>
+MP-VOIP01 via SFTP-verbinden en beide bestanden vervangen op onderstaande manier.</p>
+<ol>
+<li>Log met FileZilla aan op de mp-voip01, met root credentials en poort 22 (SSH)  (sftp://mp-voip01).</li>
+<li>Ga naar de folder /var/lib/3cxpbx/Bin/nginx/conf/Instance1</li>
+<li>Hernoem de 2 pem-bestanden naar .old
+<img src="../../../Attachments/image-48fb61ee-0e4f-4aa8-b7b7-3f266bc3ec96.png" alt="image.png"></li>
+<li>Plaats de nieuwe pem-bestanden (dezelfde naamgeving aanhouden) in de directory.</li>
+<li>Connect with an SSH client such as PuTTY using SSH root credentials to the phone system host.</li>
+<li>Run commands:
+a.	     cd /var/lib/3cxpbx/Bin/nginx/conf/Instance1
+b.	     chown phonesystem:phonesystem voip.montapacking.nl-crt.pem
+c.	     chown phonesystem:phonesystem voip.montapacking.nl-key.pem
+d.	     service nginx restart</li>
+</ol>
+<h4 id="ftp-servers">FTP-servers</h4>
+<p>Op de MP-FTP10/MP-FTP20 en op de DEL-PRTG01 wordt het montaportal-certificaat gebruikt.<br>
+Dit moet een wildcard-certificaat zijn omdat anders orders.montaportal.nl niet
+vertrouwd wordt.<br>
+Of orders.montaportal.nl moet separaat aangevraagd worden.</p>
+<p>Binnen Filezilla moet bij de settings - FTP over TLS settings verwezen
+worden naar een PEM-bestand met een Private key en een Certificate.<br>
+Er wordt nu een bestand gebruikt waar beide in zitten.<br>
+Als er een nieuwe montaportal.nl - certificaat wordt uitgerold dient er
+ook weer een nieuw PEM-bestand gemaakt te worden.<br>
+Download het montaportal-pfx bestand uit Passwordstate.<br>
+Het pfx-bestand kan vervolgens met open SSL omgezet worden naar een
+PEM-bestand.<br>
+In &quot;\\mp-fs102\Software\OpenSSL&quot; staat een textdocument &quot;convert
+to PEM&quot; met het commando om van een pfx-bestand een pem-bestand te
+maken.<br>
+Dit kan ook via de
+website : <a href="https://www.sslshopper.com/ssl-converter.html">https://www.sslshopper.com/ssl-converter.html</a><br>
+Vervolgens moet het pem-bestand met notepad++ nog aangepast worden.<br>
+Plak het intermediate-certificaat en het ca-certificaat uit het oude
+pem-bestand onderaan in het nieuwe pem-bestand.<br>
+Er moeten overal CRLF's neergezet worden zodat de layout gelijk wordt
+aan het huidige pem-bestand. Het is belangrijk dat de certificaten in
+het bestand in de juiste volgorde staan.<br>
+Zie het huidige pem-bestand. Het kan vervolgens getest worden op een
+niet actieve ftp-server met een filezilla-client.<br>
+Filezilla mag geen fouten meer geven, behalve dat het een onbekend
+certificaat is.<br>
+<br>
+De opbouw van het PEM-bestand is als volgt :</p>
+<ol>
+<li><p>Private key montaportal.nl</p>
+</li>
+<li><p>Public key montaportal.nl</p>
+</li>
+<li><p>Public key Sectigo_RSA_Domain_Validation_Secure_Server_CA</p>
+</li>
+<li><p>Public key USERTrust_RSA_Certification_Authority</p>
+</li>
+</ol>
+<p>friendlyName: le-8554f5a8-f778-4b88-b477-4d2a7ee5436d<br>
+Microsoft CSP Name: Microsoft RSA SChannel Cryptographic Provider</p>
+<p>BEGIN RSA PRIVATE KEY-----<br>
+Private Key (without passphrase)</p>
+<p>END RSA PRIVATE KEY-----<br>
+friendlyName: *.montaportal.nl-2020<br>
+subject=/CN=*.montaportal.nl<br>
+issuer=/C=GB/ST=Greater Manchester/L=Salford/O=Sectigo
+Limited/CN=Sectigo RSA Domain Validation Secure Server CA</p>
+<p>BEGIN CERTIFICATE-----<br>
+Certificate (CN=*.montaportal.nl)</p>
+<p>END CERTIFICATE-----<br>
+subject=/C=GB/ST=Greater Manchester/L=Salford/O=Sectigo
+Limited/CN=Sectigo RSA Domain Validation Secure Server CA<br>
+issuer=/C=US/ST=New Jersey/L=Jersey City/O=The USERTRUST
+Network/CN=USERTrust RSA Certification Authority</p>
+<p>BEGIN CERTIFICATE-----</p>
+<p>Intermediate (Intermediate CA, Sectigo)</p>
+<p>END CERTIFICATE-----</p>
+<p>subject=/C=US/ST=New Jersey/L=Jersey City/O=The USERTRUST
+Network/CN=USERTrust RSA Certification Authority<br>
+issuer=/C=US/ST=New Jersey/L=Jersey City/O=The USERTRUST
+Network/CN=USERTrust RSA Certification Authority</p>
+<p>BEGIN CERTIFICATE-----<br>
+Root (ROOT CA, who signs the Certificate USERTRUST)</p>
+<p>END CERTIFICATE-----</p>
+<h4 id="mp-prtg01-en-mp-prtg02">MP-PRTG01 en MP-PRTG02</h4>
+<p>Certificaat vervangen op de BIG-IP.</p>
+<h4 id="del-prtg01">DEL-PRTG01</h4>
+<p>Op de DEL-PRTG01 is Filezilla Server geïnstalleerd. Hierop moet het
+pem-bestand voor wildcard.montaportal.nl vervangen worden net als op de
+andere FTP-servers.</p>
+<p>Er draait ook PRTG op, daarvoor moet het monta.tech-certificaat vervangen worden.<br>
+Gebruik hiervoor het freeware tool &quot;PRTG Certificate
+Importer&quot; (directory naam Paessler Certificate Importer).</p>
+<p>Kies het pfx-bestand op schijf.
+<img src="../../../Attachments/image-1fa36f85-be0d-45ef-91ba-27efabfd88da.png" alt="image.png"></p>
+<p>Onder water wordt dan het volgende uitgevoerd :</p>
+<p>De volgende 3 bestanden worden geplaatst in : &quot;c:\program
+files(x86)\PRTG Network Monitor\Cert&quot;<br>
+-prtg.crt: This is the certificate for your PRTG core server. It must be
+stored in PEM-encoded format.<br>
+-prtg.key: This is the private key that matches your server certificate.
+It must be stored in PEM-encoded format and must not be encrypted. Make
+sure that you provide this file in decrypted format.<br>
+The best way to check this is to open the file in a text editor. If you
+find a line containing the word ENCRYPTED, the file still needs to be
+decrypted before you can use it with PRTG. Decrypt it using an SSL tool
+and your key password.<br>
+-root.pem: This is the public root certificate of your certificate's
+issuer. It must be stored in PEM-encoded format and must contain all
+necessary root certificates of your issuer in one file.\</p>
+<p>Handleiding zie : <a href="https://www.paessler.com/tools/certificateimporter">PRTG Certificate Importer
+(paessler.com)</a>.\</p>
+<p>Als je dit handmatig zou willen doen dan kun je op de volgende manier de 3 bestanden maken:<br>
+Middels het commando &quot;z:\openssl\bin\openssl pkcs12 -in
+z:\openssl\cert\wildcard-monta-tech-2022.pfx -out
+z:\openssl\cert\wildcard-monta.tech-2022.pem -nodes&quot; is de pfx
+omgezet naar een pem-bestand.<br>
+Hier is vervolgens het deel van het certificate en de ca uit een pem-bestand van de montaportal onder
+geplakt.</p>
+<h4 id="section-4"></h4>
+<h4 id="werkplek-omgeving">Werkplek-omgeving</h4>
+<p>MP-RDS01, RP-RDS02 en MP-RDSGW01 Website : Default (nodig voor inlog van
+buiten af).<br>
+MP-RDSxx Deployment options, voor werkplek.montapacking.nl<br>
+Op onderstaande is het certificaat aan te passen:<br>
+<br>
+<img src="../../../Attachments/image-e44b57a5-a855-48a6-892d-d663028cc05a.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-e8cf7d4a-553b-4a47-b0a4-7936de98aba8.png" alt="image.png"></p>
+<h2 id="sectigo-code-signing">Sectigo Code Signing</h2>
+<p><img src="../../../Attachments/image-2780456f-6399-4fe1-ae75-1dfac04fb97f.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-9fccd776-301e-48ea-9c9d-518319130a83.png" alt="image.png"></p>
+<p>SSL certificaten hebben een geldigheid van maximaal 398 dagen, iets meer
+dan een jaar.<br>
+Code Signing certificaten kunnen nog steeds met een geldigheid van 3
+jaar aangevraagd worden.</p>
+<p>Zie verder handleiding &quot;Aanvragen Code Signing Certificaat of E-mail
+Certificaat&quot; op de website van Xolphin.</p>
+<p><a href="https://www.digitalehandtekeningen.nl/support/Xolphin_Certificate_Tool">Xolphin Certificate Tool
+(digitalehandtekeningen.nl)</a></p>
+<p>Installeer hierbij lokaal het tool &quot;Xolphin Certificate Tools&quot;.</p>
+<p><img src="../../../Attachments/image-2c1bd45c-e866-4d10-a4a9-e588ca59b2a8.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-29452201-e407-48ad-a261-f19945b42a61.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-e74a3f02-7618-4731-95e9-461d70ec8d1b.png" alt="image.png"></p>
+<p><img src="../../../Operations/images/Handleiding-SSL-certificaten-aanvragen-en-vervangen/media/image23.png" alt="">
+Er wordt een mail verstuurd nadat er een kvk-controle is uitgevoerd.</p>
+<p>Met deze mail kan het proces in &quot;Xolphin Certificate Tools&quot; afgemaakt
+worden waarna en een pfx of pem geëxporteerd kan worden.</p>
+<p><img src="../../../Attachments/image-3c7825d3-07d5-40a7-a6b1-d73fe5ab9c54.png" alt="image.png"></p>
+<p>Gebruik Internet explorer.</p>
+<p>De collectie moet afgemaakt worden op de computer waarop de aanvraag is
+gedaan.</p>
+<p><img src="../../../Attachments/image-f43e11bd-683f-43d9-a5f0-5cbcef626fcd.png" alt="image.png"></p>
+<p>Hiermee wordt het crt-bestand toegevoegd aan de private key.</p>
+<p>Hierna is te zien dat er een nieuw certificaat is met een nieuwe
+expiration date.</p>
+<p><img src="../../../Attachments/image-3b4b6669-3f48-4bed-ac94-71d5631d7f32.png" alt="image.png"></p>
+<p>Dit kan geëxporteerd worden zowel als PFX, als (PEM) Encoded CRT / Key.</p>
+<p><img src="../../../Attachments/image-bbcd8a73-eb57-4857-919c-fa79400925b2.png" alt="image.png"></p>
+<p>Export als (PEM) Encoded CRT / Key levert 3 bestanden op.<br>
+xxxx.key met de private key<br>
+xxxx.crt met de publieke key<br>
+xxxx.cachain.crt met het intermediate en het root-certificaat.</p>
+<h2 id="firewalls">Firewalls</h2>
+<p>De firewalls gebruiken het wildcard-montapacking.nl-certificaat voor de Webinterface.</p>
+<h3 id="sophos">Sophos</h3>
+<p>Ga op de Sophos naar Remote Access \ Certificate Management \ en creëer een nieuw Certificaat en kies voor Upload.</p>
+<p><img src="../../../Attachments/image-a1108254-06e0-4ec0-ad82-84cea72a9c2d.png" alt="image.png"></p>
+<p>Ga vervolgens naar &quot;Management \ Webadmin Settings&quot; tabblad &quot;HTTPS Certificate&quot; en verwijs naar het nieuwe certificaat.</p>
+<p><img src="../../../Attachments/image-011c30aa-359b-48fb-b61c-8b53a5513e82.png" alt="image.png"></p>
+<p>Op de dc-rou01 wordt de user portal gebruikt voor de vpn. Hierbij dient ook een certificaat gewijzoigd te worden.</p>
+<p><img src="../../../Attachments/image-be00d6e8-ae64-46af-b1d0-c35f7faa0b09.png" alt="image.png"></p>
+<h3 id="fortinet">Fortinet</h3>
+<h4 id="fortimanager-en-fortianalyzer">Fortimanager en Fortianalyzer</h4>
+<p>Ga bij de System Settings naar de Certificates \ local Certificates en importeer een nieuwe versie van het certificaat.</p>
+<p><img src="../../../Attachments/image-e8b5975f-bec9-402d-b99f-c9459b7c6796.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-6cdde2a1-b059-442d-9d3a-07108fdb18e7.png" alt="image.png"></p>
+<p>Kies bij de admin settings het nieuwe certificaat.</p>
+<p><img src="../../../Attachments/image-e62bfcd0-9120-489a-81dc-671523e5b100.png" alt="image.png"></p>
+<h4 id="fortigates"><strong>Fortigates</strong></h4>
+<p>Open de betreffende Fortigate firewall en ga naar <strong>System -&gt; Certificates -&gt; Create/Import</strong>.</p>
+<p><img src="../../../Attachments/image-311e15a9-dff2-4991-99f1-dfb5e6943327.png" alt="image.png"></p>
+<p>Kies hier voor de optie <strong>Certificate</strong>.</p>
+<p><img src="../../../Attachments/image-a0a3db54-b093-490a-92b9-3b49e5e33da9.png" alt="image.png"></p>
+<p>Vervolgens voor de optie <strong>Import Certificate</strong>.</p>
+<p><img src="../../../Attachments/image-585d96d9-322d-49b5-a89b-69f97b49f1a8.png" alt="image.png"></p>
+<p><strong>Type:</strong> PKCS #12 Certificate.<br>
+<strong>Certificate with key file:</strong> Upload het .pfx bestand via +Upload.<br>
+<strong>Password:</strong> Zie PasswordState (Xolphin)<br>
+<strong>Certificate name:</strong> Wildcard-montapacking-nl-JAAR</p>
+<p>Klik vervolgens op <strong>Create</strong>.</p>
+<p><img src="../../../Attachments/image-79509651-2499-417b-b18f-7d346a012291.png" alt="image.png"></p>
+<p>Ga vervolgens naar <strong>System -&gt; Settings.</strong><br>
+Pas hier het <strong>HTTPS server certificate</strong> aan naar het nieuwe certificaat en klik op <strong>Apply</strong>.</p>
+<p><img src="../../../Attachments/image-2df9ac08-f6a3-4bf2-bae2-3ef01a6fa161.png" alt="image.png"></p>
+<h2 id="name-hero-omgeving-vervallen">Name Hero omgeving (VERVALLEN)</h2>
+<p>Sommige websites hebben gedraaid bij Name Hero (zie Passwordstate).<br>
+In 2023 zijn deze websites gemigreed naar Directadmin servers bij TransIP.<br>
+Op deze websites zijn aparte bestanden nodig voor :<br>
+private key<br>
+publieke key<br>
+ca-chain-bundle<br>
+Hiervoor dient een PEM-bestand gemaakt te worden waaruit de bovenstaande losse bestanden gehaald kunnen worden.<br>
+Dit gaat op dezelfde manier als bij de FTP-server en als Sectigo Code Signing .<br>
+Download bijvoorbeeld het monta-pfx bestand uit Passwordstate.<br>
+Het pfx-bestand kan vervolgens met open SSL omgezet worden naar een
+PEM-bestand.<br>
+In &quot;\\mp-fs102\Software\OpenSSL&quot; staat een textdocument &quot;convert
+to PEM&quot; met het commando om van een pfx-bestand een pem-bestand te
+maken.\</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

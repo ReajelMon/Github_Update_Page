@@ -1,0 +1,24 @@
+﻿<InboundForecasts>
+  <InboundForecast>
+    <Ordered>2022-09-23</Ordered>
+    <References>
+    <Reference>PO69594/396994</Reference>
+    </References>
+    <SupplierCode>703548</SupplierCode>
+    <Comment/>
+      <Lines>
+      <Line>
+        <Sku>215503</Sku>
+        <Quantity>1</Quantity>
+        <ExpectedDeliveryDate>2022-09-28</ExpectedDeliveryDate>
+        <Reference>13312926</Reference>
+      </Line>
+      <Line>
+        <Sku>108113</Sku>
+        <Quantity>50</Quantity>
+        <ExpectedDeliveryDate>2022-09-28</ExpectedDeliveryDate>
+        <Reference>13312930</Reference>
+      </Line>
+    </Lines>
+  </InboundForecast>
+</InboundForecasts>

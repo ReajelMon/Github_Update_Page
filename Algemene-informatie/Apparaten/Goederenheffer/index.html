@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Goederenheffer </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Goederenheffer ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="goederenheffer">Goederenheffer</h1>
+
+<p><a href="https://vragen.monta.nl/Docs/Algemene-informatie/Apparaten/Goederenheffer/"><img src="../../../Attachments/Goederheffer%202-1b7d4668-3f31-40f5-9d13-8e92ab439997.svg" width="100"></a></p>
+<p>Goederenheffers worden gebruikt om goederen verticaal te transporteren tussen verdiepingen.
+De meeste goederenheffers zijn standalone systemen voor handmatige bediening. In Molenaarsgraaf zijn 2 goederenheffers automatisch en daarmee geschikt voor <a href="../../../Algemene-informatie/Apparaten/Montabots">Montabots</a>. Dit houdt in dat de bewegingen van de goederenheffers en de deuren vanuit de software aangestuurd wordt, waardoor de goederenheffers kunnen samenwerken met de <strong><a href="https://vragen.monta.nl/Docs/Algemene-informatie/Apparaten/Montabots/">Montabots</a></strong>.</p>
+<p><img src="../../../Attachments/image-5cb85732-62da-4217-8a30-e2ed114f3b5c.png" alt="image.png"></p>
+<h2 id="documentatie-goederenheffers-stapro">Documentatie Goederenheffers Stapro</h2>
+<p>Stapro heeft bij de goederenheffers een map met <a href="../../../Algemene-informatie/Apparaten/Goederenheffer/Instructie-en-documentatie-Goederenheffer">Instructie en documentatie Goederenheffer</a> geleverd. <a href="../../../Algemene-informatie/Apparaten/Goederenheffer/Instructie-en-documentatie-Goederenheffer">Deze is hier te vinden</a></p>
+<p>********** De informatie hieronder is meer van technische aard **********</p>
+<p><img src="../../../Attachments/Afdeling%20-%20IT%20-%20man-c6f3a96e-0f99-4c12-a056-0044eca0df99.png" alt="Afdeling - IT - man.png"></p>
+<h2 id="technische-informatie-bij-de-goederenheffer">Technische informatie bij de Goederenheffer</h2>
+<p>Het systeem voor de Montabot Goederenheffer bestaat uit verschillende onderdelen.</p>
+<h2 id="sigmatek-plc">Sigmatek ​​​​​​​PLC</h2>
+<p>De Goederenheffer wordt aangestuurd door een Sigmatek PLC. Deze is ontwikkeld door Eurotec. Deze stuurt opdrachten naar de PLC van de Goederenheffer.</p>
+<h2 id="montabothefferwindowsservice">MontabotHefferWindowsService</h2>
+<p>De MontabotHefferWindowsService draait op de mp-proc03 (Eindhoven) en mp-app06 (Rotterdam). De service maakt een TCP verbinding met de  PLC. De service kan de status van de Goederenheffer uitlezen en kan de Goederenheffer ​​​​​​​een opdracht sturen. Dit zijn de volgende opdrachten: Naar een verdieping gaan, deur openen of deur sluiten.</p>
+<h2 id="montabot-service">Montabot service</h2>
+<p>De MontabotHefferWindowsService stuurt de status van de Goederenheffer door naar de Montabot service via RabbitMQ. De exchange heet 'Lift-Exchange'. De Montabot service kan de opdrachten verdelen over de Goederenheffers. Ook wordt door de Montabot service de rekken in de Goederenheffer gezet en vervolgens eruit gehaald op een andere verdieping.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

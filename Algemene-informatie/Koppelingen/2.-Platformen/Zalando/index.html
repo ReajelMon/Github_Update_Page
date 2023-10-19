@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Zalando </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Zalando ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="zalando">Zalando</h1>
+
+<h2 id="algemene-toelichting">Algemene toelichting</h2>
+<p>Monta heeft geen directe koppeling met Zalando. Wel is het mogelijk om te koppelen met zalando via bepaalde andere platformen. Omdat zalando veeleisend is in de manier waarop de pakketten worden verstuurd is er wat additionele inrichting nodig, voordat er met zalando mag worden verstuurd.</p>
+<h3 id="het-volgende-is-nodig">Het volgende is nodig:</h3>
+<ul>
+<li>Pakbonnen in specifieke Zalando lay-out; In de taal van het betreffende land.</li>
+<li>Retour label in de doos.</li>
+</ul>
+<p>Het uitwisselen van de data (orders importeren, track&amp;trace terugsturen etc.) kan door Zalando aan te sluiten op de webshop met bijv. Channable; Shopify; Magento en ChannelEngine.</p>
+<p>Bijzondere velden die we nodig hebben in de koppeling: <br></p>
+<ul>
+<li><code>ItemInvoicePrice / TotalRowInvoiceValue</code>: Deze invoice data hebben we nodig op de pakbon. <br></li>
+<li><code>RetourTT</code>: De retour Track&amp; Trace moet worden teruggekoppeld bij de orderupdate na het verzenden.</li>
+</ul>
+<br>
+<h2 id="data">Data:</h2>
+<p>Zalando vereist op de pakbon bepaalde data die Monta niet altijd standaard importeert. De manier waarop we deze data kunnen importeren kan verschillen per koppeling. Hieronder is een overzicht te vinden van de data die we nodig hebben voor zalando, en in welk veld bij Monta we deze data importeren.</p>
+<ul>
+<li><code>Klantennummer</code>: Dit is het klantnummer van Zalando.</li>
+<li><code>Bestelnummer</code> : Dit moet worden gevuld met het bestelnummer van Zalando.</li>
+<li><code>Artikelnummer</code> = Dit moet worden gevuld met de productcode (artikelnummer) van Zalando. <br></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Channelengine</th>
+<th>Shopify</th>
+<th>Magento</th>
+<th>Its Perfect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zalando Klantennummer</td>
+<td>CustomerNumber</td>
+<td>CustomerNumber</td>
+<td>CustomerNumber</td>
+<td>CustomerNumber</td>
+</tr>
+<tr>
+<td>Zalando Bestelnummer</td>
+<td>WebshopOrderID</td>
+<td>Order Nr.</td>
+<td>Reference</td>
+<td>Reference</td>
+</tr>
+<tr>
+<td>Zalando Artikelnummer</td>
+<td>Orderline Reference (Note?)</td>
+<td>Supplier Product Code</td>
+<td>SupplierProductCode</td>
+<td>Supplier Porudct code</td>
+</tr>
+<tr>
+<td>Order Date</td>
+<td>OrderDate</td>
+<td>OrderDate</td>
+<td>OrderDate</td>
+<td>OrderDate</td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3 id="pakbon-templates">Pakbon templates:</h3>
+<p>Letop: De pakbonnen moeten aangepast worden naar de juiste data, zie hierboven.</p>
+<p><a href="../../../../Attachments/Pakbon_Zalando_AT-d7140a44-74fa-44ad-9a1a-83f3b59d0a9b.docx">Pakbon_Zalando_AT.docx</a></p>
+<p><a href="../../../../Attachments/Pakbon_Zalando_BE_NL-312db104-f104-4016-a92d-2b404481c105.docx">Pakbon_Zalando_BE_NL.docx</a></p>
+<p><a href="../../../../Attachments/Pakbon_Zalando_BE_FR-db23e6f7-e669-4452-8327-0b1bf7d589ff.docx">Pakbon_Zalando_BE_FR.docx</a></p>
+<p><a href="../../../../Attachments/Pakbon_Zalando_DE-d7b06050-737a-4a26-bb69-5042e2db3d93.docx">Pakbon_Zalando_DE.docx</a></p>
+<p><a href="../../../../Attachments/Pakbon_Zalando_NL-e3fcd0e1-7cf7-4477-b79d-2f4691046779.docx">Pakbon_Zalando_NL.docx</a></p>
+<p><a href="../../../../Attachments/Zalando%20pakbonnen%20per%20land-83e868db-dd18-4376-a918-9ea592acf984.zip">Zalando pakbonnen per land.zip</a></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

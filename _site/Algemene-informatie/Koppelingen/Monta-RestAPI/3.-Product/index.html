@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>3. Product </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="3. Product ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="3-product">3. Product</h1>
+
+<h2 id="product">Product</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Validation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sku</td>
+<td>Text, required, unique</td>
+<td>The SKU of the product, a unique identifier to be chosen by the client</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Text, required</td>
+<td>Description of the product</td>
+</tr>
+<tr>
+<td>Barcodes</td>
+<td>Text array, required</td>
+<td>The barcodes of the product, only two are supported at the moment. Must be at least one when creating a new product.</td>
+</tr>
+<tr>
+<td>WeightGrammes</td>
+<td>Number, read only</td>
+<td>The weight of de product in grams</td>
+</tr>
+<tr>
+<td>LengthMm</td>
+<td>Number, read only</td>
+<td>The length (longest side) of the packaged product in millimeters</td>
+</tr>
+<tr>
+<td>WidthMm</td>
+<td>Number, read only</td>
+<td>The width of the packaged product in millimeters</td>
+</tr>
+<tr>
+<td>HeightMm</td>
+<td>Number, read only</td>
+<td>The height (shortest side) of the packaged product in millimeters</td>
+</tr>
+<tr>
+<td>Stock</td>
+<td>Stock, read only. Not returned when empty</td>
+<td>The different types of stock for a product, see Stock for more info.</td>
+</tr>
+<tr>
+<td>ImageUrl</td>
+<td>Text, post/put only</td>
+<td>Url of the location of the image to download</td>
+</tr>
+<tr>
+<td>SupplierCode</td>
+<td>Text, optional, unique</td>
+<td>Code of the Supplier. It has to be an existing Supplier.</td>
+</tr>
+<tr>
+<td>PurchasePrice</td>
+<td>Number, put only</td>
+<td>The price of purchase.</td>
+</tr>
+<tr>
+<td>SellingPrice</td>
+<td>Number, put only</td>
+<td>The selling price of the product.</td>
+</tr>
+<tr>
+<td>PurchasePriceHidden</td>
+<td>Number, put only</td>
+<td>The price of purchase. Not visible on MontaPortal</td>
+</tr>
+<tr>
+<td>Food</td>
+<td>Boolean, put only</td>
+<td>Property to set the item as a ‘food’ item.</td>
+</tr>
+<tr>
+<td>MinimumExpiryPeriodInbound</td>
+<td>Number, put only</td>
+<td>Minimum number of days between inbound and expiry date. (If the number of days between inbound and expiry date is below this minimum, the inbound can be rejected)</td>
+</tr>
+<tr>
+<td>MinimumExpiryPeriodOutbound</td>
+<td>Number, put only</td>
+<td>Minimum number of days between outbound order picking and expiry date. (If the number of days between outbound order picking and expiry date is below this minimum, the products will not be picked)</td>
+</tr>
+<tr>
+<td>Cool</td>
+<td>Boolean, optional, put only</td>
+<td>Products marked ‘cool’ shall be placed in cooling cells to keep it as fresh as possible.</td>
+</tr>
+<tr>
+<td>Note</td>
+<td>Text, optional</td>
+<td>The note field can be used as a extra description field for a product. It is also possible to use this field on your packing list. Maximum: 2056 carachters.</td>
+</tr>
+<tr>
+<td>PurchaseStepQty</td>
+<td>Number, optional, read only</td>
+<td>Indicates the quantity of the product that can be fitted in a single container/box/etc.</td>
+</tr>
+<tr>
+<td>RegisterSerialNumber</td>
+<td>Boolean, optional</td>
+<td>This option will enforce the registration of serial numbers in the outbound process for B2C orders.</td>
+</tr>
+<tr>
+<td>RegisterSerialNumberB2B</td>
+<td>Boolean, optional</td>
+<td>This option will enforce the registration of serial numbers in the outbound process for B2B orders.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="stock">Stock</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Validation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>StockInboundForecasted</td>
+<td>Number, read only. Not returned when empty</td>
+<td>Stock that is in forecast but not yet received.</td>
+</tr>
+<tr>
+<td>StockQuarantaine</td>
+<td>Number, read only. Not returned when empty</td>
+<td>Stock returned from orders that has been damaged or became unsellable</td>
+</tr>
+<tr>
+<td>StockAll</td>
+<td>Number, read only. Not returned when empty</td>
+<td>All stock in warehouse excluding quarantaine</td>
+</tr>
+<tr>
+<td>StockBlocked</td>
+<td>Number, read only. Not returned when empty</td>
+<td>Stock on blocked locations</td>
+</tr>
+<tr>
+<td>StockInTransit</td>
+<td>Number, read only. Not returned when empty</td>
+<td>Stock that is received but not yet placed in warehouse</td>
+</tr>
+<tr>
+<td>StockReserved</td>
+<td>Number, read only. Not returned when empty</td>
+<td>Stock that has been reserved by order reservations</td>
+</tr>
+<tr>
+<td>StockInboundHistory</td>
+<td>Number, read only. Not returned when empty</td>
+<td>All stock that has been received ever, excluding stock received from returns</td>
+</tr>
+<tr>
+<td>StockAvailable</td>
+<td>Number, read only. Not returned when empty</td>
+<td>All stock on pickable locations. You may want to include StockInTransit here.</td>
+</tr>
+<tr>
+<td>StockSplitProduct</td>
+<td>Number, read only. Not returned when empty or parameter ‘includeSplitStock’ not set</td>
+<td>All stock in split products. This is the sum of all underlying split products(the child products)</td>
+</tr>
+<tr>
+<td>StockWholeSaler</td>
+<td>Number, read only. Not returned when empty</td>
+<td>All stock availeble at wholesaler(s)</td>
+</tr>
+<tr>
+<td>PerWarehouse</td>
+<td>List of objects</td>
+<td>Stock per warehouse. Only warehouses with stock are in the list.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="get-restv5productsku">GET /rest/v5/product/{sku}</h3>
+<p>To retrieve details of a product by sku.
+Provide SKU in query parameters if it contains a slash, e.g. /product/?sku=2334345</p>
+<h4 id="example">Example</h4>
+<p><code>GET https://api.montapacking.nl/rest/v5/product/2334345 HTTP/1.1 Host: api.montapacking.nl Authorization: </code></p>
+<p>Response:</p>
+<p><code>HTTP/1.1 200 OK { &quot;Sku&quot;:&quot;2334345&quot;, &quot;Description&quot;:&quot;Grote Beker&quot;, &quot;Barcodes&quot;:[&quot;AHKS81&quot;], &quot;WeightGrammes&quot;:60, &quot;LengthMm&quot;:50, &quot;WidthMm&quot;:50, &quot;HeightMm&quot;:15, &quot;SupplierCode&quot;:null, “Food”:false, “Cool”:false, “Note”:”Test note”, “PurchaseStepQty”:12 } </code></p>
+<h3 id="get-restv5productbarcodebarcode">GET /rest/v5/product?barcode={barcode}</h3>
+<p>To retrieve details of a product by barcode.</p>
+<h4 id="example-1">Example</h4>
+<p><code>GET https://api.montapacking.nl/rest/v5/product?barcode=AHKS81 HTTP/1.1 Host: api.montapacking.nl Authorization: </code></p>
+<p>Response:</p>
+<p><code>HTTP/1.1 200 OK { &quot;Sku&quot;:&quot;2334345&quot;, &quot;Description&quot;:&quot;Grote Beker&quot;, &quot;Barcodes&quot;:[&quot;AHKS81&quot;], &quot;WeightGrammes&quot;:60, &quot;LengthMm&quot;:50, &quot;WidthMm&quot;:50, &quot;HeightMm&quot;:15, &quot;SupplierCode&quot;:null, “Food”:false, “Cool”:false, “Note”:null, “PurchaseStepQty”:null } </code></p>
+<h3 id="get-restv5productspagenumber">GET /rest/v5/products?page={number}</h3>
+<p>To retrieve details of al products
+Provide page in query parameters to go to next page , e.g. /products?page=1</p>
+<h4 id="example-2">Example</h4>
+<p><code>GET https://api.montapacking.nl/rest/v5/products HTTP/1.1 Host: api.montapacking.nl Authorization: </code></p>
+<p>Response:</p>
+<p><code>HTTP/1.1 200 OK { &quot;Products&quot;:[ { &quot;Product&quot;:{ &quot;Sku&quot;:&quot;0000142&quot;, &quot;Description&quot;:&quot;BENNETT - Dirty Grey Stripe - S&quot;, &quot;Barcodes&quot;:[ &quot;3105031201611&quot; ], &quot;WeightGrammes&quot;:null, &quot;LengthMm&quot;:1, &quot;WidthMm&quot;:1, &quot;HeightMm&quot;:1, &quot;Stock&quot;:{ &quot;StockInboundForecasted&quot;:1, &quot;StockQuarantaine&quot;:0, &quot;StockAll&quot;:0, &quot;StockBlocked&quot;:0, &quot;StockInTransit&quot;:0, &quot;StockReserved&quot;:0, &quot;StockAvailable&quot;:0, &quot;StockWholeSaler&quot;:0, &quot;Batches&quot;: [ { “Reference”: “batch-01”, &quot;Quantity&quot;: 1, &quot;BestBeforeDate&quot;: &quot;2019-02-18T00:00:00&quot; }, { “Reference”: “batch-01”, &quot;Quantity&quot;: 29, &quot;BestBeforeDate&quot;: &quot;2019-02-19T00:00:00&quot; } ] }, &quot;SupplierCode&quot;:null, &quot;PurchasePrice&quot;:null, &quot;SellingPrice&quot;:null, &quot;PurchasePriceHidden&quot;:null, &quot;Food&quot;:false, &quot;MinimumExpiryPeriodInbound&quot;:null, &quot;MinimumExpiryPeriodOutbound&quot;:null, &quot;Cool&quot;:false, &quot;Note&quot;:null, “PurchaseStepQty”:12 } } ] } </code></p>
+<h3 id="get-restv5productskustock">GET /rest/v5/product/{sku}/stock</h3>
+<p>To retrieve details of a product including stock.</p>
+<p>Provide SKU in query parameters if it contains a slash, e.g. /product/stock?sku=2334345</p>
+<p>Optional: Use “?includeSplitStock=true” to add the ‘StockSplitProduct’ to your response</p>
+<h4 id="example-3">Example</h4>
+<p>`GET <a href="https://api.montapacking.nl/rest/v5/product/2334345/stock">https://api.montapacking.nl/rest/v5/product/2334345/stock</a> HTTP/1.1
+Host: api.montapacking.nl
+Authorization:</p>
+<p>Response:</p>
+<p><code>HTTP/1.1 200 OK { &quot;Sku&quot;:&quot;2334345&quot;, &quot;Description&quot;:&quot;Grote Beker&quot;, &quot;Barcodes&quot;:[&quot;AHKS81&quot;], &quot;WeightGrammes&quot;:60, &quot;LengthMm&quot;:50, &quot;WidthMm&quot;:50, &quot;HeightMm&quot;:15, &quot;SupplierCode&quot;:null, &quot;Stock&quot;:{ &quot;StockInboundForecasted&quot;:0, &quot;StockQuarantaine&quot;:0, &quot;StockAll&quot;:6, &quot;StockBlocked&quot;:0, &quot;StockInTransit&quot;:4, &quot;StockReserved&quot;:0, &quot;StockInboundHistory&quot;:124, &quot;Batches&quot;: [ { “Reference”: “batch-01”, &quot;Quantity&quot;: 1, &quot;BestBeforeDate&quot;: &quot;2019-02-18T00:00:00&quot; }, { “Reference”: “batch-02”, &quot;Quantity&quot;: 29, &quot;BestBeforeDate&quot;: &quot;2019-02-19T00:00:00&quot; } ] } }</code></p>
+<h3 id="get-restv5productupdated_sinceupdatedsince">GET /rest/v5/product/updated_since/{updatedSince}</h3>
+<p>To retrieve details of all products with changed stock since the provided DateTime. Max 7 days in the
+past.</p>
+<p>Optional: Use “?stock=1&amp;stock=3” to determine which stock you want to see in the response. Below
+are the corresponding values listed with the type of stock. If none is provided, Stock will not be
+returned.</p>
+<h4 id="example-4">Example</h4>
+<p><code>GET https://api.montapacking.nl/rest/v5/product/updated_since/2016-04- 14T16:38:27?stock=2&amp;stock=3&amp;stock=7 HTTP/1.1 Host: api.montapacking.nl Authorization: Basic dGVzdDp0ZXN0= </code></p>
+<p>Response:</p>
+<p><code>HTTP/1.1 200 OK { &quot;Products&quot;:[{ &quot;Product&quot;:{ &quot;Sku&quot;:&quot;2334345&quot;, &quot;Description&quot;:&quot;Grote Beker&quot;, &quot;Barcodes&quot;:[&quot;AHKS81&quot;], &quot;WeightGrammes&quot;:60, &quot;LengthMm&quot;:50, &quot;WidthMm&quot;:50, &quot;HeightMm&quot;:15, &quot;SupplierCode&quot;:null, &quot;Stock&quot;:{ &quot;StockQuarantaine&quot;:0, &quot;StockAll&quot;:5, &quot;StockInboundHistory&quot;:124 } } }] } </code></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

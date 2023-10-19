@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Exact Online </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Exact Online ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="exact-online">Exact Online</h1>
+
+<h2 id="dataflows">Dataflows:</h2>
+<ul>
+<li>Inbound Forecast Import</li>
+<li>Order Import (Filter op status open)</li>
+<li>Inbound Update</li>
+<li>Order Update</li>
+<li>Changed Stock Update</li>
+<li>Full Stock Update:
+Loopt nu via queue items van alle materialen. Hierdoor worden bij groot assortiment niet iedere keer alleen van de 1e 300 producten een stockupdate verstuurd. Nu gaat na crash (bijvoorbeeld too many request) de full stock verder met de volgende producten uit de queue.</li>
+</ul>
+<p>(Letop: Exact Online bevat geen product import).</p>
+<br>
+<h2 id="instellingen">Instellingen</h2>
+<h3 id="inbound-forecast-import">Inbound forecast Import:</h3>
+<p><code>OnlyFromSetWarehouse</code> = Met deze instelling aan importeren we alleen purchase orders van het ingestelde magazijn in de platform-settings.
+Bij Inboundforecastimportsettings is het mogelijk om in te stellen dat wij regels importeren die op een later moment aan de inkooporder in Exact toegeveogd worden.
+Voeg hierbij het RelatieSystemConnectionID toe en geef bij DisableUpdate; False in.</p>
+<h3 id="order-import">Order Import:</h3>
+<p><code>DeliveryStatussen</code> : Standaard is hier de status 12 ingevuld(open). Mogelijke aanvullingen zijn; 20 = Partial, 21 = Complete, 45 = Cancelled.</p>
+<p><code>UsePlannedShipmentDate</code> : Standaard haalt Monta de geplande verzenddatum niet mee. Als je deze instelling aanzet haalt monta deze data wel mee, en zal de gewenste leverdatum worden gebruikt in de order.</p>
+<p><code>ImportOrdersAsB2b</code> = Standaard importeerd monta alle orders als B2C. Wanneer je deze instelling aanzet zal de order worden gemarkeerd als B2B.</p>
+<h4 id="verzendopties-importeren">Verzendopties importeren</h4>
+<p>De &quot;verzendmethode beschrijving&quot; wordt uitgelezen en kan gemapt worden aan een verzender met evt. opties.
+<br></p>
+<h3 id="order-update">Order Update.</h3>
+<h5 id="shipping-method-terug-sturen-naar-exact">Shipping Method terug sturen naar Exact.</h5>
+<p>om de Shipping Method terug te kunnen sturen naar Exact moet de guid ingesteld worden in tblRelatieSystemConnectionDataFlowOrderImportSettingsShippers want bij de order update wordt gecheckt naar de guid in dit table, als het ingesteld is dan wordt de guid naar Exact gestuurd anders blijft dit property leeg bij default.
+<br></p>
+<br>
+<h2 id="bijzonderheden">Bijzonderheden</h2>
+<h3 id="de-en-nl-versie-koppeling">DE en NL versie koppeling</h3>
+<p>Voor Exact Online is het mogelijk om voor NL of DE een nieuwe koppeling te maken, door in de popup bij het aanmaken van de koppeling voor NL of DE te kiezen in de dropdown.</p>
+<p>De urls en de credentials voor de Exact Online omgeving voor NL en DE staan in passwordstate.
+<br></p>
+<h3 id="orderwijzigingen">Orderwijzigingen:</h3>
+<p>Met de instelling UpdateWhenAlreadyExistsAndPlatformSupportsIt kunnen we orderwijzigingen en annuleringen importeren.
+<br></p>
+<h3 id="financiele-voorraadstanden">Financiele voorraadstanden</h3>
+<p>Sommige exact online omgevingen hebben de financiele stock nodig ipv de beschikbare voorraad. Hiervoor hebben we een mogelijkheid ingebouwd, dit is echter nog geen instelling. Dit moet worden gedaan door iemand van monta IT.</p>
+<p>[[Doelgroep: IT</p>
+<p>De instelling moet in de code worden gedaan op line: 60 in code
+<a href="https://dev.azure.com/MontaDevelopment/Montapacking/_git/RelatieSystemsConnector?path=/RelatieSystemsConnector/Platforms/ExactOnline/ExactOnlineStockUpdateType.cs">https://dev.azure.com/MontaDevelopment/Montapacking/_git/RelatieSystemsConnector?path=/RelatieSystemsConnector/Platforms/ExactOnline/ExactOnlineStockUpdateType.cs</a></p>
+<br>
+<h3 id="inbound-update-goedkeuren">Inbound Update goedkeuren</h3>
+<p>Koppelen na goedkeuring in de montaportal het aantal terug die zijn ingeboekt in het magazijn.
+Dit kan dus verschillen met wat er is vooraangemeld (zowel positief als negatief).
+Als de inbound forecast niet overeen komt met de inbound dan moet deze door de klant handmatig worden goedgekeurd.</p>
+<br>
+<h3 id="api-snelheidslimieten">API-snelheidslimieten:</h3>
+<p>Exact online heeft strenge snelheidslimieten, die de werking beperken met het aantal verzoeken dat de koppeling gedurende een bepaalde periode mag verzenden. Elke limiet heeft een specifiek gedrag wanneer deze wordt overschreden.</p>
+<p>Minuutlimiet - uw app kan 60 API-aanroepen doen, per bedrijf, per minuut.</p>
+<p>Dagelijkse limiet - uw app kan 5.000 API-aanroepen doen, per bedrijf, per dag.</p>
+<p>Het kan dus zijn dat de koppeling in sommige gevallen over zijn limiet heengaat, met name bij een groot assortiment. Houdt hier rekening mee bij het besluit voor het koppeling via Exact Online.</p>
+<br>
+<h3 id="warehouseid">WarehouseID:</h3>
+<p>Bij het aanmaken van de koppeling is het verplicht om een magazijnID in te vullen. Het magazijnID is te vinden in een salesorder in Exact Online via:
+<img src="../../../../Attachments/image-8a1e1036-99a3-4f33-af80-f2cdac8166e9.png" alt="image.png"></p>
+<h1 id="exact-online-1">Exact online</h1>
+<h2 id="dataflows-1">Dataflows:</h2>
+<ul>
+<li>Inbound Forecast Import</li>
+<li>Order Import (Filter op status open)</li>
+<li>Inbound Update</li>
+<li>Order Update</li>
+<li>Changed Stock Update</li>
+<li>Full Stock Update:
+Loopt nu via queue items van alle materialen. Hierdoor worden bij groot assortiment niet iedere keer alleen van de 1e 300 producten een stockupdate verstuurd. Nu gaat na crash (bijvoorbeeld too many request) de full stock verder met de volgende producten uit de queue.</li>
+</ul>
+<p>(Letop: Exact Online bevat geen product import).</p>
+<br>
+<h2 id="instellingen-1">Instellingen</h2>
+<h3 id="inbound-forecast-import-1">Inbound forecast Import:</h3>
+<p><code>OnlyFromSetWarehouse</code> = Met deze instelling aan importeren we alleen purchase orders van het ingestelde magazijn in de platform-settings.
+Bij Inboundforecastimportsettings is het mogelijk om in te stellen dat wij regels importeren die op een later moment aan de inkooporder in Exact toegeveogd worden.
+Voeg hierbij het RelatieSystemConnectionID toe en geef bij DisableUpdate; False in.</p>
+<h3 id="order-import-1">Order Import:</h3>
+<p><code>DeliveryStatussen</code> : Standaard is hier de status 12 ingevuld(open). Mogelijke aanvullingen zijn; 20 = Partial, 21 = Complete, 45 = Cancelled.</p>
+<p><code>UsePlannedShipmentDate</code> : Standaard haalt Monta de geplande verzenddatum niet mee. Als je deze instelling aanzet haalt monta deze data wel mee, en zal de gewenste leverdatum worden gebruikt in de order.</p>
+<p><code>ImportOrdersAsB2b</code> = Standaard importeerd monta alle orders als B2C. Wanneer je deze instelling aanzet zal de order worden gemarkeerd als B2B.</p>
+<h4 id="verzendopties-importeren-1">Verzendopties importeren</h4>
+<p>De &quot;verzendmethode beschrijving&quot; wordt uitgelezen en kan gemapt worden aan een verzender met evt. opties.
+<br></p>
+<h3 id="order-update-1">Order Update.</h3>
+<h5 id="shipping-method-terug-sturen-naar-exact-1">Shipping Method terug sturen naar Exact.</h5>
+<p>om de Shipping Method terug te kunnen sturen naar Exact moet de guid ingesteld worden in tblRelatieSystemConnectionDataFlowOrderImportSettingsShippers want bij de order update wordt gecheckt naar de guid in dit table, als het ingesteld is dan wordt de guid naar Exact gestuurd anders blijft dit property leeg bij default.
+<br></p>
+<br>
+<h2 id="bijzonderheden-1">Bijzonderheden</h2>
+<h3 id="de-en-nl-versie-koppeling-1">DE en NL versie koppeling</h3>
+<p>Voor Exact Online is het mogelijk om voor NL of DE een nieuwe koppeling te maken, door in de popup bij het aanmaken van de koppeling voor NL of DE te kiezen in de dropdown.</p>
+<p>De urls en de credentials voor de Exact Online omgeving voor NL en DE staan in passwordstate.
+<br></p>
+<h3 id="orderwijzigingen-1">Orderwijzigingen:</h3>
+<p>Met de instelling UpdateWhenAlreadyExistsAndPlatformSupportsIt kunnen we orderwijzigingen en annuleringen importeren.
+<br></p>
+<h3 id="financiele-voorraadstanden-1">Financiele voorraadstanden</h3>
+<p>Sommige exact online omgevingen hebben de financiele stock nodig ipv de beschikbare voorraad. Hiervoor hebben we een mogelijkheid ingebouwd, dit is echter nog geen instelling. Dit moet worden gedaan door iemand van monta IT.</p>
+<p>[[Doelgroep: IT</p>
+<p>De instelling moet in de code worden gedaan op line: 60 in code
+<a href="https://dev.azure.com/MontaDevelopment/Montapacking/_git/RelatieSystemsConnector?path=/RelatieSystemsConnector/Platforms/ExactOnline/ExactOnlineStockUpdateType.cs">https://dev.azure.com/MontaDevelopment/Montapacking/_git/RelatieSystemsConnector?path=/RelatieSystemsConnector/Platforms/ExactOnline/ExactOnlineStockUpdateType.cs</a></p>
+<br>
+<h3 id="inbound-update-goedkeuren-1">Inbound Update goedkeuren</h3>
+<p>Koppelen na goedkeuring in de montaportal het aantal terug die zijn ingeboekt in het magazijn.
+Dit kan dus verschillen met wat er is vooraangemeld (zowel positief als negatief).
+Als de inbound forecast niet overeen komt met de inbound dan moet deze door de klant handmatig worden goedgekeurd.</p>
+<br>
+<h3 id="api-snelheidslimieten-1">API-snelheidslimieten:</h3>
+<p>Exact online heeft strenge snelheidslimieten, die de werking beperken met het aantal verzoeken dat de koppeling gedurende een bepaalde periode mag verzenden. Elke limiet heeft een specifiek gedrag wanneer deze wordt overschreden.</p>
+<p>Minuutlimiet - uw app kan 60 API-aanroepen doen, per bedrijf, per minuut.</p>
+<p>Dagelijkse limiet - uw app kan 5.000 API-aanroepen doen, per bedrijf, per dag.</p>
+<p>Het kan dus zijn dat de koppeling in sommige gevallen over zijn limiet heengaat, met name bij een groot assortiment. Houdt hier rekening mee bij het besluit voor het koppeling via Exact Online.</p>
+<br>
+<h3 id="warehouseid-1">WarehouseID:</h3>
+<p>Bij het aanmaken van de koppeling is het verplicht om een magazijnID in te vullen. Het magazijnID is te vinden in een salesorder in Exact Online via:
+<img src="../../../../Attachments/image-8a1e1036-99a3-4f33-af80-f2cdac8166e9.png" alt="image.png"></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

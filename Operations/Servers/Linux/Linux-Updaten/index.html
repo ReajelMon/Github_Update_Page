@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Linux Updaten </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Linux Updaten ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="linux-updaten">Linux Updaten</h1>
+
+<h2 id="inhoudsopgave">Inhoudsopgave</h2>
+<p><a href="#versiebeheer">Versiebeheer</a></p>
+<p><a href="#inleiding">Inleiding</a></p>
+<p><a href="#mp-rabbitmq-4-stuks">MP-RabbitMQ (4 stuks)</a></p>
+<p><a href="#mp-voip01">MP-VOIP01</a></p>
+<p><a href="#mp-voip02">MP-VOIP02</a></p>
+<p><a href="#diverse-servers">Diverse servers</a></p>
+<h2 id="inleiding">Inleiding</h2>
+<p>Deze handleiding is de nieuwe standaard om Linux en DirectAdmin te
+updaten. De handleiding is geupdate naar 2021 standaard en bevat ook
+directe updates.</p>
+<p>Binnen Montapacking draaien de volgende servers. Sommige servers liggen
+niet in ons beheer. De onderstaande server moeten wel door ons geüpdatet
+worden.</p>
+<p>-MP-VOIP01</p>
+<p>-MP-VOIP02</p>
+<p>-mp-rabbitmq01</p>
+<p>-mp-rabbitmq02</p>
+<p>-mp-rabbitmq03</p>
+<p>-mp-rabbitmq10</p>
+<p>-MP-CBD01</p>
+<p>-MP-CDF01</p>
+<p>-MP-CDF02</p>
+<p>-MP-TEST05</p>
+<p>-MP-STA01</p>
+<p>-MP-STA02</p>
+<p>Voor de volgende servers kan het updaten gevraagd worden aan Aspect-ICT.</p>
+<p>-MP-VCENTER21</p>
+<h3 id="mp-rabbitmq-4-stuks">MP-RabbitMQ (4 stuks)</h3>
+<p>Medio augustus 2023 wordt er een nieuw RabbitMQ-cluster gebouwd, tot dat gereed is geen updates uitvoeren aan onderstaande Rabbit-systemen svp.</p>
+<p>Open via een MGMT-Server de applicatie Putty. De hostname van
+bijvoorbeeld de MP-RABBITMQ03 is <strong>10.10.202.90</strong></p>
+<p><img src="../../../../Attachments/image-7c413e6e-ede3-4acb-ac31-5d4458b9a736.png" alt="image.png"></p>
+<p>Na dit ingevuld te hebben druk je op <strong>Open.</strong></p>
+<p>Login met <strong>IT Beheer</strong> het wachtwoord hiervan vind je in passwordstate</p>
+<p><img src="../../../../Attachments/image-5440e00a-65f4-4a2e-aad0-2aacdc871f74.png" alt="image.png"></p>
+<p>Om te updaten moeten we van User wisselen. Dit doe je met <strong>sudo su</strong>
+daarna geef je nog een keer het wachtwoord van <strong>IT Beheer</strong>.</p>
+<p><img src="../../../../Attachments/image-617c7519-fe20-4eac-9742-529020c40d59.png" alt="image.png"></p>
+<p><strong>apt-get update<br>
+apt-get upgrade<br>
+apt-get clean</strong></p>
+<p>Herhaal dit voor alle RabbitMQ-servers.
+Als een RabbitMQ-server uit het cluster vraagt om een herstart dan kan dat uitgevoerd worden, als het maar per server uitgevoerd wordt.</p>
+<h3 id="mp-voip01">MP-VOIP01</h3>
+<p>Open via een MGMT-Server de applicatie Putty. De hostname is bij deze
+servers het IP-adres voor de MP-VOIP01 is dit <strong>10.10.202.125.</strong></p>
+<p><img src="../../../../Attachments/image-cba4540f-2375-4813-ad68-2e2a6976570e.png" alt="image.png"></p>
+<p>Na dit ingevuld te hebben druk je op <strong>Open.</strong></p>
+<p>Login met <strong>root</strong> het wachtwoord hiervan vind je in passwordstate.<br>
+In Passwordstate heet de entry &quot;Voip Server 3CX intern (ook MP-VOIP01 en MP-VOIP02 in notes)&quot;</p>
+<p><strong>apt-get update<br>
+apt-get upgrade<br>
+apt-get clean</strong></p>
+<h3 id="section"></h3>
+<h3 id="mp-voip02">MP-VOIP02</h3>
+<p><img src="../../../../Operations/Servers%5Cimages/Handleiding-Linux-Updaten/media/image14.png" alt=""></p>
+<p>Open via een MGMT-Server de applicatie Putty. De hostname is bij deze
+servers het IP-adres voor de MP-VOIP02 is dit <strong>10.10.202.130.</strong></p>
+<p><img src="../../../../Attachments/image-6d3d3f7b-64fa-4d10-83ae-f79ff5f667c8.png" alt="image.png"></p>
+<p>Na dit ingevuld te hebben druk je op <strong>Open.</strong></p>
+<p>Login met <strong>root</strong> het wachtwoord hiervan vind je in passwordstate</p>
+<p><strong>apt-get update<br>
+apt-get upgrade<br>
+apt-get clean</strong></p>
+<h3 id="section-1"></h3>
+<h3 id="diverse-servers">Diverse servers</h3>
+<p>MP-CBD01 10.10.202.49  (Reboot mag overdag)<br>
+MP-CDF01 10.10.202.24  (Reboot mag overdag)<br>
+MP-CDF02 192.168.201.13 (Reboot mag overdag)<br>
+MP-TEST05 10.10.202.47 (Reboot mag overdag)<br>
+MP-STA01 10.10.202.43 Updaten wordt uitgevoerd door Hunt &amp; Hackett<br>
+MP-STA02 10.10.202.30 Updaten wordt uitgevoerd door Hunt &amp; Hackett</p>
+<p>Ook hierbij werkt Putty het handigst.</p>
+<p>Om te updaten moeten we van user wisselen. Dit doe je met <strong>sudo su</strong><br>
+Daarna geef je nog een keer het wachtwoord van <strong>root</strong>.</p>
+<p><strong>apt-get update<br>
+apt-get upgrade<br>
+apt-get clean</strong></p>
+<p>Dit kan ook in één keer uitgevoerd worden door het uitvoeren van een updatescript waarin bovenstaande commando's achter elkaar staan met wat switches erachter:</p>
+<p>bash -x updatescript.sh</p>
+<p>Inhoud updatescript.sh :<br>
+#!/bin/bash<br>
+sudo apt-get update<br>
+sudo apt-get upgrade -y<br>
+sudo apt-get clean -y<br>
+sudo apt-get autoremove -y</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

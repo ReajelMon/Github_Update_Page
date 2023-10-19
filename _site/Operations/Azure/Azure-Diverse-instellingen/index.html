@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Azure Diverse instellingen </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Azure Diverse instellingen ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="azure-diverse-instellingen">Azure Diverse instellingen</h1>
+
+<h2 id="security-defaults-binnen-azure">Security Defaults binnen Azure</h2>
+<p>Door &quot;Enable Security Defaults&quot; aan te zetten wordt bijvoorbeeld afgedwongen dat MFA gebruikt moet worden bij het aanmelden in de Azure Portal.
+Je kunt dit echter ook zelf regelen middels &quot;Conditional Access&quot;. Hiervoor moet je eerst de &quot;secuity defaults&quot; disabelen.
+Blader naar Azure Active Directory&gt;Eigenschappen.<br>
+Selecteer Standaardinstellingen voor beveiliging beheren.</p>
+<p><img src="../../../Attachments/image-6c568402-8c15-415a-aa3a-8d1e5b293729.png" alt="image.png"></p>
+<p>Er is ook nog zoiets als &quot;Security / Identity Protection / Multifactor authentication registration policy&quot;.<br>
+Nog niet helemaal duidelijk hoe dit in het plaatje past.</p>
+<h2 id="mfa-met-number-matching">MFA met Number matching</h2>
+<p><img src="../../../Attachments/image-83bea6c4-d854-4efe-8ec0-93f6f7a66629.png" alt="image.png">
+<img src="../../../Attachments/image-4f61540b-1e82-42fe-a65e-6197820e9a0c.png" alt="image.png">
+<img src="../../../Attachments/image-66766aff-df6e-4c56-b7e8-0079df5d0efd.png" alt="image.png"></p>
+<h2 id="secure-score">Secure Score</h2>
+<p>Op <a href="https://security.microsoft.com/">https://security.microsoft.com/</a> is de &quot;Secure score&quot; te zien voor de gehele Microsoft Omgeving.<br>
+In Azure heb je de &quot;Azure AD Identity Secure Score&quot;, die een subset is van de bovenstaande &quot;Secure Score&quot;.</p>
+<h2 id="country-blocking-admin-accounts">Country blocking Admin-accounts</h2>
+<p><img src="../../../Attachments/image-0e84cf8a-49b6-4ac1-99c6-03d3a714dcef.png" alt="image.png"></p>
+<p>Exclude Emergency account.</p>
+<p><img src="../../../Attachments/image-b5aa3649-cf30-4f7e-a01d-39991998c931.png" alt="image.png"></p>
+<p>Grant : Block Access.</p>
+<p><img src="../../../Attachments/image-5e181014-2ef4-442e-b387-979c2ea7ebe3.png" alt="image.png"></p>
+<h2 id="external-collaboration-settings">External Collaboration settings</h2>
+<p>Om bijvoorbeeld vanuit Devops externe users toegang te geven moet een domain op een allowlist gezet worden.</p>
+<p><img src="../../../Attachments/image-148a24e0-7c8f-438b-901b-49a46f2403ac.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-0488995b-9470-44c7-83c9-bd7db776da14.png" alt="image.png"></p>
+<p>Alleen mensen met de juiste admin rol kunnen guests uitnodigen.</p>
+<p><img src="../../../Attachments/image-de0dc620-7445-4991-9198-12ada7ca514a.png" alt="image.png"></p>
+<p>Daarom moet de inviter rechten krijgen om quests toe te voegen.</p>
+<p><img src="../../../Attachments/image-bf4d65da-b78e-4c21-84d2-f02f8af86509.png" alt="image.png"></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

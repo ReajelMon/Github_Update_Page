@@ -1,0 +1,73 @@
+{
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**.md",
+          "**/toc.yml",
+          "toc.yml",
+          "*.md"
+        ]
+      },
+      {
+        "files": [
+          "**.md",
+          "**/toc.yml",
+          "toc.yml",
+          "*.md"
+        ],
+        "src": "MontaView(nl)/en",
+        "dest": "_site/en"
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "Attachments/**",
+          "../Attachments/**"
+        ]
+      },
+      {
+        "files": [
+          "cava.js"
+        ]
+      }
+    ],
+    "dest": "_site",
+    "globalMetadataFiles": [],
+    "fileMetadataFiles": [],
+    "template": [
+      "docfx_template"
+    ],
+    "postProcessors": [ "ExtractSearchIndex" ],
+    "markdownEngineName": "markdig",
+    "noLangKeyword": false,
+    "keepFileLink": false,
+    "cleanupCacheHistory": true,
+    "disableGitFeatures": true
+  },
+  "langs": [
+    {
+      "name": "en",
+      "localization": [
+        "**.md",
+        "**/toc.yml",
+        "toc.yml",
+        "*.md"
+      ],
+      "destination": "_site/en",
+      "base": "en/"
+    },
+    {
+      "name": "fr",
+      "localization": [
+        "**.md",
+        "**/toc.yml",
+        "toc.yml",
+        "*.md"
+      ],
+      "destination": "_site/fr",
+      "base": "fr/"
+    }
+  ]
+}

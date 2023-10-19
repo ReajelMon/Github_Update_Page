@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Temperatuur Sensoren </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Temperatuur Sensoren ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="temperatuur-sensoren">Temperatuur Sensoren</h1>
+
+<h2 id="algemeen">Algemeen</h2>
+<p>Er wordt op verschillende plekken bij Monta een meting gedaan van de temperatuur. De vraag die bij R&amp;D is gekomen, om te kijken naar een universeel systeem wat goed onderhouden wordt, op het gasten netwerk kan (alleen internet nodig heeft) en centraal kan worden uit gelezen.</p>
+<p>Dit is onderzocht en er is gekozen voor Shelly.
+De reden waarom er voor Shelly is gekozen, is dat zij betrouwbare producten levert, een Europees bedrijf is en veiligheid hoog heeft staan. Dit is ook terug te zien in de geregelde updates die voor de producten uitkomen.</p>
+<p>Na een monitoringsperiode is de keuze definitief gemaakt.
+De keuze is gevallen op de Shelly Plus H&amp;T (Wifi).
+De Shelly Plus H&amp;T is een draadbare wifi sensor die gevoed wordt via de USB-C stroomadapter.</p>
+<h2 id="installeren-temperatuur-sensor">Installeren Temperatuur sensor</h2>
+<p>Om de temperatuur sensor te installeren moet je de <strong>Shelly Smart Control</strong> app installeren op je mobiel.
+Log daarna in met de credentials uit PasswordState.
+Voeg een device en eventueel Room (locatie) toe. Bij het toevoegen vraagt de app met welk wifi netwerk het device verbonden moet worden. Dit kan Monta-GAST zijn.
+De rest spreekt voor zichzelf. Bij Device Information kan je het Device ID uitlezen.</p>
+<h2 id="uitlezen">Uitlezen</h2>
+<p>Om de waarde uit te kunnen lezen is er een Api call die gemaakt kan worden. Er is een PowerShell script gemaakt om dit in PRTG te kunnen uitlezen.</p>
+<h2 id="powershell-script">Powershell Script</h2>
+<p><em><strong>(het script hieronder is qua opmaak aangepast door DevOps, onderaan kan je het officiele script downloaden)</strong></em></p>
+<p>Dit script ondersteund op dit moment alleen nog de Shelly Plus H&amp;T, zodra de Shelly Pro 1 is getest zal deze worden toegevoegd in het PowerShell script.</p>
+<pre><code class="lang-powershell">&lt;# ShellyTempLogging.ps1
+Versie 1.5 – 13-07-2023
+Wouter Stolk
+
+Dit script leest de waardes van de temperatuur en de luchtvochtigheid uit van Shelly Cloud.
+Meer informatie is te vinden in MontaDocs
+Versie 1.0 - Script productie klaar voor Shelly Pro H&amp;T
+Versie 1.3 - Documentatie gemaakt
+Versie 1.4 - Toevoegen van Parameters DeviceID, ApiKey en URL
+Versie 1.5 - Toevoegen van ScanInterval in XML
+Versie 1.6 -
+##&gt;
+
+##Hieronder kan je een aantal waarde vast opgegeven. Deze waarde zijn ook via een Parameter mee te geven.
+param (
+[string]$DeviceID = &quot;DEVICEID&quot;,
+[string]$apiKey = &quot;MWIwNDFidWlk61E241C2148B815BB141C5AEE11A56CCFCEAA358C9FE1BFA1B2E7F8410798A8B3111FFECB807FE17&quot;,
+[string]$url = &quot;https://shelly-74-eu.shelly.cloud/device/status&quot;
+)
+
+$headers = @{
+&quot;Content-Type&quot; = &quot;application/x-www-form-urlencoded&quot;
+}
+$body = &quot;id=$DeviceID&amp;auth_key=$apiKey&quot;
+
+$response = Invoke-RestMethod -Uri $url -Method POST -Headers $headers -Body $body | ConvertTo-Json
+
+## Zet de Response om en lees waardes uit
+$object = $response | ConvertFrom-Json
+$id = $object.data.device_status.id
+$TimeStamp = $object.data.device_status._updated
+$humidityString = $object.data.device_status.'humidity:0'
+$temperatureString = $object.data.device_status.'temperature:0'
+
+## Zet Humidity om naar leesbare waarde
+$humidityRegex = '(?&lt;=rh=)[0-9.]+' # Reguliere expressie om de vochtigheidswaarde te extraheren
+$humidity = [regex]::Match($humidityString, $humidityRegex).Value
+$PRTGHumi = $humidity
+
+## Zet Temperature om naar leesbare waarde
+$temperatureRegex = '(?&lt;=tC=)[0-9.]+' # Reguliere expressie om de temperatuurwaarde te extraheren
+$temperature = [regex]::Match($temperatureString, $temperatureRegex).Value
+$PRTGTemp = $temperature
+
+## Zet UTC tijd om naar tijdzone AMS
+$utcTime = Get-Date -Date $TimeStamp -UFormat &quot;%Y-%m-%d %H:%M:%S&quot;
+$amsterdamTimeZone = [System.TimeZoneInfo]::FindSystemTimeZoneById(&quot;W. Europe Standard Time&quot;)
+$TimeStamp = [System.TimeZoneInfo]::ConvertTimeFromUtc([DateTime]::ParseExact($utcTime, &quot;yyyy-MM-dd HH:mm:ss&quot;, $null), $amsterdamTimeZone)
+$TimeStamp = $TimeStamp.ToString(&quot;yyyy-MM-dd HH:mm:ss&quot;)
+
+
+## Tijdelijke variabele
+##$PRTGTemp = 50.1
+
+$XMLResult = @&quot;
+&lt;prtg&gt;
+&lt;interval&gt;300&lt;/interval&gt;
+&lt;result&gt;
+&lt;channel&gt;Temperature&lt;/channel&gt;
+&lt;unit&gt;custom&lt;/unit&gt;
+&lt;customunit&gt;celsius&lt;/customunit&gt;
+&lt;mode&gt;Absolute&lt;/mode&gt;
+&lt;showChart&gt;1&lt;/showChart&gt;
+&lt;showTable&gt;1&lt;/showTable&gt;
+&lt;warning&gt;0&lt;/warning&gt;
+&lt;float&gt;1&lt;/float&gt;
+&lt;value&gt;$PRTGTemp&lt;/value&gt;
+&lt;LimitMaxWarning&gt;28&lt;/LimitMaxWarning&gt;
+&lt;LimitMaxError&gt;35&lt;/LimitMaxError&gt;
+&lt;LimitWarningMsg&gt;De servers hebben het warm!!&lt;/LimitWarningMsg&gt;
+&lt;LimitErrorMsg&gt;De temperatuur is te hoog!!&lt;/LimitErrorMsg&gt;
+&lt;LimitMode&gt;1&lt;/LimitMode&gt;
+&lt;/result&gt;
+
+&lt;result&gt;
+&lt;channel&gt;Humidity&lt;/channel&gt;
+&lt;unit&gt;Percent&lt;/unit&gt;
+&lt;mode&gt;Absolute&lt;/mode&gt;
+&lt;showChart&gt;1&lt;/showChart&gt;
+&lt;showTable&gt;1&lt;/showTable&gt;
+&lt;warning&gt;0&lt;/warning&gt;
+&lt;float&gt;1&lt;/float&gt;
+&lt;value&gt;$PRTGHumi&lt;/value&gt;
+&lt;LimitMaxError&gt;70&lt;/LimitMaxError&gt;
+&lt;LimitMaxWarning&gt;55&lt;/LimitMaxWarning&gt;
+&lt;LimitWarningMsg&gt;De servers voelen nattigheid!!&lt;/LimitWarningMsg&gt;
+&lt;LimitErrorMsg&gt;De servers staan in het water!!&lt;/LimitErrorMsg&gt;
+&lt;LimitMode&gt;1&lt;/LimitMode&gt;
+&lt;/result&gt;
+
+&lt;text&gt;Last update: $TimeStamp&lt;/text&gt;
+&lt;/prtg&gt;
+&quot;@
+
+$XMLResult
+</code></pre>
+<h2 id="parameters">Parameters</h2>
+<p>Er zijn verschillende parameters mee te geven in het script. Hieronder een overzicht van de mogelijkheden.</p>
+<p><strong>-DeviceID</strong> = Het Id van het Device wat je wil uitlezen</p>
+<p><strong>-apiKey</strong> = De Key van de Api van Shelly Cloud</p>
+<p><strong>-url</strong> = De URL van de Api van Shelly</p>
+<p>Over het algemeen zal alleen de parameter van het DeviceID worden gebruikt.</p>
+<h2 id="examples">Examples</h2>
+<p>ShellyTempLogging.ps1 -DeviceID “123ABC”</p>
+<p>ShellyTempLogging.ps1 -DeviceID “123ABC” -apiKey “APIKEY” -url “https://shellycloudurl”</p>
+<h2 id="prtg">PRTG</h2>
+<p>Om een sensor in PRTG toe te voegen kan je gebruik maken van de <em><strong>EXE/Script Geavanceerd</strong></em> sensor.
+<img src="../../../Attachments/image-f3de49c5-a665-4e49-94af-71982f7bfb68.png" alt="image.png"></p>
+<h2 id="bijlage">Bijlage</h2>
+<p><a href="../../../Attachments/ShellyTempLogging-71fb8840-4686-4932-a35e-6e4951de14f2.ps1">ShellyTempLogging.ps1</a></p>
+<p><a href="../../../Attachments/ShellyTempLogging-aed9d8af-a809-47d6-966d-c6bdea83bb3f.ps1">ShellyTempLogging.ps1</a></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@types/flexsearch": "^0.7.4",
+    "flexsearch": "^0.7.31"
+  }
+}

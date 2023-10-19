@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Installatie SQL Developer Edition </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Installatie SQL Developer Edition ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="installatie-sql-developer-edition">Installatie SQL Developer Edition</h1>
+
+<p>Deze handleiding gaat uit van een reeds ingerichte server waarbij er
+alleen de D-partitie is geen aparte partities voor Log of Backup.</p>
+<h3 id="checks-op-de-bestaande-server">Checks op de bestaande server.</h3>
+<ul>
+<li><p>Uninstall Windows Defender.</p>
+</li>
+<li><p>Windows Firewall toegang.</p>
+</li>
+<li><p>netsh advfirewall firewall add rule name = SQLTCP dir = in
+protocol = tcp action = allow localport =
+135,1433,1434,4022,5022 remoteip = localsubnet profile = DOMAIN</p>
+</li>
+<li><p>netsh advfirewall firewall add rule name = SQLUDP dir = in
+protocol = udp action = allow localport = 1434 remoteip =
+localsubnet profile = DOMAIN</p>
+</li>
+<li><p>Allow ook C:\Program Files (x86)\Microsoft SQL
+Server\90\Shared\sqlbrowser.exe</p>
+</li>
+<li><p>Telnet client</p>
+</li>
+<li><p>Zorg dat de performance optimization op Background Services staat:</p>
+</li>
+<li><p>Service-account rs.sql04.services aanmaken en lid maken van local
+admins.</p>
+</li>
+<li><p>Stel TLS 1.2 ook goed in voor .NET Framwork , anders geeft de
+installatie van SQL Developer een fout.<br>
+Voer hiervoor het script uit vanuit &quot;Monta Services BV\Monta -
+IT-Systeembeheer - Documenten\General\PS_Scripts\Servers\
+EnableTLS12.ps1&quot;<br>
+Het is vervolgens te checken middels &quot;Monta Services BV\Monta -
+IT-Systeembeheer - Documenten\General\PS_Scripts\Servers\ Check
+ADSyncToolsTLS12.ps1&quot;.</p>
+</li>
+</ul>
+<h3 id="installatie-sql">Installatie SQL</h3>
+<p>Download de installer voor SQL Developer edition <a href="https://www.microsoft.com/nl-nl/sql-server/sql-server-downloads?msclkid=354c1369af7511ecb404ee4db3b61ce5">SQL Server-downloads
+|
+Microsoft</a>
+en start deze.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Developer-Edition/media/image2.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p>Klik op Installation en kies dan voor de Freed edition &quot;Developer&quot;.</p>
+<p>Negeer de Windows Firewall warning</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Developer-Edition/media/image3.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p>Kies de onderstaande opties.</p>
+<p><img src="../../../../Operations/Servers%5Cimages/Handleiding-Installatie-SQL-Developer-Edition/media/image4.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Developer-Edition/media/image5.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p>Selecteer Named instance en geef de naam &quot;TEST_BACKEND&quot;.</p>
+<p>Stel het juiste account in voor de SQL Server Agent en SQL Server
+Database Engine en laat de andere accounts default staan. Voor de
+MP-SQL04 is het account bijvoorbeeld &quot;rs.sql04.services&quot;.<br>
+Zet de startup type van de SQL Server Agent op Automatic. Zet ook de
+optie aan 'Grant Perform Volume Maintenance Task privilege to SQL Server
+Database Engine Service'</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Developer-Edition/media/image6.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p>Zet collation op SQL_Latin1_General_CP1_CI_AS</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Developer-Edition/media/image7.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p>Kies mixed mode, stel een wachtwoord in voor SA en voeg de users toe die
+sysadmin rechten moeten krijgen binnen SQL. In dit geval &quot;SQLServer --
+Administrators&quot;</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Developer-Edition/media/image8.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p>Verander bij Datadirectories de paden als er een aparte Logdisk en
+Backupdisk is.</p>
+<p>Hou het volgende aan bij TempDB. Indien er minder dan 8 cores aanwezig
+zijn, houd dan het aantal TempDB files hetzelfde als het aantal cores.
+Zet de initiële waarden op 1GB en de increments op 512MB.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Developer-Edition/media/image9.png" alt=""></p>
+<p>Stel het maximum geheugen in op de totale hoeveelheid RAM minus 10% met
+een minimale hoeveelheid van 8GB. Dan heeft het OS te allen tijde 8GB
+over om goed te functioneren.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Developer-Edition/media/image10.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p>Laat filestream uit.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Developer-Edition/media/image11.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Developer-Edition/media/image12.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p>Klik Install</p>
+<p>Update naar de laatste versie van SQL.</p>
+<p>Zet de service &quot;SQL Server Browser&quot; op Automatic en start deze.</p>
+<p>Stel de SQL Service in zodat deze luistert op port 1433 en op een
+willekeurige Dynamic port.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Developer-Edition/media/image13.png" alt=""></p>
+<p>In de firewall moeten de volgende poorten open gezet worden : Inbound
+rules TCP 1433 + poort die te achterhalen is ingesteld bij TCP Dynamic
+Ports&quot;<br>
+Bijvoorbeeld 50301.<br>
+Inbound Rule UDP poort 1434 aanmaken.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

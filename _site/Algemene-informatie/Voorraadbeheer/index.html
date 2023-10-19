@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Voorraadbeheer </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Voorraadbeheer ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+  
+  <meta property="docfx:rel" content="../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="voorraadbeheer">Voorraadbeheer</h1>
+
+<p>Voorraadbeheer is de opslag van producten in het magazijn.</p>
+<h2 id="soorten-voorraad">Soorten voorraad</h2>
+<p>De volgende termen worden gebruikt voor de verschillende soorten voorraad.</p>
+<p><u>Financiële voorraad / in magazijn</u><br>
+Alle niet-quarantaine voorraad van een klant die in ons pand aanwezig is. Dit is dus 'Alle voorraad' inclusief de voorraad afgeboekt voor orders die nog niet zijn verzonden.</p>
+<p><u>Alle voorraad</u><br>
+Administratieve voorraad op alle niet-quarantaine locaties.</p>
+<p><u>Administratieve voorraad</u><br>
+Voorraad beschikbaar op een magazijnlocatie. Omdat voorraad voor orders al wordt afgeboekt als de order klaarstaat om te picken, komt deze voorraad niet overeen met het aantal daadwerkelijk op de locatie. Zie fysieke voorraad.</p>
+<p><u>Geblokkeerde voorraad</u><br>
+Voorraad op geblokkeerde magazijnlocaties.</p>
+<p><u>Transit voorraad</u><br>
+Voorraad tijdelijk niet beschikbaar omdat het wordt verplaatst in het magazijn. Ook voor voorraad die is <a href="../../Algemene-informatie/Inbound#inbounden">geinbound</a> maar nog niet op een magazijnlocatie is <a href="../../Algemene-informatie/Inbound#koppelen">gekoppeld</a>.</p>
+<p><u>Quarantaine voorraad</u><br>
+Voorraad op quarantaine locaties. Zie <a href="#quarantaine-voorraad">quarantaine voorraad</a>.</p>
+<p><u>Fysieke voorraad</u><br>
+Het aantal daadwerkelijk op de locatie. De administratieve voorraad kan anders zijn omdat voorraad voor orders al wordt afgeboekt als de order klaarstaat om te picken. De fysieke voorraad wordt berekend door te kijken of een pickactie al is afgehandeld met de scanner. Papieren pickbonnen wordt niet gepickt met de scanner. Dus als een papieren pickbon geprint is, kan niet berekend wordt wat de exacte fysieke voorraad is zo lang de order niet verzonden is.</p>
+<p><u>Gereserveerde voorraad</u><br>
+Voorraad gereserveerd dmv voorraadreserveringen. Voor backorders en etransit orders. Zie <a href="../../Algemene-informatie/Outbound#voorraadreserveringen">voorraadreserveringen</a>.</p>
+<p><u>Beschikbare voorraad</u><br>
+Voorraad beschikbaar voor orders. Alle voorraad minus geblokkeerde minus transit minus gereserveerde voorraad.</p>
+<p><u>Webshop voorraad</u><br>
+Voorraad beschikbaar voor de webshop om te verkopen. Dit is de beschikbare voorraad. Daarbij kan de klant  ervoor kiezen voorraad uit de inbound forecasts alvast te verkopen. Dit kan per inbound forecast ingeschakeld worden. Ook wordt hier de voorraad uit split products verwerkt: de voorraad van een hoofdproduct wordt gebaseerd op de onderliggende producten. Tenslotte kunnen nog instellingen van de specifieke voorraadkoppeling van toepassing zijn. Zie <a href="../../Algemene-informatie/Koppelingen/1.-Koppelingen-dataflow#stock-update">1. Koppelingen dataflow</a>.</p>
+<h2 id="magazijnlocaties">Magazijnlocaties</h2>
+<p>De locaties in het magazijn worden gemaakt in de magazijnlocatie tool in Montaportal. Zie <a href="../../Algemene-informatie/Voorraadbeheer/Magazijnlocatie-tool">Magazijnlocatie tool</a>.</p>
+<p>Op een locatie mag standaard één product of batch liggen. Meerdere producten of batches moet expliciet toegestaan worden, zie <a href="#multiproductlocaties">multiproductlocaties</a>.</p>
+<h3 id="multiproductlocaties">Multiproductlocaties</h3>
+<p>Het is mogelijk om meerdere producten of batches op een locatie te leggen. Dit moet ingeschakeld worden bij de klant van het product en bij de zone van de locatie. Ook kan per magazijn een maximaal aantal SKU's en items ingesteld worden.</p>
+<p>Meerdere producten mogen ook op één locatie liggen als ze via het wholesale-systeem aan elkaar gekoppeld zijn. Het zijn dan namelijk fysiek dezelfde producten.</p>
+<h3 id="highcare">Highcare</h3>
+<p>Dure producten kunnen in een aparte zone opgeslagen worden die beter beveiligd is. Door locaties in deze zone als highcare te markeren, worden orders van de producten op de locaties apart gehouden bij het picken via de scanner.</p>
+<p>Een product kan ook als high care gemarkeerd worden. Zo'n product mag dan alleen op een highcare of niet-handmatig bereikbare locatie gekoppeld worden. Als een highcare product wordt ge-inbound wordt een melding getoond dat het product in de high care ruimte gekoppeld moet worden.</p>
+<h3 id="looproute">Looproute</h3>
+<p>De locaties in een magazijn worden ingedeeld op een loopvolgorde. Dit bepaald in welke volgorde de orderpicker langs de verschillende locaties gestuurd wordt bij het <a href="../../Algemene-informatie/Outbound#picken-met-de-scanner">picken met de scanner</a>.</p>
+<h3 id="echeck-locaties">Echeck locaties</h3>
+<p>Voor voorraad die bij de echeck gelegd wordt tbv <a href="../../Algemene-informatie/Outbound#echeck-toevoegproducten">Echeck toevoegproducten</a>.</p>
+<h2 id="verplaatsen">Verplaatsen</h2>
+<p>Met de scanner kan voorraad in het magazijn verplaatst worden van de ene naar de andere locatie.</p>
+<p>Dit is niet mogelijk als er te picken orders op de locatie staan. Anders zou het kunnen gebeuren dat een orderpicker naar een locatie wordt gestuurd terwijl de voorraad net wordt versjouwd naar een andere locatie. Voorraad verplaatsen van een locatie met open orders is wél mogelijk met een MOVE label. De orders worden dan vastgehouden bij dat MOVE label tot de verplaatsing gereed is. Dan kunnen de orders gepickt worden van de nieuwe locatie.</p>
+<p>Het MOVE label is bedoeld om de voorraad tijdelijk vast te houden. Als we dit niet zouden doen is de kans op foutmeldingen bij het verplaatsen hoger, omdat de voorraad inmiddels veranderd kan zijn. Zou de gebruiker deze foutmelding negeren en fysiek toch de verplaatsing doen, dan is er een voorraadverschil in het magazijn.</p>
+<p>Zie ook <a href="#klant-verhuizen">klant verhuizen</a>.</p>
+<h2 id="replenishen">Replenishen</h2>
+<p>Dit werkt via Niet handmatig bereikbaar, zie hieronder.</p>
+<h2 id="niet-handmatig-bereikbaar">Niet handmatig bereikbaar</h2>
+<p>Locaties kunnen als niet handmatig bereikbaar worden gemarkeerd. Orders worden eerst gepickt van handmatig bereikbare locaties. Zie <a href="../../Algemene-informatie/Outbound#locatie-keuze">outbound - locatie keuze</a> voor meer informatie over de locatie keuze.</p>
+<p>Orders van niet handmatige locatie komen als aparte pickstroom in de scanner of er moet eerst geplenisht worden. Zie <a href="../../Algemene-informatie/Outbound#picken-van-niet-handmatige-locaties">Outbound - picken van niet handmatige locaties</a>.</p>
+<p>Replenishen gaat altijd met hele pallets. Dus de hele locatie moet naar beneden geplaatst worden. Er kan ook een drempelwaarde ingesteld worden vanaf wanneer die het aantal laat zien. NOG TESTEN HOE DIT PRECIES ZIT.</p>
+<p>In het replenishen in de scanner zijn de B2B order gescheiden van de gewone orders. Dmv de knop B2B kan gekozen worden om te replenishen voor B2B orders. Ook wordt in de replenish opdrachten op de scanner onderscheid gemaakt in vandaag, morgen, later.</p>
+<p>Het kan gebeuren dat orders na het replenishen in backorder komen. Als een voorraadreservering is gemaakt nadat de orders aan de bulklocatie zijn toegewezen en voor het replenishen. Na het replenishen worden de orders opnieuw geverifieerd waardoor de voorraadreservering van toepassing wordt. Terwijl die dat eerst niet was omdat de orders al klaargezet waren om te picken.</p>
+<p>Proactief replenishen is ook mogelijk, zie <a href="../../Algemene-informatie/Voorraadbeheer/Bijvullen">Bijvullen</a>.</p>
+<h2 id="cycle-count">Cycle count</h2>
+<p>Met de scanner kan een locatie geteld worden om te controleren of de administratieve voorraad klopt met de fysieke voorraad. Zie <a href="../../Algemene-informatie/Voorraadbeheer/Cycle-counten">Cycle counten</a>.</p>
+<p>Als een order gepickt wordt met een papieren pickbon is het niet mogelijk om een locatie te tellen. Het systeem kan dan namelijk niet berekenen wat de fysieke voorraad op de locatie is. Bij alle andere orders kan het systeem dit wel berekenen: orders die &quot;queued&quot; zijn worden nog niet gepickt, dus het systeem weet dat die voorraad er nog ligt. En bij orders die picking zijn met de scanner weet het systeem ook of het er nog ligt, omdat de locatie gescand wordt bij het picken. Alleen bij picken met een papieren bon kan het systeem het niet weten, dus dan is het niet mogelijk om de locatie te tellen.</p>
+<h3 id="cycle-count-wachtrij">Cycle count wachtrij</h3>
+<p>Het is mogelijk om een wachtrij te maken van locaties die geteld moet worden.
+De locaties die moeten worden geteld kunnen worden gevuld via Excel in Gomonta door een bestand te uploaden met alle locatie codes. (Voorraadbeheer &gt; Cyclecount wachtrij)
+Letop: Als je telt met een wachtrij kan een zone maar door 1 persoon tegelijkertijd worden geteld.</p>
+<p>Locaties kunnen ook automatisch toegevoegd worden aan de wachtrij als een locatie administratief leeg zou moeten zijn maar er liggen nog producten op de locatie.
+Dit kan gedaan worden door middel van een controle na het picken van een product.
+Deze controle kan worden aangezet in <a href="https://gomonta.monta.nl/WMS/Shift/WarehouseSettings">GoMonta &gt; OutBound &gt; Magazijn outbound instellingen &gt; Algemeen pickproces &gt; “Tijdens het picken de vraag stellen: Is de locatie nu helemaal leeg?”</a>.
+Door deze instelling aan te zetten krijg je de vraag ‘Is de locatie nu helemaal leeg” als een locatie leeg zou moeten zijn.
+Je kan hier “ja” of “nee” antwoorden.
+Als je op “ja” klikt, wordt de locatie in het systeem als leeg gemarkeerd, kies je “nee” dan wordt de locatie aan de wachtrij toegevoegd en wordt er een emailnotificatie verstuurd naar het emailadres dat is ingesteld voor magazijnnotificaties.</p>
+<h3 id="cycle-counts-verwerken">Cycle counts verwerken</h3>
+<p>Als bij het tellen een verschil wordt geconstateerd, moet dit in GoMonta verwerkt worden. Bijvoorbeeld door een voorraadmutatie te maken.</p>
+<h3 id="bij-picken">Bij picken</h3>
+<p>Het is ook mogelijk om bij het picken om een bevestiging te vragen of de locatie leeg is. Zie: <a href="../../Algemene-informatie/Outbound#Bevestiging-lege-locatie">Outbound - Bevestiging lege locatie</a>.</p>
+<h2 id="voorraad-optimalisatie">Voorraad optimalisatie</h2>
+<p>De volgende mogelijkheden zijn beschikbaar om de voorraad in het magazijn te optimaliseren.</p>
+<ul>
+<li>Bijvullen handmatig bereikbare locaties: zie <a href="../../Algemene-informatie/Voorraadbeheer/Bijvullen">Bijvullen</a>.</li>
+<li>Voorraad optimaliseren: dit is een optie in de scanner. Hierbij wordt voorraad op handmatig bereikbare locaties die 2 maanden niet gepickt is, verplaatst naar niet-handmatig bereikbare locaties.</li>
+</ul>
+<h2 id="outlet-voorraad">Outlet voorraad</h2>
+<p>Een outlet product is een product van mindere kwaliteit, bijvoorbeeld met een lichte beschadiging. Het kan voor een lagere prijs nog verkocht worden (2de kans).</p>
+<p>Outlet producten hebben &quot;-o&quot; achter het SKU en de barcode van het oorspronkelijke product. Verder is het een normaal product, zodat het op webshops verkocht kan worden.</p>
+<p>Outlet producten kunnen gemaakt worden vanuit het <a href="../../Algemene-informatie/Retouren#outlet">retour verwerken</a>.</p>
+<h2 id="quarantaine-voorraad">Quarantaine voorraad</h2>
+<p>Quarantaine voorraad is voorraad waar iets mis mee is en die dus niet verkocht mag worden. Deze voorraad wordt op speciaal daarvoor aangemerkte locaties gelegd.</p>
+<p>Quarantaine voorraad kan ontstaan vanuit:</p>
+<ul>
+<li>Retouren: als wordt geconstateerd dat geretoureerde producten niet meer verkoopbaar zijn</li>
+<li>Inbound: als bij de inbound meteen al wordt geconstateerd dat producten beschadigd zijn.</li>
+</ul>
+<p>De klant kan quarantaine voorraad afnemen door op Montaportal een quarantaine order te maken.</p>
+<h3 id="voorraad-quarantaine-maken">Voorraad quarantaine maken</h3>
+<p>Omdat quarantaine een apart gedeelte in het magazijn is, is het niet zomaar mogelijk van verkoopbare voorraad quarantaine voorraad te maken. Hier is een fysieke verplaatsing voor nodig van een gewone locatie naar een quarantaine locatie.</p>
+<p>De verplaatsing kan vervolgens administratief in GoMonta gedaan worden.</p>
+<p>Dit kan niet in de scanner, want dan is het risico te groot dat dit per ongeluk gebeurd.</p>
+<h2 id="gevaarlijke-goederen">Gevaarlijke goederen</h2>
+<p>Een product kan gemarkeerd worden als gevaarlijk goed. In GoMonta kan een export gemaakt van alle locaties waar gevaarlijke goederen liggen. Daarin zijn ook totalen zichtbaar per zone, per un nummer, en per un nummer per zone.</p>
+<p>Als een gevaarlijk goed gekoppeld is aan een UN Nummer dat een beschrijving heeft met het woord 'Battery' of 'Batteries' wordt het gemarkeerd als 'Heeft batterij'.</p>
+<h2 id="groothandel-systeem--wholesale">Groothandel systeem / wholesale</h2>
+<p>Met het groothandelsysteem kunnen klanten elkaars voorraad gebruiken.</p>
+<p>Zie de pagina <a href="../../Algemene-informatie/Voorraadbeheer/Wholesale">wholesale</a> voor meer informatie.</p>
+<h2 id="batchestht">Batches/tht</h2>
+<p>Zie <a href="../../Algemene-informatie/Inbound#food/tht">Inbound - Food/THT</a>.</p>
+<h2 id="klant-verhuizen">Klant verhuizen</h2>
+<p>Een klant verhuizen kan door alle voorraad van een klant te verplaatsen naar een MOVE label en in het andere magazijn weer van het move label naar de magazijnlocatie.</p>
+<h2 id="klant-uitruimen">Klant uitruimen</h2>
+<p>Het kan voorkomen dat de hele voorraad van een klant moet worden afgeboekt. Het handigst is dan om op de Montaportal een order te maken van de hele voorraad van de klant. Deze order kan gepickt met een papieren pickbon en op verzonden gezet worden in GoMonta.</p>
+<h2 id="bepaalde-locaties-leegboeken">Bepaalde locaties leegboeken</h2>
+<p>Dit kan met de tool Uitruimen in GoMonta. Er wordt dan een order gemaakt waarmee specifieke locaties worden leeggeboekt.</p>
+<h2 id="palletdc">PalletDC</h2>
+<p>Een PalletDC concept is al uitgedacht en deels ontwikkeld. Het zou als volgt werken:</p>
+<ul>
+<li>PalletDC werkt alleen met hele pallets</li>
+<li>Vestiging maakt MOVE labels om voorraad naar PalletDC te verhuizen</li>
+<li>Klanten mogen ook direct naar PalletDC leveren</li>
+<li>Bij het inboundstation wordt de pallet gekoppeld aan een locatie. Hierdoor is in het pand geen wifi nodig om met een scanner op locatie te koppelen.</li>
+<li>Systeem maakt automatisch een lijst van voorraad die vanuit het PalletDC verplaatst moet worden naar fulfilment vestigingen. Het is ook mogelijk voor vestigingsmanagers om deze lijst aan te vullen.</li>
+<li>De opslag in het PalletDC wordt me meegefactureerd met de fulfilmentvestiging. Zodat de klant geen aparte factuur vanuit het PalletDC krijgt.</li>
+</ul>
+<h2 id="magazijn-als-verdieping">Magazijn als verdieping?</h2>
+<p>Een apart magazijn kan in het systeem ook als apart magazijn geregistreerd worden of als verdieping van een bestaand magazijn.</p>
+<p>Nadelen apart magazijn:</p>
+<ul>
+<li>Twee facturen</li>
+<li>Je kan orders van het ene magazijn niet echecken in het andere magazijn</li>
+<li>Replenishen met de scanner kan niet</li>
+</ul>
+<p>Nadelen verdieping:</p>
+<ul>
+<li>Benaming komt niet overeen met de werkelijkheid</li>
+<li>Een order waarvan de producten in twee verschillende verdiepingen liggen komt vrij als 'meerdere verdiepingen order'. Bij aparte magazijn blijft zo'n order in backorder staan.</li>
+</ul>
+<h2 id="minimale-voorraad">Minimale voorraad</h2>
+<p>Op een product kan een minimum voorraad ingesteld worden. Dit kan zowel een algemeen aantal zijn, of een aantal per magazijn.
+Dit kan op de detail pagina van een product. Als de voorraad van dit product onder dit minimum, komt dit product te staan op de <strong>Minimale voorraad</strong> pagina in Montaportal.
+Deze pagina bestaat uit twee delen: een pagina voor de produten met batch en de ander voor de producten zonder batch. De laatste staat standaard open.
+Dit is uit ekaar gehaald omdat een product met een batch meerdere malen in de lijst voor kan komen als dat product meer dan 1 batch heeft.</p>
+<p><img src="../../Attachments/firefox_dFsmTM6rSq.png" alt="minimale voorraad pagina montaportal.nl"></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

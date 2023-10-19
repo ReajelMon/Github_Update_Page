@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Fortinet aantekeningen </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Fortinet aantekeningen ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="fortinet-aantekeningen">Fortinet aantekeningen</h1>
+
+<h2 id="inhoudsopgave">Inhoudsopgave</h2>
+<p><a href="#DNS">DNS</a></p>
+<p><a href="#DNS-Database">DNS Database</a></p>
+<p><a href="#DHCP">DHCP</a></p>
+<p><a href="#NAT">NAT</a></p>
+<p><a href="#Firewall-logging">Firewall logging</a></p>
+<p><a href="#System-Settings">System Settings</a></p>
+<p><a href="#Backups">Backups</a></p>
+<p><a href="#NTP">NTP</a></p>
+<p><a href="#Diversen_Fortigates_Locaties">Diversen Fortigates Locaties </a></p>
+<p><a href="#Diversen_Fortigates_Datacenter">Diversen Fortigates Datacenter </a></p>
+<p><a href="#Logview">Logview </a></p>
+<p><a href="#interfaces">Interfaces </a></p>
+<p><a href="#VPN">VPN </a></p>
+<h2 id="dns">DNS</h2>
+<p>Bij de DNS-server moet unset mode uitgevoerd worden.<br>
+<img src="../../../../Attachments/image-c09ce227-23b7-4423-b928-6999979c744f.png" alt="image.png"></p>
+<p>Voorlopig DNS (UDP/53) gebruiken.<br>
+Dit betekent dat DNS-requests nu unencrypted over het internet gaan.<br>
+Op zich is dat niet zo'n groot probleem. Je zou er voor kunnen kiezen om dat te encrypten, maar hoe dat moet dat zou nog helemaal uitgezocht moeten worden.\</p>
+<p>Om er voor te zorgen dat op alle VLAN's DNS-resolving werkt moet in onderstaand scherm alle VLAN's toegevoegd worden.</p>
+<p><img src="../../../../Attachments/image-88801d7c-8a28-4f8f-a9d7-af610fbc9f92.png" alt="image.png"></p>
+<h2 id="dns-database">DNS Database</h2>
+<p>Om DNS Servers (en daarmee DNS Databases) onder Network te kunnen zien dient het volgende uitgevoerd te worden:<br>
+<img src="../../../../Attachments/image-450a77a2-b946-4157-8dea-7560f30cc442.png" alt="image.png"></p>
+<p>Voor bijvoorbeeld een nieuwe Ruckus-AP is het nodig dat de DNS-entry ruckuscontroller geresolved wordt naar een bepaalde IP-nummer met een domain suffix erachter.
+Bij TWI wordt dat ruckuscontroller.nwv16.monta.tech
+Allereerst moet dan het domain aangemaakt worden.
+<img src="../../../../Attachments/image-37034f70-bdea-41ad-8388-a34cd56ce0a2.png" alt="image.png">
+Daaronder worden de DNS-entries aangemaakt:
+<img src="../../../../Attachments/image-67d23129-0be0-43ae-bf74-9d771ad501b0.png" alt="image.png">
+Dit is vervolgens in het script gezet.
+Hierbij is uitgegaan van het IP-nr van de nieuwe Ruckus-controller.
+<img src="../../../../Attachments/image-679b0903-026f-46b6-8e2e-e6d48ffd243b.png" alt="image.png"></p>
+<h2 id="dhcp">DHCP</h2>
+<p>In de Fortimanager is de DHCP-server van een bepaalde interface als volgt te zien.
+<img src="../../../../Attachments/image-0859f01f-603a-481a-8818-10f6b935da56.png" alt="image.png">
+Hierbij is bijvoorbeeld het domain te zien.<br>
+In een Fortigate is dit niet te zien, alleen via de CLI.<br>
+config system dhcp server<br>
+show<br>
+<img src="../../../../Attachments/image-76b66d2e-2d28-4795-9dcd-07a932811b77.png" alt="image.png"></p>
+<h2 id="nat">NAT</h2>
+<p>Bij alle policies moet NAT enabled worden.<br>
+<img src="../../../../Attachments/image-c6477c19-30f9-473c-bc36-7c1c34efb873.png" alt="image.png"></p>
+<h2 id="firewall-logging">Firewall logging</h2>
+<p>Firewall Logging is als volgt te bekijken op een Fortigate.</p>
+<p>Er zijn 2 manieren:<br>
+Bij Log &amp; Report \ Forward traffice is een tandwiel te voorschijn te halen waarmee de gewenste kolommen ingesteld kunnen worden waaronder een destination port.<br>
+Vervolgens kunnen er filters toegevoegd worden.
+<img src="../../../../Attachments/image-1d9f639c-3df9-4706-85b7-3eb55c84a320.png" alt="image.png"></p>
+<p>Via Firewall Policy kan gekozen worden voor “show matching logs”.
+<img src="../../../../Attachments/image-a21edcf5-d148-494f-94a9-4ed6f536646b.png" alt="image.png"></p>
+<h2 id="system-settings">System Settings</h2>
+<p>Als je op de Fortigate bijvoorbeeld bij de settings de idle timeout aanpast voor de webinterface administator dan wordt dit gesynchroniseerd met de Fortimanager.</p>
+<p><img src="../../../../Attachments/image-15570a1d-2ad4-40d6-8756-1a66878fa0b0.png" alt="image.png">
+Dat zie je dan op de Fortimanager terugkomen op de onderstaande plek:
+<img src="../../../../Attachments/image-a4c7bdf7-9052-4d78-a19b-858d64019065.png" alt="image.png"></p>
+<p>Door het uitvoeren een script komen de instellingen in de Fortimanager onder het device terecht.
+<img src="../../../../Attachments/image-47bad07e-3322-4785-9f7f-3ec41adef275.png" alt="image.png">
+Pas middels “Install wizard – device settings” wordt het gedeployed naar de Fortigate.</p>
+<p>Op onderstaande manier krijg je de setting “set source-ip 10.101.4.1” in een script (per device).
+set source-ip <span class="math">\((ip_prefix).\)</span>(vestiging_id).</p>
+<h2 id="backups">Backups</h2>
+<p>Er behoeft geen configuratiebackup gemaakt te worden, omdat een fortigate altijd weer opnieuw uitgerold kan worden vanuit de Fortimanager.<br>
+Het is wel mogelijk via Automation.<br>
+Dit is o.a. beschreven in : &quot;Fortinet FortiGate Automation&quot; <a href="https://indeni.com/blog/fortinet-fortigate-automation%22">https://indeni.com/blog/fortinet-fortigate-automation&quot;</a></p>
+<p>Er kan wel een eenmalige backup gemaakt worden via : <br>
+<img src="../../../../Attachments/image-251d41c1-27ff-440a-be95-c7601426795e.png" alt="image.png"><br>
+En dan Configuration – Backup.</p>
+<h2 id="packet-capture">Packet Capture</h2>
+<p><img src="../../../../Attachments/image-32a8bff6-5ea8-4ea5-80e8-315f706b8ec4.png" alt="image.png">
+Op een bestaande interface kun een packet capture enabelen, stoppen en downloaden.<br>
+Bekijk de capture vervolgens met Wire Shark.</p>
+<h2 id="ntp">NTP</h2>
+<p>Voor het instellen van NTP is er een script gemaakt, waarbij voor NTP local is ingesteld.
+<img src="../../../../Attachments/image-1600e434-6e1a-4ed2-8008-d025cd0f0ed8.png" alt="image.png">
+Bijvoorbeeld bij een DHCP-scope is de NTP dan als volgt ingesteld:
+<img src="../../../../Attachments/image-aafe3ea9-1544-4c2a-929d-9e88d59166c2.png" alt="image.png">
+Onder System settings is te zien dat dit dit verwijst naar een Fortiguard tijdserver.
+<img src="../../../../Attachments/image-9b17d88d-349f-4048-b50e-0c6905a1cb6a.png" alt="image.png"></p>
+<h2 id="diversen-fortigates-locaties">Diversen Fortigates Locaties</h2>
+<p>Diagnose sniffer :
+<img src="../../../../Attachments/image-11a581c0-0641-4692-9467-9e7e4558d26d.png" alt="image.png"></p>
+<p>Bij pingen vanaf een Fortigate op locatie moet het Source-IP opgegeven worden en er moet aangegeven worden dat er SD-WAN gebruikt wordt.
+<img src="../../../../Attachments/image-e0677377-5544-46d1-a7c8-c5d1fb9d28a4.png" alt="image.png"></p>
+<p>Via de CLI met SSH een switch benaderen werkt als volgt:
+<img src="../../../../Attachments/image-a7132f41-47ea-41eb-b3b6-78993b2e510a.png" alt="image.png"></p>
+<p>DHCP reservering maken door DHCP monitor aan te zetten en dan vandaar uit met rechtermuisknop een vast IP-nr toekennen.
+<img src="../../../../Attachments/image-48910fa2-d4eb-41f6-ac4f-a9b68fd7cf98.png" alt="image.png"></p>
+<h2 id="diversen-fortigates-datacenter">Diversen Fortigates Datacenter</h2>
+<p>Bij het pingen vanaf een FG oin het datacenter moet als VDOM &quot;root&quot; gekozen worden.<br>
+Je kunt in de GUI bovenin &quot;root&quot; kiezen.
+<img src="../../../../Attachments/image-15858f3a-5035-41c0-876a-b889a6c62975.png" alt="image.png"></p>
+<p>Als je vanuit de Vdom &quot;Global&quot; de CLI opent kom je in onderstaand scherm terecht:<br>
+<img src="../../../../Attachments/image-13ebe01b-8c84-4b0d-8729-006e2a9d9f2e.png" alt="image.png"><br>
+Met &quot;end&quot; verlaat je global.<br>
+Met &quot;config vdom&quot; kom je in vdom terecht.<br>
+Met &quot;edit ?&quot; zie je welke vdom's er zijn. <br>
+Met &quot;edit root&quot; kom je ook in root terecht. (als je een niet bestaande vdom intoetst wordt deze aangemaakt, dusl let op).</p>
+<p>Je kunt meteen pingen vanuit root.<br>
+Dus gelijk bijv. execute ping 10.10.50.1</p>
+<p>Vanuit de Vdom &quot;Global&quot; kun een failover initiëren:<br>
+&quot;execute ha failover set&quot;<br>
+terug gaat via &quot;execute ha failover usnet&quot;.</p>
+<h2 id="logview">Logview</h2>
+<p>Vanuit de Fortimanager kan Logview gekozen worden waarmee je op de Fortianalyzer terecht komt.<br>
+Kies dan Fortigate - Traffic en voeg criteria toe.
+<img src="../../../../Attachments/image-f301f723-edbf-4638-aa91-7bd42eb99244.png" alt="image.png"></p>
+<p>Stel je wilt verkeer van een bepaalde policy-regel bekijken achter haal dan eerst het policyid.<br>
+Dit is te vinden in de Fortimanager, maar dan moet er wel een extra kolom aangezet worden.</p>
+<p><img src="../../../../Attachments/image-44096789-0e13-4307-a701-41af8ca498bd.png" alt="image.png"></p>
+<p>Bijvoorbeeld de Printingin-fw-regel heeft id 28.</p>
+<p><img src="../../../../Attachments/image-36565a3f-877b-4b50-a5a3-82c6670f38a9.png" alt="image.png"></p>
+<p>Stel je wilt verkeer van het voice-subnet bekijken dan is onderstaande een goed zoekcriterium.</p>
+<p>srcip=&quot;172.17.30.0/24&quot; or dstip=&quot;172.17.30.0/24&quot;</p>
+<h2 id="interfaces">Interfaces</h2>
+<h3 id="meerdere-4g-modems">Meerdere 4G-modems.</h3>
+<p>Stel je wil 2 4G-modems gebruiken die in dezelfde /24-reeks zitten dan zou je dat als volgt op kunnen lossen:</p>
+<p><img src="../../../../Attachments/image-888d1b14-5fec-4576-bf16-71d9e5f462e2.png" alt="image.png"></p>
+<p>Oud:<br>
+4G -&gt; WAN1 -&gt; 192.168.39.142/24 GW 192.168.39.1<br>
+4G -&gt; Internal1 -&gt; 192.168.39.149/24 GW 192.168.39.1</p>
+<p>Nieuw:<br>
+4G -&gt; WAN1 -&gt; 192.168.39.142/25 GW 192.168.39.129<br>
+4G -&gt; Internal1 -&gt; 192.168.39.14/25 GW 192.168.39.1</p>
+<h2 id="vpn">VPN</h2>
+<p>Als de VPN overschakelt bij SD-WAN is dit te zien in de logging.</p>
+<p><img src="../../../../Attachments/image-0606f56f-12ca-4622-a68a-ba47df589088.png" alt="image.png"></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

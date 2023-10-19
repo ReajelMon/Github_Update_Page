@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Best Practices Admin accounts </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Best Practices Admin accounts ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="best-practices-admin-accounts">Best Practices Admin accounts</h1>
+
+<p>Voor werkzaamheden op servers beschikken alle leden van IT Operations en de Servicedesk over een admin-account.<br>
+Alle Developers die bereikbaarheidsdienst draaien en de lead Developers beschikken ook over een admin-account.<br>
+Tot slot geldt dat ook nog voor een aantal R&amp;D-medewerkers.</p>
+<p>Voor het kunnen beheren van servers is de admin-account-naam : admin_voornaam.achternaam@monta.nl.</p>
+<p>Voor het kunnen beheren van servers in VMWare is de admin-account-naam : admin_voornaam.achternaam@vsphere.local.</p>
+<p>Deze twee accounts zijn onafhankelijk van elkaar.</p>
+<p>Omdat een admin-account door niet iedereen frequent gebruikt wordt volgen hier wat best practices om er voor te zorgen dat je het de admin-account-naam en het wachtwoord kunt onthouden en dat het toch veilig is.</p>
+<ul>
+<li>Wijzig het wachtwoord voor het admin-account tegelijk met het wijzigen van het gewone account. Dan wordt je er niet onverwachts mee geconfronteerd dat je wachtwoord verlopen is.</li>
+<li>Kies voor je admin account een ander wachtwoord dan voor je gewone account</li>
+<li>Leg je admin wachtwoord vast in het persoonlijke gedeelte in Passwordstate &quot;My private passwords&quot;.<br>
+<img src="../../../Attachments/image-94f06226-2772-4712-8c27-617ec4783681.png" alt="image.png"><br>
+Omdat Passwordstate beveiligd is met MFA is dat veilig genoeg.</li>
+<li>Het wachtwoord voor het admin-account voor VMWare verloopt niet. Je kunt hiervoor een complex wachtwoord instellen en dit ook in Passwordstate &quot;My private passwords&quot; vastleggen.</li>
+</ul>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

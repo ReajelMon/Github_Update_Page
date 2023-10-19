@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>BulkXL pickstroom </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="BulkXL pickstroom ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="bulkxl-pickstroom">BulkXL pickstroom</h1>
+
+<p>In deze pickstroom worden de verzendlabels geplakt tijdens het picken. Op deze manier wordt het picken en Echecken samengevoegd.</p>
+<p>Deze pickstroom is ingericht voor orders met grote artikelen (XL orders), met artikelen die zijn gemarkeerd als <code>eigen verpakking drager</code>.</p>
+<p>De bulkXL pickstroom kent twee soorten, verzendlabels vooraf printen en verzendlabels tijdens picken printen.</p>
+<h2 id="1-vooraf-printen">1. Vooraf printen</h2>
+<p>Route van de order: Vooraf printen</p>
+<ul>
+<li>Pickstroom wordt bepaald op basis van X-criteria (Groot volume; aantal colli).</li>
+<li>Pickstroom wordt geselecteerd.</li>
+<li>Krat wordt gescand (Picklabel).</li>
+<li>Verzendlabels worden gedrukt via de echeck.</li>
+<li>Picker wordt gestuurd naar locatie.</li>
+<li>Artikel wordt gescand; Verzendlabel wordt gescand.</li>
+<li>Verzendlabel wordt op artikel geplakt, artikel wordt opgestapeld.</li>
+<li>Pickroute wordt afgerond.</li>
+</ul>
+<h2 id="2-tijdens-picken-printen">2. Tijdens picken printen</h2>
+<p>Route van de order: Tijdens picken printen</p>
+<ul>
+<li>Pickstroom wordt bepaald op basis van X-criteria (Groot volume; aantal colli).</li>
+<li>Pickstroom wordt geselecteerd.</li>
+<li>Krat wordt gescand (Picklabel).</li>
+<li>Picker wordt gestuurd naar locatie.</li>
+<li>Artikel wordt gescand;</li>
+<li>Verzendlabel wordt ter plekken afgedrukt</li>
+<li>Verzendlabel wordt gescand.</li>
+<li>Verzendlabel wordt op artikel geplakt, artikel wordt opgestapeld.</li>
+<li>Pickroute wordt afgerond.</li>
+</ul>
+<p>Note: Voor de pickstroom tijdens het picken printen is er speciale hardware nodig:</p>
+<p><img src="../../../Attachments/image-f1f5b1ed-ce8a-4fbb-8758-b01241c53150.png" alt="image.png"></p>
+<h2 id="meer-informatie-over-bulkxl">Meer informatie over bulkXL</h2>
+<p>Randvoorwaarde:</p>
+<ul>
+<li>Artikelen zijn altijd een eigen verzendverpakking (Dit is ingevoerd in Gomonta).</li>
+<li>Meerdere colli bij 1 artikel niet mogelijk.</li>
+<li>Pickvolgorde wordt bepaald op basis van looproute, magazijn wordt ingericht op basis van groot naar klein om stapelen van pallets goed te krijgen.</li>
+<li>Artikelen zijn groter dan ingesteld (Afmetingen en gewichten moeten kloppen)</li>
+<li>Orders vallen binnen de XL of S* Pickstroom</li>
+<li>Orders vallen binnen de itemaantallen ingesteld in gomonta.</li>
+<li>Orders moeten niet door een pallet verzender verzonden worden.</li>
+<li>Er is een verzender geselecteerd</li>
+</ul>
+<p>*Note: binnen S-orders word geen onderscheid gemaakt in formaat, daarom worden de S-orders die aan de rest van de eisen voldoen meegeteld.</p>
+<p>In Gomonta zijn instellingen te vinden betreffende deze pickstroom: <a href="https://gomonta.montapacking.nl/WMS/Shift/WarehouseSettings">Outbound &gt; Magazijn outbound instellingen</a> onder &quot;Algemene pickstromen&quot;:</p>
+<p><img src="../../../Attachments/firefox_Jwikx2KJNr.png" alt="image.png"></p>
+<p>Voor deze pickstroom is het minimum en het maximum van het aantal orders en producten, dat in een pickronde mag voorkomen, in te stellen. Deze zijn te vinden op de hierboven genoemde pagina.
+Bij deze pickstroom is het niet mogelijk zijn om op ‘krat vol’ te klikken, want dan gaat iemand anders de orders picken terwijl de verzendlabels al geprint zijn. Wel is het mogelijk om verder te picken op een volgende krat (zoals bij put-to-light).
+In het geval dat alle producten al een eigen verzendverpakking hebben, is er ook de optie om deze randvoorwaarde te negeren. Dit voorkomt dat een product niet gepickt kan worden als er een product nog niet goed staat.</p>
+<p>Bij een joker kunnen ze proberen het product ergens anders te vinden en te scannen (dan hoeft het geen joker te worden). Als ze het product niet ergens anders vinden moeten ze de producten die eventueel al gepickt zijn van de pallet af halen en apart leggen.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

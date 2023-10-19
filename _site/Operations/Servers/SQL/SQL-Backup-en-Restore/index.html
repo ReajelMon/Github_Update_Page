@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SQL Backup en Restore </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="SQL Backup en Restore ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="sql-backup-en-restore">SQL Backup en Restore</h1>
+
+<h2 id="inhoudsopgave">Inhoudsopgave</h2>
+<p><a href="#voorbereidingen">1. Voorbereidingen</a></p>
+<p><a href="#nieuwe-server">1.1 Nieuwe server</a></p>
+<p><a href="#Certificaat-installeren">1.2 Certificaat installeren</a></p>
+<p><a href="#restore-server-gereed-maken">2. Restore server gereed maken</a></p>
+<p><a href="#restoren-database">2.1 Restoren database</a></p>
+<p><a href="#voorbereiden-restore-server">2.2 Voorbereiden Restore server</a></p>
+<p><a href="#certificaat-installeren-op-restore-server">2.2.1 Certificaat installeren op Restore-server</a></p>
+<p><a href="#configureren-database-mail">2.2.2 Configureren database mail</a></p>
+<p><a href="#settings-op-server-level-goed-zetten">2.2.3 Settings op server level goed zetten</a></p>
+<p><a href="#Kopi%C3%ABren-van-de-logins-op-de-bron(!)-server">2.2.4 Kopiëren van de logins op de bron(!) server</a></p>
+<p><a href="#voorbeeld-cre%C3%ABren-logins">2.2.5 Voorbeeld creëren logins</a></p>
+<p><a href="#operators-aanmaken">2.2.6 Operators aanmaken</a></p>
+<p><a href="#linked-server-koppelen">2.2.7 Linked server koppelen</a></p>
+<p><a href="#Server-triggers-maken-nodrop">2.2.8 Server triggers maken (nodrop)</a></p>
+<p><a href="#alerts-instellen">2.2.9 Alerts instellen</a></p>
+<p><a href="#maintenance-plannen-aanmaken">2.2.10 Maintenance plannen aanmaken</a></p>
+<p><a href="#jobs-aanmaken">2.2.11 Jobs aanmaken</a></p>
+<h2 id="opmerkingen-over-deze-handleiding">Opmerkingen over deze handleiding</h2>
+<p>In deze handleiding staan grote stukken code, die gekopieerd moeten worden.
+Omdat dit erg lastig in Montadocs is aan te maken, dient hiervoor het Word-document gebruikt te worden wat staat in &quot;</p>
+<h2 id="voorbereidingen">Voorbereidingen</h2>
+<h3 id="nieuwe-server">Nieuwe server</h3>
+<p>Als eerste moet er een nieuwe Virtuele machine worden geïnstalleerd met
+de volgende specificaties. (Uitgangspunt MP-SQL10 per 28-5-2021)</p>
+<ul>
+<li><p>Windows Server 2019 Datacenter</p>
+</li>
+<li><p>16 vCPUs</p>
+</li>
+<li><p>140 GB Memory</p>
+</li>
+<li><p>Disks</p>
+</li>
+<li><p>C:\ OS 100GB</p>
+</li>
+<li><p>D:\ MDF 850 GB</p>
+</li>
+<li><p>E:\ LDF 100 GB</p>
+</li>
+<li><p>F:\ BACKUP 1,22 TB</p>
+</li>
+<li><p>MS SQL versie 2019</p>
+</li>
+<li><p>Maak dezelfde instance aan als op de bronserver. (Dus BACKEND)</p>
+</li>
+<li><p>Met SQL Configuration manager accounts waaronder SQL-services
+draaien goedzetten<br>
+(L E T O P , doe dit niet via services):</p>
+</li>
+<li><p>SQL Server : rs.sqlclust</p>
+</li>
+<li><p>SQL Server Agent : rs.sqlclust</p>
+</li>
+</ul>
+<h3 id="mp-sqlbak">MP-SQLBAK</h3>
+<p>Er is medio 2021 een restore server gereed gemaakt volgens onderstaande
+procedure. Dit is de MP-SQLBAK die dus meteen te gebruiken is voor een
+restore.</p>
+<h3 id="certificaat-installeren">Certificaat installeren</h3>
+<p>De database backup is ge-encrypt. Dat betekent dat op de doel server dit
+ook moet worden ingeregeld.</p>
+<p>Als eerste wordt hieronder beschreven hoe op de bron server een
+encrypted backup kan worden gemaakt en hoe het certificaat kan worden
+geback-upt. Voorwaarde is dat de Master-key en het certificaat
+Montapacking062017 op de bron server aanwezig is. Er wordt ook een
+backup van de masterkey gemaakt.</p>
+<p>In Passwordstate zijn de wachtwoorden 1,3 en 4 opgeslagen.</p>
+<p><img src="../../../../Attachments/image-73073d76-3260-4da4-a790-24dd21c0cb44.png" alt="image.png"></p>
+<p>Om bij een calamiteit een restore te kunnen uitvoeren moeten de beide
+files en het wachtwoord beschikbaar zijn:</p>
+<ul>
+<li><p>Montapacking062017.cer</p>
+</li>
+<li><p>Montapacking062017.pvk</p>
+</li>
+<li><p>Wachtwoord &lt;wachtwoord1&gt;</p>
+</li>
+</ul>
+<h2 id="restore-server-gereed-maken">Restore server gereed maken</h2>
+<p>Bij een calamiteit waarbij de restoreserver moet worden ingezet, moeten
+de volgende stappen gebeuren. Een aantal van deze stappen zijn vooraf al
+uit te voeren en dan met name de configuratie van de server. Die wordt
+beschreven vanaf paragraaf 2.2.</p>
+<h3 id="restoren-database">Restoren database</h3>
+<p>Kopieer de bak-file en de transactielog-backups naar een filelocatie
+opde MP-SQLBAK.<br>
+Kies voor Restore database.<br>
+Geef bij device het pad op naar de bestandslocatie van de bak-file.<br>
+Kies bij options voor &quot;Restore with norecovery&quot;</p>
+<p>De database verschijnt nu in restoring mode.</p>
+<p>Kies vervolgens voor een restore van Transaction Log.</p>
+<p>Je kunt transactielogs één voor één restoren.<br>
+Selecteer via &quot;From Device&quot; de eerste transactielogfile die direct na de
+bak-file gemaakt is.<br>
+Kies bij options voor &quot;Norecovery&quot; tot bij de laatste transactielog,
+kies dan pas voor &quot;With recovery&quot;.</p>
+<h3 id="voorbereiden-restore-server">Voorbereiden Restore server</h3>
+<p>Om de nieuwe server voor te bereiden moeten de volgende stappen worden
+ondernomen:</p>
+<ol>
+<li><p><a href="#certificaat-installeren-op-restore-server">Certificaat installeren op
+Restore-server</a></p>
+</li>
+<li><p><a href="#configureren-database-mail">Configureren database mail</a></p>
+</li>
+<li><p><a href="#settings-op-server-level-goed-zetten">Settings op server level goed
+zetten</a></p>
+</li>
+<li><p><a href="#kopi%C3%ABren-van-de-logins-op-de-bron-server">Kopiëren van de logins op de bron
+server</a></p>
+</li>
+<li><p><a href="#operators-aanmaken">Operators aanmaken</a></p>
+</li>
+<li><p><a href="#linked-server-koppelen">Linked server koppelen</a></p>
+</li>
+<li><p><a href="#server-triggers-maken-nodrop">Server triggers maken</a></p>
+</li>
+<li><p><a href="#alerts-instellen">Alerts instellen</a></p>
+</li>
+<li><p><a href="#maintenance-plannen-aanmaken">Maintenance plannen aanmaken</a></p>
+</li>
+<li><p><a href="#jobs-aanmaken">Jobs aanmaken</a></p>
+</li>
+</ol>
+<h4 id="certificaat-installeren-op-restore-server">Certificaat installeren op Restore-server</h4>
+<p>Transparent Data Encryption (TDE) werkt schematisch als volgt:<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-SQL-backup-en-restore/media/image1.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p>De databases zijn echter niet ecncrypted. Het database encryptie
+certificaat wordt alleen gebruikt bij het maken van de backup:<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-SQL-backup-en-restore/media/image2.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p>Creëer masterkey indien nog niet aanwezig</p>
+<p>create master key encryption by password = 'wachtwoord3';</p>
+<p>Of deze er is, is te zien met de query (de naam moet
+&quot;MS_DatabaseMasterKey&quot; luiden):</p>
+<p>select * from master.sys.symmetric_keys;</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-SQL-backup-en-restore/media/image3.png" alt=""></p>
+<p>Creëren van kopie certificaat vanuit de backup files</p>
+<p>Kopieer de files van de bronserver naar de doelserver</p>
+<ul>
+<li><p>Montapacking062017.cer</p>
+</li>
+<li><p>Montapacking062017.pvk</p>
+</li>
+</ul>
+<p>create certificate Montapacking062017</p>
+<p>from file = '&lt;path&gt;\Montapacking062017.cer'</p>
+<p>with private key (file = '&lt;path&gt;\Montapacking062017.pvk'</p>
+<p>, decryption by password = 'wachtwoord1')</p>
+<p>Of het certificaat er daadwerkelijk is te zien met de query:<br>
+select * from sys.certificates<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-SQL-backup-en-restore/media/image4.png" alt=""></p>
+<h4 id="configureren-database-mail">Configureren database mail</h4>
+<p><img src="../../../../Attachments/image-9308fc77-4ac5-4ade-ba6c-4c96dc834d8d.png" alt="image.png">
+<img src="../../../../Attachments/image-82136f59-c64f-4b18-8e7b-24abe03f7045.png" alt="image.png"></p>
+<h4 id="settings-op-server-level-goed-zetten">Settings op server level goed zetten</h4>
+<p><img src="../../../../Attachments/image-4933a8f5-db62-49b0-9950-74eccdabe719.png" alt="image.png">
+<img src="../../../../Attachments/image-ce60b4d6-cabb-442a-ab71-a47dbc60345b.png" alt="image.png"></p>
+<h4 id="kopiëren-van-de-logins-op-de-bron-server">Kopiëren van de logins op de bron(!) server</h4>
+<p>Een server waarvan voorzien wordt dat er een restore van de
+monta_backend database op kan gaan plaatsvinden, kan worden voorbereid
+op het overnemen van de operationele rol door alvast de server level
+security te installeren. Dat kan als volgt.</p>
+<p>Door de onderstaande code uit te voeren op de bronserver worden
+statements gegenereerd die kunnen uitgevoerd worden op een andere
+server. Voor het uitvoeren van die gegenereerd statements dienen ze
+eerst zorgvuldig gecheckt te worden, of het echt de bedoeling is de
+wijzigingen op de server aan te brengen. Zeker als het geen clean
+install is.</p>
+<p>In 2.2.5 staat een voorbeeld van de output uit onderrstaande query. Dit
+handelt echter niet alles af. Onder andere de logins op basis van een
+certificaat of asymmetric key ontbreken. Ook worden niet alle permissies
+in detail gescript.</p>
+<p><img src="../../../../Attachments/image-1a223f57-51e4-4683-b1df-2bfed329ffd9.png" alt="image.png">
+<img src="../../../../Attachments/image-ca17a125-abeb-4edb-aa9d-491cdc6cc3dc.png" alt="image.png">
+<img src="../../../../Attachments/image-311ff32e-04ed-41ac-9cf3-12a327021295.png" alt="image.png">
+<img src="../../../../Attachments/image-c3854d1d-926b-4583-9745-15d03e1bf122.png" alt="image.png"></p>
+<h4 id="voorbeeld-creëren-logins">Voorbeeld creëren logins</h4>
+<p><img src="../../../../Attachments/image-ce508aa1-79ce-4806-98f4-19e23b83cb15.png" alt="image.png">
+<img src="../../../../Attachments/image-e91b40e2-1289-4104-8639-1ad96c216088.png" alt="image.png">
+<img src="../../../../Attachments/image-6eb87ffb-46d7-468e-9fad-bf3ca6c896a3.png" alt="image.png">
+<img src="../../../../Attachments/image-ead9bbfe-8a75-45be-a5dc-66876a856a50.png" alt="image.png">
+<img src="../../../../Attachments/image-32517476-3895-45cd-972d-b89386155e2a.png" alt="image.png"></p>
+<h4 id="operators-aanmaken">Operators aanmaken</h4>
+<p><img src="../../../../Attachments/image-7c1ea0a8-64a9-4507-afa8-b088e2f3c27e.png" alt="image.png">
+<img src="../../../../Attachments/image-7592f2fc-940f-4784-b72a-8b08ec2db953.png" alt="image.png">
+<img src="../../../../Attachments/image-88b434bf-d379-4154-acf7-60a8069f1ffe.png" alt="image.png"></p>
+<p>+-</p>
+<h4 id="linked-server-koppelen">Linked server koppelen</h4>
+<p><img src="../../../../Attachments/image-09e8d063-87e0-43cf-a60b-4bf940dec34a.png" alt="image.png">
+<img src="../../../../Attachments/image-4b46b272-d194-420c-90a0-e21aca249e03.png" alt="image.png"></p>
+<h4 id="server-triggers-maken-nodrop">Server triggers maken (nodrop)</h4>
+<p><img src="../../../../Attachments/image-cfe32850-ea2c-40bf-9ea9-a827b33884e8.png" alt="image.png"></p>
+<h4 id="alerts-instellen">Alerts instellen</h4>
+<p><img src="../../../../Attachments/image-f25e7e74-fe2c-48f1-8669-2745a8ee0681.png" alt="image.png">
+<img src="../../../../Attachments/image-32e36d16-7e11-413c-ae33-68f6eb58ca66.png" alt="image.png">
+<img src="../../../../Attachments/image-bdb3fa94-b502-4cce-9738-4c9b25db0c13.png" alt="image.png">
+<img src="../../../../Attachments/image-e3f9e2aa-bd61-4742-9618-f7b089ac0744.png" alt="image.png">
+<img src="../../../../Attachments/image-72246951-6e26-4149-84d9-8b4a7fe59a39.png" alt="image.png"></p>
+<h4 id="maintenance-plannen-aanmaken">Maintenance plannen aanmaken</h4>
+<p><img src="../../../../Attachments/image-020f4949-d1f6-4146-a215-a6f71b5a77b9.png" alt="image.png">
+<img src="../../../../Attachments/image-f27d52a2-c4e5-4fd0-b16c-1fd837d09710.png" alt="image.png">
+<img src="../../../../Attachments/image-35505dff-3a5f-4145-8732-6ac97b9d89c4.png" alt="image.png">
+<img src="../../../../Attachments/image-6907f496-321e-4a21-96c4-ad73d4c5e469.png" alt="image.png">
+<img src="../../../../Attachments/image-9b9437d5-50bf-4514-9000-514c0272a225.png" alt="image.png">
+<img src="../../../../Attachments/image-bb38be26-4325-47e5-bce5-281d356c1545.png" alt="image.png"></p>
+<h4 id="jobs-aanmaken">Jobs aanmaken</h4>
+<p>Als laatste moeten de Jobs worden aangemaakt op de Restore. Ook hier
+geldt weer dat de instellingen van de Bron server moeten worden
+overgenomen.</p>
+<p>BELANGRIJK!</p>
+<p>Als er een Job op de Bron server enabled is, moet die op de Restore
+server op [DISABLED]{.underline} worden gezet. Gebeurt dat niet dan
+loopt de support mailbox vol.</p>
+<p>+------+---------------------------------------------+----------------+</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-SQL-backup-en-restore/media/image18.png" alt="Algemene informatie"></p>
+<p>Open SQL Server agent
+(die service had je gestart toch?) - Jobs
+Klik rechts en maak een nieuwe Job aan.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-SQL-backup-en-restore/media/image19.png" alt="">
+Geef de Job dezelfde naam als op de Bron server.
+In principe is het SA account altijd de owner van een Job.
+Maar ook hier is de Bron server weer leidend.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-SQL-backup-en-restore/media/image20.png" alt="">
+Stel nu vervolgens de verschillende Stepts, Schedules, Notifications in.
+E.e.a. exact hetzelfde als op de Bron server.
+LET OP. Zoals eerder aangegeven: De jobs staan op DISABLED.</p>
+<hr>
+<p><strong>Naam</strong>                        <strong>Schedule</strong>   <strong>Notification</strong></p>
+<hr>
+<p>Baseline waits                  nvt            nvt</p>
+<p>daily_tasks.Subplan_1           Dagelijks      Email naar support when the
+01:00 AM       job completes</p>
+<p>Write Application event log
+when the job failes</p>
+<p>Indexeren Montaportal is        Elk uur        Email naar support when the
+gestopt                                        job completes</p>
+<p>Write Application event log
+when the job failes</p>
+<p>log memory counters             nvt            nvt</p>
+<p>log PLE                         nvt            nvt</p>
+<p>logbackups.Subplan_1            Elk kwartier   Email naar support when the
+job failes</p>
+<p>Write Application event log
+when the job failes</p>
+<p>Replicatie error tussen SQL10   Elk kwartier   Email naar support when the
+en SQL20, NEEM METEEN ACTIE                    job failes
+!!!!!!</p>
+<p>Start Optimize Catalog          Zondag 04:30   Email naar support when the
+Population on                                  job completes
+Monta_Backend.FT_MontaPacking</p>
+<p>Write Application event log
+when the job failes</p>
+<p>syspolicy_purge_history         Dagelijks      Email naar support when the
+02:00 AM       job failes</p>
+<p>test_notify                     nvt            Email naar support when the
+job failes</p>
+<p>Weekly Tasks Server.Subplan_1   Zondag 10:00   Email naar support when the
+job failes</p>
+<p>weekly_tasks.Subplan_1          Zondag 11:00   Email naar support when the
+job completes</p>
+<h2 id="write-application-event-logwhen-the-job-failes">Write Application event log
+when the job failes</h2>
+<h6 id="section"></h6>
+<h6 id="baseline-waits">Baseline waits</h6>
+<p>-- sql agent job, start every 15 minutes (with endless loop en waiting
+15 min tends to shift out of exact quarter of an hour)<br>
+-- check for server restart after last log<br>
+declare @sql_server_start_time datetime = (select sqlserver_start_time
+from sys.dm_os_sys_info)<br>
+declare @max_log_date datetime = (select max(dt) from baseline.waits)<br>
+-- if so archive the baseline.waits table and create a new one<br>
+if @sql_server_start_time &gt; @max_log_date</p>
+<p>begin</p>
+<p>declare @nwname varchar(100) =
+'baseline.waits_'+replace(replace(convert(char(16), @max_log_date,
+126),'-',''),':', '')<br>
+exec sp_rename 'baseline.waits', @nwname, 'object'<br>
+create table baseline.waits<br>
+(dt smalldatetime not null,<br>
+wait_type nvarchar(60) not null,<br>
+waiting_tasks_count bigint not null,<br>
+wait_time_ms bigint not null,<br>
+max_wait_time_ms bigint not null,<br>
+signal_wait_time_ms bigint not null,<br>
+resource_wait_time_ms as wait_time_ms - signal_wait_time_ms,<br>
+yy as datepart(yy, dt),<br>
+mm as datepart(mm, dt),<br>
+dd as datepart(dd, dt),<br>
+dw as datepart(dw, dt),<br>
+hr as datepart(hh, dt),<br>
+mi as datepart(mi, dt)<br>
+,primary key (dt, wait_type))</p>
+<p>end</p>
+<p>-- insert<br>
+insert baseline.waits (dt, wait_type, waiting_tasks_count, wait_time_ms,
+max_wait_time_ms, signal_wait_time_ms)<br>
+select getdate(), *<br>
+from sys.dm_os_wait_stats<br>
+where wait_type not in (select wait_type from baseline.IgnorableWaits)<br>
+and waiting_tasks_count &gt; 0<br>
+go</p>
+<h6 id="daily_taskssubplan_1">Daily_tasks.Subplan_1</h6>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-SQL-backup-en-restore/media/image21.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-SQL-backup-en-restore/media/image22.png" alt=""></p>
+<h6 id="indexeren-montaportal-is-gestopt">Indexeren Montaportal is gestopt</h6>
+<p>USE Monta_Backend<br>
+DECLARE @count INT<br>
+DECLARE @counttwee INT<br>
+DECLARE @Resultaat VARCHAR(MAX)<br>
+DECLARE @Finalresultaat VARCHAR(MAX)<br>
+DECLARE @CatalogName VARCHAR(MAX)<br>
+SET @count = 1<br>
+SET @counttwee = 0<br>
+SET @CatalogName = 'FT_Montapacking'<br>
+SET @FinalResultaat = 0<br>
+WHILE @count&lt;= 60<br>
+BEGIN<br>
+WAITFOR DELAY '00:00:01'<br>
+SET @Resultaat = (SELECT
+FULLTEXTCATALOGPROPERTY(@CatalogName,\'PopulateCompletionAge') as Date<br>
+FROM sys.fulltext_catalogs)<br>
+Print @Resultaat<br>
+IF @Resultaat = 0<br>
+BEGIN<br>
+SET @FinalResultaat = @FinalResultaat + 1<br>
+END</p>
+<p>Set @count = @Count + 1</p>
+<p>END</p>
+<p>Print @Finalresultaat</p>
+<p>If @Finalresultaat &lt; 60</p>
+<p>BEGIN Print 'Index OK'</p>
+<p>END</p>
+<p>ELSE</p>
+<p>BEGIN Print 'Index niet OK!'</p>
+<p>raiserror('Indexeren Montaportal is gestopt!', 16, 1)</p>
+<p>END</p>
+<h6 id="log-memory-counters">log memory counters</h6>
+<p>-- uitgebreide memory log</p>
+<p>insert dbo.memory_log (counter_name, instance_name, cntr_value)</p>
+<p>select counter_name, instance_name, cntr_value</p>
+<p>from sys.dm_os_performance_counters</p>
+<p>where counter_name in</p>
+<p>('Database Cache Memory (KB)',</p>
+<p>'Free Memory (KB)',<br>
+'Lock Memory (KB)',<br>
+'Log Pool Memory (KB)',<br>
+'Granted Workspace Memory (KB)',<br>
+'Memory Grants Pending',<br>
+'Memory Grants Outstanding',<br>
+'Optimizer Memory (KB)',<br>
+'Stolen Server Memory (KB)',<br>
+'Target Server Memory (KB)',<br>
+'Total Server Memory (KB)',<br>
+'SQL Cache Memory (KB)',<br>
+'Page life expectancy',<br>
+'Buffer cache hit ratio',<br>
+'Buffer cache hit ratio base',<br>
+'Database pages',<br>
+'Target pages',<br>
+'Extension allocated pages',<br>
+'Free list stalls/sec',<br>
+'Page lookups/sec',<br>
+'Page reads/sec',<br>
+'Readahead pages/sec',<br>
+'Page writes/sec',<br>
+'Checkpoint pages/sec',<br>
+'Background writer pages/sec')</p>
+<h6 id="log-ple">Log PLE</h6>
+<p>insert master.dbo.PLE (dt, ple)</p>
+<p>select getdate(), cntr_value</p>
+<p>from sys.dm_os_performance_counters</p>
+<p>where counter_name = 'Page life expectancy'</p>
+<p>and instance_name = ''</p>
+<p>/*</p>
+<p>-- uitgebreide memory log</p>
+<p>insert dbo.memory_log (counter_name, instance_name, cntr_value)</p>
+<p>select counter_name, instance_name, cntr_value</p>
+<p>from sys.dm_os_performance_counters</p>
+<p>where counter_name in</p>
+<p>('Database Cache Memory (KB)',<br>
+'Free Memory (KB)',<br>
+'Lock Memory (KB)',<br>
+'Log Pool Memory (KB)',<br>
+'Granted Workspace Memory (KB)',<br>
+'Memory Grants Pending',<br>
+'Memory Grants Outstanding',<br>
+'Optimizer Memory (KB)',<br>
+'Stolen Server Memory (KB)',<br>
+'Target Server Memory (KB)',<br>
+'Total Server Memory (KB)',<br>
+'SQL Cache Memory (KB)',<br>
+'Page life expectancy',<br>
+'Buffer cache hit ratio',<br>
+'Database pages',<br>
+'Target pages',<br>
+'Extension allocated pages',<br>
+'Free list stalls/sec',<br>
+'Page lookups/sec',<br>
+'Page reads/sec',<br>
+'Page writes/sec', 'Readahead pages/sec')</p>
+<p>*/</p>
+<h6 id="logbackupssubplan_1">logbackups.Subplan_1</h6>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-SQL-backup-en-restore/media/image23.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-SQL-backup-en-restore/media/image24.png" alt=""></p>
+<h6 id="replicatie-error-tussen-sql10-en-sql20-neem-meteen-actie-">Replicatie error tussen SQL10 en SQL20, NEEM METEEN ACTIE !!!!!!</h6>
+<p>declare @val nvarchar(100)</p>
+<p>select @val= RS.connected_state_desc<br>
+from sys.availability_groups AG<br>
+join sys.dm_hadr_availability_replica_states RS on AG.group_id =
+RS.group_id<br>
+join sys.availability_replicas AR on RS.replica_id = AR.replica_id<br>
+where AG.name = 'Monta_Backend' and AR.replica_server_name =
+'MP-SQL10\BACKEND'<br>
+if @val &lt;&gt; 'CONNECTED'</p>
+<p>raiserror('connected_state_desc Monta_Backend replica_server_name
+MP-SQL10\BACKEND &lt;&gt; connected', 16, 1)</p>
+<p>select @val= RS.connected_state_desc from sys.availability_groups AG<br>
+join sys.dm_hadr_availability_replica_states RS on AG.group_id =
+RS.group_id<br>
+join sys.availability_replicas AR on RS.replica_id = AR.replica_id<br>
+where AG.name = 'Monta_Backend' and AR.replica_server_name =
+'MP-SQL20\BACKEND'</p>
+<p>if @val &lt;&gt; 'CONNECTED'</p>
+<p>raiserror('connected_state_desc Monta_Backend replica_server_name
+MP-SQL20\BACKEND &lt;&gt; connected', 16, 1)</p>
+<p>select @val= RS.synchronization_health_desc from
+sys.availability_groups AG<br>
+join sys.dm_hadr_availability_replica_states RS on AG.group_id =
+RS.group_id<br>
+join sys.availability_replicas AR on RS.replica_id = AR.replica_id<br>
+where AG.name = 'Monta_Backend' and AR.replica_server_name =
+'MP-SQL10\BACKEND'</p>
+<p>if @val &lt;&gt; 'HEALTHY'</p>
+<p>raiserror('synchronization_health_desc Monta_Backend
+replica_server_name MP-SQL10\BACKEND &lt;&gt; healthy', 16, 1)</p>
+<p>select @val= RS.synchronization_health_desc from
+sys.availability_groups AG<br>
+join sys.dm_hadr_availability_replica_states RS on AG.group_id =
+RS.group_id<br>
+join sys.availability_replicas AR on RS.replica_id = AR.replica_id<br>
+where AG.name = 'Monta_Backend' and AR.replica_server_name =
+'MP-SQL20\BACKEND'</p>
+<p>if @val &lt;&gt; 'HEALTHY'</p>
+<p>raiserror('synchronization_health_desc Monta_Backend
+replica_server_name MP-SQL20\BACKEND &lt;&gt; healthy', 16, 1)</p>
+<h6 id="start-optimize-catalog-population-on-monta_backendft_montapacking">Start Optimize Catalog Population on Monta_Backend.FT_MontaPacking</h6>
+<p>USE [Monta_Backend]</p>
+<p>ALTER FULLTEXT CATALOG [FT_MontaPacking] REORGANIZE</p>
+<h6 id="section-1"></h6>
+<h6 id="syspolicy_purge_history">syspolicy_purge_history</h6>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-SQL-backup-en-restore/media/image25.png" alt=""></p>
+<p>####### Verify that automation is enabled.</p>
+<p>IF (msdb.dbo.fn_syspolicy_is_automation_enabled() != 1)<br>
+BEGIN<br>
+RAISERROR(34022, 16, 1)<br>
+END</p>
+<p>####### Purge history.</p>
+<p>EXEC msdb.dbo.sp_syspolicy_purge_history</p>
+<p>####### Erase Phantom System Health Records.</p>
+<p>if ('$(ESCAPE_SQUOTE(INST))' -eq 'MSSQLSERVER') {$a =
+'\DEFAULT'} ELSE {$a = ''};<br>
+(Get-Item
+SQLSERVER:\SQLPolicy\$(ESCAPE_NONE(SRVR))$a).EraseSystemHealthPhantomRecords()</p>
+<h6 id="test_notify">test_notify</h6>
+<p>raiserror ('test', 16, 1)</p>
+<h6 id="weekly-tasks-serversubplan_1">Weekly Tasks Server.Subplan_1</h6>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-SQL-backup-en-restore/media/image26.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-SQL-backup-en-restore/media/image27.png" alt=""></p>
+<h6 id="weekly_taskssubplan_1">weekly_tasks.Subplan_1</h6>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-SQL-backup-en-restore/media/image28.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-SQL-backup-en-restore/media/image29.png" alt=""></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

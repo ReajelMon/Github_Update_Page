@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Sophos Algemeen </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Sophos Algemeen ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="sophos-algemeen">Sophos Algemeen</h1>
+
+<h3 id="sophos-routers-configureren">Sophos Routers Configureren</h3>
+<p>&quot;S:\8.0 Automatisering\2.1 Netwerk\Technisch ontwerp Vernieuwing infrastructuur.docx&quot;</p>
+<h3 id="sophos-licensing">Sophos Licensing</h3>
+<p>Zie de inloggegevens in MontaPassword voor MyUTM Account <a href="https://myutm.sophos.com/homepage.php">https://myutm.sophos.com/homepage.php</a> (Licentie).<br>
+Met ingang van 1 oktober 2023 gaat de looptijd van nieuwe licenties in op de datum waarop de bestelling door Sophos wordt verwerkt, ongeacht wanneer de eindgebruiker de licentie activeert.</p>
+<p><img src="../../../../Attachments/image-e1e14cad-56cb-4899-8535-db5b7faed908.png" alt="image.png"></p>
+<p>Upgrade or renew a license
+If you need to update or renew an existing license or we’ve only sent you UPG-XXXXXXXX keys (deze key staat in een pdf die Netstream opstuurt):</p>
+<ol>
+<li>Go to <a href="https://myutm.sophos.com">https://myutm.sophos.com</a> and sign in.</li>
+<li>In MyUTM, click License Management.</li>
+<li>Click the license you want to update. Click Apply Upgrade Key and enter a key. Repeat if you have more keys for that license.</li>
+<li>Click Download License File and save the file.</li>
+<li>Upload the license file to your UTM appliance. In WebAdmin, go to Management &gt; Licensing and select the Installation tab</li>
+</ol>
+<h3 id="sophos-sg-eth-nummering">Sophos SG ETH-nummering</h3>
+<p><img src="../../../../Attachments/image-9636da16-2a04-4722-9fbb-b024b351168d.png" alt="image.png"></p>
+<h3 id="sophos-ha-inrichting">Sophos HA inrichting</h3>
+<p>De Sophos in Eindhoven en in Rotterdam zijn ingericht als een Master-Slave combinatie.<br>
+Hiervoor is High Availability ingericht. Eth3 is hiervoor via switches - interconnect in gebruik.<br>
+Bij uitval van de switch waarop eth3 is aangesloten zal er een split brain ontstaan.<br>
+Om de kans hierop te verkleinen is er een backupHA aangesloten via eth7.<br>
+Dit werkt niet helemmaal naar wens maar het is beter dan zonder : Als primaire HA wegvalt gaat Rotterdam dood ,maar er komt geen split brain.<br>
+Je moet echter naar Rotterdam om de slave weer aan te zetten.<br>
+Verder staan er in de HA log altijd foutmeldingen in de trant van &quot;Lost heartbeat message from node 2! Expected 2127015 but got 2127014&quot;<br>
+Er is heel veel tijd besteed aan het oplossen maar dit is niet gelukt, het lijkt verder geen nadelen te hebben.
+Onder water worden onderstaande IP-nr's gebruikt.</p>
+<p><img src="../../../../Attachments/image-8581d6d3-47b7-47bd-9723-f6f8eef910b0.png" alt="image.png"></p>
+<h3 id="sophos-ssh">Sophos SSH</h3>
+<p>Aanzetten bij management \ system settings \ Shell Access.<br>
+Wachtwoord zetten of uit MontaPassword halen.<br>
+Via Putty verbinding maken met bijv. 172.16.0.1 via standaard poort.<br>
+Login met &quot;loginuser&quot; en wachtwoord plakken (rechtermuisknop en dan enter).<br>
+su<br>
+Zelfde wachtwoord plakken, hierna ben je ingelogd als root.<br>
+Verkeer analyseren</p>
+<p>commando's:<br>
+iftop -i eth1 (of lag0, in ieder geval de interface die je wilt bekijken) = verkeer van alle clients.<br>
+iftop -i eth1 -f &quot;dst host 172.27.5.71&quot; = verkeer van specifieke client.<br>
+top = Info over processen die op de router draaien.<br>
+xxxxxx =</p>
+<p>TX and RX are abbreviations for Transmit and Receive, respectively.<br>
+Note that these metrics are referenced to the server being monitored; Transmit FROM this server, and Receive TO this server.<br>
+Units are in Bytes (not bits).<br>
+Als je de LAN-interface bekijkt is TX vanaf de Sophos naar de clients in het netwerk (dus download) en RX van de clients naar de Sophos (dus upload).<br>
+Bekijk je de internet-interface dan is het precies andersom. TX vanaf de Sophos naar internet (dus upload) en RX van internet naar de Sophos (dus download).<br>
+Logdisk opschonen</p>
+<p>Via de webinterface is op het Dashboard te zien welk deel van de Log Disk in gebruik is.<br>
+Bij &quot;Logging &amp; Reporting \ View Log files&quot; kun je logfiles bekijken en weggooien. Het is alleen lastig om hier het overzicht te krijgen.<br>
+Door met putty in te loggen op de Sophos is dat verder te analyseren.<br>
+commando's:<br>
+cd.. tot terug naar root.<br>
+du -shx /var/log/* | sort -rh | head -10<br>
+Dit levert de subdirectories op met de grootte.<br>
+Ga met bijv cd /var/log/ipsec naar de gewenste directory.<br>
+ls voor inhoud van de directory.<br>
+Met het commando ls -l --block-size=M kan de inhoud van een directory bekeken worden.<br>
+Met het commando rm kan een file verrwijderd worden, bijv rm ipsec-2019-03-20.log.</p>
+<p><img src="../../../../Attachments/image-0d5e27cf-ab7f-4a4b-b5d4-91493694862c.png" alt="image.png"></p>
+<p>Macadress achterhalen a.d.h.v. IP-nummer.</p>
+<p>arp -a | grep x.x.x.x</p>
+<p>Log in op de router: <a href="https://172.xx.4.1:444">https://172.xx.4.1:444</a> (xx is subnet van locatie).
+Via &quot;Logging \ Network usage \ Bandwith usage&quot; kan het IP-nr opgespoord worden wat veel dataverkeer veroorzaakt.
+Via &quot;Network services \ DHCP \ IPv4 Lease Table&quot; kan het IP-nr aan een PC gekoppeld worden , of via de IP-lijst als het een vast IP-nr betreft.
+In MAX Focus kan via View \ Asset Tracking het PC-nr gezocht worden a.d.h.v het IP-nr.
+In het hoofdscherm van MAX Focus is de omschrijving van de PC te zien. Vaak is de PC aan het updaten.
+Via &quot;interfaces &amp; Routing \ QoS&quot; kan per interface de toegestane bandbreedte ingesteld worden, voor 25-Gast is dit nu 8 Mbit/sec.</p>
+<h3 id="netwerk-belasting-analyseren">Netwerk belasting analyseren</h3>
+<p>Log in op de router: <a href="https://172.xx.4.1:444">https://172.xx.4.1:444</a> (xx is subnet van locatie).<br>
+Via &quot;Logging \ Network usage \ Bandwith usage&quot; kan het IP-nr opgespoord worden wat veel dataverkeer veroorzaakt.<br>
+Via &quot;Network services \ DHCP \ IPv4 Lease Table&quot; kan het IP-nr aan een PC gekoppeld worden , of via de IP-lijst als het een vast IP-nr betreft.<br>
+In MAX Focus kan via View \ Asset Tracking het PC-nr gezocht worden a.d.h.v het IP-nr.<br>
+In het hoofdscherm van MAX Focus is de omschrijving van de PC te zien. Vaak is de PC aan het updaten.<br>
+Via &quot;interfaces &amp; Routing \ QoS&quot; kan per interface de toegestane bandbreedte ingesteld worden, voor 25-Gast is dit nu 8 Mbit/sec.</p>
+<h3 id="kleurcodering-firewall-logs">Kleurcodering firewall logs</h3>
+<p>Red: The packet was dropped.<br>
+Yellow: The packet was rejected.<br>
+Green: The packet was allowed.<br>
+Gray: The action could not be determined.<br>
+White: NAT-rules.</p>
+<h3 id="sophos-eol">Sophos EOL</h3>
+<p>Voor Monta betekent onderstaande dat na 30-6-2026 de huidige Sophos Firewalls niet meer te gebruiken zijn.</p>
+<p><img src="../../../../Attachments/image-6915193e-6754-4689-80f5-3fde68420e49.png" alt="image.png"></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

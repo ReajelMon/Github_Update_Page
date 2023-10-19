@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Recovery Sophos </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Recovery Sophos ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="recovery-sophos">Recovery Sophos</h1>
+
+<h2 id="recovery-sophos-1">Recovery Sophos</h2>
+<p>Als er een Sophos met spoed vervangen moet worden kan daarvoor de Sophos
+in het testnetwerk op de IT-afdeling gebruikt worden.</p>
+<p>Op de SUM worden elke week backups gemaakt van alle lokale routers.<br>
+<a href="https://10.10.202.17:4422/">https://10.10.202.17:4422/</a></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Recovery-Sophos/media/image1.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Recovery-Sophos/media/image2.png" alt=""></p>
+<p>Daarnaast worden de backup-bestanden ook wekelijks gemaild naar
+Freshservice (de backup-file van de sum zelf wordt dagelijks gemaild) :<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Recovery-Sophos/media/image3.png" alt=""></p>
+<p>Stel de router van Waspik is defect.<br>
+Je kunt dan het laatste backup-bestand van Waspik downloaden naar een
+plek op het netwerk.</p>
+<p>Ga op de <a href="https://10.100.4.1:4444/">router</a> van het testnetwerk naar
+Mangement -- Backup/Restore en importeer het backup-bestand van Waspik.<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Recovery-Sophos/media/image4.png" alt=""></p>
+<p>Kies vervolgens bij de zo juist geïmporteerde backup op de groen knop
+&quot;restore&quot;:</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Recovery-Sophos/media/image5.png" alt=""></p>
+<p>Sluit vervolgens in Waspik de Sophos precies zo aan als de defecte
+router.</p>
+<p>Importeer vervolgens de licentiefile van Waspik.<br>
+De licentie files zijn te downloaden vanuit de MyUTM omgeving (zie
+passwordstate) en daarnaast zijn ze opgeslagen in Teams in &quot;Monta -
+IT-Support - Documents\Netwerk\Sophos\Sophos UTM-SG Licenties&quot;.</p>
+<p>Als er geen ingerichte Sophos beschikbaar is dan kan er een ingericht
+worden volgens de handleiding in Teams : &quot; Montapacking\Monta - IT -
+General\Handleidingen\Netwerk\Sophos Inrichten.docx.&quot;</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

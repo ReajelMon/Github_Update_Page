@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Stappenplan nieuwe ftp via F5 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Stappenplan nieuwe ftp via F5 ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="stappenplan-nieuwe-ftp-via-f5">Stappenplan nieuwe ftp via F5</h1>
+
+<h2 id="inhoudsopgave">Inhoudsopgave</h2>
+<h2 id="inleiding">Inleiding,</h2>
+<p>In dit document vind je een stappenplan/checklist om een nieuwe FTP-site
+via de F5 BIGIP te configureren.</p>
+<h2 id="1-f5---bigip">1. F5 - BIGIP</h2>
+<h3 id="11-certificaat-installeren">1.1 Certificaat installeren</h3>
+<p>Onder System \ Certificate Management kunnen SSL-certificaten
+geïmporteerd worden.<br>
+Bijvoorbeeld Wildcard-Montapacking-nl-2021 en ook de bijbehorende chain
+(intermediate en root in een cert-bestand achter elkaar geplakt).</p>
+<p><img src="../../../Attachments/image-a6615815-0ecf-4b48-875c-cfdc9a547b31.png" alt="image.png"></p>
+<p>Klik op Import</p>
+<p><img src="../../../Attachments/image-aced4c35-9c12-4a0b-b875-3f41201a24af.png" alt="image.png"></p>
+<p>Selecteer het Import Type (bij een pfx kies je voor PKCS 12, bij een
+chain kies je voor Certificate).</p>
+<p><img src="../../../Attachments/image-650520a8-54ec-4651-9174-bf77b4bea7eb.png" alt="image.png"></p>
+<p>Vul de naam in,</p>
+<p>Selecteer het bestand en type het daarbij behorende wachtwoord in.</p>
+<p>Druk hierna op &quot;Import&quot;.</p>
+<h3 id="12-aanmaken-ftp-profiel">1.2 Aanmaken FTP-profiel</h3>
+<p>Onder &quot;Local traffic \ Profiles \ Services \ FTP \&quot; staan de
+FTP-profielen.</p>
+<p>Per FTP-site maken we hier een FTP-profiel.</p>
+<ul>
+<li><p>Kies in het overzicht voor &quot;create&quot;,<br>
+<img src="../../../Attachments/image-7005da66-e1a4-4396-af31-f905cec8207d.png" alt="image.png"></p>
+</li>
+<li><p>Vul de Name in, kies het &quot;Parent Profile&quot; FTP-Generic.</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-63aa7b95-daed-4ab7-b691-4d7775f31890.png" alt="image.png"></p>
+<ul>
+<li>Klik onderaan het formulier op &quot;Finished&quot;</li>
+</ul>
+<p><img src="../../../Attachments/image-149407e6-f6fd-480b-9702-b19a563328c9.png" alt="image.png"></p>
+<h3 id="13-aanmaken-ssl-server-profiel">1.3 Aanmaken SSL-Server profiel</h3>
+<p>Onder &quot;Local traffic \ Profiles \ SSL \&quot; staan de SSL-profielen.<br>
+Kies hier voor Server om een server-certificaat aan te maken.</p>
+<ul>
+<li>Kies in het overzicht voor &quot;create&quot;,</li>
+</ul>
+<p><img src="../../../Attachments/image-59729dfb-6663-4954-89d5-eb1751c5cbfb.png" alt="image.png"></p>
+<ul>
+<li>Vul de Name in, kies het &quot;Parent Profile&quot; en zet de &quot;configuration&quot;
+op &quot;Advanced&quot;,</li>
+</ul>
+<p><img src="../../../Attachments/image-5158b0cd-a537-490b-93d8-973cba80c498.png" alt="image.png"></p>
+<ul>
+<li>Klik onderaan het formulier op &quot;Finished&quot;</li>
+</ul>
+<p><img src="../../../Attachments/image-fcc93130-b655-4b99-ae81-3f401018c04c.png" alt="image.png"></p>
+<ul>
+<li>Maak nu ook eenzelfde profiel met &quot;-monitor&quot; achter de naam voor de
+monitor van deze website.</li>
+</ul>
+<h3 id="14-aanmaken-ssl-client-profiel">1.4 Aanmaken SSL-Client profiel</h3>
+<p>Onder &quot;Local traffic \ Profiles \ SSL \&quot; staan de SSL-profielen.<br>
+Kies hier voor Client om een client-certificaat aan te maken.</p>
+<ul>
+<li>Kies in het overzicht voor &quot;create&quot;,</li>
+</ul>
+<p><img src="../../../Attachments/image-90ed0a80-0d1a-4f49-862a-4aaad2fe9437.png" alt="image.png"></p>
+<ul>
+<li>Vul de Name in en kies het Parent Profile (Dit is mede afhankelijk
+van het certificaat wat je wilt gebruiken).</li>
+</ul>
+<p><img src="../../../Attachments/image-25e11fe2-5bf1-43c5-a62f-a43ab2ea2b72.png" alt="image.png"></p>
+<ul>
+<li>Klik onderaan het formulier op &quot;Finished&quot;</li>
+</ul>
+<p><img src="../../../Attachments/image-c7491ecd-7e66-4368-9d95-82989b2310e0.png" alt="image.png"></p>
+<h3 id="15-aanmaken-monitor">1.5 Aanmaken Monitor</h3>
+<p>Per website dient er een monitor aangemaakt te worden op ftp.<br>
+Ook dienen we het serverssl-profiel uit 1.2 hier weer in te stellen.</p>
+<ul>
+<li><p>Ga naar &quot;Local traffic \ Monitors&quot;</p>
+</li>
+<li><p>Klik in het overzicht op &quot;create&quot;</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-267f4493-59d3-4151-bb99-39b7f62f5e98.png" alt="image.png"></p>
+<ul>
+<li>Vul de Name. Description in en kies bij &quot;Type&quot; voor FTP,</li>
+</ul>
+<p><img src="../../../Attachments/image-b2649607-5946-4a4e-85d6-15a881ce0321.png" alt="image.png"></p>
+<ul>
+<li>Configuration : Advanced</li>
+<li>Mode: Port</li>
+<li>Alias Service Port: FTP</li>
+</ul>
+<p>Klik onderaan het formulier op &quot;Finished&quot;</p>
+<ul>
+<li><img src="../../../Attachments/image-85fcf237-6bd0-495b-8e4e-e69d7569e2b9.png" alt="image.png"></li>
+</ul>
+<h3 id="16-aanmaken-nodes">1.6 Aanmaken Nodes</h3>
+<p>Alle te gebruiken webservers dienen eenmaal aangemaakt te worden als
+Node<br>
+Hierin geven we het ip-adres op van we lan-webserver.</p>
+<ul>
+<li>Ga naar &quot;Local traffic \ Nodes \ Node List &quot;,</li>
+</ul>
+<p><img src="../../../Attachments/image-e0059260-e901-4fb4-97f2-008d256bcefc.png" alt="image.png"></p>
+<h3 id="17-aanmaken-pools">1.7 Aanmaken Pools</h3>
+<p>Om Blue-Green in te richten hebben we voor elke website 2 pools nodig.</p>
+<ul>
+<li><p>Ga naar &quot;Local traffic \ Pools \ Pool List &quot;,</p>
+</li>
+<li><p>Klik in het overzicht op &quot;create&quot;</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-ebb4c710-0196-47da-b9b3-9908c2d4d36c.png" alt="image.png"></p>
+<ul>
+<li>Vul de Name en Description in en selecteer de juiste &quot;Health
+Monitor&quot;</li>
+</ul>
+<p><img src="../../../Attachments/image-31143380-e360-4019-bbdd-d527cc5eaabd.png" alt="image.png"></p>
+<ul>
+<li>Vul bij &quot;Load Balancing Method&quot; Ratio (Member) in.</li>
+<li>Kies bij Priority Group Activation “Less Then” en vul “1” in.</li>
+</ul>
+<p><img src="../../../Attachments/image-81ed01d5-954b-463c-896d-a1e7cf8cf76a.png" alt="image.png"></p>
+<ul>
+<li><p>Klik nu bij &quot;New Members&quot; op de radio-button &quot;Node List&quot; en
+selecteer hier de eerste Node voor deze pool (in dit voorbeeld is
+dat de MP-WFTP11).</p>
+</li>
+<li><p>Kies bij &quot;Service Port&quot; voor FTP.</p>
+</li>
+<li><p>Vul bij Ratio &quot;1&quot; in.</p>
+</li>
+<li><p>Vul voor de primaire ftp-server bij Priority &quot;1&quot; in.</p>
+</li>
+<li><p>Vul voor de standby ftp-server bij Priority &quot;0&quot; in.</p>
+</li>
+<li><p>Klik hier op &quot;ADD&quot;.</p>
+</li>
+<li><p>Doe dit ook voor de andere ftpservers in deze pool (in dit voorbeeld
+is dat de MP-FTP21)<br>
+Het resultaat ziet er dan zo uit.</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-a861a6b5-9707-4b50-8716-936a1c776296.png" alt="image.png"></p>
+<ul>
+<li><p>De Pool is nu klaar.</p>
+</li>
+<li><p>Klik daarna op &quot;Finished&quot;</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-fea66b34-a8f7-4b37-8ee6-84dfcfc8d0cc.png" alt="image.png"></p>
+<h3 id="18-aanmaken-virtual-server">1.8 Aanmaken Virtual Server</h3>
+<ul>
+<li><p>Ga naar &quot;Local traffic \ Virtual Servers \ Virtual Server List &quot;,</p>
+</li>
+<li><p>Klik in het overzicht op &quot;create&quot;</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-79d6316e-f11c-457c-b87b-c3661648d88f.png" alt="image.png"></p>
+<ul>
+<li>Vul de Name in geef bij &quot;Destination Address /Mask&quot; het ip-adres op
+waarop de F5 moet luisteren in het DMZ-WEB-vlan,</li>
+</ul>
+<p><img src="../../../Attachments/image-58582087-c39e-42b5-9761-ca9930fab2e1.png" alt="image.png"></p>
+<ul>
+<li><p>Selecteer bij &quot;Service Port&quot; FTP en zet de configuration op
+Advanced.</p>
+</li>
+<li><p>Selecteer bij &quot;Protocol Profle (client)&quot; de &quot;tcp&quot; en
+bij &quot;FTP Profile&quot; het gewenste FTP_profiel.</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-75a74329-3fdd-414a-ac30-6d3bf7018469.png" alt="image.png"></p>
+<ul>
+<li>Selecteer bij &quot;SSL Profile (Client)&quot;het gewenste client-profiel van
+de website. En selecteer bij &quot;SSL Profile (Server) het gewenste
+sslserver profiel. (dit is alleen nodig als we gebruik willen maken van beveiligde ftp, anders laten we deze 2 velden leeg).</li>
+</ul>
+<p><img src="../../../Attachments/image-ef04897d-5154-456a-b33e-f1b15a7a1f62.png" alt="image.png"></p>
+<ul>
+<li>Selecteer bij &quot;VLAN and Tunnel Traffic&quot; Enabled on, en selecteer bij
+de VLAN's DMZ-WEB</li>
+</ul>
+<p><img src="../../../Attachments/image-d86f6ee1-4abf-44a3-a1d0-33d254dd54d0.png" alt="image.png"></p>
+<ul>
+<li><p>Zet de &quot;Source Address Translation&quot; op Auto Map.</p>
+</li>
+<li><p>Zorg dat het vinkje bij &quot;Address translation&quot; aan staat.</p>
+</li>
+<li><p>Het vinkje bij &quot;Port translation&quot; moet uit staan.</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-589fe1ee-bc50-42f7-ab26-3de7121d78fd.png" alt="image.png"></p>
+<ul>
+<li><p>Selecteer onder het kopje &quot;Resources&quot; bij Default Pool de gewenste pool.</p>
+</li>
+<li><p>Klik daarna op &quot;Finished&quot;</p>
+</li>
+</ul>
+<p><img src="../../../Attachments/image-525e079c-69dc-41c5-bdd3-64ab64dc73d7.png" alt="image.png"></p>
+<h3 id="19-aanpassen-virtual-address">1.9 Aanpassen Virtual Address</h3>
+<ul>
+<li>Ga naar &quot;Local traffic \ Virtual Servers \ Virtual Address List&quot;,</li>
+</ul>
+<p><img src="../../../Attachments/image-6b1fd63a-c9df-4330-8fd5-0e141c977f01.png" alt="image.png"></p>
+<p>Hier kun je eventueel nog wat zaken aapassen maar meestal staat het standaard goed.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

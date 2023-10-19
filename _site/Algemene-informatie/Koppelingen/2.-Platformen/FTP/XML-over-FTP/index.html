@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>XML over FTP </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="XML over FTP ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../../index.html">
+                <img id="logo" class="svg" src="../../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="xml-over-ftp">XML over FTP</h1>
+
+<p>Het is mogelijk om bij monta data via XML over FTP uit te wisselen. Monta heeft een standaard koppeling om deze data uit te wisselen. De bestanden kunnen op de server van de klant, of op de server van Monta worden geplaatst.</p>
+<p>Monta heeft een vast format voor de XML bestanden. Als de klant een eigen format heeft, kunnen aan de klant van Monta XSLT bestanden ingesteld worden om het format van de klant te vertalen naar het Monta format en andersom.</p>
+<h2 id="onderdelen-koppeling">Onderdelen koppeling</h2>
+<p>De koppeling van Monta heeft een aantal standaard dataflows:</p>
+<ul>
+<li>Import product information from XML or Excel files from FTP (Product import)</li>
+<li>Import orders from XML or Excel files from FTP (Order import)</li>
+<li>Order status update XML to FTP (order update)</li>
+<li>XML with stock of all products to FTP (Full stockupdate)</li>
+<li>XML with stock of products with changed stock to FTP (Changed stock update)</li>
+<li>Import inbound forecasts from XML or Excel files from FTP (Vooraanmeldingen)</li>
+<li>Import inbound updates from XML or Excel from FTP (Terugkoppeling vooraanmeldingen)</li>
+<li>Return Received updates (Terugkoppeling retour)</li>
+</ul>
+<h2 id="beschikbare-data-binnen-dataflows">Beschikbare data binnen dataflows</h2>
+<p>Per dataflow kan bepaalde data worden uitgewisseld. Hieronder is per dataflow aangegeven welke data er kan worden uitgewisseld.</p>
+<h2 id="product-import">Product Import</h2>
+<p>|Column type|Supported  |
+|--|--|
+|Products  | Product |
+|  Sku| Sku |
+|Barcodes  | Barcode |
+| Supplier code | SupplierCode  |
+| Delete | Delete  |
+<a href="../../../../../Attachments/ProductInformationImport-5c02d657-9437-46b9-8476-561937a706bf.xml">ProductInformationImport.xml</a></p>
+<p>*Klant plaatst op server
+<br></p>
+<h2 id="order-import">Order Import</h2>
+<p>*Klant plaatst op server</p>
+<p><a href="../../../../../Attachments/Order-89e5ebb6-3b39-4d7b-a27d-a454d6895374.xml">Order.xml</a></p>
+<p>Met de instelling UpdateWhenAlreadyExistsAndPlatformSupportsIt kunnen we orderwijzigingen en annuleringen importeren.</p>
+<h3 id="verzenderkeuze-importeren">Verzenderkeuze importeren</h3>
+<p>In AllowedShipperCodes in de XML kan de klant één of meer codes aangeven waarmee de order verzonden mag worden. Deze codes moeten gemapt worden in de order import instellingen.</p>
+<h2 id="order-update">Order Update</h2>
+<p><a href="../../../../../Attachments/OrdersUpdated-4c675b95-e0f1-4d4c-8b99-eaff920d1ab7.xml">OrdersUpdated.xml</a></p>
+<h2 id="order-full-stock">Order Full Stock</h2>
+<p><a href="../../../../../Attachments/StockUpdates_FullStock_Voorbeeld-7216d106-d0ea-468f-b9d2-53a180387d33.xml">StockUpdates_FullStock_Voorbeeld.xml</a></p>
+<h2 id="changed-stock">Changed Stock</h2>
+<p><a href="../../../../../Attachments/DD_SM20221116115032571-d08bf0ee-5b86-4e6a-a6b9-3ab54f9af8ea.xml">DD_SM20221116115032571.xml</a></p>
+<h2 id="inbound-forecasts">Inbound forecasts</h2>
+<p>*Klant plaatst op server</p>
+<p><a href="../../../../../Attachments/InboundsForecast-b67d7286-af91-4853-b795-ebdd7c992edc.xml">InboundsForecast.xml</a></p>
+<h2 id="inbound-updates">Inbound updates</h2>
+<p><a href="../../../../../Attachments/InboundsUpdated-2eee5a55-4075-49e5-b4cb-716718cdca5e.xml">InboundsUpdated.xml</a></p>
+<h2 id="return-received-updates">Return Received Updates</h2>
+<p><a href="../../../../../Attachments/ReturnReceived_Example-92a47fe0-676e-45dc-b44b-a8a4a672fa78.xml">ReturnReceived_Example.xml</a></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

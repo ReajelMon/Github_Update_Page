@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>DFS replicatie Fileservers aanmaken </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="DFS replicatie Fileservers aanmaken ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="dfs-replicatie-fileservers-aanmaken">DFS replicatie Fileservers aanmaken</h1>
+
+<h3 id="inrichting-servers">Inrichting Servers</h3>
+<p>Voor het MP-FSCLUS01 is er een DFS Namespace voor Appdata op 2 servers
+ingericht. Op zich werkt dit, zie
+<a href="file://montapacking.nl/dfs/Appdata">\\montapacking.nl\dfs\Appdata</a>.
+De files staan op de MP-FS100 en de MP-FS200, waarbij de MP-FS100 (die
+in Eindhoven staat) preferred is.<br>
+Er is ook een testomgeving ingericht :
+<a href="file://montapacking.nl/dfs/AppdataTest">\\montapacking.nl\dfs\AppdataTest</a>,
+de files hiervan staan op de MP-Test01 en de MP-Test02 waarbij de
+MP-Test01 preferred is.</p>
+<p>Als bijvoorbeeld de MP-FS100 niet bereikbaar is duurt het een aantal
+minuten (kan in ieder geval niet minder dan 40 seconden
+zijn=SMB-timeout) voordat er overgeschakeld wordt naar de MP-FS200.
+Verder blijft de connectie met de MP-FS200 5 minuten actief. Dat is de
+ingestelde cache referral. Het lijkt niet verstandig om dat korter te
+zetten, omdat dat teveel netwerkverkeer oplevert.</p>
+<p><a href="https://www.reddit.com/r/sysadmin/comments/55m3kb/lowest_realistic_cache_setting_in_dfsr/"><em>https://www.reddit.com/r/sysadmin/comments/55m3kb/lowest_realistic_cache_setting_in_dfsr/</em></a></p>
+<p><em>What happens is, both referrals stay active and on first attempt to
+access the namespace target, the clients wait for SMB timeout to happen,
+which is about 40 seconds and it is hardcoded in Windows IIRC. Then
+after the timeout, the clients select the secondary referral that is
+actually online, and remember to use that until the next referral cache
+update.</em></p>
+<p>Dit is het maximaal haalbare en dit vinden we acceptabel.<br>
+Development dient de software aan te passen om eorderattachments e.d.
+naar
+<a href="file://montapacking.nl/dfs/Appdata">\\montapacking.nl\dfs\Appdata</a>.
+te schrijven.</p>
+<p><img src="../../../../Attachments/image-8555e930-f39e-4665-adec-730a356f5be8.png" alt="image.png"></p>
+<h3 id="aanmaak-namespace">Aanmaak Namespace</h3>
+<p><img src="../../../../Attachments/image-65389881-391d-4f6e-a409-7f2b27f71b34.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-8f8d08bf-a444-4f33-9ebb-22a075085cad.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-a7aba27c-7bfa-4fbc-815f-69f4198c13e7.png" alt="image.png"></p>
+<p><a href="https://docs.microsoft.com/en-us/windows-server/storage/dfs-namespaces/set-target-priority-to-override-referral-ordering">https://docs.microsoft.com/en-us/windows-server/storage/dfs-namespaces/set-target-priority-to-override-referral-ordering</a></p>
+<p><img src="../../../../Attachments/image-c685c82a-d35a-4ab3-92d0-ab5b9221cc76.png" alt="image.png"></p>
+<h3 id="aanmaak-shares">Aanmaak Shares</h3>
+<p><img src="../../../../Attachments/image-def77622-45a5-4097-9666-9775c9f5ea06.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-9261fce9-23f8-44fa-8a12-5ca36e4cefe7.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-40b39ba0-adab-44e4-a2ab-641c24577254.png" alt="image.png"></p>
+<h3 id="aanmaak-replication">Aanmaak Replication</h3>
+<p><img src="../../../../Attachments/image-fed9af93-99bd-4dc7-8679-fdcc919f1c32.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-82100190-2aec-4912-a966-5765382f15c1.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-d3f972a8-d8ee-411b-8562-0275f89cfd7b.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-04b8a996-a09d-4c95-9d53-6c117b2860e4.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-5996ce25-9f69-4311-bfff-0f41608854b1.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-ff4366f8-a948-452f-ad07-0d37f72a5f24.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-672f77bb-b583-4879-b9b4-c9465223ec77.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-9bc82daf-736a-4d9e-a479-69b7a9e54de1.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-7162c816-a3a3-4a9e-a6b1-bd54e689a9ec.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-c1d69d11-d1db-44f6-892f-8e3c7176dce9.png" alt="image.png"></p>
+<p>Kies op tabblad &quot;Replicated Folders&quot; voor &quot;Share and Publish in
+namespace&quot;.</p>
+<p><img src="../../../../Attachments/image-9f1b52ab-c3e4-4ad6-aa70-5b7610718dbd.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-8a8b0c34-527e-4045-a8ad-2a1ee35ace8c.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-c0094f0a-ed73-4ba9-956e-c229d9be88be.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-20edd551-1e74-465b-9a98-d625b731875f.png" alt="image.png"></p>
+<p>Pas de Referrals als volgt aan:<br>
+<br>
+<img src="../../../../Attachments/image-ffc68b8b-483d-4071-9a7f-ba8838732236.png" alt="image.png"></p>
+<p>Stel de Staging in met het juiste Quota.<br>
+<img src="../../../../Attachments/image-11a4805c-da65-49d1-bd58-d46f3ad8dd3c.png" alt="image.png"></p>
+<p>Kies een juist Quota volgens :
+&lt;<a href="https://docs.microsoft.com/en-us/previous-versions/orphan-topics/ws.11/dn465158(v=ws.11)?redirectedfrom=MSDN">https://docs.microsoft.com/en-us/previous-versions/orphan-topics/ws.11/dn465158(v=ws.11)?redirectedfrom=MSDN</a>&gt;</p>
+<p>Er zijn ook adviezen om de Staging Quota gelijk te maken aan de
+hoeveelheid data.<br>
+Omdat er heel veel ruimte is vrijgekomen op de E-schijf van de
+MP-FS100/MP-FS200 is hier nu voor gekozen.</p>
+<p>Ooit was er een aparte (kleine) partitie aangemaakt (F:\) voor de
+Staging, deze wordt niet meer gebruikt.</p>
+<p>Omdat de DFS Namespace aangemaakt is op de MP-TEST01 / MP-TEST02 zijn
+later als Namespace servers MP-FS100 en MP-FS200 toegevoegd en zijn de
+MP-TEST01 / MP-TEST02 gedisabled.</p>
+<p><img src="../../../../Attachments/image-d957f6c2-28b0-4f06-91d6-0f20ce1ac267.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-d9c879bc-934d-4eba-9312-dd317b180c53.png" alt="image.png"></p>
+<h3 id="diversen">Diversen</h3>
+<p>&lt;<a href="https://serverfault.com/questions/50789/long-pause-when-accessing-dfs-namespace">https://serverfault.com/questions/50789/long-pause-when-accessing-dfs-namespace</a>&gt;</p>
+<p>&lt;<a href="https://support.microsoft.com/nl-nl/help/244380/how-to-configure-dfs-to-use-fully-qualified-domain-names-in-referrals">https://support.microsoft.com/nl-nl/help/244380/how-to-configure-dfs-to-use-fully-qualified-domain-names-in-referrals</a>&gt;</p>
+<p>&lt;<a href="https://docs.microsoft.com/en-us/windows-server/troubleshoot/how-to-determine-the-minimum-staging-area-dfsr-needs-for-a-replicated-folder">https://docs.microsoft.com/en-us/windows-server/troubleshoot/how-to-determine-the-minimum-staging-area-dfsr-needs-for-a-replicated-folder</a>&gt;</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

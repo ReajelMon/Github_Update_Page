@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Koppeling maken Magento </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Koppeling maken Magento ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../../index.html">
+                <img id="logo" class="svg" src="../../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="koppeling-maken-magento">Koppeling maken Magento</h1>
+
+<h2 id="benodigde-gegevens">Benodigde gegevens</h2>
+<h3 id="api-keys-magento2">Api Keys Magento2</h3>
+<p>Om de koppeling te maken heb ik een aantal api Keys nodig. Zou jij de volgende gegevens naar mij door willen sturen:</p>
+<ul>
+<li>Base url</li>
+<li>Gebruikers sleutel</li>
+<li>Consumer geheim</li>
+<li>Toegangstoken</li>
+<li>Toegangstoken geheim</li>
+</ul>
+<p>Tijdens het aanmaken van de api kun je ons bepaalde rechten toekennen. Wij hebben lezen en schrijven rechten nodig voor alles wat te maken heeft met voorraad; producten; fulfilment en orders.
+<a href="../../../../../Algemene-informatie/Koppelingen/2.-Platformen/Magento-2/Koppeling-maken-Magento/Aanmaken-Api-Keys">Informatie over het aanmaken van Api Keys in magento2</a></p>
+<h3 id="opbouw-magento-omgeving">Opbouw Magento omgeving</h3>
+<p>Om te zorgen dat wij enkel de juiste orders ophalen hebben we een overzicht nodig van hoe jullie je Magento hebben opgebouwd. Wij moeten weten wat de verhouding is tussen Website, store en storeview. Kun je een screenshot sturen van deze pagina, en de bijbehorende ID-nummer naar mij sturen?</p>
+<p><img src="../../../../../Attachments/image-ee4dd8c8-7018-4301-95b9-7f3ff7dfbcbd.png" alt="image.png"></p>
+<h3 id="attributen-name">Attributen name</h3>
+<p>Om de koppeling juist te kunnen mappen heb ik een attributen name van het barcodeveld binnen Magento nodig. Dit kan bijvoorbeeld zijn EAN. Letop, dit is hoofdletter gevoelig.</p>
+<br>
+<h2 id="koppeling-maken">Koppeling maken</h2>
+<p>De koppeling kan gedeeltelijk via de montaportal worden gemaakt.
+Ga naar Koppelingen &gt; Available &gt; Magento2</p>
+<p>Maak de koppeling aan via de montaportal met de gegevens van hierboven:
+<img src="../../../../../Attachments/image-dad9b9d8-f5e6-4b37-8d2f-899c23dd1310.png" alt="image.png">
+Vervolgens moet een Monta medewerker de koppeling verder instellen. Neem contact op met Monta.</p>
+<h2 id="koppeling-instellen-in-backend">Koppeling instellen in backend</h2>
+<p>Nadat de koppeling is aangemaakt via de Montaportal moeten er een aantal instellingen worden gedaan:</p>
+<h3 id="ean-code-attributen-name">EAN code attributen name</h3>
+<p>In <code>tblRelatieSystemConnectionTypeProductMatchMagentoSettings</code>
+Mappen in welke atribute veldnaam de EAN code staat: Letop dit veld is hoofdletter gevoelig.
+<img src="../../../../../Attachments/image-714a49d9-6302-46e9-97a3-4cddeb89ff36.png" alt="image.png"></p>
+<br>
+<h3 id="in-het-geval-van-meerdere-shops">In het geval van meerdere shops:</h3>
+<p>In magento is het mogelijk om meerdere shops te hebben. Normaal gesproken komen alle kanalen van Magento binnen in 1 esetting. Naast deze optie zijn er ook nog 2 andere opties:</p>
+<ol>
+<li>Bepaalde source of store selecteren, al het andere negeren</li>
+<li>Meerdere stores mappen naar meerdere esettings.</li>
+</ol>
+<h3 id="1-bepaalde-source-of-store-selecteren-al-het-andere-negeren">1. Bepaalde source of store selecteren, al het andere negeren</h3>
+<p>In <code>PlatformMagentoSettings</code>kan je een bepaalde webshop selecteren. Als je deze hier invuld dan worden alle andere stores niet meegenomen in de koppeling. De websiteID en eventueel Source en StoreID invullen.</p>
+<p><img src="../../../../../Attachments/image-7c3ebab7-12c2-4b87-944a-58b4f61d2b3a.png" alt="image.png"></p>
+<br>
+<h3 id="2-meerdere-stores-mappen-naar-meerdere-esettings">2. Meerdere stores mappen naar meerdere esettings</h3>
+<p>In <code>tblRelatieSystemConnectionDataFlowOrderImportSettings</code> de depault Esetting naar NULL zetten.
+<img src="../../../../../Attachments/image-d4a190a7-10ad-46f2-bbf3-c7b4aa784c4a.png" alt="image.png">
+Hiermee zullen de orders niet in 1 standaard esetting belanden, maar zullen ze gebruik maken van <code>DataflowOrderImportSettingsOrigings</code>.</p>
+<p>in <code>DataflowOrderImportSettingsOrigings</code> de Origin mapping toevoegen, aangeven naar welke esetting dit moet.
+<img src="../../../../../Attachments/image-d40a4414-8729-4be7-a094-a6aba99157f3.png" alt="image.png">
+Gebruik hierbij de opbouw &quot;website - store - storeview&quot; met de formatting zoals in dit voorbeeld.</p>
+<p>In Dataflow productmatch settings een Regel toevoegen:
+<img src="../../../../../Attachments/image-0c9cc75c-6c26-44e7-a3ca-c682654e5edf.png" alt="image.png"></p>
+<h3 id="veelvoorkomende-foutmeldingen">Veelvoorkomende foutmeldingen</h3>
+<p><em>X failed with the following message: Gebruiker is niet gemachtigd tot %resources</em>
+Wanneer dit voorkomt, moet de gebruiker van de API de volgende optie aanzetten:
+‘Allow OAuth Access Tokens to be used as standalone Bearer tokens’</p>
+<p>Om dit aan te zetten moeten de volgende stappen worden doorlopen:</p>
+<p>Ga in je Magento 2 admin omgeving naar 'Stores' en kies hier voor 'Configuration'. Ga vervolgens naar 'advanced' en kies hier voor 'Oauth'.</p>
+<p>Onder het tabje 'Access Token Options' selecteer je 'Allow OAuth Access Tokens to be used as standalone Bearer Tokens'.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

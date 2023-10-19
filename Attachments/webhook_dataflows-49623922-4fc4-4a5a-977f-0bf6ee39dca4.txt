@@ -1,0 +1,132 @@
+
+Stock update
+[
+	{
+		"Sku": "",
+		"Barcodes": [
+			"",
+			""
+		],
+		"WebshopStock": 0,
+		"WebshopStockForecasted": 0,
+		"QuarantaineStock": 0,
+		"FinancialStock": null,
+		"Created": "2022-11-14T16:57:30.5269083+01:00",
+		"ReservedStock": 0,
+		"StockPicking": null
+	}
+]
+
+Inbound update 
+[
+	{
+		"Type ": "Inbound",
+		"Created ": "0001-01-01T00:00:00",
+		"InboundGroupReference ": null,
+		"InboundForecastGroupReference ": null,
+		"InboundForecastGroupComment ": null,
+		"InboundForecastGroupId ": null,
+		"InboundForecastGroupSupplierCode ": null,
+		"Sku ": null,
+		"Barcodes ": [],
+		"BatchName ": null,
+		"Quantity ": 0,
+		"Quarantaine ": false,
+		"InboundForecastComment ": null,
+		"InboundForecastReference ": null,
+		"ReturnedEorderWebshopOrderId ": null
+	}
+]
+
+
+Order update 
+[
+	{
+		"QueueItemId ": 0,
+		"MontaEorderId ": 0,
+		"WebshopOrderId ": null,
+		"Reference ": null,
+		"Origin ": null,
+		"InternalWebshopOrderId ": null,
+		"ConsumerDetails ": null,
+		"Quarantaine ": false,
+		"Ordered ": null,
+		"Received ": "0001-01-01T00:00:00 ",
+		"Backorder ": false,
+		"Blocked ": false,
+		"BlockedMessage ": null,
+		"UpdateCauseCode ": null,
+		"Shipped ": false,
+		"Deleted ": false,
+		"Queued ": false,
+		"Picking ": false,
+		"Returned ": false,
+		"StatusCode ": null,
+		"DeliveryStatusId ": null,
+		"DeliveryStatusDescription ": null,
+		"ShipperId ": null,
+		"ShipperCode ": null,
+		"PlatformShipperCode ": null,
+		"ShipperDescription ": null,
+		"TrackAndTraceCode ": null,
+		"TrackAndTraceLink ": null,
+		"PartialShipmentParentOrSelfWebshopOrderId ": null,
+		"PartialShipmentParentOrSelfInternalWebshopOrderId ": null,
+		"AllPartialShipmentsShipped ": false,
+		"CreationSystemId ": 0,
+		"ShippedDateTime ": null,
+		"EstimatedDeliveryFrom ": null,
+		"EstimatedDeliveryTo ": null,
+		"ShipperOptions ": [],
+		"Lines ": [],
+		"LinesDeleted ": [],
+		"LinesDeletedFromSplit ": [],
+		"Colli ": [],
+		"Events ": [],
+		"ImportedFromRelatieSystemConnectionId ": null,
+		"ParentOrderImportedFromRelatieSystemConnectionId ": null,
+		"ProductSerials ": []
+	}
+]
+
+Stock mutation
+[
+	{
+		"Type ": 0,
+		"Sku ": null,
+		"Barcodes ": null,
+		"BatchName ": null,
+		"Quantity ": 0,
+		"Quarantaine ": false,
+		"Created ": "0001-01-01T00:00:00 ",
+		"Description ": null,
+		"LogDescription ": null,
+		"MutationCode ": null,
+		"WebshopStock ": null
+	}
+]
+
+Return received 
+[
+	{
+		"MontaReturnId ": 0,
+		"ForecastCode ": null,
+		"Created ": "0001-01-01T00:00:00 ",
+		"ReturnedPartialShipmentParentOrSelfWebshopOrderId ": null,
+		"ReturnedOrderWebshopOrderId ": null,
+		"ReturnedOrderConsumerDetailsInvoiceDebtorNumber ": null,
+		"ReturnedOrderReference ": null,
+		"ReturnedOrderOrdered ": null,
+		"ReturnedOrderOrigin ": null,
+		"ReturnedOrderShipperCode ": null,
+		"MontaCauseId ": null,
+		"MontaCauseTypeCode ": null,
+		"MontaCauseDescription ": null,
+		"CustomerCauseCode ": null,
+		"CustomerCauseDescription ": null,
+		"Comment ": null,
+		"Lines ": []
+	}
+]
+
+

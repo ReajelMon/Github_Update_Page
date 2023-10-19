@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Installatie SQL Enterprise Edition </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Installatie SQL Enterprise Edition ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="installatie-sql-enterprise-edition">Installatie SQL Enterprise Edition</h1>
+
+<h2 id="voorbereiding">Voorbereiding</h2>
+<ol>
+<li><p>Maak een VM met 4 disken, OS, MDF, LOG en BACKUP en 16 CPU cores.</p>
+</li>
+<li><p>Disable UAC door Enablelua in het register op 0 te zetten. Dit
+voorkomt vreemde zaken in de toekomst op de momenten waarop je dit
+niet wilt.<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image1.png" alt=""></p>
+</li>
+<li><p>Deinstalleer Windows Defender middels Powershell:<br>
+**Uninstall-WindowsFeature Windows-Defender<br>
+**</p>
+</li>
+</ol>
+<p>Er is immers al een virusscanner actief</p>
+<ol start="4">
+<li>Stel de Windows firewall in op alle nodes*<br>
+<br>
+netsh advfirewall firewall add rule name = SQLTCP dir = in protocol
+= tcp action = allow localport = 135,1433,1434,4022,5022 remoteip =
+localsubnet profile = DOMAIN*</li>
+</ol>
+<p><em>netsh advfirewall firewall add rule name = SQLUDP dir = in protocol =
+udp action = allow localport = 1434 remoteip = localsubnet profile =
+DOMAIN</em></p>
+<p><em>Allow ook C:\Program Files (x86)\Microsoft SQL
+Server\90\Shared\sqlbrowser.exe</em></p>
+<ol start="5">
+<li><strong>Install</strong>-WindowsFeature <strong>Telnet</strong>-<strong>Client</strong></li>
+</ol>
+<p>Dit om nu en later basis netwerk tests te kunnen doen</p>
+<ol start="6">
+<li><p>Voeg het serviceaccount voor SQL Agent en SQL Server toe aan de
+local administrators</p>
+</li>
+<li><p>Formatteer de disken met 64K blocksize en GPT indeling**<br>
+**</p>
+</li>
+<li><p>Zorg dat de performance optimization op Background Services staat:<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image2.png" alt=""></p>
+</li>
+</ol>
+<h2 id="failover-cluster">FAILOVER CLUSTER</h2>
+<ol>
+<li>Indien gebruik gemaakt gaat worden van SentinelOne zorg er dan voor
+dat de volgende exclusions in SentineOne aanwezig zijn :</li>
+</ol>
+<p>a.  %Systemroot%\Cluster</p>
+<p>b.  C:\users\clusterserviceaccount\Local Settings\Temp (dus op
+het SQL testcluster is dit bijvoorbeeld
+C:\Users\rs.sqltestclus1\Local Settings\Temp)</p>
+<ol start="2">
+<li><p>Installeer Failover Clustering op alle nodes:<br>
+<strong><br>
+Install-WindowsFeature Failover-Clustering<br>
+Install-WindowsFeature RSAT-Clustering-MGMT</strong></p>
+</li>
+<li><p>Van de failover cluster manager kies voor 'Create Cluster' met alle
+drie de nodes in.</p>
+</li>
+<li><p>Maak een $share aan op de EIN-MGMT01 en geef everyone full control
+als SHARE rechten. Verder ook read/write voor alle cluster nodes en
+het cluster name object. Dit is de fileshare witness.</p>
+</li>
+<li><p>Set-ClusterQuorum -FileShareWitness
+\\ein-mgmt01\Quorum-SQLClus02$ -Credential (Get-Credential)</p>
+</li>
+<li><p>Configure Quorum Settings:<br>
+<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image3.png" alt=""></p>
+</li>
+</ol>
+<p>Advanced Quorum Configuration</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image4.png" alt=""></p>
+<p>Vink de read-only node uit</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image5.png" alt=""></p>
+<p>Do not configure a quorum witness</p>
+<ol start="7">
+<li><p>Validate Cluster. Zorg dat alles groen is.</p>
+</li>
+<li><p>Create Computer Objects rechten instellen op Computers OU en
+MONTASERVERS\NLDC voor Cluster Object (clusternaam).</p>
+</li>
+<li><p>Zet de volgende optie uit in de file share witness:<br>
+<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image6.png" alt=""></p>
+</li>
+</ol>
+<p>Als deze aan staat wordt de clusternaam namelijk ook down gebracht als
+de file share witness niet online is.</p>
+<ol start="10">
+<li>Stel de preferred owners van Monta_MainDb als volgt in:<br>
+<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image7.png" alt=""></li>
+</ol>
+<h2 id="installatie-sql">Installatie SQL</h2>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image8.png" alt=""></p>
+<ol>
+<li>Klik op Installation en dan op New SQL Server stand-alone
+installation or add features to an existing installation.</li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image9.png" alt=""></p>
+<ol start="2">
+<li>Laat de Product code zoals ie is</li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image10.png" alt=""></p>
+<ol start="3">
+<li>Klik I accept the license terms aan</li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image11.png" alt=""></p>
+<ol start="4">
+<li>Negeer de Windows Firewall warning</li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image12.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image13.png" alt=""></p>
+<ol start="5">
+<li>Vul in als in de screenshot</li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image14.png" alt=""></p>
+<ol start="6">
+<li>Selecteer Named instance en noem hem voor productie BACKEND</li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image15.png" alt=""></p>
+<ol start="7">
+<li>Stel bovenstaand account in voor de SQL Server Agent en SQL Server
+Database Engine en laat de andere accounts default staan. Zet de
+startup type van de SQL Server Agent op Automatic. Zet ook de optie
+aan 'Grant Perform Volume Maintenance Task privilege to SQL Server
+Database Engine Service'</li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image16.png" alt=""></p>
+<ol start="8">
+<li>Zet collation op SQL_Latin1_General_CP1_CI_AS</li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image17.png" alt=""></p>
+<ol start="9">
+<li>Kies mixed mode, stel een wachtwoord in voor SA en voeg de users toe
+die sysadmin rechten moeten krijgen binnen SQL. In dit geval
+SQLServer - DBAdmins</li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image18.png" alt=""></p>
+<ol start="10">
+<li>Hou de volgende paden aan. Voor de logfiles is een aparte disk
+gemaakt. Deze kan op elk moment, als de infrastructuur daar klaar
+voor is, naar een snelle (bijvoorbeeld SSD) datastore worden
+verplaatst zonder downtime.</li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image19.png" alt=""></p>
+<ol>
+<li><p>Hou het volgende aan. Deze screenshot gaat er vanuit dat er niet
+minder dan 8 cores zijn toegewezen aan de server. Indien er minder
+dan 8 cores aanwezig zijn, hou het aantal TempDB files dan hetzelfde
+als het aantal cores**. Let op in de screenshots staat niet de
+waarde die het beste is. Zet de initiele waarden op 5GB en de
+increments op 64MB**.</p>
+</li>
+<li></li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image20.png" alt=""></p>
+<ol start="3">
+<li>Voor BACKEND is het nodig om MaxDOP op 1 te houden.</li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image21.png" alt=""></p>
+<ol start="4">
+<li>Stel het maximum geheugen in op de totale hoeveelheid RAM minus 10%
+met een minimale hoeveelheid van 8GB. Dan heeft het OS te allen
+tijde 8GB over om goed te functioneren.</li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image22.png" alt=""></p>
+<ol start="5">
+<li>Laat filestream uit.</li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image23.png" alt=""></p>
+<ol start="6">
+<li><p>Klik install</p>
+</li>
+<li><p>Na installatie, update naar CU9. Dit is op het moment van schrijven
+de laatste versie.</p>
+</li>
+<li><p>De overige cluster nodes kunnen ook geïnstalleerd worden met de
+configuration file die gegenereerd is door de installatie van de
+eerste node. Dit is altijd aan te bevelen omdat er zo geen fouten
+gemaakt kunnen worden.</p>
+</li>
+<li><p>Stel de SQL Service in zodat ie luistert op port 1433</p>
+</li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image24.png" alt=""></p>
+<ol start="10">
+<li><p>Installeer de SQL Server Management Studio</p>
+</li>
+<li><p>Voer de volgende statements uit om SQL af te configureren:</p>
+</li>
+</ol>
+<blockquote>
+<p>exec sp_configure 'show advanced options' , 1</p>
+<p>reconfigure</p>
+<p>exec sp_configure 'Agent XPs', 1</p>
+<p>exec sp_configure 'clr enabled',1</p>
+<p>exec sp_configure 'cost threshold for parallelism',25</p>
+<p>exec sp_configure 'Database Mail XPs',1</p>
+<p>exec sp_configure 'default trace enabled', 0</p>
+<p>exec sp_configure 'max degree of parallelism', 1</p>
+<p>exec sp_configure 'optimize for ad hoc workloads', 1</p>
+<p>exec sp_configure 'remote admin connections', 1</p>
+<p>exec sp_configure 'xp_cmdshell', 1</p>
+<p>EXEC sp_configure 'backup compression default', 1 ;</p>
+<p>GO</p>
+<p>reconfigure</p>
+</blockquote>
+<ol start="12">
+<li>Database mail configureren :</li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image25.png" alt="">
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image26.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image27.png" alt="">
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image28.png" alt=""></p>
+<p>USE [msdb]</p>
+<p>GO</p>
+<p>EXEC msdb.dbo.sp_set_sqlagent_properties @email_save_in_sent_folder=1,</p>
+<p>@databasemail_profile=N'SQLAdmin',</p>
+<p>@use_databasemail=1</p>
+<p>GO</p>
+<h2 id="certificaat-importeren">CERTIFICAAT importeren</h2>
+<p>BRON:</p>
+<p>backup certificate Montapacking062017</p>
+<p>to file = 'c:\temp\Montapacking062017.cer'</p>
+<p>with private key</p>
+<p>(file = 'c:\temp\Montapacking062017.pvk',</p>
+<p>encryption by password = wachtwoord1'</p>
+<p>)</p>
+<p>DOEL:</p>
+<p>create master key encryption by password = wachtwoord3;</p>
+<p>DOEL:</p>
+<p>backup master key to file = 'c:\install\masterkey.mk'<br>
+encryption by password = wachtwoord4</p>
+<p>DOEL:</p>
+<p>create certificate Montapacking062017</p>
+<p>from file = 'C:\install\Montapacking062017.cer'</p>
+<p>with private key (file = 'c:\install\Montapacking062017.pvk'</p>
+<p>, decryption by password = 'wachtwoord1'</p>
+<p>)</p>
+<h2 id="alwayson-availability-instellen">AlwaysOn AvailabilIty instellen</h2>
+<ol>
+<li>Zet AlwaysOn aan en herstart de SQL service:</li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image29.png" alt=""></p>
+<ol start="2">
+<li><p>Zorg dat alle databases gerestored zijn.</p>
+</li>
+<li><p>Ga in de SQL Management Studio naar Always ON High Availability
+--&gt; Availability Group --&gt; New Availability Group Wizard.<br>
+<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image30.png" alt=""></p>
+</li>
+</ol>
+<p>Geef m een naam</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image31.png" alt=""></p>
+<ol start="4">
+<li>Selecteer de databases in de Availability group.</li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image32.png" alt=""></p>
+<ol start="5">
+<li>Klik op Add replica om alle nodes toe te voegen. Zet de twee
+writable nodes die moeten failoveren op synchronous commit en vink
+'automatic failover' aan. Zet de readonly node op asynchronous
+commit en readable secondary op Yes.</li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image33.png" alt=""></p>
+<ol start="6">
+<li>Geen een naam, poort en ip adres op.</li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image34.png" alt=""></p>
+<ol start="7">
+<li><p>Kies voor automatic seeding. Dit kan alleen als de paden op alle
+nodes hetzelfde zijn.</p>
+</li>
+<li><p>Nu is het wachten tot de databases gesychroniseerd zijn naar de
+andere nodes. Je kunt de voortgang zien in het dashboard door met de
+rechtermuis te klikken op de availabilty group en dan kiezen voor
+Dashboard.</p>
+</li>
+</ol>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image35.png" alt=""></p>
+<p>Zolang ie nog bezig is staat de synchronization state op Not
+Synchronizing. Als ie klaar is staat de synchronous commit node op
+Synchronized en de asychronous (readonly) node op Synchronizing. Alle
+warnings zijn dan weg en alles staat op groen.</p>
+<ol start="9">
+<li>SA instellen als hadr_endpoint owner:<br>
+<br>
+USE master</li>
+</ol>
+<p>GO</p>
+<blockquote>
+<p>ALTER AUTHORIZATION ON ENDPOINT::Hadr_endpoint TO sa</p>
+</blockquote>
+<ol start="10">
+<li>Backup instellen:<br>
+<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image36.png" alt=""></li>
+</ol>
+<p>Dit zorgt ervoor dat backups altijd op dezelfde locatie worden
+opgeslagen.</p>
+<h2 id="verder">VERDER</h2>
+<ol>
+<li>Create logins</li>
+</ol>
+<p>create login [activityMonitor] with password =
+0x0200177CE27B72643EFEB2A73D4948B7B016457214F0729D49D479CEB216AEAD428172AA159936F282B05DD8A220CA08A740985A828526C9574E954F28C10E7ADA2A881AE83F
+hashed, sid = 0xCE70736A996FC7479A6AAAE258B0DE09, default_database =
+[master];</p>
+<p>create login [SorterServer] with password =
+0x0200537877782FE55BB78205936BA1E5ACB1A8A15813E728BCB4D26989718C07CB5780D3229DEC18FD9C732E235234A84DCE67D6C35ADF8CDD2F6C27775B69A1880542F49C89
+hashed, sid = 0x8786A4C0AC50F74EB75C3D4226659B9A, default_database =
+[Monta_Backend];</p>
+<p>create login [performancemonitor] with password =
+0x020089CDF6896441BF158813D880798823729190B7674D288A6811DD895B21F4E77548243E0D687B4564B63D70765ED372584CD6AF937273BF3D3B0348F83937AB43970EA968
+hashed, sid = 0x2BED6C6DB1777142B77C6D240C74BA95, default_database =
+[master];</p>
+<p>2.</p>
+<p>create login [MONTAPACKING\SQLServer - Administrators]</p>
+<p>from windows</p>
+<p>with default_database = [master],</p>
+<p>default_language = [us_english]</p>
+<p>create login [MONTAPACKING\SQLServer - Gebruikers]</p>
+<p>from windows</p>
+<p>with default_database = [master],</p>
+<p>default_language = [us_english]</p>
+<p>create login [MONTAPACKING\SQLServer - DBAdmins]</p>
+<p>from windows</p>
+<p>with default_database = [master],</p>
+<p>default_language = [us_english]</p>
+<p>create login [MONTAPACKING\rs.scriptadmin]</p>
+<p>from windows</p>
+<p>with default_database = [master],</p>
+<p>default_language = [us_english]</p>
+<p>create login [MONTAPACKING\wouter]</p>
+<p>from windows</p>
+<p>with default_database = [master],</p>
+<p>default_language = [us_english]</p>
+<p>create login [MONTAPACKING\rs.veeam]</p>
+<p>from windows</p>
+<p>with default_database = [master],</p>
+<p>default_language = [us_english]</p>
+<p>create login [MONTAPACKING\rs.sqlcluster]</p>
+<p>from windows</p>
+<p>with default_database = [master],</p>
+<p>default_language = [us_english]</p>
+<p>create login [MONTAPACKING\rs.PowerBI]</p>
+<p>from windows</p>
+<p>with default_database = [master],</p>
+<p>default_language = [us_english]</p>
+<p>create login [MONTAPACKING\rs.finance]</p>
+<p>from windows</p>
+<p>with default_database = [master],</p>
+<p>default_language = [us_english]</p>
+<p>create login [MONTAPACKING\rs.PRTG]</p>
+<p>from windows</p>
+<p>with default_database = [master],</p>
+<p>default_language = [us_english]</p>
+<p>create login [MONTAPACKING\rs.aiadmin]</p>
+<p>from windows</p>
+<p>with default_database = [master],</p>
+<p>default_language = [us_english]</p>
+<p>create login [MONTAPACKING\johan]</p>
+<p>from windows</p>
+<p>with default_database = [master],</p>
+<p>default_language = [us_english]</p>
+<p>create login [MONTAPACKING\IEUSER]</p>
+<p>from windows</p>
+<p>with default_database = [master],</p>
+<p>default_language = [us_english]</p>
+<p>3. Disable logins</p>
+<p>alter login [##MS_PolicyTsqlExecutionLogin##] disable;</p>
+<p>alter login [SorterServer] disable;</p>
+<p>alter login [##MS_PolicyEventProcessingLogin##] disable;</p>
+<p>4. Pas rollen aan:</p>
+<p>alter server role [sysadmin] add member [NT SERVICE\SQLWriter];</p>
+<p>alter server role [sysadmin] add member [NT SERVICE\Winmgmt];</p>
+<p>alter server role [sysadmin] add member [NT
+Service\MSSQL$BACKEND];</p>
+<p>alter server role [sysadmin] add member [NT
+SERVICE\SQLAgent$BACKEND];</p>
+<p>alter server role [sysadmin] add member [MONTAPACKING\SQLServer -
+Administrators];</p>
+<p>alter server role [sysadmin] add member
+[MONTAPACKING\rs.sqlcluster];</p>
+<p>alter server role [serveradmin] add member [MONTAPACKING\SQLServer -
+DBAdmins];</p>
+<p>alter server role [processadmin] add member
+[MONTAPACKING\SQLServer - DBAdmins];</p>
+<p>5. Zet rechten</p>
+<p>GRANT VIEW ANY DATABASE to [public];</p>
+<p>GRANT CONNECT SQL to [NT SERVICE\SQLWriter] ;</p>
+<p>GRANT CONNECT SQL to [NT SERVICE\Winmgmt] ;</p>
+<p>GRANT CONNECT SQL to [NT Service\MSSQL$BACKEND] ;</p>
+<p>GRANT ALTER ANY AVAILABILITY GROUP to [NT AUTHORITY\SYSTEM] ;</p>
+<p>GRANT CONNECT SQL to [NT AUTHORITY\SYSTEM] ;</p>
+<p>GRANT VIEW SERVER STATE to [NT AUTHORITY\SYSTEM] ;</p>
+<p>GRANT CONNECT SQL to [NT SERVICE\SQLAgent$BACKEND] ;</p>
+<p>GRANT CONNECT SQL to [MONTAPACKING\SQLServer - Administrators] ;</p>
+<p>GRANT CONNECT SQL to [activityMonitor] ;</p>
+<p>GRANT VIEW SERVER STATE to [activityMonitor] ;</p>
+<p>GRANT CONNECT SQL to [SorterServer] ;</p>
+<p>GRANT CONNECT SQL to [MONTAPACKING\SQLServer - Gebruikers] ;</p>
+<p>GRANT CONNECT SQL to [MONTAPACKING\rs.scriptadmin] ;</p>
+<p>GRANT CONNECT SQL to [MONTAPACKING\wouter] ;</p>
+<p>GRANT ALTER ANY EVENT SESSION to [NT SERVICE\SQLTELEMETRY$BACKEND] ;</p>
+<p>GRANT CONNECT ANY DATABASE to [NT SERVICE\SQLTELEMETRY$BACKEND] ;</p>
+<p>GRANT CONNECT SQL to [NT SERVICE\SQLTELEMETRY$BACKEND] ;</p>
+<p>GRANT VIEW ANY DEFINITION to [NT SERVICE\SQLTELEMETRY$BACKEND] ;</p>
+<p>GRANT VIEW SERVER STATE to [NT SERVICE\SQLTELEMETRY$BACKEND] ;</p>
+<p>GRANT CONNECT SQL to [MONTAPACKING\rs.veeam] ;</p>
+<p>GRANT CONNECT SQL to [MONTAPACKING\IEUSER] ;</p>
+<p>GRANT CONNECT SQL to [MONTAPACKING\rs.sqlcluster] ;</p>
+<p>GRANT CONNECT SQL to [performancemonitor] ;</p>
+<p>GRANT CONNECT SQL to [MONTAPACKING\rs.PowerBI] ;</p>
+<p>GRANT CONNECT SQL to [MONTAPACKING\rs.finance] ;</p>
+<p>GRANT CONNECT SQL to [MONTAPACKING\rs.PRTG] ;</p>
+<p>GRANT CONNECT SQL to [MONTAPACKING\rs.aiadmin] ;</p>
+<p>GRANT CONNECT SQL to [MONTAPACKING\johan] ;</p>
+<p>GRANT CONNECT SQL to [##MS_PolicyEventProcessingLogin##] ;</p>
+<p>GRANT CONNECT SQL to [##MS_AgentSigningCertificate##] ;</p>
+<p>GRANT CONNECT to [public] ;</p>
+<p>GRANT CONNECT to [public] ;</p>
+<p>GRANT CONNECT to [public] ;</p>
+<p>GRANT CONNECT to [public] ;</p>
+<p>GRANT CONNECT to [MONTAPACKING\rs.sqlcluster] ;</p>
+<p>6. Aanmaken linked server:</p>
+<p>Vul SA wachtwoord in van de <strong>MP-SQL06</strong> uit Passwordstate</p>
+<p>USE [master]</p>
+<p>GO</p>
+<p>/****** Object: LinkedServer [MP-SQL06\MSSQL] Script Date:
+21-Dec-20 11:02:46 AM ******/</p>
+<p>EXEC master.dbo.sp_addlinkedserver @server = N'MP-SQL06\MSSQL',
+@srvproduct=N'SQL Server'</p>
+<p>/* For security reasons the linked server remote logins password is
+changed with ######## */</p>
+<p>EXEC master.dbo.sp_addlinkedsrvlogin
+@rmtsrvname=N'MP-SQL06\MSSQL',@useself=N\'False',@locallogin=NULL,@rmtuser=N\'sa',@rmtpassword=\'########'</p>
+<p>GO</p>
+<p>EXEC master.dbo.sp_serveroption @server=N'MP-SQL06\MSSQL',
+@optname=N'collation compatible', @optvalue=N'false'</p>
+<p>GO</p>
+<p>EXEC master.dbo.sp_serveroption @server=N'MP-SQL06\MSSQL',
+@optname=N'data access', @optvalue=N'true'</p>
+<p>GO</p>
+<p>EXEC master.dbo.sp_serveroption @server=N'MP-SQL06\MSSQL',
+@optname=N'dist', @optvalue=N'false'</p>
+<p>GO</p>
+<p>EXEC master.dbo.sp_serveroption @server=N'MP-SQL06\MSSQL',
+@optname=N'pub', @optvalue=N'false'</p>
+<p>GO</p>
+<p>EXEC master.dbo.sp_serveroption @server=N'MP-SQL06\MSSQL',
+@optname=N'rpc', @optvalue=N'false'</p>
+<p>GO</p>
+<p>EXEC master.dbo.sp_serveroption @server=N'MP-SQL06\MSSQL',
+@optname=N'rpc out', @optvalue=N'false'</p>
+<p>GO</p>
+<p>EXEC master.dbo.sp_serveroption @server=N'MP-SQL06\MSSQL',
+@optname=N'sub', @optvalue=N'false'</p>
+<p>GO</p>
+<p>EXEC master.dbo.sp_serveroption @server=N'MP-SQL06\MSSQL',
+@optname=N'connect timeout', @optvalue=N'0'</p>
+<p>GO</p>
+<p>EXEC master.dbo.sp_serveroption @server=N'MP-SQL06\MSSQL',
+@optname=N'collation name', @optvalue=null</p>
+<p>GO</p>
+<p>EXEC master.dbo.sp_serveroption @server=N'MP-SQL06\MSSQL',
+@optname=N'lazy schema validation', @optvalue=N'false'</p>
+<p>GO</p>
+<p>EXEC master.dbo.sp_serveroption @server=N'MP-SQL06\MSSQL',
+@optname=N'query timeout', @optvalue=N'0'</p>
+<p>GO</p>
+<p>EXEC master.dbo.sp_serveroption @server=N'MP-SQL06\MSSQL',
+@optname=N'use remote collation', @optvalue=N'true'</p>
+<p>GO</p>
+<p>EXEC master.dbo.sp_serveroption @server=N'MP-SQL06\MSSQL',
+@optname=N'remote proc transaction promotion', @optvalue=N'true'</p>
+<p>GO</p>
+<p>Aanmaken Nodrop Trigger</p>
+<p>USE [master]</p>
+<p>GO</p>
+<p>/****** Object: DdlTrigger [ddl_trig_database_nodrop] Script
+Date: 21-Dec-20 11:16:44 AM ******/</p>
+<p>SET ANSI_NULLS ON</p>
+<p>GO</p>
+<p>SET QUOTED_IDENTIFIER ON</p>
+<p>GO</p>
+<p>create trigger [ddl_trig_database_nodrop]</p>
+<p>on all server</p>
+<p>for drop_database</p>
+<p>as</p>
+<p>raiserror('dropping databases on this server is rolled back by server
+trigger ddl_trig_database_nodrop; disable the trigger if needed', 16,
+1)</p>
+<p>rollback tran</p>
+<p>GO</p>
+<p>ENABLE TRIGGER [ddl_trig_database_nodrop] ON ALL SERVER</p>
+<p>GO</p>
+<p>7. Operators:<br>
+<br>
+USE [msdb]</p>
+<p>GO</p>
+<p>/****** Object: Operator [Development] Script Date: 21-Dec-20
+11:45:10 AM ******/</p>
+<p>EXEC msdb.dbo.sp_add_operator @name=N'Development',</p>
+<p>@enabled=1,</p>
+<p>@weekday_pager_start_time=90000,</p>
+<p>@weekday_pager_end_time=180000,</p>
+<p>@saturday_pager_start_time=90000,</p>
+<p>@saturday_pager_end_time=180000,</p>
+<p>@sunday_pager_start_time=90000,</p>
+<p>@sunday_pager_end_time=180000,</p>
+<p>@pager_days=0,</p>
+<p>@email_address=N'development@montapacking.nl\',</p>
+<p>@category_name=N'[Uncategorized]'</p>
+<p>GO</p>
+<p>USE [msdb]</p>
+<p>GO</p>
+<p>/****** Object: Operator [Eelco van Westen] Script Date:
+21-Dec-20 11:45:17 AM ******/</p>
+<p>EXEC msdb.dbo.sp_add_operator @name=N'Eelco van Westen',</p>
+<p>@enabled=1,</p>
+<p>@weekday_pager_start_time=90000,</p>
+<p>@weekday_pager_end_time=180000,</p>
+<p>@saturday_pager_start_time=90000,</p>
+<p>@saturday_pager_end_time=180000,</p>
+<p>@sunday_pager_start_time=90000,</p>
+<p>@sunday_pager_end_time=180000,</p>
+<p>@pager_days=0,</p>
+<p>@email_address=N'e.vanwesten@aspect-ict.nl\',</p>
+<p>@category_name=N'[Uncategorized]'</p>
+<p>GO</p>
+<p>USE [msdb]</p>
+<p>GO</p>
+<p>/****** Object: Operator [johan verhaar] Script Date: 21-Dec-20
+11:45:27 AM ******/</p>
+<p>EXEC msdb.dbo.sp_add_operator @name=N'johan verhaar',</p>
+<p>@enabled=1,</p>
+<p>@weekday_pager_start_time=90000,</p>
+<p>@weekday_pager_end_time=180000,</p>
+<p>@saturday_pager_start_time=90000,</p>
+<p>@saturday_pager_end_time=180000,</p>
+<p>@sunday_pager_start_time=90000,</p>
+<p>@sunday_pager_end_time=180000,</p>
+<p>@pager_days=0,</p>
+<p>@email_address=N'johan@montapacking.nl\',</p>
+<p>@category_name=N'[Uncategorized]'</p>
+<p>GO</p>
+<p>USE [msdb]</p>
+<p>GO</p>
+<p>/****** Object: Operator [Support] Script Date: 21-Dec-20
+11:45:37 AM ******/</p>
+<p>EXEC msdb.dbo.sp_add_operator @name=N'Support',</p>
+<p>@enabled=1,</p>
+<p>@weekday_pager_start_time=90000,</p>
+<p>@weekday_pager_end_time=180000,</p>
+<p>@saturday_pager_start_time=90000,</p>
+<p>@saturday_pager_end_time=180000,</p>
+<p>@sunday_pager_start_time=90000,</p>
+<p>@sunday_pager_end_time=180000,</p>
+<p>@pager_days=0,</p>
+<p>@email_address=N'servicedesk@montapacking.nl\',</p>
+<p>@category_name=N'[Uncategorized]'</p>
+<p>GO</p>
+<p>Maak alerts aan:</p>
+<p>USE [msdb]</p>
+<p>GO</p>
+<p>/****** Object: Alert [Error Number 823] Script Date: 21-Dec-20
+11:37:22 AM ******/</p>
+<p>EXEC msdb.dbo.sp_add_alert @name=N'Error Number 823',</p>
+<p>@message_id=823,</p>
+<p>@severity=0,</p>
+<p>@enabled=1,</p>
+<p>@delay_between_responses=60,</p>
+<p>@include_event_description_in=1,</p>
+<p>@category_name=N'[Uncategorized]',</p>
+<p>@job_id=N'00000000-0000-0000-0000-000000000000'</p>
+<p>GO</p>
+<p>USE [msdb]</p>
+<p>GO</p>
+<p>/****** Object: Alert [Error Number 824] Script Date: 21-Dec-20
+11:37:32 AM ******/</p>
+<p>EXEC msdb.dbo.sp_add_alert @name=N'Error Number 824',</p>
+<p>@message_id=824,</p>
+<p>@severity=0,</p>
+<p>@enabled=1,</p>
+<p>@delay_between_responses=60,</p>
+<p>@include_event_description_in=1,</p>
+<p>@category_name=N'[Uncategorized]',</p>
+<p>@job_id=N'00000000-0000-0000-0000-000000000000'</p>
+<p>GO</p>
+<p>USE [msdb]</p>
+<p>GO</p>
+<p>/****** Object: Alert [Error Number 825] Script Date: 21-Dec-20
+11:37:45 AM ******/</p>
+<p>EXEC msdb.dbo.sp_add_alert @name=N'Error Number 825',</p>
+<p>@message_id=825,</p>
+<p>@severity=0,</p>
+<p>@enabled=1,</p>
+<p>@delay_between_responses=60,</p>
+<p>@include_event_description_in=1,</p>
+<p>@category_name=N'[Uncategorized]',</p>
+<p>@job_id=N'00000000-0000-0000-0000-000000000000'</p>
+<p>GO</p>
+<p>USE [msdb]</p>
+<p>GO</p>
+<p>/****** Object: Alert [Severity 019] Script Date: 21-Dec-20
+11:37:57 AM ******/</p>
+<p>EXEC msdb.dbo.sp_add_alert @name=N'Severity 019',</p>
+<p>@message_id=0,</p>
+<p>@severity=19,</p>
+<p>@enabled=1,</p>
+<p>@delay_between_responses=60,</p>
+<p>@include_event_description_in=1,</p>
+<p>@category_name=N'[Uncategorized]',</p>
+<p>@job_id=N'00000000-0000-0000-0000-000000000000'</p>
+<p>GO</p>
+<p>USE [msdb]</p>
+<p>GO</p>
+<p>/****** Object: Alert [Severity 020] Script Date: 21-Dec-20
+11:38:07 AM ******/</p>
+<p>EXEC msdb.dbo.sp_add_alert @name=N'Severity 020',</p>
+<p>@message_id=0,</p>
+<p>@severity=20,</p>
+<p>@enabled=1,</p>
+<p>@delay_between_responses=60,</p>
+<p>@include_event_description_in=1,</p>
+<p>@category_name=N'[Uncategorized]',</p>
+<p>@job_id=N'00000000-0000-0000-0000-000000000000'</p>
+<p>GO</p>
+<p>USE [msdb]</p>
+<p>GO</p>
+<p>/****** Object: Alert [Severity 021] Script Date: 21-Dec-20
+11:38:16 AM ******/</p>
+<p>EXEC msdb.dbo.sp_add_alert @name=N'Severity 021',</p>
+<p>@message_id=0,</p>
+<p>@severity=21,</p>
+<p>@enabled=1,</p>
+<p>@delay_between_responses=60,</p>
+<p>@include_event_description_in=1,</p>
+<p>@category_name=N'[Uncategorized]',</p>
+<p>@job_id=N'00000000-0000-0000-0000-000000000000'</p>
+<p>GO</p>
+<p>USE [msdb]</p>
+<p>GO</p>
+<p>/****** Object: Alert [Severity 022] Script Date: 21-Dec-20
+11:38:25 AM ******/</p>
+<p>EXEC msdb.dbo.sp_add_alert @name=N'Severity 022',</p>
+<p>@message_id=0,</p>
+<p>@severity=22,</p>
+<p>@enabled=1,</p>
+<p>@delay_between_responses=60,</p>
+<p>@include_event_description_in=1,</p>
+<p>@category_name=N'[Uncategorized]',</p>
+<p>@job_id=N'00000000-0000-0000-0000-000000000000'</p>
+<p>GO</p>
+<p>USE [msdb]</p>
+<p>GO</p>
+<p>/****** Object: Alert [Severity 023] Script Date: 21-Dec-20
+11:38:33 AM ******/</p>
+<p>EXEC msdb.dbo.sp_add_alert @name=N'Severity 023',</p>
+<p>@message_id=0,</p>
+<p>@severity=23,</p>
+<p>@enabled=1,</p>
+<p>@delay_between_responses=60,</p>
+<p>@include_event_description_in=1,</p>
+<p>@category_name=N'[Uncategorized]',</p>
+<p>@job_id=N'00000000-0000-0000-0000-000000000000'</p>
+<p>GO</p>
+<p>USE [msdb]</p>
+<p>GO</p>
+<p>/****** Object: Alert [Severity 024] Script Date: 21-Dec-20
+11:38:40 AM ******/</p>
+<p>EXEC msdb.dbo.sp_add_alert @name=N'Severity 024',</p>
+<p>@message_id=0,</p>
+<p>@severity=24,</p>
+<p>@enabled=1,</p>
+<p>@delay_between_responses=60,</p>
+<p>@include_event_description_in=1,</p>
+<p>@category_name=N'[Uncategorized]',</p>
+<p>@job_id=N'00000000-0000-0000-0000-000000000000'</p>
+<p>GO</p>
+<p>USE [msdb]</p>
+<p>GO</p>
+<p>/****** Object: Alert [Severity 025] Script Date: 21-Dec-20
+11:38:49 AM ******/</p>
+<p>EXEC msdb.dbo.sp_add_alert @name=N'Severity 025',</p>
+<p>@message_id=0,</p>
+<p>@severity=25,</p>
+<p>@enabled=1,</p>
+<p>@delay_between_responses=60,</p>
+<p>@include_event_description_in=1,</p>
+<p>@category_name=N'[Uncategorized]',</p>
+<p>@job_id=N'00000000-0000-0000-0000-000000000000'</p>
+<p>GO</p>
+<p>Na de aanmaak volgen commando uitvoeren :<br>
+select 'exec msdb.dbo.sp_add_notification @alert_name =
+'''+name+''', @operator_name = ''Support'',
+@notification_method = 1'</p>
+<p>from msdb.dbo.sysalerts</p>
+<p>Resultaat uitoveren op de nieuwe server.<br>
+Hiermee wordt het volgende ingesteld :<br>
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image37.png" alt=""></p>
+<p>BRON:</p>
+<p>select 'exec msdb.dbo.sp_add_notification @alert_name =
+'''+name+''', @operator_name = ''Support'',
+@notification_method = 1'</p>
+<p>from msdb.dbo.sysalerts</p>
+<ol start="9">
+<li>Maak de volgende jobs aan</li>
+</ol>
+<hr>
+<p><strong>Naam</strong>                        <strong>Schedule</strong>   <strong>Notification</strong></p>
+<hr>
+<p>Baseline waits                  nvt            nvt</p>
+<p>daily_tasks.Subplan_1           Dagelijks      Email naar support when the
+01:00 AM       job completes</p>
+<p>Write Application event log
+when the job failes</p>
+<p>Indexeren Montaportal is        Elk uur        Email naar support when the
+gestopt                                        job completes</p>
+<p>Write Application event log
+when the job failes</p>
+<p>log memory counters             nvt            nvt</p>
+<p>log PLE                         nvt            nvt</p>
+<p>logbackups.Subplan_1            Elk kwartier   Email naar support when the
+job failes</p>
+<p>Write Application event log
+when the job failes</p>
+<p>Replicatie error tussen SQL10   Elk kwartier   Email naar support when the
+en SQL20 en/of SQL21, NEEM                     job failes
+METEEN ACTIE !!!!!!</p>
+<p>Start Optimize Catalog          Zondag 04:30   Email naar support when the
+Population on                                  job completes
+Monta_Backend.FT_MontaPacking</p>
+<p>Write Application event log
+when the job failes</p>
+<p>syspolicy_purge_history         Dagelijks      Email naar support when the
+02:00 AM       job failes</p>
+<p>test_notify                     nvt            Email naar support when the
+job failes</p>
+<p>weekly_tasks.Subplan_1          Zondag 11:00   Email naar support when the
+job completes</p>
+<h2 id="write-application-event-logwhen-the-job-failes">Write Application event log
+when the job failes</h2>
+<h6 id="section"></h6>
+<h6 id="baseline-waits">Baseline waits</h6>
+<p>USE [msdb]</p>
+<p>GO</p>
+<p>/****** Object: Job [baseline waits] Script Date: 15-4-2021
+15:34:35 ******/</p>
+<p>BEGIN TRANSACTION</p>
+<p>DECLARE @ReturnCode INT</p>
+<p>SELECT @ReturnCode = 0</p>
+<p>/****** Object: JobCategory [[Uncategorized (Local)]] Script
+Date: 15-4-2021 15:34:35 ******/</p>
+<p>IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE
+name=N'[Uncategorized (Local)]' AND category_class=1)</p>
+<p>BEGIN</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB',
+@type=N'LOCAL', @name=N'[Uncategorized (Local)]'</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>END</p>
+<p>DECLARE @jobId BINARY(16)</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_job @job_name=N'baseline waits',</p>
+<p>@enabled=1,</p>
+<p>@notify_level_eventlog=0,</p>
+<p>@notify_level_email=2,</p>
+<p>@notify_level_netsend=0,</p>
+<p>@notify_level_page=0,</p>
+<p>@delete_level=0,</p>
+<p>@description=N'No description available.',</p>
+<p>@category_name=N'[Uncategorized (Local)]',</p>
+<p>@owner_login_name=N'sa',</p>
+<p>@notify_email_operator_name=N'Support', @job_id = @jobId OUTPUT</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>/****** Object: Step [insert data] Script Date: 15-4-2021
+15:34:35 ******/</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId,
+@step_name=N'insert data',</p>
+<p>@step_id=1,</p>
+<p>@cmdexec_success_code=0,</p>
+<p>@on_success_action=1,</p>
+<p>@on_success_step_id=0,</p>
+<p>@on_fail_action=2,</p>
+<p>@on_fail_step_id=0,</p>
+<p>@retry_attempts=0,</p>
+<p>@retry_interval=0,</p>
+<p>@os_run_priority=0, @subsystem=N'TSQL',</p>
+<p>@command=N'</p>
+<p>-- sql agent job, start every 15 minutes (with endless loop en waiting
+15 min tends to shift out of exact quarter of an hour)</p>
+<p>-- check for server restart after last log</p>
+<p>declare @sql_server_start_time datetime = (select sqlserver_start_time
+from sys.dm_os_sys_info)</p>
+<p>declare @max_log_date datetime = (select max(dt) from baseline.waits)</p>
+<p>-- if so archive the baseline.waits table and create a new one</p>
+<p>if @sql_server_start_time &gt; @max_log_date</p>
+<p>begin</p>
+<p>declare @nwname varchar(100) =
+''baseline.waits_''+replace(replace(convert(char(16),
+@max_log_date, 126),''-'',''''),'':'', '''')</p>
+<p>exec sp_rename ''baseline.waits'', @nwname, ''object''</p>
+<p>create table baseline.waits</p>
+<p>(dt smalldatetime not null,</p>
+<p>wait_type nvarchar(60) not null,</p>
+<p>waiting_tasks_count bigint not null,</p>
+<p>wait_time_ms bigint not null,</p>
+<p>max_wait_time_ms bigint not null,</p>
+<p>signal_wait_time_ms bigint not null,</p>
+<p>resource_wait_time_ms as wait_time_ms - signal_wait_time_ms,</p>
+<p>yy as datepart(yy, dt),</p>
+<p>mm as datepart(mm, dt),</p>
+<p>dd as datepart(dd, dt),</p>
+<p>dw as datepart(dw, dt),</p>
+<p>hr as datepart(hh, dt),</p>
+<p>mi as datepart(mi, dt)</p>
+<p>,primary key (dt, wait_type))</p>
+<p>end</p>
+<p>-- insert</p>
+<p>insert baseline.waits (dt, wait_type, waiting_tasks_count, wait_time_ms,
+max_wait_time_ms, signal_wait_time_ms)</p>
+<p>select getdate(), *</p>
+<p>from sys.dm_os_wait_stats</p>
+<p>where wait_type not in (select wait_type from baseline.IgnorableWaits)</p>
+<p>and waiting_tasks_count &gt; 0</p>
+<p>go</p>
+<p>',</p>
+<p>@database_name=N'master',</p>
+<p>@flags=0</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId,
+@start_step_id = 1</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId,
+@name=N'15 min',</p>
+<p>@enabled=1,</p>
+<p>@freq_type=4,</p>
+<p>@freq_interval=1,</p>
+<p>@freq_subday_type=4,</p>
+<p>@freq_subday_interval=15,</p>
+<p>@freq_relative_interval=0,</p>
+<p>@freq_recurrence_factor=0,</p>
+<p>@active_start_date=20201015,</p>
+<p>@active_end_date=99991231,</p>
+<p>@active_start_time=0,</p>
+<p>@active_end_time=235959,</p>
+<p>@schedule_uid=N'aac11663-5a9f-477e-a494-c1cb53baea83'</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId,
+@server_name = N'(local)'</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>COMMIT TRANSACTION</p>
+<p>GOTO EndSave</p>
+<p>QuitWithRollback:</p>
+<p>IF (@@TRANCOUNT &gt; 0) ROLLBACK TRANSACTION</p>
+<p>EndSave:</p>
+<p>GO</p>
+<h6 id="log-memory-counters">log memory counters</h6>
+<p>USE [msdb]</p>
+<p>GO</p>
+<p>/****** Object: Job [log memory counters] Script Date: 15-4-2021
+15:36:40 ******/</p>
+<p>BEGIN TRANSACTION</p>
+<p>DECLARE @ReturnCode INT</p>
+<p>SELECT @ReturnCode = 0</p>
+<p>/****** Object: JobCategory [[Uncategorized (Local)]] Script
+Date: 15-4-2021 15:36:40 ******/</p>
+<p>IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE
+name=N'[Uncategorized (Local)]' AND category_class=1)</p>
+<p>BEGIN</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB',
+@type=N'LOCAL', @name=N'[Uncategorized (Local)]'</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>END</p>
+<p>DECLARE @jobId BINARY(16)</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_job @job_name=N'log memory
+counters',</p>
+<p>@enabled=1,</p>
+<p>@notify_level_eventlog=0,</p>
+<p>@notify_level_email=0,</p>
+<p>@notify_level_netsend=0,</p>
+<p>@notify_level_page=0,</p>
+<p>@delete_level=0,</p>
+<p>@description=N'No description available.',</p>
+<p>@category_name=N'[Uncategorized (Local)]',</p>
+<p>@owner_login_name=N'sa', @job_id = @jobId OUTPUT</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>/****** Object: Step [log] Script Date: 15-4-2021 15:36:41
+******/</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId,
+@step_name=N'log',</p>
+<p>@step_id=1,</p>
+<p>@cmdexec_success_code=0,</p>
+<p>@on_success_action=1,</p>
+<p>@on_success_step_id=0,</p>
+<p>@on_fail_action=2,</p>
+<p>@on_fail_step_id=0,</p>
+<p>@retry_attempts=0,</p>
+<p>@retry_interval=0,</p>
+<p>@os_run_priority=0, @subsystem=N'TSQL',</p>
+<p>@command=N'</p>
+<p>-- uitgebreide memory log</p>
+<p>insert dbo.memory_log (counter_name, instance_name, cntr_value)</p>
+<p>select counter_name, instance_name, cntr_value</p>
+<p>from sys.dm_os_performance_counters</p>
+<p>where counter_name in</p>
+<p>(''Database Cache Memory (KB)'',</p>
+<p>''Free Memory (KB)'',</p>
+<p>''Lock Memory (KB)'',</p>
+<p>''Log Pool Memory (KB)'',</p>
+<p>''Granted Workspace Memory (KB)'',</p>
+<p>''Memory Grants Pending'',</p>
+<p>''Memory Grants Outstanding'',</p>
+<p>''Optimizer Memory (KB)'',</p>
+<p>''Stolen Server Memory (KB)'',</p>
+<p>''Target Server Memory (KB)'',</p>
+<p>''Total Server Memory (KB)'',</p>
+<p>''SQL Cache Memory (KB)'',</p>
+<p>''Page life expectancy'',</p>
+<p>''Buffer cache hit ratio'',</p>
+<p>''Buffer cache hit ratio base'',</p>
+<p>''Database pages'',</p>
+<p>''Target pages'',</p>
+<p>''Extension allocated pages'',</p>
+<p>''Free list stalls/sec'',</p>
+<p>''Page lookups/sec'',</p>
+<p>''Page reads/sec'',</p>
+<p>''Readahead pages/sec'',</p>
+<p>''Page writes/sec'',</p>
+<p>''Checkpoint pages/sec'',</p>
+<p>''Background writer pages/sec'')</p>
+<p>',</p>
+<p>@database_name=N'master',</p>
+<p>@flags=0</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId,
+@start_step_id = 1</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId,
+@name=N'1 min single day',</p>
+<p>@enabled=0,</p>
+<p>@freq_type=4,</p>
+<p>@freq_interval=1,</p>
+<p>@freq_subday_type=4,</p>
+<p>@freq_subday_interval=1,</p>
+<p>@freq_relative_interval=0,</p>
+<p>@freq_recurrence_factor=0,</p>
+<p>@active_start_date=20201028,</p>
+<p>@active_end_date=20201029,</p>
+<p>@active_start_time=90000,</p>
+<p>@active_end_time=185959,</p>
+<p>@schedule_uid=N'a8d8f2c1-6688-4cd8-a613-6969851d7fde'</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId,
+@server_name = N'(local)'</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>COMMIT TRANSACTION</p>
+<p>GOTO EndSave</p>
+<p>QuitWithRollback:</p>
+<p>IF (@@TRANCOUNT &gt; 0) ROLLBACK TRANSACTION</p>
+<p>EndSave:</p>
+<p>GO</p>
+<h6 id="log-ple">Log PLE</h6>
+<p>USE [msdb]</p>
+<p>GO</p>
+<p>/****** Object: Job [log PLE] Script Date: 15-4-2021 15:37:44
+******/</p>
+<p>BEGIN TRANSACTION</p>
+<p>DECLARE @ReturnCode INT</p>
+<p>SELECT @ReturnCode = 0</p>
+<p>/****** Object: JobCategory [[Uncategorized (Local)]] Script
+Date: 15-4-2021 15:37:44 ******/</p>
+<p>IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE
+name=N'[Uncategorized (Local)]' AND category_class=1)</p>
+<p>BEGIN</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB',
+@type=N'LOCAL', @name=N'[Uncategorized (Local)]'</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>END</p>
+<p>DECLARE @jobId BINARY(16)</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_job @job_name=N'log PLE',</p>
+<p>@enabled=1,</p>
+<p>@notify_level_eventlog=0,</p>
+<p>@notify_level_email=0,</p>
+<p>@notify_level_netsend=0,</p>
+<p>@notify_level_page=0,</p>
+<p>@delete_level=0,</p>
+<p>@description=N'No description available.',</p>
+<p>@category_name=N'[Uncategorized (Local)]',</p>
+<p>@owner_login_name=N'sa', @job_id = @jobId OUTPUT</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>/****** Object: Step [log] Script Date: 15-4-2021 15:37:44
+******/</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId,
+@step_name=N'log',</p>
+<p>@step_id=1,</p>
+<p>@cmdexec_success_code=0,</p>
+<p>@on_success_action=1,</p>
+<p>@on_success_step_id=0,</p>
+<p>@on_fail_action=2,</p>
+<p>@on_fail_step_id=0,</p>
+<p>@retry_attempts=0,</p>
+<p>@retry_interval=0,</p>
+<p>@os_run_priority=0, @subsystem=N'TSQL',</p>
+<p>@command=N'insert master.dbo.PLE (dt, ple)</p>
+<p>select getdate(), cntr_value</p>
+<p>from sys.dm_os_performance_counters</p>
+<p>where counter_name = ''Page life expectancy''</p>
+<p>and instance_name = ''''</p>
+<p>/*</p>
+<p>-- uitgebreide memory log</p>
+<p>insert dbo.memory_log (counter_name, instance_name, cntr_value)</p>
+<p>select counter_name, instance_name, cntr_value</p>
+<p>from sys.dm_os_performance_counters</p>
+<p>where counter_name in</p>
+<p>(''Database Cache Memory (KB)'',</p>
+<p>''Free Memory (KB)'',</p>
+<p>''Lock Memory (KB)'',</p>
+<p>''Log Pool Memory (KB)'',</p>
+<p>''Granted Workspace Memory (KB)'',</p>
+<p>''Memory Grants Pending'',</p>
+<p>''Memory Grants Outstanding'',</p>
+<p>''Optimizer Memory (KB)'',</p>
+<p>''Stolen Server Memory (KB)'',</p>
+<p>''Target Server Memory (KB)'',</p>
+<p>''Total Server Memory (KB)'',</p>
+<p>''SQL Cache Memory (KB)'',</p>
+<p>''Page life expectancy'',</p>
+<p>''Buffer cache hit ratio'',</p>
+<p>''Database pages'',</p>
+<p>''Target pages'',</p>
+<p>''Extension allocated pages'',</p>
+<p>''Free list stalls/sec'',</p>
+<p>''Page lookups/sec'',</p>
+<p>''Page reads/sec'',</p>
+<p>''Page writes/sec'',</p>
+<p>''Readahead pages/sec'')</p>
+<p>*/',</p>
+<p>@database_name=N'master',</p>
+<p>@flags=0</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId,
+@start_step_id = 1</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId,
+@server_name = N'(local)'</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>COMMIT TRANSACTION</p>
+<p>GOTO EndSave</p>
+<p>QuitWithRollback:</p>
+<p>IF (@@TRANCOUNT &gt; 0) ROLLBACK TRANSACTION</p>
+<p>EndSave:</p>
+<p>GO</p>
+<h6 id="replicatie-error-tussen-sql10-en-sql20-neem-meteen-actie-">Replicatie error tussen SQL10 en SQL20, NEEM METEEN ACTIE !!!!!!</h6>
+<p>USE [msdb]</p>
+<p>GO</p>
+<p>/****** Object: Job [Replicatie error tussend SQL10 en SQL20
+en/of SQL21 NEEM METEEN ACTIE !!!!!!] Script Date: 15-4-2021 15:39:22
+******/</p>
+<p>BEGIN TRANSACTION</p>
+<p>DECLARE @ReturnCode INT</p>
+<p>SELECT @ReturnCode = 0</p>
+<p>/****** Object: JobCategory [[Uncategorized (Local)]] Script
+Date: 15-4-2021 15:39:22 ******/</p>
+<p>IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE
+name=N'[Uncategorized (Local)]' AND category_class=1)</p>
+<p>BEGIN</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB',
+@type=N'LOCAL', @name=N'[Uncategorized (Local)]'</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>END</p>
+<p>DECLARE @jobId BINARY(16)</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_job @job_name=N'Replicatie error
+tussen SQL10 en SQL20 en/of SQL21, NEEM METEEN ACTIE !!!!!!',</p>
+<p>@enabled=1,</p>
+<p>@notify_level_eventlog=0,</p>
+<p>@notify_level_email=2,</p>
+<p>@notify_level_netsend=0,</p>
+<p>@notify_level_page=0,</p>
+<p>@delete_level=0,</p>
+<p>@description=N'No description available.',</p>
+<p>@category_name=N'[Uncategorized (Local)]',</p>
+<p>@owner_login_name=N'sa',</p>
+<p>@notify_email_operator_name=N'Support', @job_id = @jobId OUTPUT</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>/****** Object: Step [mon] Script Date: 15-4-2021 15:39:22
+******/</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId,
+@step_name=N'mon',</p>
+<p>@step_id=1,</p>
+<p>@cmdexec_success_code=0,</p>
+<p>@on_success_action=1,</p>
+<p>@on_success_step_id=0,</p>
+<p>@on_fail_action=2,</p>
+<p>@on_fail_step_id=0,</p>
+<p>@retry_attempts=0,</p>
+<p>@retry_interval=0,</p>
+<p>@os_run_priority=0, @subsystem=N'TSQL',</p>
+<p>@command=N'</p>
+<p>declare @val nvarchar(100)</p>
+<p>select @val= RS.connected_state_desc</p>
+<p>from sys.availability_groups AG</p>
+<p>join sys.dm_hadr_availability_replica_states RS on AG.group_id =
+RS.group_id</p>
+<p>join sys.availability_replicas AR on RS.replica_id = AR.replica_id</p>
+<p>where AG.name = ''Monta_Backend'' and AR.replica_server_name =
+''MP-SQL10\BACKEND''</p>
+<p>if @val &lt;&gt; ''CONNECTED''</p>
+<p>raiserror(''connected_state_desc Monta_Backend replica_server_name
+MP-SQL10\BACKEND &lt;&gt; connected'', 16, 1)</p>
+<p>select @val= RS.connected_state_desc from sys.availability_groups AG</p>
+<p>join sys.dm_hadr_availability_replica_states RS on AG.group_id =
+RS.group_id</p>
+<p>join sys.availability_replicas AR on RS.replica_id = AR.replica_id</p>
+<p>where AG.name = ''Monta_Backend'' and AR.replica_server_name =
+''MP-SQL20\BACKEND''</p>
+<p>if @val &lt;&gt; ''CONNECTED''</p>
+<p>raiserror(''connected_state_desc Monta_Backend replica_server_name
+MP-SQL20\BACKEND &lt;&gt; connected'', 16, 1)</p>
+<p>select @val= RS.synchronization_health_desc from
+sys.availability_groups AG</p>
+<p>join sys.dm_hadr_availability_replica_states RS on AG.group_id =
+RS.group_id</p>
+<p>join sys.availability_replicas AR on RS.replica_id = AR.replica_id</p>
+<p>where AG.name = ''Monta_Backend'' and AR.replica_server_name =
+''MP-SQL20\BACKEND''</p>
+<p>if @val &lt;&gt; ''HEALTHY''</p>
+<p>raiserror(''synchronization_health_desc Monta_Backend
+replica_server_name MP-SQL10\BACKEND &lt;&gt; healthy'', 16, 1)</p>
+<p>select @val= RS.synchronization_health_desc from
+sys.availability_groups AG</p>
+<p>join sys.dm_hadr_availability_replica_states RS on AG.group_id =
+RS.group_id</p>
+<p>join sys.availability_replicas AR on RS.replica_id = AR.replica_id</p>
+<p>where AG.name = ''Monta_Backend'' and AR.replica_server_name =
+''MP-SQL20\BACKEND''</p>
+<p>if @val &lt;&gt; ''HEALTHY''</p>
+<p>raiserror(''synchronization_health_desc Monta_Backend
+replica_server_name MP-SQL20\BACKEND &lt;&gt; healthy'', 16, 1)</p>
+<p>',</p>
+<p>@database_name=N'master',</p>
+<p>@flags=0</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId,
+@start_step_id = 1</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId,
+@name=N'kwartier',</p>
+<p>@enabled=1,</p>
+<p>@freq_type=4,</p>
+<p>@freq_interval=1,</p>
+<p>@freq_subday_type=4,</p>
+<p>@freq_subday_interval=15,</p>
+<p>@freq_relative_interval=0,</p>
+<p>@freq_recurrence_factor=0,</p>
+<p>@active_start_date=20201013,</p>
+<p>@active_end_date=99991231,</p>
+<p>@active_start_time=60000,</p>
+<p>@active_end_time=235959,</p>
+<p>@schedule_uid=N'd5284833-07a5-47a1-abd4-afad3c3c3ce9'</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId,
+@server_name = N'(local)'</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>COMMIT TRANSACTION</p>
+<p>GOTO EndSave</p>
+<p>QuitWithRollback:</p>
+<p>IF (@@TRANCOUNT &gt; 0) ROLLBACK TRANSACTION</p>
+<p>EndSave:</p>
+<p>GO</p>
+<p>Start Optimize Catalog Population on Monta_Backend.FT_MontaPacking</p>
+<p>USE [msdb]</p>
+<p>GO</p>
+<p>/****** Object: Job [Start Optimize Catalog Population on
+Monta_Backend.FT_MontaPacking] Script Date: 15-4-2021 15:46:55
+******/</p>
+<p>BEGIN TRANSACTION</p>
+<p>DECLARE @ReturnCode INT</p>
+<p>SELECT @ReturnCode = 0</p>
+<p>/****** Object: JobCategory [Full-Text] Script Date: 15-4-2021
+15:46:55 ******/</p>
+<p>IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE
+name=N'Full-Text' AND category_class=1)</p>
+<p>BEGIN</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB',
+@type=N'LOCAL', @name=N'Full-Text'</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>END</p>
+<p>DECLARE @jobId BINARY(16)</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_job @job_name=N'Start Optimize
+Catalog Population on Monta_Backend.FT_MontaPacking',</p>
+<p>@enabled=1,</p>
+<p>@notify_level_eventlog=2,</p>
+<p>@notify_level_email=3,</p>
+<p>@notify_level_netsend=0,</p>
+<p>@notify_level_page=0,</p>
+<p>@delete_level=0,</p>
+<p>@description=N'Scheduled full-text optimize catalog population for
+full-text catalog FT_MontaPacking in database Monta_Backend. This job
+was created by the Full-Text Catalog Scheduling dialog or Full-Text
+Indexing Wizard.',</p>
+<p>@category_name=N'Full-Text',</p>
+<p>@owner_login_name=N'sa',</p>
+<p>@notify_email_operator_name=N'Support', @job_id = @jobId OUTPUT</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>/****** Object: Step [Full-Text Indexing] Script Date: 15-4-2021
+15:46:55 ******/</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId,
+@step_name=N'Full-Text Indexing',</p>
+<p>@step_id=1,</p>
+<p>@cmdexec_success_code=0,</p>
+<p>@on_success_action=1,</p>
+<p>@on_success_step_id=-1,</p>
+<p>@on_fail_action=2,</p>
+<p>@on_fail_step_id=-1,</p>
+<p>@retry_attempts=0,</p>
+<p>@retry_interval=0,</p>
+<p>@os_run_priority=0, @subsystem=N'TSQL',</p>
+<p>@command=N'USE [Monta_Backend]</p>
+<p>ALTER FULLTEXT CATALOG [FT_MontaPacking] REORGANIZE</p>
+<p>',</p>
+<p>@database_name=N'master',</p>
+<p>@flags=0</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId,
+@start_step_id = 1</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId,
+@name=N'FT_Montapacking Full-Text Indexing Catalog Zondag',</p>
+<p>@enabled=1,</p>
+<p>@freq_type=8,</p>
+<p>@freq_interval=1,</p>
+<p>@freq_subday_type=1,</p>
+<p>@freq_subday_interval=0,</p>
+<p>@freq_relative_interval=0,</p>
+<p>@freq_recurrence_factor=1,</p>
+<p>@active_start_date=20180722,</p>
+<p>@active_end_date=99991231,</p>
+<p>@active_start_time=43000,</p>
+<p>@active_end_time=235959,</p>
+<p>@schedule_uid=N'9d2b3571-472f-4a6e-94d6-ea1dfa636dbb'</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId,
+@server_name = N'(local)'</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>COMMIT TRANSACTION</p>
+<p>GOTO EndSave</p>
+<p>QuitWithRollback:</p>
+<p>IF (@@TRANCOUNT &gt; 0) ROLLBACK TRANSACTION</p>
+<p>EndSave:</p>
+<p>GO</p>
+<h6 id="section-1"></h6>
+<h6 id="syspolicy_purge_history">syspolicy_purge_history</h6>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Installatie-SQL-Enterprise-Cluster/media/image38.png" alt=""></p>
+<p>####### Verify that automation is enabled.</p>
+<p>IF (msdb.dbo.fn_syspolicy_is_automation_enabled() != 1)<br>
+BEGIN<br>
+RAISERROR(34022, 16, 1)<br>
+END</p>
+<p>####### Purge history.</p>
+<p>EXEC msdb.dbo.sp_syspolicy_purge_history</p>
+<p>####### Erase Phantom System Health Records.</p>
+<p>if ('$(ESCAPE_SQUOTE(INST))' -eq 'MSSQLSERVER') {$a =
+'\DEFAULT'} ELSE {$a = ''};<br>
+(Get-Item
+SQLSERVER:\SQLPolicy\$(ESCAPE_NONE(SRVR))$a).EraseSystemHealthPhantomRecords()</p>
+<p>####### Test Notify.</p>
+<p>raiserror ('test', 16, 1)</p>
+<h6 id="indexeren-montaportal-gestopt">Indexeren Montaportal gestopt</h6>
+<p>USE [msdb]</p>
+<p>GO</p>
+<p>/****** Object: Job [Indexeren Montaportal is gestopt] Script
+Date: 15-4-2021 15:57:29 ******/</p>
+<p>BEGIN TRANSACTION</p>
+<p>DECLARE @ReturnCode INT</p>
+<p>SELECT @ReturnCode = 0</p>
+<p>/****** Object: JobCategory [[Uncategorized (Local)]] Script
+Date: 15-4-2021 15:57:29 ******/</p>
+<p>IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE
+name=N'[Uncategorized (Local)]' AND category_class=1)</p>
+<p>BEGIN</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB',
+@type=N'LOCAL', @name=N'[Uncategorized (Local)]'</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>END</p>
+<p>DECLARE @jobId BINARY(16)</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_job @job_name=N'Indexeren
+Montaportal is gestopt',</p>
+<p>@enabled=1,</p>
+<p>@notify_level_eventlog=2,</p>
+<p>@notify_level_email=2,</p>
+<p>@notify_level_netsend=0,</p>
+<p>@notify_level_page=0,</p>
+<p>@delete_level=0,</p>
+<p>@description=N'No description available.',</p>
+<p>@category_name=N'[Uncategorized (Local)]',</p>
+<p>@owner_login_name=N'sa',</p>
+<p>@notify_email_operator_name=N'Support', @job_id = @jobId OUTPUT</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>/****** Object: Step [Check Index] Script Date: 15-4-2021
+15:57:29 ******/</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId,
+@step_name=N'Check Index',</p>
+<p>@step_id=1,</p>
+<p>@cmdexec_success_code=0,</p>
+<p>@on_success_action=1,</p>
+<p>@on_success_step_id=0,</p>
+<p>@on_fail_action=2,</p>
+<p>@on_fail_step_id=0,</p>
+<p>@retry_attempts=0,</p>
+<p>@retry_interval=0,</p>
+<p>@os_run_priority=0, @subsystem=N'TSQL',</p>
+<p>@command=N'USE Monta_Backend</p>
+<p>DECLARE @count INT</p>
+<p>DECLARE @counttwee INT</p>
+<p>DECLARE @Resultaat VARCHAR(MAX)</p>
+<p>DECLARE @Finalresultaat VARCHAR(MAX)</p>
+<p>DECLARE @CatalogName VARCHAR(MAX)</p>
+<p>SET @count = 1</p>
+<p>SET @counttwee = 0</p>
+<p>SET @CatalogName = ''FT_Montapacking''</p>
+<p>SET @FinalResultaat = 0</p>
+<p>WHILE @count&lt;= 60</p>
+<p>BEGIN</p>
+<p>WAITFOR DELAY ''00:00:01''</p>
+<p>SET @Resultaat = (SELECT
+FULLTEXTCATALOGPROPERTY(@CatalogName,\''PopulateCompletionAge'') as
+Date</p>
+<p>FROM sys.fulltext_catalogs)</p>
+<p>Print @Resultaat</p>
+<p>IF @Resultaat = 0</p>
+<p>BEGIN</p>
+<p>SET @FinalResultaat = @FinalResultaat + 1</p>
+<p>END</p>
+<p>Set @count = @Count + 1</p>
+<p>END</p>
+<p>Print @Finalresultaat</p>
+<p>If @Finalresultaat &lt; 60</p>
+<p>BEGIN Print ''Index OK''</p>
+<p>END</p>
+<p>ELSE</p>
+<p>BEGIN Print ''Index niet OK!''</p>
+<p>raiserror(''Indexeren Montaportal is gestopt!'', 16, 1)</p>
+<p>END',</p>
+<p>@database_name=N'Monta_Backend',</p>
+<p>@flags=0</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId,
+@start_step_id = 1</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId,
+@name=N'Elk uur',</p>
+<p>@enabled=1,</p>
+<p>@freq_type=4,</p>
+<p>@freq_interval=1,</p>
+<p>@freq_subday_type=8,</p>
+<p>@freq_subday_interval=1,</p>
+<p>@freq_relative_interval=0,</p>
+<p>@freq_recurrence_factor=0,</p>
+<p>@active_start_date=20210106,</p>
+<p>@active_end_date=99991231,</p>
+<p>@active_start_time=0,</p>
+<p>@active_end_time=235959,</p>
+<p>@schedule_uid=N'231f92a3-795b-4c35-b44a-ce81d70f44b0'</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId,
+@server_name = N'(local)'</p>
+<p>IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback</p>
+<p>COMMIT TRANSACTION</p>
+<p>GOTO EndSave</p>
+<p>QuitWithRollback:</p>
+<p>IF (@@TRANCOUNT &gt; 0) ROLLBACK TRANSACTION</p>
+<p>EndSave:</p>
+<p>GO</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

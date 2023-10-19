@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Facturatiemogelijkheden </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Facturatiemogelijkheden ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="facturatiemogelijkheden">Facturatiemogelijkheden</h1>
+
+<p>Op deze pagina staan verschillende diverse facturatie opties binnen Monta beschreven. Er is meer beschikbaar dan op deze pagina beschreven staat.</p>
+<h2 id="tarief-instellingen">Tarief instellingen</h2>
+<h3 id="value-added-service-orders">Value added service orders</h3>
+<p>Het 'Value added service orders' vinkje bij het tabblad Outbound is bedoelt voor het <strong>uitsluiten</strong> van verpakkingsorders. Verpakkingsorders worden dan <strong>niet</strong> meegerekend bij de arbeid van orders (orders, lines en items).</p>
+<h3 id="weekendtoeslag">Weekendtoeslag</h3>
+<p>Het is mogelijk om een toeslag te rekenen voor orders die op zaterdag of zondag verzonden worden.</p>
+<p>Er wordt rekening gehouden met orders die eigenlijk op een andere dag verzonden hadden moeten worden.</p>
+<p>De toeslag wordt gerekend als de geplande verzenddatum op zaterdag of zondag is en het ook daadwerkelijk op de geplande verzenddatum verzonden is.</p>
+<p>Je kunt deze toeslag in de tariefperiode instellen bij Outbound pick-pack kosten.</p>
+<h3 id="opslag-kosten">Opslag kosten</h3>
+<p>De opslag wordt elke week berekend in de nacht van woensdag op donderdag. Dat bleek een opslag hoeveelheid te geven die het weekgemiddelde het beste benaderd.</p>
+<h3 id="volume-gewicht-bedrag">Volume gewicht (bedrag)</h3>
+<p>Volume gewicht fee is een fee die op item basis berekend wordt. Dit is een manier om de pick pack van grote producten duurder te maken dan de pick pack van kleine producten. De toeslag komt bovenop de ingevulde tarieven bij pick pack. Kijk ook even hieronder, bij volume gewicht factor, dat is eigenlijk de aanbevolen manier om met volume gewicht te werken.</p>
+<h3 id="volume-gewicht-factor">Volume gewicht factor</h3>
+<p>Volume gewicht factor wordt gebruikt om zowel bij de Inbound, Retoruren als Outbound een factor toe te passen op de itemfee's. Hiermee kun je grote producten duurder maken en kleine producten goedkoper.</p>
+<p>Er wordt een factuurregel toegevoegd met de factor van het bedrag. Dus als je 20% korting wilt geven bij een volume gewicht categorie, moet je 0,8 invullen als factor.</p>
+<h3 id="verzender-tarieven">Verzender tarieven</h3>
+<p>Het instellen van verzender tarieven kan op verschillende manieren.</p>
+<h4 id="standaard">Standaard</h4>
+<p>Standaard wordt er gebruik gemaakt van gewicht staffels. Valt het gewicht van het verzonden pakket binnen de staffel zal dat tarief gerekend worden. Zie het voorbeeld hieronder, een pakket van PostNL binnen NL van 7kg zal dus €5 kosten.
+<img src="../../../Attachments/image-528610c0-cd90-46db-a200-e4b9d995b980.png" alt="image.png"></p>
+<h4 id="volume-gewicht">Volume gewicht</h4>
+<p>Het tarief kan ook berekend worden op basis van het volume gewicht van het verzonden pakket. Om dit te gebruiken moeten de volgende velden worden ingevuld: Gewicht Tot, Lengte, Breedte, Hoogte en Liters. Hieronder is te zien hoe dat ingesteld moet worden bij de verzender tarieven:
+<img src="../../../Attachments/image-eb4fd9e1-5a3a-490e-8f75-4d8bb5eaf6e9.png" alt="image.png"></p>
+<p>Let op:</p>
+<ul>
+<li>Gewicht Van hoeft niet ingevuld te worden als je gebruikt maakt van volume gewicht facturatie</li>
+<li>Geen van de velden (Lengte, Breedte, Hoogte) mag leeg gelaten worden. Ze zijn verplicht bij het gebruik van volume gewicht.</li>
+<li>Als je de combinatie verzender en land hebt waarvan er bij 1 geen en 1 wel volume gewicht is ingevuld zal dit niet werken. Hij zal dan altijd diegene pakken waar geen volume gewicht is ingevuld.</li>
+</ul>
+<p>Hoe wordt het tarief dan berekend?</p>
+<p>In het kort: Eerst wordt er bij de verzender opgevraagd of ze het verzonden pakket al gemeten en gewogen hebben, als dat zo is pakken we de informatie van de verzender, is dat nog niet beschikbaar gebruiken we de gegevens die we binnen Monta zelf hebben.</p>
+<p>Voor een uitgebreide uitleg, zie onderstaand diagram:
+<img src="../../../Attachments/volumewieght_flow-e90412a2-09aa-415e-9240-61829ea888f4.png" alt="volumewieght_flow.png">
+<em>MontaMoney = GoMonta</em> ↑</p>
+<h4 id="volume-gewicht-sleutel">Volume gewicht sleutel</h4>
+<p>Het factureren met een volume gewicht sleutel wordt alleen gebruikt als een verzender dit hanteert en het is aangegeven in de tariefsheet. De gehanteerde sleutel is per verzender verschillend en is ingesteld door IT.</p>
+<p>Het factureren van de volume gewicht sleutel werkt als volgt:</p>
+<ul>
+<li>Staat het vinkje 'Gebruik volume gewicht sleutel' aan, haal dan de volume gewicht sleutel op van de verzender.</li>
+<li>Het systeem controleert vervolgens of de afmetingen van de gebruikte drager of het grootste materiaal in de zending gebruikt moeten worden voor de verdere berekening.</li>
+<li>Het systeem gebruikt de gekozen afmetingen om de volgende formule uit te voeren: (=L* B *H in cm / Volume gewicht sleutel)</li>
+<li>Vervolgens wordt het resultaat van de formule vergeleken met het gewicht van het pakket. Hier wordt de grootste van de twee van gepakt. Dat wordt je volume gewicht.</li>
+<li>Het systeem gebruikt dat nieuwe (volume) gewicht om de rest van de tarieven te bepalen zoals dat normaal ook gaat.</li>
+</ul>
+<p>Let op! Als je de combinatie verzender en land hebt waarvan er bij 1 geen en 1 wel 'Gebruik volume gewicht sleutel' is aangevinkt zal dit niet werken. Er zal dan een error geschreven worden dat bij die combinatie alle volume gewicht sleutel vinkjes aangevinkt moeten worden. Daarnaast kan in de tariefsheet alleen het vinkje aangezet worden bij een verzender waarbij ook echt een volume gewicht sleutel is ingevoerd door IT.</p>
+<h4 id="toeslagen-en-boetes">Toeslagen en boetes</h4>
+<p>Bij Toeslagen/boetes is het tarief dat je invult, het percentage marge op de inkoopprijs. Wil je geen marge, dan vul je 0,00 in. Wil je bijvoorbeeld 8% marge, dan vul je 8,00 in. Let op! Toeslagen en boetes worden pas gefactureerd wanneer de facturen van de verzenders zijn ontvangen en ingelezen. Dit kan later zijn dan de porto wordt gefactureerd.</p>
+<h3 id="all-in-facturatie">All-in facturatie</h3>
+<p>De all-in tarieven worden toegepast per verzonden pakket. Dit is in te stellen onder het kopje 'Vervoerders' (GoMonta - Verkooptarieven). Daar kan per verzender een verdeling ingesteld worden waaruit het all-in tarief bestaat. De verdeling zal bestaan uit Porto, Arbeid, Verzendverpakking en Opslag (optioneel). De som van deze verdeling zal het totaalbedrag zijn die de klant op zijn factuur ziet staan en ook zal moeten betalen per zending.</p>
+<p>Het ingestelde all-in tarief zal er als volgt uit zien (Arbeid: €1, Porto: €3, Drager: €1 - Totaal: €5):
+<img src="../../../Attachments/image-96b2def8-b2d6-482c-9ba6-45c12a1be553.png" alt="image.png">
+Het is belangrijk om deze verdeling goed in te vullen zodat de kosten op de juiste posten worden weggeschreven.</p>
+<p>Op de factuur zal dit er zo uit zien (grijze regels zal de klant niet zien):
+<img src="../../../Attachments/image-9f90ac96-722d-4844-a085-c1f5183a535f.png" alt="image.png"></p>
+<p><strong>Let op!</strong> Als er bij een verzender tarief een all-in tarief is ingesteld zal dit bij alle andere verzender tarieven ook ingesteld moeten worden.</p>
+<p><strong>Let op!</strong> Het gebruik van opslag bij all-in is optioneel. Als hier een tarief is ingesteld zal de opslag per order worden doorberekend en <strong>niet</strong> meer zoals op de gebruikelijke manier. Houd er rekening mee dat een tarief van 0 euro ook een ingesteld tarief is. Wil je dat de opslag niet all-in is, laat het veld all-in opslag dan helemaal leeg.</p>
+<h3 id="rma-uitbetalingen">RMA uitbetalingen</h3>
+<p>De klant heeft in de MontaPortal ingesteld hoeveel de consument betaald voor zijn RMA zending. Deze betalingen doet de consument via het betaalsysteem Mollie. Bij het maken van de factuur geven wij deze bedragen terug aan de klant.</p>
+<p>Dit gaat als volgt bij het factureren:</p>
+<ol>
+<li>Wij maken een factuur aan voor de klant</li>
+<li>Op dat moment vragen we alle betalingen, binnen de periode van de factuur, voor die specifieke klant, op bij Mollie en maken hier een totaal bedrag van</li>
+<li>Vervolgens berekenen we alle transactiekosten die gemaakt zijn bij Mollie, die transactiekosten trekken we van het totaal bedrag af wat het uiteindelijke bedrag vormt wat we terug geven aan de klant</li>
+</ol>
+<h3 id="postonderzoeken-uitbetalingen">Postonderzoeken uitbetalingen</h3>
+<p>Postonderzoeken worden automatisch gefactureerd op een factuur. Postonderzoeken worden uitbetaald als er in GoMonta bij een postonderzoek een claimbedrag is ingevuld en de status Gesloten of Claim accepted heeft. Als een claim bedrag is gefactureerd kan deze in GoMonta niet meer worden aangepast. Export 16 is beschikbaar om per eorder te bekijken welk claim bedrag er is uitbetaald.</p>
+<h3 id="korting-bij-extra-verzenddagen">Korting bij extra verzenddagen</h3>
+<p>Voor magazijnen is het prettig als niet alle orders dezelfde dag verzonden hoeven te worden. Om dit te stimuleren is het mogelijk korting te geven op orders met extra verzenddagen.</p>
+<p>Extra verzenddagen kunnen op de volgende manier ingesteld worden bij orders:</p>
+<ol>
+<li>Bij het kanaal kan ingesteld worden dat alle orders van dat kanaal extra verzenddagen krijgen.</li>
+<li>Vanuit de koppeling kunnen extra verzenddagen worden meegegeven. Zie toelichting hieronder.</li>
+</ol>
+<h4 id="extra-verzenddagen-vanuit-de-koppeling">Extra verzenddagen vanuit de koppeling</h4>
+<p>Als de webshop door de consument wil laten kiezen voor extra verzenddagen moet het vanuit de koppeling worden meegegeven.</p>
+<p>Dit kan op twee manieren:</p>
+<ol>
+<li>via een <a href="../../../Algemene-informatie/Koppelingen/1.-Koppelingen-dataflow#verzenderkeuze-mapping">verzenderkeuze mapping</a>.</li>
+<li>via de Monta checkout. Zie <a href="../../../Algemene-informatie/Checkout-module#functionaliteiten">checkout - functionaliteiten - korting bij uitgestelde leverdag</a>. <strong>LET OP: de korting bij extra verzenddagen die bij de facturatie kan worden ingesteld werkt nog niet voor orders die via de Monta checkout binnenkomen. Dit omdat de orders met een uitgestelde verzenddag vanuit de Monta checkout altijd in Etransit komen omdat consument een specifieke afleverdag kiest. Er wordt aan gewerkt om ook in de checkout een 'datum range' optie te maken (bijv 2-5 werkdagen) waarbij de korting wel toegepast wordt.</strong></li>
+</ol>
+<h2 id="tarief-periode-instellingen">Tarief periode instellingen</h2>
+<h3 id="tariefperiode-per-magazijn">Tariefperiode per magazijn</h3>
+<p>Het is mogelijk om voor een relatie per magazijn andere tarieven toe te passen. Dit doe je door een tariefperiode te koppelen aan een magazijn. Het koppelen doe je in GoMonta bij het aanmaken of aanpassen van een tariefperiode. Gebruik deze optie alleen als een klant in meerdere magazijnen ligt en verschillende tarieven hanteert.</p>
+<p>Voorbeeld: <em>Een klant ligt in Breda en Den Bosch. In Breda kost het verwerken van een order 2 euro en in Den Bosch 2 euro en 50 cent.</em></p>
+<h3 id="status">Status</h3>
+<p>Een tarief periode kan vier verschillende statussen hebben. De statussen zijn:</p>
+<ol>
+<li>Open</li>
+<li>Afgewezen</li>
+<li>Geaccepteerd</li>
+<li>Gearchiveerd</li>
+</ol>
+<p>Een tarief periode kan pas gebruikt worden als hij de status 'Geaccepteerd' heeft. Een nieuw aangemaakte of pas aangepaste tarief periode zal de status 'Open' krijgen, waarna hij door iemand controleert en geaccepteerd moet worden. Het is erg belangrijk dat bij de controle goed wordt gekeken of de juiste tarieven zijn ingevuld. Mocht dit niet het geval zijn moet aan de tarief periode de status 'Afgewezen' worden gegeven, waarna er tarieven worden aangepast en opnieuw gecontroleerd.</p>
+<h3 id="is-montawms">Is MontaWMS</h3>
+<p>Wanneer het vinkje IsMontaWms is aangevinkt bij een sales invoice tarief periode, zal bij sales invoices die in die periode gemaakt worden ook worden opgeslagen dat het gaat om een MontaWMS sales invoice.
+De sales invoice is niet anders dan andere sales invoices, het enige verschil is dat als de financiële details naar het boekhoudpakket Exact worden doorgezet, dat 1 grootboek verschillend is. Waar bij reguliere sales invoices een deel van de omzet op arbeid (grootboek 8000) komt, zals bij een MontaWMS sales invoice die omzet op licenties (grootboek 8410) komen.</p>
+<h3 id="is-montawms-warehouseowner">Is MontaWms WarehouseOwner</h3>
+<p>Wanneer een WMS klant vanuit zijn magazijn orders verzend van andere en/of meerdere relaties kan met de optie &quot;Is MontaWMS warehouse owner&quot; aangegeven worden.
+Als dit aan staat worden de orders van de verschillende relaties op 1 factuur gezet worden richting de betreffende WMS klant.</p>
+<p>De orders worden bij de verschillende relaties als gefactureerd gemarkeerd.
+<img src="../../../Attachments/MontaWmsWarehouseOwner-527cc25e-5059-4cba-9aa1-0ea49814afc9.png" alt="MontaWmsWarehouseOwner.png"></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+﻿<Orders>
+  <Order>
+    <WebshopOrderID>123456</WebshopOrderID>
+    <Ordered>2022-01-01</Ordered>
+    <ShippingDate>2022-01-01</ShippingDate>
+    <ShippingDateIsDeadline>true</ShippingDateIsDeadline>
+    <OrderInvoiceDebtorNumber>26321</OrderInvoiceDebtorNumber>
+    <ShippingAddressCompany></ShippingAddressCompany>
+    <ShippingAddressFirstName />
+    <ShippingAddressMiddleName />
+    <ShippingAddressLastName>Test Kees</ShippingAddressLastName>
+    <ShippingAddressStreetOrAddress1>Papland</ShippingAddressStreetOrAddress1>
+    <ShippingAddressHouseNumberOrAddress2>16</ShippingAddressHouseNumberOrAddress2>
+    <ShippingAddressPostalCode>4206 CL</ShippingAddressPostalCode>
+    <ShippingAddressCity>Gorinchem</ShippingAddressCity>
+    <ShippingAddressState />
+    <ShippingAddressCountry>NL</ShippingAddressCountry>
+    <ShippingAddressEmail>pm@monta.nl</ShippingAddressEmail>
+    <ShippingAddressPhone>+31612345678</ShippingAddressPhone>
+    <InvoiceAddressCompany></InvoiceAddressCompany>
+    <InvoiceAddressFirstName />
+    <InvoiceAddressMiddleName />
+    <InvoiceAddressLastName>Test Kees</InvoiceAddressLastName>
+    <InvoiceAddressStreetOrAddress1>Papland</InvoiceAddressStreetOrAddress1>
+    <InvoiceAddressHouseNumberOrAddress2>16</InvoiceAddressHouseNumberOrAddress2>
+    <InvoiceAddressHouseNumberAdditionOrAdress3></InvoiceAddressHouseNumberAdditionOrAdress3>
+    <InvoiceAddressPostalCode>4206 CL</InvoiceAddressPostalCode>
+    <InvoiceAddressCity>Gorinchem</InvoiceAddressCity>
+    <InvoiceAddressState />
+    <InvoiceAddressCountry>NL</InvoiceAddressCountry>
+    <InvoiceAddressEmail>pm@monta.nl/InvoiceAddressEmail>
+    <InvoiceAddressPhone>+31612345678</InvoiceAddressPhone>
+    <CommunicationLanguage>NL</CommunicationLanguage>
+    <References>
+      <Reference>SO6861645</Reference>
+    </References>
+    <AllowedShipperCodes>
+      <AllowedShipperCode>PostNL</AllowedShipperCode>
+    </AllowedShipperCodes>
+    <ShipperOptions />
+    <Lines>
+      <Line>
+        <Sku>123456</Sku>
+        <Quantity>1</Quantity>
+        <Description>L SHIRT Black</Description>
+        <Reference>1</Reference>
+        <Delete>false</Delete>
+      </Line>
+      <Line>
+        <Sku>654321</Sku>
+        <Quantity>1</Quantity>
+        <Description>M SHIRT Red</Description>
+        <Reference>2</Reference>
+        <Delete>false</Delete>
+      </Line>
+    </Lines>
+    <Delete>false</Delete>
+  </Order>
+</Orders>

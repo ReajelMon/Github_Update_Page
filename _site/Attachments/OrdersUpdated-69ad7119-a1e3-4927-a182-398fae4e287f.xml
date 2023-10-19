@@ -1,0 +1,68 @@
+﻿<OrdersUpdated xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OrderUpdated>
+    <QueueItemId>29697832</QueueItemId>
+    <MontaEorderId>104772792</MontaEorderId>
+    <WebshopOrderId>123456</WebshopOrderId>
+    <Reference>REF888387</Reference>
+    <Origin>demoshop.com</Origin>
+    <ConsumerDetails>
+      <ShippingAddressCountry>NL</ShippingAddressCountry>
+      <InvoiceDebtorNumber>26321</InvoiceDebtorNumber>
+    </ConsumerDetails>
+    <Quarantaine>false</Quarantaine>
+    <Ordered>2022-01-01:00:00</Ordered>
+    <Received>2022-01-01:00:00.000</Received>
+    <Backorder>false</Backorder>
+    <Blocked>false</Blocked>
+    <BlockedMessage xsi:nil="true" />
+    <UpdateCauseCode>Received</UpdateCauseCode>
+    <Shipped>false</Shipped>
+    <Deleted>false</Deleted>
+    <Queued>true</Queued>
+    <Picking>false</Picking>
+    <Returned>false</Returned>
+    <StatusCode>Queued</StatusCode>
+    <DeliveryStatusId xsi:nil="true" />
+    <DeliveryStatusDescription xsi:nil="true" />
+    <ShipperId>15</ShipperId>
+    <ShipperCode>PostNL</ShipperCode>
+    <ShipperDescription>PostNL</ShipperDescription>
+    <TrackAndTraceCode xsi:nil="true" />
+    <TrackAndTraceLink xsi:nil="true" />
+    <PartialShipmentParentOrSelfWebshopOrderId>123456</PartialShipmentParentOrSelfWebshopOrderId>
+    <AllPartialShipmentsShipped>true</AllPartialShipmentsShipped>
+    <ShippedDateTime xsi:nil="true" />
+    <EstimatedDeliveryFrom>2022-01-02T00:00:00</EstimatedDeliveryFrom>
+    <EstimatedDeliveryTo>2022-01-02T00:00:00</EstimatedDeliveryTo>
+    <ShipperOptions />
+    <Lines>
+      <Line>
+        <Sku>123456</Sku>
+        <Quantity>1</Quantity>
+        <WebshopOrderLineId>1</WebshopOrderLineId>
+        <Backorder>false</Backorder>
+        <HasBeenBackorder>false</HasBeenBackorder>
+        <Description>L SHIRT Black</Description>
+        <IsAddition>false</IsAddition>
+        <Barcodes>
+          <Barcode>3426470285123</Barcode>
+      </Line>
+      <Line>
+        <Sku>654321</Sku>
+        <Quantity>1</Quantity>
+        <WebshopOrderLineId>2</WebshopOrderLineId>
+        <Backorder>false</Backorder>
+        <HasBeenBackorder>false</HasBeenBackorder>
+        <Description>M SHIRT Red</Description>
+        <IsAddition>false</IsAddition>
+        <Barcodes>
+          <Barcode>3016667242123</Barcode>
+        </Barcodes>
+      </Line>
+    </Lines>
+    <LinesDeleted />
+    <Colli />
+    <Events />
+    <ProductSerials />
+  </OrderUpdated>
+</OrdersUpdated>

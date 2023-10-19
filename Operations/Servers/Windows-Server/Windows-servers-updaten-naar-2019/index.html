@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Windows servers updaten naar 2019 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Windows servers updaten naar 2019 ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="windows-servers-updaten-naar-2019">Windows servers updaten naar 2019</h1>
+
+<ul>
+<li><p>Log in op de Windows server welke ge-upgrade dient te worden naar
+Windows Server 2019;</p>
+</li>
+<li><p>Open een opdrachtprompt, ga naar c:\Windows\system32 en typ
+systeminfo.exe;</p>
+</li>
+</ul>
+<p>Kopieer, plak en bewaar de resulterende systeeminformatie ergens buiten
+het apparaat;</p>
+<ul>
+<li><p>Typ <strong>ipconfig / all</strong> in de opdrachtprompt en kopieer en plak de
+resulterende configuratiegegevens op dezelfde locatie als hierboven;</p>
+</li>
+<li><p>Open de Register-editor, ga naar de
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion-component
+en kopieer en plak de Windows Server BuildLabEx (versie) en
+EditionID (editie) op dezelfde locatie als hierboven.</p>
+</li>
+<li><p>Deinstalleer SentinelOne vanuit Dashboard SentinelOne</p>
+</li>
+<li><p>Nadat al de Windows Server-gerelateerde informatie is verzameld,
+maak je via vSphere een snapshot van de desbetreffende machine;</p>
+</li>
+<li><p>Verwijder via &quot;Device Manager&quot; de display
+driver;<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Windows-servers-naar-2019-updaten/media/image1.png" alt=""></p>
+</li>
+<li><p>Koppel via vSphere de installatie CD van Windows Server 2019 aan de
+machine welke te vinden is in de EIN-DATASTORE-ISO en
+ROT-DATASTORE-ISO;</p>
+</li>
+<li><p>Zoek de installatiemedia van Windows Server 2019 in &quot;Deze Computer&quot;
+en selecteer &quot;setup.exe&quot;;</p>
+</li>
+</ul>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Windows-servers-naar-2019-updaten/media/image2.png" alt=""></p>
+<ul>
+<li>Selecteer &quot;Ja&quot; om het installatieproces te starten;</li>
+</ul>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Windows-servers-naar-2019-updaten/media/image3.png" alt=""></p>
+<ul>
+<li>Selecteer voor apparaten met internetverbinding de optie &quot;Updates,
+stuurprogramma's en optionele functies downloaden (aanbevolen)&quot; en
+klik vervolgens op &quot;Volgende&quot;;</li>
+</ul>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Windows-servers-naar-2019-updaten/media/image4.png" alt=""></p>
+<p>-</p>
+<ul>
+<li>Selecteer de Windows Server 2019-editie die geïnstalleerd dient te
+worden en dan altijd (Desktop Experience) zodat de GUI geïnstalleerd
+wordt.<br>
+Selecteer vervolgens &quot;Volgende&quot;.</li>
+</ul>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Windows-servers-naar-2019-updaten/media/image5.png" alt=""></p>
+<ul>
+<li>Selecteer &quot;Accepteren&quot; om de voorwaarden van de licentieovereenkomst
+te accepteren;</li>
+</ul>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Windows-servers-naar-2019-updaten/media/image6.png" alt=""></p>
+<ul>
+<li>Selecteer &quot;Persoonlijke bestanden en apps behouden&quot; om ervoor te
+kiezen een in-place upgrade uit te voeren en selecteer vervolgens
+&quot;Volgende&quot;;</li>
+</ul>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Windows-servers-naar-2019-updaten/media/image7.png" alt=""></p>
+<ul>
+<li>Nadat &quot;Setup&quot; het apparaat heeft geanalyseerd, wordt er gevraagd om
+door te gaan met de upgrade door &quot;Installeren&quot; te selecteren;</li>
+</ul>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Windows-servers-naar-2019-updaten/media/image8.png" alt=""></p>
+<ul>
+<li><p>De in-place upgrade start en toont het scherm Upgrading Windows met
+de voortgang. Nadat de upgrade is voltooid, wordt de server opnieuw
+opgestart.<br>
+Mocht de upgrade blijven hangen dan kan het snapshot terug gezet
+worden en dan kan het nogmaals geprobeerd worden waarbij Windows
+Defender gedeinstalleerd wordt. Zie de bijlage.</p>
+</li>
+<li><p>Nadat de upgrade is voltooid, moet Windows Server 2019 opnieuw
+geactiveerd worden. Dit kan uitgevoerd worden middels het invoeren
+van één van de Server 2019 license keys welke te vinden zijn in
+Password State;</p>
+</li>
+<li><p>Voer Windows Updates uit.</p>
+</li>
+<li><p>Pas vervolgens de huidige OS-versie bij van de desbetreffende server
+in
+&quot;<a href="https://teams.microsoft.com/l/file/90502A37-C0F3-4A64-A707-D6B86866083F?tenantId=00e56f3c-7bb6-4f29-81dd-0655870d740b&amp;fileType=xlsx&amp;objectUrl=https%3A%2F%2Fmontapacking.sharepoint.com%2Fsites%2FIT-Support%2FGedeelde%20%20documenten%2FNetwerk%2FIP_lijst.xlsx&amp;baseUrl=https%3A%2F%2Fmontapacking.sharepoint.com%2Fsites%2FIT-Support&amp;serviceName=teams&amp;threadId=19:7d40b37899d24dcb9cf1b4d55ceb5b57@thread.skype&amp;groupId=25a2916b-1d17-4042-a0b5-eb85502e6b30">IP-lijst</a>&quot;
+tabblad<br>
+&quot;NLDC | MP-IP-Lijst&quot; en in VMware onder &quot;Edit settings van VM &gt;
+VM Options &gt; General. Dit kan alleen als de server uit staat.</p>
+</li>
+<li><p>Herinstalleer SentinelOne</p>
+</li>
+</ul>
+<h3 id="bijlage-uninstall-windows-defender">Bijlage Uninstall Windows Defender</h3>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Windows-servers-naar-2019-updaten/media/image9.png" alt=""></p>
+<h3 id="check-windows-defender-is-running-on-windows-server-with-powershell">Check Windows Defender is running on Windows Server with PowerShell</h3>
+<p>If you want to check the Windows Defender status with <strong>PowerShell</strong>,
+use
+the <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-service?view=powershell-7">Get-Service</a> cmdlet.</p>
+<p>PS C:\&gt; Get-Service -Name WinDefend</p>
+<p>Status Name DisplayName</p>
+<p>------ ---- -----------</p>
+<p>Running WinDefend Windows Defender Service</p>
+<p>Copy</p>
+<p>We can see that Windows Defender is running on Windows Server. In the
+next step, we will remove Windows Defender on Windows Server.</p>
+<h3 id="section"></h3>
+<h3 id="uninstall-windows-defender-on-windows-server">Uninstall Windows Defender on Windows Server</h3>
+<p>Run PowerShell as administrator. Make use of
+the <a href="https://docs.microsoft.com/en-us/powershell/module/servermanager/uninstall-windowsfeature">Uninstall-WindowsFeature</a> cmdlet.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Windows-servers-naar-2019-updaten/media/image10.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-Windows-servers-naar-2019-updaten/media/image11.png" alt="Afbeelding met tekst, schermafbeelding, monitor Automatisch
+gegenereerde
+beschrijving"></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

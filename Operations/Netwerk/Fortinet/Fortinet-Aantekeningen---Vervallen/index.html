@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Fortinet Aantekeningen   Vervallen </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Fortinet Aantekeningen   Vervallen ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="fortinet-aantekeningen---vervallen">Fortinet Aantekeningen   Vervallen</h1>
+
+<h2 id="inhoudsopgave">Inhoudsopgave</h2>
+<p><a href="#VPN-met-Sophos-in-DC">VPN met Sophos in DC</a></p>
+<h2 id="vpn-met-sophos-in-dc">VPN met Sophos in DC</h2>
+<p>Voor onderstaande acties is het heel belangrijk om het juiste subnet te kiezen bij een VLAN.<br>
+Dus bijvoorbeeld voor DC-LAN is het netwerk 10.10.202.0/24. Als je 10.10.202.0/23 invult dan gaat de VPN tunnel niet werken.</p>
+<p>Allereerst moet er een IP Sec tunnel tussen het management-VLAN van de Fortigate op locatie naar het LAN in het datacentre gemaakt worden zodat de Fortigate middels de FortiManager beheerd kan worden.</p>
+<p>Dit betekent dus dat bij de VPN Tunnel de remote gateway moet zijn ingesteld, een preshared key ingevuld, voor de phase 1 het algoritme de DH-groep moet zijn gekozen.<br>
+Vervolgens moet de Phase 2 selector &quot;100-management -&gt; DC-LAN&quot; zijn toegevoegd.
+Aan de kant van het DC moet uiteraard ook de bijbehorende VPN gemaakt zijn met LOC_DC_Monta_Netw (10.10.202.0/24) en Loc_DC_DMZ-WEB_Netw (192.168.201.0/24).<br>
+Daarna kunnen er vanuit de Fortimanger Phase 2 selectors aan de VPN Tunnel toegevoegd worden.<br>
+De selectors kunnen alleen per stuk worden aangemaakt (dus VLAN naar VLAN) en niet met Address-groepen.
+Deze dienen aangemaakt te worden in de Fortimanager onder &quot;Device Settings \ device \ VPN \ Ipsec phase 2&quot;.</p>
+<p><img src="../../../../Attachments/image-f309aa8b-c780-4c6e-bbf0-d31655e4483a.png" alt="image.png"></p>
+<p>De details zijn dan:</p>
+<p><img src="../../../../Attachments/image-5703889a-d851-41d3-b026-dabc30bd6297.png" alt="image.png">
+“Auto Key Keep Alive” aanzetten is heel belangrijk, anders verbreekt de VPN na 43200 seconden (12 uur).\</p>
+<p>LET OP bij het Named-Address moet dan wel de per-device-mapping ingevuld zijn als je die in de Phase 2 Selector gaat gebruiken !!</p>
+<p>Via Install Wizard - Device Settings kun je ze dan deployen naar de Fortigate.</p>
+<p><img src="../../../../Attachments/image-caf54b30-6323-470d-b19a-708697eacd98.png" alt="image.png"></p>
+<p>Via &quot;View Installation Log&quot; is te zien wat er wordt uitgevoerd.</p>
+<p><img src="../../../../Attachments/image-3fdb0671-be1d-43bc-9461-d09a5b1fd7a2.png" alt="image.png"></p>
+<p>Op de Fortigate gaat het er dan bijvoorbeeld als volgt uit zien :</p>
+<p><img src="../../../../Attachments/image-c189d94e-dd2b-4de5-8240-b6bdc0da87c0.png" alt="image.png"><br>
+Op de Sophos bewust geen &quot;Automatic Firewall rules aanzetten.
+<img src="../../../../Attachments/image-53ca31ce-8f1e-40c4-9057-e1a3c28a16c8.png" alt="image.png">
+<img src="../../../../Attachments/image-f1d33ab5-c5d3-44de-b152-5ea8b6534dab.png" alt="image.png"><br>
+Maak in de FortiManager onder Firewall Objects / Addresses voor alle locatie-VLAN's de adressen aan met een Per-Device mapping.
+<img src="../../../../Attachments/image-58e8da6a-2dc6-4a08-836a-6fdaced4b865.png" alt="image.png"><br>
+De groepen zijn eigenlijk niet zo belangrijk omdat het toch niet mogelijk bleek om bij phase 2 selectors groepen te gebruiken.</p>
+<p>Als de phase2 - selectors zijn toegevoegd en de IP-sec-instellingen op de DC-ROU01 zijn goedgezet dan kunnen de</p>
+<p><img src="../../../../Attachments/image-3e9cb0a5-56a4-41d9-b00f-65465fdaac1e.png" alt="image.png"></p>
+<p>Er is een VPN_Sophos_DC2 aangemaakt die helemaal gelijk is aan bovenstaande met dit verschil dat deze op een andere interface is aangemaakt dan de glas-interface.<br>
+Als er DSL beschikbaar is gebruik dan DSL anders 4G.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

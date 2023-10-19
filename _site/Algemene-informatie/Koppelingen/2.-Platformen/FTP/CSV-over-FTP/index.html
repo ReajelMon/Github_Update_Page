@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>CSV over FTP </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="CSV over FTP ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../../index.html">
+                <img id="logo" class="svg" src="../../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="csv-over-ftp">CSV over FTP</h1>
+
+<h2 id="csv-over-ftp-1">CSV over FTP</h2>
+<p>Het is mogelijk om bij monta data via CSV over FTP uit te wisselen.
+Monta heeft een standaard koppeling om deze data uit te wisselen. De bestanden kunnen op de server van de klant, of op de server van Monta worden geplaatst.</p>
+<h3 id="onderdelen-koppeling">Onderdelen koppeling:</h3>
+<p>De koppeling van Monta heeft een aantal standaard dataflows:</p>
+<ul>
+<li>Import product information from CSV or Excel files from FTP</li>
+<li>CSV with stock of products with changed stock to FTP</li>
+<li>CSV with stock of all products to FTP</li>
+<li>Order status shipped CSV to FTP</li>
+<li>Import orders from CSV or Excel files from FTP</li>
+<li>Import inbound forecasts from CSV or Excel files from FTP</li>
+</ul>
+<br>
+<h2 id="beschikbare-data">Beschikbare data:</h2>
+<p>Per dataflow kan bepaalde data worden uitgewisseld. Hieronder is per dataflow aangegeven welke data er kan worden uitgewisseld.</p>
+<details closed="">
+<summary>Product informatie import</summary>
+* Klant plaatst data op server.
+<table>
+<thead>
+<tr>
+<th>Column type</th>
+<th>Supported column names</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sku</td>
+<td>SKU, Sku, sku</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Name, Description, Article_Description, NAME</td>
+</tr>
+<tr>
+<td>Barcode</td>
+<td>EAN, Ean, Barcode, EANcode, CeEan, secondarybarcode, EAN2, PrimaryBarcode, SecondaryBarcode</td>
+</tr>
+<tr>
+<td>Sell price</td>
+<td>Price, Sell price</td>
+</tr>
+<tr>
+<td>Purchase price</td>
+<td>Purchase price, Cost, Costprice, inkoopprijs, Price_manufacturer, PurchasePrice</td>
+</tr>
+<tr>
+<td>Supplier product code</td>
+<td>Supplier product code, Supplier sku, SupplierProductCode</td>
+</tr>
+<tr>
+<td>Supplier title</td>
+<td>Supplier, Manufacturer</td>
+</tr>
+<tr>
+<td>Image URL</td>
+<td>Image, ImageUrl</td>
+</tr>
+<tr>
+<td>Minimum stock</td>
+<td>Minimum stock, MinStock</td>
+</tr>
+<tr>
+<td>CustomField</td>
+<td>CustomField</td>
+</tr>
+<tr>
+<td>HSCode</td>
+<td>HS_code, douanecode</td>
+</tr>
+<tr>
+<td>CountryOfOrigin</td>
+<td>Country_of_origin, country_of_manufacture</td>
+</tr>
+</tbody>
+</table>
+<br>
+</details>
+<details closed="">
+<summary>Order Import </summary>
+* Klant plaatst data op server.
+<table>
+<thead>
+<tr>
+<th>Column type</th>
+<th>Supported column names</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WebshopOrderID</td>
+<td>WebshopOrderId, Ordernumber, order_number, OrderNumber, bestelnummer, deliveryname, ShipmentRefNo, Ordernummer, order_Number</td>
+</tr>
+<tr>
+<td>Reference</td>
+<td>Klant order nummer, marketplace_order_id, Sales order nummer, OrderHumanNumber, Reference, MagentoReferentie, Referentie</td>
+</tr>
+<tr>
+<td>OrderedDateTime</td>
+<td>Orderdate</td>
+</tr>
+<tr>
+<td>Origin</td>
+<td>storeid, PurchasedWebsite, Origin, webshop_name, Dropshipper</td>
+</tr>
+<tr>
+<td>ShippingAddressCompany</td>
+<td>ShippingCompany, CompanyName, bedrijfsnaam, shipping_company</td>
+</tr>
+<tr>
+<td>ShippingAddressFirstName</td>
+<td>ShippingFirstName, FirstName, first_name, shipping_firstname</td>
+</tr>
+<tr>
+<td>ShippingAddressMiddleName</td>
+<td>ShippingMiddleName</td>
+</tr>
+<tr>
+<td>ShippingAddressLastName</td>
+<td>ShippingLastName, last_name, tav, deliverycontactname, LastName, Klant, shipping_lastname</td>
+</tr>
+<tr>
+<td>ShippingAddressStreetOrAddress1</td>
+<td>ShippingAddress1, ShippingStreet, deliveryaddress, Street, Adres, address, adres, shipping_street</td>
+</tr>
+<tr>
+<td>ShippingAddressHouseNumberOrAddress2</td>
+<td>ShippingAddress2, ShippingHouseNo, HouseNumber, Huisnummer, shipping_street2</td>
+</tr>
+<tr>
+<td>ShippingAddressHouseNumberAdditionOrAdress3</td>
+<td>ShippingAddress3, ShippingHouseNoAddition, HouseNumberExt, shipping_street3</td>
+</tr>
+<tr>
+<td>ShippingAddressPostalCode</td>
+<td>ShippingPostalCode, ShippingPostcode, deliveryzipcode, Zipcode, Postcode, zip, postcode, shipping_postcode</td>
+</tr>
+<tr>
+<td>ShippingAddressCity</td>
+<td>ShippingCity, deliverycity, City, Plaats, city, woonplaats, shipping_city</td>
+</tr>
+<tr>
+<td>ShippingAddressState</td>
+<td>ShippingState, shipping_region</td>
+</tr>
+<tr>
+<td>ShippingAddressCountry</td>
+<td>ShippingCountry, deliverycountry, Country, Landcode, country_name, Land, shipping_country_id</td>
+</tr>
+<tr>
+<td>ShippingAddressEmail</td>
+<td>ShippingE-Mail, ShippingEmail, Email, shipping_email, CustomerEmail</td>
+</tr>
+<tr>
+<td>ShippingAddressPhone</td>
+<td>postnl_mobile_phone_number, ShippingPhone, Mobiel, Telefoon, shipping_telephone</td>
+</tr>
+<tr>
+<td>InvoiceAddressCompany</td>
+<td>InvoiceCompany, BillingCompany, bedrijfsnaam, billing_company</td>
+</tr>
+<tr>
+<td>InvoiceAddressFirstName</td>
+<td>InvoiceFirstName, BillingFirstName, billing_firstname</td>
+</tr>
+<tr>
+<td>InvoiceAddressMiddleName</td>
+<td>InvoiceMiddleName, BillingMiddleName</td>
+</tr>
+<tr>
+<td>InvoiceAddressLastName</td>
+<td>InvoiceLastName, BillingLastName, billing_lastname</td>
+</tr>
+<tr>
+<td>InvoiceAddressStreetOrAddress1</td>
+<td>InvoiceAddress1, BillingAddress1, BillingStreet, InvoiceStreet, adres, billing_street</td>
+</tr>
+<tr>
+<td>InvoiceAddressHouseNumberOrAddress2</td>
+<td>InvoiceAddress2, BillingAddress2, BillingHouseNo, InvoiceHouseNo, billing_street2</td>
+</tr>
+<tr>
+<td>InvoiceAddressHouseNumberAdditionOrAdress3</td>
+<td>InvoiceAddress3, BillingAddress3, BillingHouseNoAddition, InvoiceHouseNoAddition, billing_street3</td>
+</tr>
+<tr>
+<td>InvoiceAddressPostalCode</td>
+<td>InvoicePostcode, BillingPostcode, postcode, billing_postcode</td>
+</tr>
+<tr>
+<td>InvoiceAddressCity</td>
+<td>InvoiceCity, BillingCity, woonplaats, billing_city</td>
+</tr>
+<tr>
+<td>InvoiceAddressState</td>
+<td>InvoiceState, BillingState, billing_region</td>
+</tr>
+<tr>
+<td>InvoiceAddressCountry</td>
+<td>InvoiceCountry, BillingCountry, Land, billing_country_id</td>
+</tr>
+<tr>
+<td>InvoiceAddressEmail</td>
+<td>InvoiceE-Mail, BillingE-Mail, BillingEmail, InvoiceEmail, email, billing_email</td>
+</tr>
+<tr>
+<td>InvoiceAddressPhone</td>
+<td>InvoicePhone, BillingPhone, billing_telephone</td>
+</tr>
+<tr>
+<td>OrderInvoiceDebtorNumber</td>
+<td>Debtornummer, CustomerID</td>
+</tr>
+<tr>
+<td>DeliveryDateRequested</td>
+<td>postnl_delivery_date, delivery_date_requested</td>
+</tr>
+<tr>
+<td>ShippingDeadline</td>
+<td>Uiterlijke_verzenddatum</td>
+</tr>
+<tr>
+<td>AllowedShipperCode</td>
+<td>ShipperInfo, ShippingMethod, Shippercode, IsPickupLocation, ShippingOptionsShipperCode</td>
+</tr>
+<tr>
+<td>ShipperOptionCode</td>
+<td>postnl_type</td>
+</tr>
+<tr>
+<td>InvoicePaymentMethod</td>
+<td>PaymentMethod, payment_method_title</td>
+</tr>
+<tr>
+<td>InvoiceShippingTotalExclTax</td>
+<td>ShippingCost</td>
+</tr>
+<tr>
+<td>InvoiceTotalInclTax</td>
+<td>GrandTotal, order_grand_total</td>
+</tr>
+<tr>
+<td>InvoiceTotalTax</td>
+<td>TotalTax, order_tax_amount</td>
+</tr>
+<tr>
+<td>OrderLineSku</td>
+<td>ArticleSKU, ItemSKU, SKU, productsku, ProductCode, Artikelcode, order_item_sku, item_sku</td>
+</tr>
+<tr>
+<td>OrderLineQuantity</td>
+<td>OrderedQty, ItemOrdered, Aantal, amount, Colli, product_quantity, item_qty</td>
+</tr>
+<tr>
+<td>OrderLineDescription</td>
+<td>ItemName, order_item_name, item_name</td>
+</tr>
+<tr>
+<td>OrderLineReference</td>
+<td>Sales order regel nummer</td>
+</tr>
+<tr>
+<td>InvoiceLinePriceExTax</td>
+<td>line_price_excl_VAT</td>
+</tr>
+<tr>
+<td>InvoiceLinePricePerPieceExTax</td>
+<td>ItemPrice, item_price, unit_price_excl_VAT</td>
+</tr>
+<tr>
+<td>InvoiceLinePriceInclTax</td>
+<td>line_price_incl_VAT</td>
+</tr>
+<tr>
+<td>ShippingDocumentUrl</td>
+<td>ShippingDocumentUrl</td>
+</tr>
+<tr>
+<td>SurprisePackCodeOrder</td>
+<td>giftwrap</td>
+</tr>
+<tr>
+<td>SurprisePackCodeLine</td>
+<td>GiftWrapDesign</td>
+</tr>
+<tr>
+<td>MontacheckoutData</td>
+<td>montapacking_montacheckout_data, monta_montacheckout_data</td>
+</tr>
+<tr>
+<td>B2B</td>
+<td>B2b, B2B</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>currency, Currency, order_order_currency_code</td>
+</tr>
+<tr>
+<td>InvoiceLineTaxPercentage</td>
+<td>TaxPercent, item_tax_percent</td>
+</tr>
+<tr>
+<td>InvoiceTotalDiscount</td>
+<td>order_discount_amount, TotalDiscount</td>
+</tr>
+<tr>
+<td>ProductWeight</td>
+<td>Weight, ProductWeight</td>
+</tr>
+<tr>
+<td>ProductLength</td>
+<td>Length, ProductLength</td>
+</tr>
+<tr>
+<td>ProductWidth</td>
+<td>Width, ProductWidth</td>
+</tr>
+<tr>
+<td>ProductHeight</td>
+<td>Height, ProductHeight</td>
+</tr>
+<tr>
+<td>CountryOfOrigin</td>
+<td>CountryOfOrigin, Transport_Country_Of_Origin</td>
+</tr>
+<tr>
+<td>HsTariefCode</td>
+<td>HsTariefCode, StatisticalCode</td>
+</tr>
+<tr>
+<td>InvoiceLinePricePerPieceIncTax</td>
+<td>unit_price_incl_VAT</td>
+</tr>
+<tr>
+<td>Shipper option &quot;DHL Parcel Connect Harmonised ID&quot; for shipper &quot;DHL Parcel Connect Pickup Point&quot;</td>
+<td>Packingstationcode</td>
+</tr>
+<tr>
+<td>Shipper option &quot;DHL Parcel Connect ID (Van Parcelshop or Packstation)&quot; for shipper &quot;DHL Parcel Connect Pickup Point&quot;</td>
+<td>DHLPCID</td>
+</tr>
+<tr>
+<td>Shipper option &quot;DHL Parcel Connect PostNummer - Verplicht bij PackStation naar Duitsland&quot; for shipper &quot;DHL Parcel Connect Pickup Point&quot;</td>
+<td>Postnumber</td>
+</tr>
+<tr>
+<td>Shipper option &quot;Code van servicepunt&quot; for shipper &quot;DHL (servicepunt)&quot;</td>
+<td>DHLPickup</td>
+</tr>
+<tr>
+<td>Shipper option &quot;ID van de DPD parcelstore waar het pakket klaargelegd moet worden om door de consument opgehaald te worden&quot; for shipper &quot;DPD parcelstore&quot;</td>
+<td>DPDparcelshopNummer</td>
+</tr>
+<tr>
+<td>Shipper option &quot;Code/ID van het pickup point van Pakjegemakt&quot; for shipper &quot;Pakje gemak van PostNL&quot;</td>
+<td>PakjeGemakBE_PickupPointCode</td>
+</tr>
+<tr>
+<td>Shipper option &quot;Retail ID van pakjegemak voor BE&quot; for shipper &quot;Pakje gemak van PostNL&quot;</td>
+<td>PakjeGemakBE_PickupPointRetailID</td>
+</tr>
+</tbody>
+</table>
+<h3 id="orderwijzigingen">Orderwijzigingen:</h3>
+<p>Met de instelling UpdateWhenAlreadyExistsAndPlatformSupportsIt kunnen we orderwijzigingen en annuleringen importeren.</p>
+</details>
+<details closed="">
+<summary>Order Update </summary>
+<ul>
+<li>Monta plaatst file op server</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Information in file:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WebshopOrderID</td>
+</tr>
+<tr>
+<td>Status</td>
+</tr>
+<tr>
+<td>barcode</td>
+</tr>
+<tr>
+<td>ShipperName</td>
+</tr>
+<tr>
+<td>Trackign link</td>
+</tr>
+<tr>
+<td>Shipper</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details closed="">
+<summary>Stock update full </summary>
+<ul>
+<li>Monta plaatst file op server</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Informations in File:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SKU</td>
+</tr>
+<tr>
+<td>Stock</td>
+</tr>
+<tr>
+<td>StockForecasted</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details closed="">
+<summary>Stock Update changed </summary>
+* Monta plaatst file op server
+<table>
+<thead>
+<tr>
+<th>Information in file:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SKU</td>
+</tr>
+<tr>
+<td>Stock</td>
+</tr>
+</tbody>
+</table>
+<p>In dit gedeelte van de koppeling zijn er ook een aantal instellingen/ keuzes beschikbaar:</p>
+<table>
+<thead>
+<tr>
+<th>Settings:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add primary barcode: no/yes</td>
+</tr>
+<tr>
+<td>Forecasted stock in separate column: no/yes</td>
+</tr>
+<tr>
+<td>Allow negative stock: no/yes</td>
+</tr>
+</tbody>
+</table>
+<br>
+</details>
+<details closed="">
+<summary>Inbound forecast </summary>
+* Klant plaatst file op server
+<table>
+<thead>
+<tr>
+<th>Column type</th>
+<th>Supported column names</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reference</td>
+<td>POnumber, Reference</td>
+</tr>
+<tr>
+<td>Comment</td>
+<td>Comment</td>
+</tr>
+<tr>
+<td>ExpectedDeliveryDate</td>
+<td>ExpectedDeliveryDate</td>
+</tr>
+<tr>
+<td>SupplierCode</td>
+<td>SupplierCode</td>
+</tr>
+<tr>
+<td>SupplierName</td>
+<td>SupplierName</td>
+</tr>
+<tr>
+<td>Sku</td>
+<td>Sku, SKU</td>
+</tr>
+<tr>
+<td>Quantity</td>
+<td>Quantity, Qty, Quantitiy</td>
+</tr>
+<tr>
+<td>IncludeInWebshopStock</td>
+<td>IncludeInStock, IncludeInWebshopStock</td>
+</tr>
+</tbody>
+</table>
+</details>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

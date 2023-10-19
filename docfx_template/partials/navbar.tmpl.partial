@@ -1,0 +1,34 @@
+<!-- Your HTML code with the image -->
+<!--
+  Copyright (c) Microsoft. All rights reserved.
+  Licensed under the MIT license. See LICENSE file in the project root for full license information.
+-->
+<nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+<div class="DUTCH_FLAG_CLASS">
+  <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+  <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+</div>
+<div class="EN_FLAG_CLASS">
+  <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+  <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+</div
+      {{>partials/logo}}
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+      <form class="navbar-form navbar-right" role="search" id="search">
+        <div class="form-group">
+          <input type="text" class="form-control" id="search-query" placeholder="{{__global.search}}" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>1. Koppelingen dataflow </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="1. Koppelingen dataflow ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="1-koppelingen-dataflow">1. Koppelingen dataflow</h1>
+
+<p>Bij Monta hebben we standaard koppelingen die voor al onze klanten werken. Op deze manier kunnen we de bedrijfszekerheid van de koppelingen garanderen.</p>
+<p>Er zijn een aantal standaard onderdelen die onze koppelingen hebben. Welke onderdelen de koppelingen precies hebben is afhankelijk van de <a href="../../../Algemene-informatie/Koppelingen/2.-Platformen">type koppelingen</a>.</p>
+<br>
+<h2 id="algemene-onderdelen">Algemene onderdelen</h2>
+<p>De meeste koppelingen bevatten de volgende onderdelen. Afhankelijk van het <a href="../../../Algemene-informatie/Koppelingen/2.-Platformen">platform</a> kan je zien welke onderdelen de koppeling precies bevat.</p>
+<ul>
+<li>Productimport (producten vanuit webshop in Monta omgeving)</li>
+<li>Product Match (producten vanuit webshop gekoppeld met de producten in de Monta omgeving)</li>
+<li>Stockupdate (Voorraad die bij Monta ligt wordt verstuurd naar webshop)</li>
+<li>Order import (Orders worden in Monta geïmporteerd)</li>
+<li>Order status update (Orderstatus wordt naar webshop doorgestuurd)</li>
+<li>Refund update (Van retouren met de status &quot;Please refund&quot; wordt een refund gemaakt in de webshop waarmee de consument zijn geld terugkrijgt)</li>
+</ul>
+<p><strong>Letop: Niet alle koppelingen hebben alle onderdelen!</strong></p>
+<br>
+<h2 id="productimport">Productimport</h2>
+<p>De product import importeert de producten uit de shop en plaatst deze informatie in de Montaportal.
+afhankelijk van het platform worden verschillende gegevens geïmporteerd.</p>
+<h2 id="product-match">Product match</h2>
+<p>De nieuwe koppeling draait naast een Product Information Import ook een Product Match.
+De Product Import importeert de producten uit de webshop en plaatst deze in de
+Montaportal. De Product Match koppelt de producten die bij Montapacking bekend zijn met
+de producten die in de webshop staan. Dit heeft als voordeel dat de voorraadupdate nu per
+product kan worden uitgezet.</p>
+<p><code>Wel belangrijk hierbij is dat er NOOIT 2 producten in de webshop mogen zijn met twee keer dezelfde barcode. </code></p>
+<p>De productmatch doet de match op basis van eerst de SKU en daarna de barcode.
+Als één van de twee overeenkomt zal hij de match maken.</p>
+<p><img src="../../../Attachments/image-b936f0b9-fbb5-43b8-b946-087849ea4447.png" alt="image.png"></p>
+<h2 id="order-import">Order Import</h2>
+<p>De order import haal de ordergegevens van de webshop binnen. De meeste koppelingen filteren hierbij op de status <code>PAID</code> en <code>PROCESSING</code>. We halen dus de openstaande en betaalde orders binnen. Alle andere orders zullen niet worden meegenomen in de Orderimport. Bekijk per koppeling welke statussen we binnenhalen, en of het mogelijk is om deze statussen uit te bereiden met andere statussen.</p>
+<h3 id="verzenderkeuze-importeren">Verzenderkeuze importeren</h3>
+<p>In de order kan meegegeven worden met welke verzender Monta de order moet verzenden. Dit kan op twee manieren: met een mapping en 'hardcoded'.</p>
+<h4 id="verzenderkeuze-mapping">Verzenderkeuze mapping</h4>
+<p>In een aantal systemen kan de klant zelf verzendopties aanmaken. Deze krijgen dan een code of nummer. In de instellingen van de order import kan deze code of dit nummer 'gemapt' worden naar een Monta verzender.</p>
+<p>Bij de mapping kunnen ook verzendopties worden toegevoegd. En kan een aantal extra verzenddagen worden ingesteld (zie <a href="../../../Algemene-informatie/Outbound#geplande-verzenddatum">Outbound - Geplande verzenddatum</a>).</p>
+<p>De volgende platformen kunnen de verzenderkeuze importeren met een mapping: AFAS, Amazon Vendor, BigCommerce, CCVShop, Exact Online, Excel/CSV over FTP, Lightspeed eCom, Magento, PrestaShop, Shopify, Shopware, Silius, WooCommerce, Leroy Merlin.</p>
+<h4 id="harcoded-verzenderkeuze-import">Harcoded verzenderkeuze import</h4>
+<p>Sommige platformen hebben 'vaste' verzendopties. Bijvoorbeeld Bol.com. Ook kunnen er in webshopsystemen plugins geïnstalleerd worden die bepaalde verzendopties aanbieden. Het importeren van deze verzendopties gebeurd automatisch zonder dat er iets voor ingesteld hoeft te worden, als wij dit ondersteunen voor het betreffende platform/de betreffende plugin. Zie hiervoor de documentatie van het betreffende platform.</p>
+<h2 id="order-update">Order Update</h2>
+<p>De order Update koppelt aan de webshop terug dat een order is verzonden. Dit doet hij samen met de track&amp;trace informatie. Welke informatie precies wordt verstuurd is te vinden bij de koppelingen uitleg.</p>
+<h2 id="stock-update">Stock Update</h2>
+<p>Monta is leidend als het gaat om de voorraadstand. Alle voorraad wordt door Monta geteld en opgeboekt in het magazijn. Het is mogelijk om deze voorraadstand naar de webshop te sturen.
+Dit kan door middel van 2 verschillende flows.</p>
+<ol>
+<li>Full stockupdate
+Deze flow stuurt 1 keer per dag alle voorraadstanden van alle producten naar de shop.</li>
+<li>Changed StockUpdate: Deze stuurt gedurende de dag alle voorraadstanden die bij veranderd.</li>
+</ol>
+<p>Alle voorraad is op Relatieniveau. Dit betekend wanneer een klant meerdere koppelingen heeft, en er bij 1 koppeling een order komt; dat de voorraadstand bij alle koppelingen wordt geupdate.</p>
+<h2 id="refund-update">Refund update</h2>
+<p>Monta kan via de koppeling zorgen dat de consument het aankoopbedrag van een retour terugkrijgt. De retour moet dan op de opvolgactie &quot;Please refund&quot; gezet worden. Er wordt dan in de webshop een credit gemaakt. De webshop maakt dan via de payment provider een refund.</p>
+<h2 id="stock-mutation-update">Stock mutation update</h2>
+<p>Enkele koppelingen hebben een StockMutaion dataflow. Deze stuurt de voorraadstand van enkel de volgende mutaties:</p>
+<ol>
+<li>Mutation: Breuk of kwijt. (Geen opboeking, die lopen via de FullStock)</li>
+<li>Transfer: Omboeking naar ander matriaal of andere Batch</li>
+<li>Unknown return: Retouren zonder vooraanmelding</li>
+</ol>
+<h2 id="purchase-order-export">Purchase order export</h2>
+<p>Monta kan de aangemaakte MontaPortal inkooporders exporteren naar Exact Online.
+Deze inkooporders kunnen weer verder verwerkt door de Inbound forecast import en Inbound update.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

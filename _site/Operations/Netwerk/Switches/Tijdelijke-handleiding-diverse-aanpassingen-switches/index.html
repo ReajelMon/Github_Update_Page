@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Tijdelijke handleiding diverse aanpassingen switches </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Tijdelijke handleiding diverse aanpassingen switches ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="tijdelijke-handleiding-diverse-aanpassingen-switches">Tijdelijke handleiding diverse aanpassingen switches</h1>
+
+<h2 id="inhoud">Inhoud</h2>
+<ul>
+<li><p><a href="#Algemeen">Algemeen</a></p>
+</li>
+<li><p><a href="#Remote-logging-instellen">Remote logging instellen</a></p>
+</li>
+<li><p><a href="#HTTP-dichtzetten">HTTP dichtzetten</a></p>
+</li>
+<li><p><a href="#Tijd-goed-zetten">Tijd goed zetten</a></p>
+</li>
+<li><p><a href="#Running-config-opslaan">Running config opslaan</a></p>
+</li>
+</ul>
+<h2 id="algemeen">Algemeen</h2>
+<p>Als bij het inloggen de vraag komt om een nieuw wachtwoord in te stellen breek dan het inloggen af en met de switch bij Jasper.</p>
+<h2 id="remote-logging-instellen">Remote logging instellen</h2>
+<p>Zet de instellingen op Advanced (anders kun je de poort niet instellen).<br>
+Ga naar &quot;Administration \ System log \ Log Settings en vul bij Max Aggregation Time&quot; 300 in.
+<img src="../../../../Attachments/image-24eed6c3-4dad-4dba-95eb-3c38b8a8ccd3.png" alt="image.png"></p>
+<p>Ga dan naar &quot;Remote Log Servers&quot; en vul bij &quot;Log Server IP Address/Name&quot; &quot;10.10.202.24&quot; in en bij UDP poort 10524.</p>
+<p><img src="../../../../Attachments/image-52d39c3b-ce24-4169-9bf3-822dd088483b.png" alt="image.png"></p>
+<h2 id="http-dichtzetten">HTTP dichtzetten</h2>
+<p>Ga naar &quot;Security \ TCP/UDP Services&quot; en zet HTTP en Telnet uit en HTTPS, SNMP en SSH aan.</p>
+<p><img src="../../../../Attachments/image-c2fbf3a6-2b33-46c4-85b6-0502ca89ecd3.png" alt="image.png"></p>
+<h2 id="tijd-goed-zetten">Tijd goed zetten</h2>
+<p>Zet de switch in de “Advanced mode”.
+Zet de tijd-instellingen goed.</p>
+<p><img src="../../../../Attachments/image-c9a89f06-be24-4262-9203-2ebf61f28c30.png" alt="image.png"></p>
+<p>En voeg als SNTP-server het IP-nummer van de Firewall toe, x.x.4.1.<br>
+Dus bijvoorbeeld 172.24.4.1 of 10.32.4.1 etc, afhankelijk van de vestiging van de switch.</p>
+<p><img src="../../../../Attachments/image-5132ecb2-6b9c-4a59-a866-580214676fcb.png" alt="image.png"></p>
+<h2 id="running-config-opslaan">Running config opslaan</h2>
+<p>Bij een SG300/SG350 ziet dat er als volgt uit:</p>
+<p><img src="../../../../Attachments/image-043324be-d5dd-4c95-8da1-eef1c269bb7c.png" alt="image.png"></p>
+<p>Bij een CBS ziet het er als volgt uit:<br>
+Het kan zijn dat je nog even op &quot;Duplicate&quot; moet klikken.</p>
+<p><img src="../../../../Attachments/image-efd84435-5447-4f7e-af64-c71b7dcbf5b8.png" alt="image.png"></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

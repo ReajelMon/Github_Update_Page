@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Beschrijving F5 BIGIP installatie </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Beschrijving F5 BIGIP installatie ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="beschrijving-f5-bigip-installatie">Beschrijving F5 BIGIP installatie</h1>
+
+<p>Installatie BIGIP-OMGEVING</p>
+<h2 id="inhoud">Inhoud</h2>
+<ul>
+<li><p><a href="#network">Network </a></p>
+</li>
+<li><p><a href="#_Toc110423113">VLAN's </a></p>
+</li>
+<li><p><a href="#_Toc110423114">Self-IP's </a></p>
+</li>
+<li><p><a href="#routes">Routes </a></p>
+</li>
+<li><p><a href="#local-traffic">Local Traffic </a></p>
+</li>
+<li><p><a href="#nodes">Nodes </a></p>
+</li>
+<li><p><a href="#pools">Pools </a></p>
+</li>
+<li><p><a href="#_Toc110423119">Virtual servers </a></p>
+</li>
+<li><p><a href="#monitors">Monitors </a></p>
+</li>
+<li><p><a href="#ciphers">Ciphers </a></p>
+</li>
+<li><p><a href="#ssl-profielen">SSL-profielen </a></p>
+</li>
+<li><p><a href="#device-management">Device Management</a></p>
+</li>
+<li><p><a href="#certificate-management">Certificate Management</a></p>
+</li>
+<li><p><a href="#update-f5">Update F5</a></p>
+</li>
+<li><p><a href="#hardening">Hardening</a></p>
+</li>
+<li><p><a href="#werkwijze-blue-green">Werkwijze Blue - Green</a></p>
+</li>
+<li><p><a href="#dns--en-netwerk-definities-aanmaken">DNS- en netwerk-definities aanmaken</a></p>
+</li>
+<li><p><a href="#definitie">Definitie</a></p>
+</li>
+<li><p><a href="#klantcons-vestiging">Klant/cons vestiging</a></p>
+</li>
+<li><p><a href="#interne-dns">Interne DNS</a></p>
+</li>
+<li><p><a href="#transip">TransIP</a></p>
+</li>
+<li><p><a href="#lokale-firewalls">Lokale Firewalls</a></p>
+</li>
+<li><p><a href="#dc-rou01">DC-ROU01</a></p>
+</li>
+<li><p><a href="#stappenplan-internet-definitie">Stappenplan internet-definitie</a></p>
+</li>
+<li><p><a href="#stappenplan-vestiging-definitie">Stappenplan vestiging-definitie</a></p>
+</li>
+<li><p><a href="#openstaande-punten">Openstaande punten</a></p>
+</li>
+<li><p><a href="#bijlage-1-voorbeeld-virtual-server">Bijlage 1 Voorbeeld Virtual Server</a></p>
+</li>
+<li><p><a href="#bijlage-2-voorbeeld-clientssl-profiel">Bijlage 2 Voorbeeld Clientssl-profiel</a></p>
+</li>
+<li><p><a href="#bijlage-4-voorbeeld-extra-vip-voor-montapacking.nl">Bijlage 4 Voorbeeld Extra VIP voor montapacking.nl</a></p>
+</li>
+<li><p><a href="#bijlage-6-voorbeeld-blue-green">Bijlage 6 Voorbeeld BLUE -- GREEN</a></p>
+</li>
+<li><p><a href="#system">System</a></p>
+</li>
+<li><p><a href="#handige-commandos">Handige commando's</a></p>
+</li>
+</ul>
+<h3 id="installatie-big-ips">Installatie BIG-IP's</h3>
+<p>De OVF-file is aangeleverd door Telindus en deze staat op de mp-mgmt12
+in &quot;C:\Install\BIGIP-16.1.2.2-0.0.28.ALL-vmware.ova&quot;.</p>
+<p>Kies &quot;Deploy OVF Template&quot; en accepteer de meeste voorstellen.</p>
+<p><img src="../../../Attachments/image-7b41d35e-d181-4486-ae2c-4be0a4b68eac.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-d77b5570-e3a5-4b7d-ad31-9c19ef59b012.png" alt="image.png"></p>
+<p>Standaard Root-wachtwoord is default.<br>
+Maak hiervoor een nieuw wachtwoord wat in Passwordstate staat bij &quot;F5
+BIGIP&quot;.</p>
+<p>Config tab enter</p>
+<p><img src="../../../Attachments/image-5cc4e641-ac4e-4f5e-aca7-b6ebd55f493b.png" alt="image.png"></p>
+<p>Benader de BIGIP-server vervolgens via een webbrowser vanaf een server
+middels bijvoorbeeld <a href="https://10.10.100.31">https://10.10.100.31</a><br>
+Het standaard wachtwoord voor het admin-account is in eerste instantie
+gelijk aan het root-wachtwoord.<br>
+Als je de eerste keer inlogt kun je dit wijzigen naar een nieuw
+wachtwoord.<br>
+Zie hiervoor in Passwordstate de notes van &quot;F5 BIGIP&quot;
+<img src="../../../Attachments/image-d357c07b-75ee-40c2-a800-c464fb827b3f.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-0bd62173-800f-4ece-ad2e-80187d1ab403.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-c84e9875-52e7-43b2-bed8-c9c736fc11be.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-9eab0fdc-4e6e-4c32-a0c4-16996224a690.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-452a5180-e04b-4264-9ff8-4f2137773349.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-545811c0-b860-4fcf-8107-16dc0c2ba236.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-097b676c-9d2b-41ab-96f0-2e683ff6607f.png" alt="image.png"></p>
+<p>Device uitzetten en memory ophogen. Per CPU 4GB aanhouden.<br>
+In bovenstaand voorbeeld dus 16GB.</p>
+<h3 id="section"></h3>
+<h3 id="network">Network</h3>
+<p>Het netwerk-ontwerp is als volgt :</p>
+<p><img src="../../../Attachments/image-eb93a2a5-4ce9-4ab7-8470-c8e16bdf1056.png" alt="image.png"></p>
+<p>De BIG-IP's (behalve het LAB) hebben 4 aangesloten interfaces.</p>
+<p>Interfaces aanmaken. Adhv het mac-adres in Vcenter is het VLAN te
+achterhalen<br>
+<br>
+<img src="../../../Attachments/image-90727533-49a6-409a-b017-24754a33df60.png" alt="image.png"></p>
+<p>VLAN's
+<br>
+<img src="../../../Attachments/image-399152b3-4f60-4ad4-bd71-e766f33acff7.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-c63e011c-5d74-4141-b8be-21037c383ab9.png" alt="image.png"></p>
+<p>Self-IP's<br>
+<br>
+<img src="../../../Attachments/image-b7c454dd-d8e3-4ff6-b725-a3b5ac45a483.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-0af2b57e-fa14-4e09-b3bc-e0f0265a24c8.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-062baf70-6abb-4ae8-892d-ab64f3fe72fc.png" alt="image.png"></p>
+<h4 id="routes">Routes</h4>
+<p><img src="../../../Attachments/image-ff67a005-a5a7-4d12-b424-690a5e673858.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-4f98d7ee-bf1c-46fc-93f8-b40eb21af8cb.png" alt="image.png"></p>
+<h3 id="local-traffic">Local Traffic</h3>
+<p>Het uiteindelijke doel is om een Blue-Green-omgeving te maken volgens
+onderstaande afbeelding.</p>
+<p><img src="../../../Attachments/image-dc3f9106-ccd6-4e7e-87fc-abd073f6d833.png" alt="image.png"></p>
+<h4 id="section-1"></h4>
+<h4 id="nodes">Nodes</h4>
+<p>Alle servers aanmaken.<br>
+Bijv. MP-WEB300.montapacking.nl</p>
+<p><img src="../../../Attachments/image-379d1fa2-6aed-44bf-83fe-98109591f452.png" alt="image.png"></p>
+<h4 id="pools">Pools</h4>
+<p><img src="../../../Attachments/image-63435612-bfe9-4449-973f-a0c8fef9ea41.png" alt="image.png"></p>
+<p>Pool-MP-Web-30</p>
+<p>Virtual servers<br>
+<img src="../../../Attachments/image-f5aed283-91fc-4189-bdbf-91b737399f22.png" alt="image.png"></p>
+<p>Bij &quot;Local traffic \ Profiles \ SSL \ Client&quot; kan een aangepast
+ssl-profiel gemaakt worden waar het juiste certificaat in opgenomen is.</p>
+<p>Bij de resources staat een verwijzing naar de pool, waarin weer de
+servers opgenomen zijn waar de website op draait.<br>
+<br>
+<img src="../../../Attachments/image-578cc46e-5d60-434c-b37c-80da8ea25b21.png" alt="image.png"></p>
+<p>Om een rewrite van http naar HTTPS mogelijk te maken is er een extra
+Virtual Server aangemaakt:</p>
+<p><img src="../../../Attachments/image-631d0425-4eeb-4c16-a06c-3eeb365a296d.png" alt="image.png"></p>
+<h4 id="monitors">Monitors</h4>
+<p>Per website dient er een monitor aangemaakt te worden op https.<br>
+Hier wordt een get-commando verzonden naar de website.<br>
+Er is ook een serverssl-profiel ingesteld voor de betreffende website.</p>
+<p>Op de website dient dan SNI ingesteld te worden.</p>
+<p><img src="../../../Attachments/image-e905ac0c-1d86-4687-9f29-1f330b336414.png" alt="image.png"></p>
+<p>Om er voor te zorgen dat BIGIP met SNI om kan gaan moet het volgende
+commando uitgevoerd worden via de CLI: &quot;Modify sys db bigd.tmm value
+enable&quot;<br>
+Middels &quot;List sys db bigd.tmm value&quot; kan de instelling bekeken worden.<br>
+Zie ook : <a href="https://support.f5.com/csp/article/K65219243">SNI support for HTTPS monitors
+(f5.com)</a><br>
+<br>
+<img src="../../../Attachments/image-0158a4d9-8400-461a-992e-835f5a088e65.png" alt="image.png"></p>
+<p>In het ServerSSL-profiel wordt de server-naam gedefinieerd.<br>
+<img src="../../../Attachments/image-3651a49d-2764-409d-b430-043e5c003ccd.png" alt="image.png"></p>
+<p>De monitor wordt opgeroepen in de pool</p>
+<p><img src="../../../Attachments/image-6d2a9b06-30ce-47b7-8d30-ac95cfc0bde3.png" alt="image.png"></p>
+<p>Het eindresultaat is dat je nu kunt monitoren op die éné betreffende
+website op een webserver met meerdere websites.</p>
+<h4 id="ciphers">Ciphers</h4>
+<p>Onder &quot;Local traffic \ Ciphers&quot; kunnen rules aangemaakt worden die een
+cipher-definitie bevatten.<br>
+Deze rules kunnen weer in een group gezet worden.<br>
+<br>
+Certificaten met &quot;ECDHE-ECDSA-xxxx&quot; kunnen wel aangezet worden en ze
+werken ook , maar met een tool als <a href="https://www.ssllabs.com/">https://www.ssllabs.com/</a> zijn ze
+dan niet zichtbaar.<br>
+Wellicht omdat we als monta zelf een certificaat met als openbare
+sleutel RSA hebben.</p>
+<hr>
+<p><strong>Nr</strong>   <strong>Cipher suite ingesteld op BIGIP</strong>    <strong>Zichtbaar bij       <strong>Nu in
+SSLLabs bij een       gebruik bij
+monta-certificaat</strong>   Monta</strong></p>
+<hr>
+<p>1        DHE-RSA-AES128-GCM-SHA256              Yes                   Yes</p>
+<p>2        DHE-RSA-AES256-GCM-SHA384              Yes                   Yes</p>
+<p>3        ECDHE-ECDSA-AES128-GCM-SHA256          No                    Yes</p>
+<p>4        ECDHE-ECDSA-AES256-GCM-SHA384          No                    Yes</p>
+<p>5        ECDHE-ECDSA-CHACHA20-POLY1305-SHA256   No                    No</p>
+<p>6        ECDHE-RSA-AES128-GCM-SHA256            Yes                   Yes</p>
+<p>7        ECDHE-RSA-AES256-GCM-SHA384            Yes                   Yes</p>
+<p>8        ECDHE-RSA-CHACHA20-POLY1305-SHA256     Yes                   No</p>
+<p>9        TLS13-AES128-GCM-SHA256                Yes                   No</p>
+<p>10       TLS13-AES256-GCM-SHA384                Yes                   No</p>
+<h2 id="11-------tls13-chacha20-poly1305-sha256---------yes-------------------no">11       TLS13-CHACHA20-POLY1305-SHA256         Yes                   No</h2>
+<p>Als je in deze group de order op &quot;strenght&quot; zet dan wordt automatisch de
+meest veilige volgorde gekozen.</p>
+<p><img src="../../../Attachments/image-8fe28fbe-2d9c-4037-88c8-4e457f26f071.png" alt="image.png"></p>
+<p>De group kan opgeroepen worden bij &quot;Ciphers&quot; in een SSL-profiel waarbij
+de mode op &quot;advanced&quot; gezet moet worden.\</p>
+<p><img src="../../../Attachments/image-6fc68777-cb91-4e4e-a24b-267382399e56.png" alt="image.png"></p>
+<p>De TLS-versie worden bepaald bij de Options List.</p>
+<p>Dit levert dan bijvoorbeeld via <a href="https://www.ssllabs.com/">https://www.ssllabs.com/</a> het volgende
+resultaat op:</p>
+<p><img src="../../../Attachments/image-ff67db25-b8fb-45ee-977f-98d3309f4e42.png" alt="image.png"></p>
+<p>Overige tools:<br>
+Wormly (  <a href="https://www.wormly.com/test_ssl%C2%A0%C2%A0">https://www.wormly.com/test_ssl  </a>)<br>
+SSL Shopper (  <a href="https://www.sslshopper.com/ssl-checker.html%C2%A0%C2%A0">https://www.sslshopper.com/ssl-checker.html  </a>)<br>
+Digicert (  <a href="https://www.digicert.com/help/%C2%A0%C2%A0">https://www.digicert.com/help/  </a>)</p>
+<h4 id="ssl-profielen">SSL-profielen</h4>
+<p>Onder &quot;Local traffic \ Profiles \ SSL \ Client&quot; staan de
+SSL-profielen.<br>
+Voor de client is er een default profile genaamd &quot;clientssl&quot;, hierop is
+&quot;clientssl-generic-monta.nl&quot; aangemaakt waarin het certificaat
+&quot;wildcard-Monta.nl-2022&quot; is toegevoegd.<br>
+Per website wordt er een SSLprofiel gemaakt wat weer gebaseerd is op
+&quot;clientssl-generic-monta.nl&quot;.<br>
+Je kunt zo in één SSL-profiel voor alle websites het certificaaat van
+monta.nl vervangen.<br>
+Daarnaast kun je per website instellingen maken op SSL-gebied.<br>
+De SSL-profielen worden in de &quot;Virtual Servers&quot; opgeroepen.</p>
+<h3 id="device-management">Device Management</h3>
+<p><img src="../../../Attachments/image-b2427846-7e11-4283-a68e-16daa5cc85f4.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-ab176f9f-470a-4f81-9b52-86d7e3493b80.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-d85b83f0-5ac1-488e-9418-0aa246cb5424.png" alt="image.png"></p>
+<p>System Config : NTP en DNS instellen en daarna een sync uitvoeren.</p>
+<p>CLI : Ntpq -pn<br>
+tcpdump -neli eth0 host 10.10.202.98</p>
+<h3 id="section-2"></h3>
+<h3 id="certificate-management">Certificate Management</h3>
+<p>Onder System \ Certificate Management kunnen SSL-certificaten
+geimporteerd worden.<br>
+Bijvoorbeeld Wildcard-Montapacking-nl-2021 kan als fpx geïmporteerd worden.\</p>
+<p>Kies bij de import van een nieuw certificaat voor “PKCS 12 (IIS)”</p>
+<p><img src="../../../Attachments/image-61a537a5-f3c0-465b-832a-6493eb500610.png" alt="image.png"></p>
+<p>De root-certificaten &quot;Sectigo_RSA_Domain_Validation_Secure_Server_CA.crt&quot; en &quot;USERTrust_RSA_Certification_Authority.crt&quot; zijn in deze volgorde samengevoegd in een nieuw text-bestand.<br>
+Dit textbestand is geïmporteerd met als naam &quot;Cert-Chain-Monta-2022&quot; en als Import type &quot;Certificate&quot;.</p>
+<p><img src="../../../Attachments/image-4cf95fb9-5201-41bf-8c25-95cbda55056b.png" alt="image.png"></p>
+<p>Het resultaat ziet er dan als volgt uit:</p>
+<p><img src="../../../Attachments/image-1abc3b4e-d9a7-438f-98dc-dbf2602ae3b5.png" alt="image.png"></p>
+<h3 id="update-f5">Update F5</h3>
+<ol>
+<li><p>Nooit een x.0-versie van nieuwe software installeren.</p>
+</li>
+<li><p>Download vanaf F5-support</p>
+</li>
+<li><p>Eerst op de standby installeren.</p>
+</li>
+<li><p>System \ Software Management \ Imagelist.</p>
+</li>
+</ol>
+<p>a.  Import</p>
+<p>b.  Nieuw bootlocation aanmaken en hierop installeren</p>
+<p>c.  Boot vanaf nieuwe bootlocation</p>
+<ol start="5">
+<li><p>Failover vanaf BIG-IP-10 (Force to standby) , daarna draait op de
+nieuwe versie</p>
+</li>
+<li><p>Testen.</p>
+</li>
+<li><p>Vervolgens op de BIG-IP-10 de nieuwe versie installeren.</p>
+</li>
+<li><p>Indien de nieuwe versie niet goed werk, kun je in de oude partitie
+booten.</p>
+</li>
+</ol>
+<h3 id="hardening">Hardening</h3>
+<p><a href="https://support.f5.com/csp/article/K13092">Overview of securing access to the BIG-IP system
+(f5.com)</a></p>
+<p>a.  # tmsh list sys httpd allow</p>
+<p>b.  # tmsh modify sys httpd allow replace-all-with {
+10.10.202.0/255.255.255.0 }</p>
+<p>c.  # tmsh modify sys httpd allow add { 10.x.x.0/255.255.255.0 }</p>
+<p>d.  # tmsh modify sys httpd allow delete  { 10.x.x.0/255.255.255.0 }</p>
+<p>e.  # tmsh list sys httpd ssl-protocol</p>
+<p>f.  # tmsh modify sys httpd ssl-protocol TLSv1.2  (TLSv1.3)</p>
+<p>g.  # tmsh list sys sshd banner</p>
+<p>h.  # tmsh modify sys sshd banner enabled</p>
+<p>i.  # tmsh modify sys sshd banner-text &quot;This system (including all
+hardware, software, and peripheral equipment) is private property.
+Use of this system is restricted to official business. The owner
+reserves the right to monitor use of the system at any time. Use of
+this system constitutes consent to such monitoring. Any unauthorized
+access, use, or modification of the system can result in
+disciplinary action and/or possible civil or criminal penalties.&quot;�</p>
+<p>j.  # tmsh list sys sshd inactivity-timeout</p>
+<p>k.  # tmsh modify sys sshd inactivity-timeout 1200</p>
+<p>l.  # tmsh list cli global-settings idle-timeout</p>
+<p>m.  # tmsh modify cli global-settings idle-timeout 1200</p>
+<p>n.  Sluit af met save sys config</p>
+<h2 id="system">System</h2>
+<h3 id="archives">Archives</h3>
+<p>Voor een belangrijke wijziging eerst een archief maken.
+Het archief staat in “Var/local/ucs”.<br>
+De werkwijze is.<br>
+Kies eerst voor Create.
+<img src="../../../Attachments/image-80f0c66c-6c3f-45e7-aa80-e93c631f570e.png" alt="image.png">
+Klik vervolgens op het aangemaakte archief en klik op de knop “Download xxxxxx.ucs”.</p>
+<p><img src="../../../Attachments/image-1cf8f287-f3c8-473b-8ebe-c87bc55f294f.png" alt="image.png">
+Dit kan ook middels een commando : tmsh save sys ucs 20220812_running_MP-BIGIP_lab</p>
+<p><strong>Certificate management</strong></p>
+<p>Hiermee kunnen certificaten toegevoegd worden.<br>
+SNMP agent
+<img src="../../../Attachments/image-b602e971-bfd4-4400-ad6e-b03a536ce289.png" alt="image.png">
+<img src="../../../Attachments/image-e6780502-e700-433c-a89d-71ce8c83f345.png" alt="image.png"></p>
+<h3 id="werkwijze-blue----green">Werkwijze Blue -- Green</h3>
+<p>Blue is de stable versie, Green de nieuwste versie.<br>
+Bijvoorbeeld de Virtual Server &quot;VS-Finance-monta.nl&quot; heeft als default
+pool &quot;Pool-Finance.monta.nl-Blue&quot; en als enige actieve iRule
+&quot;IR-Finance.monta.nl-green&quot;. Deze iRule heeft als regel dat de inhoud
+van datagroep &quot;DG-Pool-Finance-Green&quot; naar &quot;Pool-Finance.monta.nl-Green&quot;
+gestuurd wordt.<br>
+De inhoud van &quot;DG-Pool-Finance-Green&quot; wordt middels scripts vanuit de
+pipeline vanuit Devops steeds aangepast.<br>
+In onderstaand stappenplan is de MP-WEB300 de actieve server in
+&quot;Pool-Finance.monta.nl-Blue&quot;, MP-WEB302 de standby-server in
+&quot;Pool-Finance.monta.nl-Blue&quot; en MP-WEB301 de server in
+&quot;Pool-Finance.monta.nl-Green&quot;.</p>
+<ol>
+<li>Uitgangspunt is dat bij de start de inhoud van
+&quot;DG-Pool-Finance-Green&quot; geen &quot;gewone&quot; gebruikers bevat (dus bijv.
+geen vestigingen).<br>
+De ontwikkelaar released de nieuwste versie:</li>
+</ol>
+<p>a.  Plaatsen nieuwe versie van de finance-website op de MP-WEB301.</p>
+<p>b.  Toevoegen test-servers (bijvoorbeeld MP-DOPS02 en MP-DEV02) aan
+de groep &quot;DG-Pool-Finance-Green&quot; zodat vanaf deze server getest
+kan worden door middel van automatische testen, dat de nieuwe
+versie correct functioneert. De goede werking van de nieuwste
+versie kan testen.</p>
+<ol start="2">
+<li><p>Optioneel toevoegen van een vestiging aan de groep
+&quot;DG-Pool-Finance-Green&quot; zodat vanaf deze locatie een developer de
+goede werking van de nieuwste versie kan testen.</p>
+</li>
+<li><p>Nadat er een bepaalde tijd geen problemen zijn gemeld:</p>
+</li>
+</ol>
+<p>a.  MP-WEB301 toevoegen aan &quot;Pool-Finance.monta.nl-Blue&quot;,</p>
+<p>b.  Verwijder test-vestiging uit de groep &quot;DG-Pool-Finance-Green&quot; en</p>
+<p>c.  Disable MP-WEB300 en MP-WEB302 in &quot;Pool-Finance.monta.nl-Blue&quot;.</p>
+<p>d.  Zodra er geen openstaande connecties op de mp-web302 zijn en
+mp-web300 zijn, deze beide verplaatsen naar de Green-pool en
+enablen.</p>
+<p>e.  Plaatsen nieuwe versie op de MP-WEB302</p>
+<p>f.  Verplaats MP-Web302 naar Blue-pool</p>
+<p>Bovenstaande kan herhaald worden waarbij de MP-WEB300 en de MP-WEB301
+omgewisseld zijn.</p>
+<h3 id="section-3"></h3>
+<h3 id="31-dns--en-netwerk-definities-aanmaken">3.1 DNS- en netwerk-definities aanmaken</h3>
+<p>Om de websites benaderbaar te maken moeten er DNS- en netwerk-definities aangemaakt worden.
+Hierbij dient onderscheid gemaakt te worden tussen websites die ook vanaf internet voor klanten/consumenten benaderbaar moeten zijn en websites die alleen voor vestigingen nodig zijn.
+Zie onderstaande afbeelding.</p>
+<p><img src="../../../Attachments/image-c37b0361-24d9-4c9c-9778-d907cf81b8c2.png" alt="image.png"></p>
+<p>Op de F5 staan alle websites in DMZ-WEB, maar omdat er voor de vestigingen een VPN-DMZ gemaakt is kunnen ze net als de servers in het DC LAN van de interne DNS-definitie gebruik maken.  Voor websites die van buitenaf bereikbaar moeten er een extern IP-nr uitgetrokken worden wat bij TransIP wordt geregistreerd. Daarnaast moet er voor de DC-ROU01 een netwerk-definitie aangemaakt worden die gebruikt kan worden in een NAT-rule. Zie onderstaand voorbeeld.</p>
+<table>
+<thead>
+<tr>
+<th>Definitie</th>
+<th>Klant/cons vestiging</th>
+<th>Interne DNS</th>
+<th>TransIP</th>
+<th>Lokale Firewalls</th>
+<th>DC-ROU01</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>api.monta.nl</td>
+<td>Klant/cons</td>
+<td>192.168.201.38</td>
+<td>193.53.249.25</td>
+<td>Geen definitie</td>
+<td>193.53.249.25</td>
+</tr>
+<tr>
+<td>finance.monta.nl</td>
+<td>Vestiging</td>
+<td>192.168.201.62</td>
+<td>Niet</td>
+<td>Geen definitie</td>
+<td>Niet</td>
+</tr>
+</tbody>
+</table>
+<h4 id="section-4"></h4>
+<h4 id="311-stappenplan-website-van-buitenaf-bereikbaar">3.1.1 Stappenplan website van buitenaf bereikbaar</h4>
+<ol>
+<li><p>Registreer in de interne DNS het DMZ-adres van de Virtuele server
+van de website.</p>
+</li>
+<li><p>Reserveer in de IP-lijst op het tabblad &quot;NorthC | ExternIP&quot; een
+extern IP-nr voor de website.</p>
+</li>
+<li><p>Maak op de DC-ROU01 bij &quot;Interfaces \ Additional addresses&quot; een
+nieuwe interface aan voor het nieuwe IP-nr (clone een bestaande).</p>
+</li>
+<li><p>Maak op de SUM een netwerkdefinitie met bij als naam
+&quot;DNS_VS-api.monta.nl&quot; met het DMZ-WEB IP-nr aan en deploy deze
+alleen naar de dc-rou01.</p>
+</li>
+<li><p>Maak op de dc-rou01 een NAT-rule aan voor het nieuwe externe IP-nr
+en stel deze als &quot;Any via HTTPS naar DNS-VS-api.monta.nl&quot;.</p>
+</li>
+<li><p>Registreer bij TransIP het nieuwe IP-nr.</p>
+</li>
+</ol>
+<h4 id="312-stappenplan-website-alleen-vanaf-vestigingen-bereikbaar">3.1.2 Stappenplan website alleen vanaf vestigingen bereikbaar</h4>
+<ol>
+<li><p>Registreer in de interne DNS het DMZ-adres van de Virtuele server
+van de website.</p>
+</li>
+<li><p>Er zijn verder geen acties nodig omdat zowel de vestigingen als de servers in het DC LAN de interne DNS-definitie gebruiken en daarmee bijvoorbeeld “addressvalidation.monta.nl” vinden op ip-nr 192.168.201.80</p>
+</li>
+</ol>
+<h3 id="section-5"></h3>
+<h3 id="openstaande-punten">Openstaande punten</h3>
+<ul>
+<li><p>Automatiseren van het archiveren zowel de BIG-IP-10 als de
+BIG-IP-20. Iets maken op de MP-MGMT12 met Winscp of op een andere
+Linux-server.
+Er is een halve dag met Jaap besteed aan het werkend krijgen van een geautomatiseerde backup naar een Windows systeem. Dit is helaas niet gelukt. Er kan nog geprobeerd worden om een backup naar een Linux systeem te maken.
+F5 heeft een knowledge base nummer K13454 configuring ssh public key authentication on bigip systems (11.x-16.x) ssh-copy-Id is het eenvoudigste om te gebruiken die maakt automatisch de . SSH directory aan en authorized_keys.
+Zie verder ook : <a href="https://linuxize.com/post/how-to-setup-passwordless-ssh-login/">https://linuxize.com/post/how-to-setup-passwordless-ssh-login/</a></p>
+</li>
+<li><p>Syntax voor het toevoegen van LTM\Irule\Data-group (Jaap).
+<a href="https://10.10.100.31/mgmt/tm/ltm/data-group/internal">https://10.10.100.31/mgmt/tm/ltm/data-group/internal</a></p>
+</li>
+</ul>
+<p><img src="../../../Operations/images/beschrijving-f5-bigip-installatie/image51.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<p><img src="../../../Operations/images/beschrijving-f5-bigip-installatie/image52.png" alt=""></p>
+<p>Oneconnect profile<br>
+Web Acceleration Profile</p>
+<h3 id="system-1">System</h3>
+<p>Archives. Voor een belangrijke wijziging eerst een archief maken.<br>
+Var/local/ucs</p>
+<p>Certificate management : Hiermee kunnen certificaten toegevoegd worden.</p>
+<p>SNMP<br>
+<img src="../../../Operations/images/beschrijving-f5-bigip-installatie/image72.png" alt=""></p>
+<p><img src="../../../Operations/images/beschrijving-f5-bigip-installatie/image73.png" alt="Afbeelding met tekst Automatisch gegenereerde
+beschrijving"></p>
+<h3 id="section-6"></h3>
+<h3 id="handige-commandos">Handige commando's</h3>
+<p>Log via Vcenter aan op het console.</p>
+<p>Tcpdump -i eth0<br>
+Tcpdump -i 0.0<br>
+Tcpdump -i 0.0 host mp-web20.montapacking.nl<br>
+tcpdump -neli 0.0 host 10.10.202.154<br>
+tcpdump -vvnni 0.0:nnnp -s0 host x.x.x.x and port yy where x.x.x.x is
+Virtual IP and yy is port number If you want to traffic<br>
+reboot<br>
+Curl -vv <a href="https://10.10.202.183">https://10.10.202.183</a><br>
+Curl -vv <a href="http://pietjepuk.montapacking.nl">http://pietjepuk.montapacking.nl</a></p>
+<p>Tmsh<br>
+show sys connection cs-client-addr 10.10.202.20 (geeft connecties vanaf
+ip-nr 10.10.202.20)<br>
+show sys connection ss-server-addr 10.10.202.154 (geeft connecties vanaf
+ip-nr 10.10.202.154)</p>
+<p>Openssl s_client -servername pietjepuk.montapacking.nl -connect
+192.168.201.61:443</p>
+<p>Logging bekijken.<br>
+Cd /cvar/log/monitors<br>
+Ls<br>
+Cat</p>
+<p>Df -h geeft grootte van directories weer<br>
+cd /usr (terug cd .. )<br>
+ll list met grootte<br>
+<br>
+find /usr -xdev -printf '%h\n' | sort | uniq -c | sort -k 1 -nr |
+head -20<br>
+<br>
+<img src="../../../Operations/images/beschrijving-f5-bigip-installatie/image74.png" alt="Afbeelding met tekst, monitor, scherm, schermafbeelding Automatisch
+gegenereerde beschrijving">{width=&quot;6.3in&quot;
+height=&quot;1.3895833333333334in&quot;}</p>
+<blockquote>
+<p><strong>[Static Routes]{.underline}</strong><br>
+To add a static route for traffic to use the management network, use
+the following command syntax:</p>
+</blockquote>
+<ul>
+<li>tmsh create /sys management-route &lt;name&gt; network &lt;destination
+network&gt;/&lt;netmask&gt; gateway &lt;management gateway&gt;</li>
+</ul>
+<blockquote>
+<p>Replace <strong>&lt;name&gt;</strong> with the name you want to use to identify this
+route. Replace <strong>&lt;destination network&gt;/&lt;netmask&gt;</strong> with the IP
+address and netmask of the network you are routing to.
+Replace <strong>&lt;management gateway&gt;</strong> with the IP address of the router
+used to access the destination network.</p>
+<p>For example:</p>
+<p>tmsh create /sys management-route lognet network
+10.10.10.0/255.255.255.0 gateway 172.16.1.254</p>
+</blockquote>
+<ul>
+<li><p>To save changes to the static routes for the management network,
+type the following command: tmsh save /sys config</p>
+</li>
+<li><p>To delete an existing static route for the management network, type
+the following command: tmsh delete /sys management-route &lt;name&gt;</p>
+</li>
+</ul>
+<blockquote>
+<p>Controle via https op beschikbaarheid website : GET /webnow/index.jsp/
+HTTP/1.1\r\nHost: website.mycompany.com\r\nConnection:
+Close\r\n\r\n</p>
+</blockquote>
+<p>save sys config file /shared/big-ip-10.scf no-passphrase</p>
+<p>cat /shared config.xxx</p>
+<p>ltm node /Common/MP-WEB08 {</p>
+<p>address 192.168.201.196</p>
+<p>}</p>
+<p>ltm node /Common/MP-WEB300 {</p>
+<p>address 10.10.202.154</p>
+<p>}</p>
+<p>load sys config from-terminal merge verify</p>
+<p>vi bigip-ip-10.ecf (editor).</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

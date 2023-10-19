@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Inrichten nieuwe Fortigate (deel 2 voor nieuwe locatie) </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Inrichten nieuwe Fortigate (deel 2 voor nieuwe locatie) ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="inrichten-nieuwe-fortigate-deel-2-voor-nieuwe-locatie">Inrichten nieuwe Fortigate (deel 2 voor nieuwe locatie)</h1>
+
+<h2 id="algemeen">Algemeen</h2>
+<p>Nadat &quot;Inrichten nieuwe Fortigate (deel 1)&quot; is uitgevoerd kan deze handleiding gevolgd worden voor de inrichting van een Fortigate voor een nieuwe locatie.<br>
+Voor de inrichting van een Fortigate die een Sophos gaat vervangen op een bestaande locatie volg de handleiding &quot;Inrichten nieuwe Fortigate (deel 2 voor migratie locatie)&quot;</p>
+<h2 id="afronding-na-migratie-of-bij-een-nieuwe-firewall">Afronding na Migratie of bij een nieuwe firewall</h2>
+<p>Bij een nieuwe firewall moet het volgende worden uitgevoerd zodat de Fortigate op het loopback-adres te zien is bij de Fortimanager:</p>
+<p>config system central-management<br>
+set fmg-source-ip 10.255.255.$(vestiging_id)<br>
+end</p>
+<p>config router static<br>
+delete 250<br>
+end</p>
+<p>Static routes toevoegen op dc-rou01 zodat het verkeer van de dc-fg01 doorgestuurd wordt naar de dc-rou01 :</p>
+<p>Er is al een regel voor alle loopback-mgmt-adressen</p>
+<p><img src="../../../../Attachments/image-ab6e7dc8-db67-4481-b667-292c5535639d.png" alt="image.png"></p>
+<p>Per vestiging moet er nog een regel toegevoegd worden voor alle VLAN's:</p>
+<p><img src="../../../../Attachments/image-f563d93c-c6cc-40f5-a08e-bc5149165f99.png" alt="image.png"></p>
+<p>FW-regels op de DC-Rou01 aanvullen.</p>
+<p>Maak op de sum een definitie aan voor alle VLAN's.</p>
+<p><img src="../../../../Attachments/image-1d22721e-6e7a-4778-8d62-86feacd49959.png" alt="image.png"></p>
+<p>Voeg voor alle FW-regels op dc-rou01 waar bijvoorbeeld NWV16 in voorkomt ook die van de nieuwe locatie toe.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

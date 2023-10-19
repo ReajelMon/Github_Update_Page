@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SG350 Standaard Configuratie </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="SG350 Standaard Configuratie ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../../index.html">
+                <img id="logo" class="svg" src="../../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="sg350-standaard-configuratie">SG350 Standaard Configuratie</h1>
+
+<h3 id="sg350-standaard-configuratie-bij-plaatsen">SG350 Standaard Configuratie bij Plaatsen</h3>
+<p>Om sneller te kunnen schakelen hebben we een standaard configuratie
+gemaakt voor de SG350 switches.</p>
+<p>Bij het plaatsen van een dergelijke switch dient het volgende gedaan te
+worden:</p>
+<p>Stap 1: Sluit switch aan op de gewenste locatie en noteer het MAC adres</p>
+<p>Stap 2: Zoek in de Sophos van de locatie het IP adres op die de switch
+heeft gekregen vanuit de DHCP</p>
+<ul>
+<li><p>Log in op de Sophos</p>
+</li>
+<li><p>Ga naar Network Services</p>
+</li>
+<li><p>Klik op DHCP</p>
+</li>
+<li><p>Klik op IPv4 Lease Table</p>
+</li>
+<li><p>Zoek het MAC adres op met het bijbehorende IP Adres</p>
+</li>
+</ul>
+<p>Stap 3: Typ het IP adres in je browser in en log in met cisco -- cisco
+(dit wijzigen we later)</p>
+<p>Stap4: Ga naar Administration</p>
+<ul>
+<li><p>Klik op File Management</p>
+</li>
+<li><p>Firmware Operations</p>
+</li>
+<li><p>Vink Update Firmware aan</p>
+</li>
+<li><p>Vink http/HTTPS aan</p>
+</li>
+<li><p>Kies de nieuwste firmware vanuit de map &quot;Monta Services BV\Serviceteam - IT Operations - Documenten\Operations\Netwerk\Configs-Firmware\Cisco\SG350\running-config SG350.txt&quot;</p>
+</li>
+<li><p>Klik op Apply</p>
+</li>
+</ul>
+<p>Stap 5: Klik op File Operations</p>
+<ul>
+<li><p>Vink Update File aan</p>
+</li>
+<li><p>Vink Running Configuration aan</p>
+</li>
+<li><p>Vink http/HTTPS aan</p>
+</li>
+<li><p>Kies het bestand SG350 Running Config uit de map Y:\8.0
+Automatisering\8.0 Handleidingen\8.1.2 Cisco Switches\Plaatsen
+Cisco SG350 en klik op Apply</p>
+</li>
+</ul>
+<p>Stap 6: Save de configuratie en reboot de switch</p>
+<ul>
+<li><p>Klik bovenin op het knipperede rode kruisje waar Save bij staat</p>
+</li>
+<li><p>Klik op Reboot</p>
+</li>
+<li><p>Vink Immediate aan en klik op Reboot</p>
+</li>
+</ul>
+<p>Stap 7: Edit de location en Host Name van de switch Zie afbeeldingen
+hieronder</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/SG350-Standaard-Configuratie-bij-Plaatsen/media/image1.png" alt="Afbeelding met schermafbeelding, computer Beschrijving is gegenereerd
+met zeer hoge
+betrouwbaarheid"></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/SG350-Standaard-Configuratie-bij-Plaatsen/media/image2.PNG" alt="Afbeelding met schermafbeelding Beschrijving is gegenereerd met zeer
+hoge
+betrouwbaarheid"></p>
+<p>Stap 8: Ga naar IP Configuration -&gt; IPv4 Interface en klik op add</p>
+<ul>
+<li>Vink Static IP Adress aan en vul het gewenste IP adres en netwerk
+mask in <img src="../../../../../Attachments/image-2b4295c6-9714-4625-ae8c-fc6e0a0e4a3a.png" alt="image.png"></li>
+</ul>
+<p>Stap 9: Stel een LAG in, indien dit nodig is.</p>
+<p>Stap 10: Save de configuratie</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

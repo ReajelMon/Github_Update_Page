@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IP Whitelisting </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IP Whitelisting ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="ip-whitelisting">IP Whitelisting</h1>
+
+<p>We kunnen op basis van een iRule met datagroep IP-Whitelisting toepassen op een Virtual Server.</p>
+<h3 id="1-allereerst-maken-we-een-data-group">1. Allereerst maken we een Data Group</h3>
+<ul>
+<li>Ga naar &quot;Local traffic \ iRules \ Data Group List &quot;,</li>
+<li>Klik in het overzicht op &quot;create&quot;</li>
+</ul>
+<p><img src="../../../../Attachments/image-dedc9828-ab52-4009-8aa6-78800dc2ec90.png" alt="image.png"></p>
+<ul>
+<li>Vul de Name in en selecteer bij &quot;Type&quot; Address</li>
+</ul>
+<p><img src="../../../../Attachments/image-04be6f10-9ea1-4a02-847d-ccfa27d5efca.png" alt="image.png"></p>
+<p>De naam moet het prefix hebben van IP_Filter_[naam van virtual Server] (bijv. IP_Filter_VS-mgmt.monta.nl)</p>
+<p><img src="../../../../Attachments/image-4e676ddf-0bea-4c49-8ed3-e4220dacd59c.png" alt="image.png"></p>
+<p>Vul bij &quot;Records&quot; de gegevens van de te whiteliste ip-addressen.
+Je kunt hier ook meerdere ipadressen of ip-reeksen toevoegen.
+Klik hierna op &quot;Add&quot;. Dit ziet er dan als volgt uit.</p>
+<p><img src="../../../../Attachments/image-04dea58b-0a7f-4f15-81df-02452a2bee69.png" alt="image.png"></p>
+<p>Klik daarna op &quot;Finished&quot;</p>
+<p><img src="../../../../Attachments/image-6a0bdcfa-0a41-434e-beab-c3b4093f9a0b.png" alt="image.png"></p>
+<p>###2. Nu kunnen we de iRule koppelen</p>
+<ul>
+<li>Ga naar de virtual server en klik op het tabblad &quot;Resources&quot;</li>
+</ul>
+<p><img src="../../../../Attachments/image-5dbd1531-488a-4d22-8799-ccf628217974.png" alt="image.png"></p>
+<ul>
+<li>Klik op de knop &quot;Manage&quot; bij iRules</li>
+</ul>
+<p><img src="../../../../Attachments/image-50439e3e-b2c4-481b-b632-4fd9ec695500.png" alt="image.png"></p>
+<ul>
+<li>Selecteer in het rechter vak &quot;Available&quot; de iRule &quot;IP-Whitelisting-Virtual-Server&quot; en klik op de 2 pijltjes naar links.</li>
+</ul>
+<p><img src="../../../../Attachments/image-1aa99e33-5d80-46a1-a985-7a353f9ca667.png" alt="image.png"></p>
+<ul>
+<li>Het ziet er u zo uit.</li>
+</ul>
+<p><img src="../../../../Attachments/image-a1a9c1bc-2f82-4ce8-b725-50155e235668.png" alt="image.png"></p>
+<ul>
+<li>Klik hierna op &quot;Finish&quot;</li>
+</ul>
+<p><img src="../../../../Attachments/image-98925ebd-a08e-4356-8ae9-87684b4f41d0.png" alt="image.png"></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

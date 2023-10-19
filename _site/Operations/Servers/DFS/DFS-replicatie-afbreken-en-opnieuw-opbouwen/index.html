@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>DFS replicatie afbreken en opnieuw opbouwen </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="DFS replicatie afbreken en opnieuw opbouwen ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="dfs-replicatie-afbreken-en-opnieuw-opbouwen">DFS replicatie afbreken en opnieuw opbouwen</h1>
+
+<ul>
+<li><p><a href="#inleiding">Inleiding </a></p>
+</li>
+<li><p><a href="#Powershell-commandos">Powershell commando's </a></p>
+</li>
+<li><p><a href="#dfs-replicatie-stoppen">DFS replicatie stoppen </a></p>
+</li>
+<li><p><a href="#schonen-van-data">Schonen van data </a></p>
+</li>
+<li><p><a href="#dfs-replicatie-opnieuw-opbouwen">DFS replicatie opnieuw opbouwen </a></p>
+</li>
+</ul>
+<h2 id="inleiding">Inleiding</h2>
+<p>Als de backlog van een DFS replicatie te groot wordt kan deze dat zonder
+onze hulp niet meer herstellen. Het beste is dan om de replicatie af te
+breken en opnieuw op te bouwen.<br>
+Het verwijderen en opnieuw opbouwen van deze replicatie heeft geen
+gevolgen voor de DFS-Namespace.</p>
+<p>Hieronder vind je een beschrijving van het opnieuw opbouwen van de
+replicatie van het MP-FSClust01 cluster op de fileservers MP-FS100 en
+MP-FS200.</p>
+<h2 id="powershell-commandos">Powershell commando's</h2>
+<p><strong>Commando die de 100 files weergeeft die op dit moment verwerkt
+worden:</strong></p>
+<p>Get-DfsrState -ComputerName &quot;mp-fs200&quot; | Format-Table
+FileName,UpdateState,Inbound,Source* -Auto -Wrap</p>
+<p><strong>Commando wat de backlog aangeeft :</strong></p>
+<p>dfsrdiag backlog /rgname:&quot;MP-FSCLus01&quot; /rfname:&quot;appdata&quot;
+/sendingmember:&quot;MP-FS100&quot; /receivingmember:&quot;MP-FS200&quot;</p>
+<h2 id="dfs-replicatie-stoppen">DFS replicatie stoppen</h2>
+<ol>
+<li><p>Start een RDP-sessie naar de MP-FS100 en log in met je
+admin-account.</p>
+</li>
+<li><p>Start nu de DFS Management tool<br>
+<img src="../../../../Attachments/image-02ae000b-3b22-4f09-9e88-359e336598ff.png" alt="image.png"></p>
+</li>
+<li><p>Selecteer in het linker scherm Replication -&gt; MP-FSCluster01<br>
+<img src="../../../../Attachments/image-f5e89763-0748-4776-a831-5f0a11fda47e.png" alt="image.png"></p>
+</li>
+<li><p>Ga nu naar het 3^de^ tabje &quot;Replicated Folders&quot;<br>
+Hier vind je de informatie van de replicated folder &quot;Appdata&quot;</p>
+</li>
+<li><p>Selecteer &quot;Appdata&quot; en klik rechter-muistoets.<br>
+Kies nu voor &quot;Delete&quot;.<br>
+<img src="../../../../Attachments/image-0a157c53-8f74-4f02-bb06-136c31bf5991.png" alt="image.png"></p>
+</li>
+<li><p>Je krijgt nu een bevestingingsscherm<br>
+<img src="../../../../Attachments/image-70184896-089d-4c7c-b44d-ffc955104010.png" alt="image.png"></p>
+</li>
+</ol>
+<p>Kies hier voor &quot;Yes&quot; en de replicatie wordt verwijderd.</p>
+<ol start="7">
+<li>Herstart nu op beide servers de Windows service &quot;DFS Replication&quot;<br>
+<img src="../../../../Attachments/image-d1e14f21-f562-4256-a5b3-e89d02a8d423.png" alt="image.png"></li>
+</ol>
+<h3 id="schonen-van-data">Schonen van data</h3>
+<blockquote>
+<p>Om de opbouw van de replicatie soepel te laten verlopen gaan we op de
+MP-FS200 wat mappen leegmaken.</p>
+</blockquote>
+<ul>
+<li><p>Map Eorderattachements leegmaken op de MP-FS200 (steekproef nemen in
+MP-FS100 mag geen bestand meer staan van ouder dan 4 dagen)
+RD /S E:\Appdata\Eorderattachements</p>
+</li>
+<li><p>Map RelatieSystemConnections leegmaken op de MP-FS200 (steekproef
+nemen in MP-FS100 mag geen bestand meer staan van ouder dan 2 dagen)</p>
+</li>
+</ul>
+<p>RD /S E:\Appdata\RelatieSystemConnections</p>
+<p><img src="../../../../Attachments/image-ba2d6c83-2211-4c6d-bd04-a9757d6a7cd4.png" alt="image.png"></p>
+<h2 id="dfs-replicatie-opnieuw-opbouwen">DFS replicatie opnieuw opbouwen</h2>
+<ol>
+<li><p>Start een RDP-sessie naar de MP-FS100 en log in met je
+admin-account.</p>
+</li>
+<li><p>Start nu de DFS Management tool<br>
+<img src="../../../../Attachments/image-da7e0e5c-0dbd-48e2-8bc7-083e6f6d9dc3.png" alt="image.png"></p>
+</li>
+<li><p>Selecteer in het linker scherm Replication -&gt; MP-FSCluster01<br>
+<img src="../../../../Attachments/image-7f42d2e8-48cf-4c7f-9a1a-5b8cd61f110d.png" alt="image.png"></p>
+</li>
+<li><p>Klik nu rechter-muistoets op &quot;MP-FSCluster01&quot; en selecteer &quot;New
+Replicated Folers&quot;<br>
+<img src="../../../../Attachments/image-ff18dec7-398d-4376-a917-7246e1a883ff.png" alt="image.png"></p>
+</li>
+<li><p>Selecteer nu de Primary Member (In dit geval de MP-FS100) en klik op
+&quot;Next&quot;.<br>
+<img src="../../../../Attachments/image-61d2d6c4-b1e3-429d-925f-f4506fc780ef.png" alt="image.png"></p>
+</li>
+<li><p>Klik nu op 'Add&quot; om het path wat gerepliceerd moet worden toe te
+voegen.<br>
+<img src="../../../../Attachments/image-4eddd500-6538-488c-a9ee-fe3113494e5c.png" alt="image.png"></p>
+</li>
+<li><p>Kies in het volgende scherm het path. Het ziet er dan als volgt
+uit.<br>
+<img src="../../../../Attachments/image-54a2ee64-c219-40ff-9a47-394af2c26839.png" alt="image.png"></p>
+</li>
+</ol>
+<p>Klik &quot;OK&quot; en dan &quot;Next&quot;</p>
+<ol start="8">
+<li><p>Kies nu &quot;Edit&quot; om het path waar de data op de secundaire server
+gerepliceerd moet worden.<br>
+<img src="../../../../Attachments/image-0f801a9f-57a8-465d-a286-88096ee3b02c.png" alt="image.png"></p>
+</li>
+<li><p>Vul het gewenste path in bij &quot;Membership status&quot; en klik &quot;OK&quot; en dan
+&quot;Next&quot;
+<img src="../../../../Attachments/image-24eaab75-65ff-48d8-8435-2e33008581a1.png" alt="image.png"></p>
+</li>
+<li><p>Nu verschijnt het volgende scherm.<br>
+<img src="../../../../Attachments/image-53d9c750-4934-4b71-9793-98ee0b870402.png" alt="image.png"></p>
+</li>
+<li><p>Klik &quot;Create&quot; om de configuratie in werking te stellen.</p>
+</li>
+<li></li>
+</ol>
+<p><img src="../../../../Attachments/image-7c7709ec-e78a-4915-9328-db42bf772856.png" alt="image.png"></p>
+<ol start="13">
+<li>Klik &quot;Close
+<img src="../../../../Attachments/image-1277cac9-87b7-439e-a530-bd6f95f0fab5.png" alt="image.png"></li>
+</ol>
+<h2 id="staging-aanpassen">Staging aanpassen</h2>
+<p>Na het activeren van de replicatie dienen we nog wat settings aan te
+passen.</p>
+<ol>
+<li><p>Selecteer in het linker scherm Replication -&gt; MP-FSCluster01<br>
+<img src="../../../../Attachments/image-7072483f-a33a-45b3-bad4-4caa0fab15f3.png" alt="image.png"></p>
+</li>
+<li><p>Ga nu in het rechter scherm naar het eerste tabje &quot;Memberships&quot;
+selecteer met de rechter muistoets de regel van één van de twee
+members. In dit voorbeeld beginnen we met de MP-FS100.<br>
+<img src="../../../../Attachments/image-c46404bb-50f9-4509-983e-2c0b5bac6784.png" alt="image.png"></p>
+</li>
+<li><p>Kies in het pull-down menu voor &quot;Properties&quot;. En ga dan naar het
+3^de^ tabje &quot;Staging&quot;<br>
+<img src="../../../../Attachments/image-307c5edd-3d91-4f66-82fd-c9c345fc374e.png" alt="image.png"></p>
+</li>
+</ol>
+<p>Wijzig hier het &quot;Staging path&quot;naar de gewenste map. Ook wijzigen wij
+hier de grote van de staging map in 204800 Megabytes (200GB). Klik
+hierna op &quot;OK&quot;.</p>
+<ol start="4">
+<li>Doe dit nu ook voor de 2^de^ regel (de MP-FS200).</li>
+</ol>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

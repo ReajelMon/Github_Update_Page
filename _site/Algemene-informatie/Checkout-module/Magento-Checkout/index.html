@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Magento Checkout </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Magento Checkout ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="magento-checkout">Magento Checkout</h1>
+
+<p>Met de Magento checkout kunnen bezorgopties worden getoond aan de klant in de Magento webshop bij het afrekenen.</p>
+<h2 id="belangrijk-bij-magento-checkout">Belangrijk bij Magento checkout</h2>
+<p>Magento is een open-source softwarepakket die u zelf op een server installeert en onderhoud. Onze checkout module ondersteund de standaard Magento installatie. Het kan echter zijn dat uw webshop aanpassingen heeft, bijvoorbeeld andere plugins, waardoor problemen ontstaan met de Monta checkout plugin. Het is voor Monta niet mogelijk om alle plugins van de wereld goed samen te laten werken. Daarom hebben we de programmacode vrij beschikbaar gemaakt op GitHub zodat de klant zelf een aangepast versie van de checkout kan (laten) maken om deze problemen op te lossen. Bij problemen met veelgebruikte plugins kunnen we natuurlijk kijken of we een oplossing kunnen bieden in onze standaardversie.</p>
+<p>Aanvullend betekend dit dat niet elke checkout het zelfde is.</p>
+<h2 id="talen">Talen</h2>
+<p>De volgende talen in de Magento checkout worden ondersteund:</p>
+<ul>
+<li>Nederlands</li>
+</ul>
+<h2 id="configuratie">Configuratie</h2>
+<ol>
+<li><a href="https://marketplace.magento.com/media/catalog/product/montapacking-montacheckout-1-0-19-ce/user_guides.pdf">Zorg dat de klant de module Monta Checkout op Magento heeft geïnstalleerd.</a></li>
+<li>De klant kan de app vinden in Stores &gt; Configuration &gt; Sales &gt; Shipping Methods &gt; Montapacking</li>
+<li>Maak in de MP REST Api gegevens aan</li>
+<li>De klant kan in de instellingen de benodigde velden vullen:</li>
+</ol>
+<p><img src="../../../Attachments/image-70cff5bd-4b73-4846-8183-92570d8dabfa.png" alt="image.png"></p>
+<h2 id="algemene-informatie-en-functies">Algemene informatie en functies</h2>
+<p>Van de volgende functies is bekend dat Magento het <strong>wel</strong> ondersteund:</p>
+<ul>
+<li>Berekenen van verzendmethoden inclusief prijs</li>
+<li>Weergeven van verzendopties</li>
+<li>Weergeven van levertijden</li>
+<li>Leverdag kiezen</li>
+<li>Automatisch geselecteerde verzender gebaseerd op voorkeur uit montaportal</li>
+<li>Aanpassen van verzendernaam</li>
+</ul>
+<p>Van de volgende standaard functies is bekend dat Magento het <strong>niet</strong> ondersteund:</p>
+<p>Van de volgende aanvullende functies is bekend dat Magento het <strong>niet</strong> ondersteund:</p>
+<h2 id="known-issues--bugs">Known issues &amp; bugs</h2>
+<ul>
+<li><p>Gratis verzending op coupons werken niet. Deze hebben geen invloed op de prijzen in de plugin. Wel is er een github branch waar een gelimiteerde oplossing is gemaakt voor klanten die dit toch werkend willen hebben. U moet deze wijzigingen dan zelf overnemen. Let op, dit kan problemen veroorzaken met het toestaan van gratis verzending na het selecteren van een verzendoptie in onze checkout.</p>
+</li>
+<li><p>Alle prijzen die naar de REST Api gaan zijn de originele prijzen, kortingen hebben dus geen invloed op de berekende verzendprijs. Dit betekent dat wanneer er door korting de winkelmandprijs onder de gratis verzendinggrens komt er alsnog gratis verzending acties zou worden.</p>
+</li>
+</ul>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

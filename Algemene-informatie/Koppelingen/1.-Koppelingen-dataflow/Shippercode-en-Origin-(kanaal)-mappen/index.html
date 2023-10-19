@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Shippercode en Origin (kanaal) mappen </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Shippercode en Origin (kanaal) mappen ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="shippercode-en-origin-kanaal-mappen">Shippercode en Origin (kanaal) mappen</h1>
+
+<h2 id="verzendcode-mappen">Verzendcode mappen:</h2>
+<p>Bij de meeste koppelingen importeren wij de verzender code vanuit de webshop mee. Het is mogelijk om op basis van de verzendercode die Monta importeert een actie te ondernemen.</p>
+<h3 id="1-verzender-aanpassen">1. Verzender aanpassen:</h3>
+<p>We kunnen op basis van de verzendercode die Monta® importeert de gewenste verzender binnen de order plaatsen. Zo kunnen we dus de code koppelen aan één bepaalde verzender.</p>
+<p>LET OP! Alles vanaf haakje openen ( wordt genegeerd door onze koppelingen, dit om meerdere vergelijkbare codes gemakkelijk aan 1 vervoerder te kunnen koppelen.</p>
+<p>Dit kan worden ingesteld in de backend van Monta in de tabel: <code>tblRelatieSystemConnectionDataFlowOrderImportSettingsShippers</code></p>
+<h4 id="11---verzenderoptie-toevoegen">1.1   VerzenderOptie toevoegen</h4>
+<p>Het is mogelijk om aan de bovenstaande mapping ook een verzender optie toe te voegen. Een voorbeeld hiervan kan zijn &quot;PostNL Avondlevering&quot;</p>
+<p>Dit kan worden ingesteld in de backend van Monta in de tabel <code>tblRelatieSystemConnectionDataFlowOrderImportSettingsShipperOptions</code>.</p>
+<h3 id="2-kanaal-aanpassen">2. Kanaal aanpassen</h3>
+<p>Het is ook mogelijk om op basis van de verzendcode in de order een kanaal te selecteren. De order wordt dan op een andere esetting geplaatst dan de standaard.</p>
+<p><em>(Usercase: Dit kan bijvoorbeeld interessant zijn bij Afhaalorders. Door de verzendcode afhalen te mappen naar een kanaal die automatisch op verzonden komt te staan zal monta deze order niet versturen, maar kan de order wel via de RMA worden aangemeld)</em></p>
+<p>Dit kan worden ingesteld in de backend van Monta in de tabel: <code>tblRelatieSystemConnectionDataFlowOrderImportSettingsShippers</code></p>
+<h2 id="origin-kanaal-mappen">Origin (kanaal) mappen</h2>
+<p>Bij sommige koppelingen importeert monta een origin mee. De origin (Ook wel kanaal genoemd) is de bron van de bestelling. Verschillende origines maken het mogelijk
+verschillende instellingen zoals lay-out pakbon engewenste verladers.</p>
+<h3 id="1-kanaal-aanpassen">1. Kanaal aanpassen</h3>
+<p>Op basis van de gevulde waardes origin kan je de order op een ander kanaal laten binnenkomen dan de standaard.</p>
+<p>Dit kan worden ingesteld in de backend van Monta in de tabel:
+<code>tblRelatieSystemConnectionDataFlowOrderImportSettingsOrigins</code></p>
+<p>Je kan binnen 1 koppeling meerdere mappings hebben naar verschillende origins.</p>
+<p><em>(Usercase: Bij magento kan je op 1 backend meerdere voorkanten hebben. Bijvoorbeeld bij meerdere talen. Je wilt deze talen op verschillende kanalen binnen monta laten binnenkomen omdat je dan met de pakbonnen en emails hier rekening mee kan houden)</em></p>
+<p>Standaard importeert monta in de default esetting. Als hij een match vindt in bovenstaande tabel, dan zal hij de order in een andere esetting importeren.
+Het is ook in te stellen dat wanneer er geen overeenkomende mapping is, dat hij de order niet importeert. Dit is te doen door de default esetting te verwijderen in de volgende tabel&quot;:
+<code>tblRelatieSystemConnectionDataFlowOrderImportSettings</code></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

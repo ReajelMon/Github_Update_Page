@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Technische beschrijving IT omgeving </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Technische beschrijving IT omgeving ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+  
+  <meta property="docfx:rel" content="../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="technische-beschrijving-it-omgeving">Technische beschrijving IT omgeving</h1>
+
+<p>Monta heeft een on-premise-omgeving in 2 datacenters, één in Eindhoven en één in Rotterdam.</p>
+<p>Deze omgeving bestaat in beide datacenters uit een SAN, 5 ESX-servers in Eindhoven en 4 ESX-servers in Rotterdam (VMWare) en diverse NAS-systemen.</p>
+<p>Er zijn (medio mei 2023) 130 virtuele servers in gebruik, voor 95% Windows-servers.</p>
+<p>Er draaien verschillende databases op Microsoft SQL-servers.</p>
+<p>De belangrijkste productiedatabase draait op een SQL Always-on-High-Availability cluster, in combinatie met een
+Microsoft Failover cluster.</p>
+<p>De meeste websites worden benaderd vie een F5 BIG-IP Loadbalancer.</p>
+<p>Het on-premisies AD-domein wordt gesynchroniseerd met Azure AD.</p>
+<p>Er wordt gebruik gemaakt van Office365 (waaronder Exchange Online en Teams).</p>
+<p><a href="https://docs.microsoft.com/nl-nl/azure/architecture/reference-architectures/identity/azure-ad">https://docs.microsoft.com/nl-nl/azure/architecture/reference-architectures/identity/azure-ad</a></p>
+<p><img src="../../Attachments/image-28b483a2-6721-479f-99cb-031f5e9f6c6c.png" alt="image.png"></p>
+<p>De MP-DC03 fungeert als &quot;Azure AD Connect-synchronisatieserver&quot;.</p>
+<p>Deze service synchroniseert de informatie in de lokale Active Directory met Azure AD.</p>
+<p>Alle wijzigingen rond groepen en gebruikers on-premises worden doorgegeven naar Azure AD.</p>
+<p>De authenticatie in Office365, Echange online teams en GoMonta vind plaats vanuit Azure AD.</p>
+<p>Middels Veeam wordt er een backup gemaakt in de eigen datacentres.</p>
+<p>Middels Cove Data Protection wordt er van de belangrijkste servers ook een backup gemaakt in de cloud.</p>
+<p>In zowel het datacentre als op alle vestigingen wordt gebruikt gemaakt van Sophos-routers.</p>
+<p>In het datacentre wordt gebruik gemaakt van HP-switches, op alle locaties betreft het Cisco-switches. De WIFI-omgeving is van het merk Ruckus.</p>
+<p>Zowel het datacentre als de vestigingen beschikken over meerdere internet-verbindingen.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

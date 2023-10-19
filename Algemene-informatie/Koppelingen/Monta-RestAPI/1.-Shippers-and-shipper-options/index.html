@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>1. Shippers and shipper options </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="1. Shippers and shipper options ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="1-shippers-and-shipper-options">1. Shippers and shipper options</h1>
+
+<h2 id="shippers-and-shipper-options">Shippers and shipper options</h2>
+<p>Below is an incomplete list of the shippers we support, with their code.
+Please note that a shipper has to be enabled for your account before you can use it.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Code</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PAK</td>
+<td>PostNL pickup points</td>
+</tr>
+<tr>
+<td>PostNL</td>
+<td>PostNL delivery</td>
+</tr>
+<tr>
+<td>DPD</td>
+<td>DPD delivery</td>
+</tr>
+<tr>
+<td>DPDparcelstore</td>
+<td>DPD pickup points</td>
+</tr>
+<tr>
+<td>UPS</td>
+<td>UPS delivery</td>
+</tr>
+<tr>
+<td>SEL</td>
+<td>DHL parcel</td>
+</tr>
+<tr>
+<td>SELBuspakje</td>
+<td>DHL parcel mailbox delivery</td>
+</tr>
+<tr>
+<td>DHLservicepunt</td>
+<td>DHL pickup points (only in the Netherlands)</td>
+</tr>
+<tr>
+<td>BpackPickupPoint</td>
+<td>Bpost pickup points (only in Belgium)</td>
+</tr>
+<tr>
+<td>Cancelled</td>
+<td>An order which is already picking cannot be blocked or deleted anymore. Still shipping can be stopped by changing the shipper to Cancelled. The order will be shipped and returned.</td>
+</tr>
+</tbody>
+</table>
+<p>Below is an incomplete list of the shippers we support in our RMA-portals, with their code.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Code</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PostNL</td>
+<td>PostNL Pakket return</td>
+</tr>
+<tr>
+<td>DPD</td>
+<td>DPD return</td>
+</tr>
+<tr>
+<td>DHLFYPakket</td>
+<td>DHL For You Pakket</td>
+</tr>
+<tr>
+<td>UPS</td>
+<td>UPS return</td>
+</tr>
+<tr>
+<td>SEL</td>
+<td>DHL Parcel return</td>
+</tr>
+<tr>
+<td>PostNlBuspakje</td>
+<td>PostNL Buspakje return</td>
+</tr>
+<tr>
+<td>DhlParcelPickup</td>
+<td>DHL pickup</td>
+</tr>
+<tr>
+<td>PostNLSmart</td>
+<td>PostNL paperless return</td>
+</tr>
+<tr>
+<td>DHLParcelConnect</td>
+<td>DHL Parcel Connect return</td>
+</tr>
+</tbody>
+</table>
+<h3 id="shipper-option-codes">Shipper option codes</h3>
+<p>Some of the shippers above have options. These are used to enable certain features for a shipment
+or for specifying information for a shipment.</p>
+<h4 id="postnl">PostNL</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Option code</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SignatureOnDelivery</td>
+<td>Optional, no value</td>
+<td>Add this code to require the receiver of the shipment to sign</td>
+</tr>
+<tr>
+<td>NoNeighbour</td>
+<td>Optional, no value</td>
+<td>Add this code to not allow PostNL to deliver at the neighbour</td>
+</tr>
+<tr>
+<td>EveningDelivery</td>
+<td>Optional, no value</td>
+<td>Add this code to enable delivery in the evening. Take care: not available everywhere.</td>
+</tr>
+<tr>
+<td>FoodNetwork</td>
+<td>Optional, no value</td>
+<td>Add this code to enable delivery via the PostNL foodnetwork.</td>
+</tr>
+<tr>
+<td>AgeCheckRequired</td>
+<td>Optional,string, format: “DD-MMYYYY”</td>
+<td>Add this code to enable the age verification on delivery.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="pak-postnl-pickup-point">PAK (PostNL pickup point)</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Option code</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EarlyMorningPickup</td>
+<td>Optional, no value</td>
+<td>To enable early morning pickup for this shipment. Has to be supported by the pickup points.</td>
+</tr>
+<tr>
+<td>PickupPointCode</td>
+<td>Required for shipping to a pickup point in Belgium</td>
+<td>Code of the pickup point to ship to (“Downnetwork pickup location code”)</td>
+</tr>
+<tr>
+<td>PickupPointRetailID</td>
+<td>Required for shipping to a pickup point in Belgium</td>
+<td>Code of the pickup point partner (“Downnetwork partner ID”)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="dhlservicepunt">DHLservicepunt</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Option code</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ServicePointCode</td>
+<td>Required, text</td>
+<td>The code of the DHL service point this order should be delivered to.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="dpdparcelstore">DPDparcelstore</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Option code</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ParcelstoreID</td>
+<td>Required, text</td>
+<td>The code of the DPD parcel store this order should be delivered to.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ups">UPS</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Option code</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Express</td>
+<td>Optional, no value</td>
+<td>Normally we choose UPS service (standard/express) base on the country. With this option you can specify to always choose Express service.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sel-dhl-parcel">SEL (DHL parcel)</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Option code</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SignatureOnDelivery</td>
+<td>Optional, no value</td>
+<td>Add this code to require the receiver of the shipment to sign</td>
+</tr>
+</tbody>
+</table>
+<h4 id="dhlservicepunt-1">DHLservicepunt</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Option code</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ServicePointCode</td>
+<td>Required, text</td>
+<td>The code of the DHL pickup point this order should be delivered to</td>
+</tr>
+</tbody>
+</table>
+<h4 id="bpackpickuppoints-bpost-belgium">BpackPickupPoints (Bpost Belgium)</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Option code</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PickupPointCode</td>
+<td>Required, text</td>
+<td>The code of the Bpost pickup point this order should be delivered to (PUGO Id)</td>
+</tr>
+<tr>
+<td>PickupPointType</td>
+<td>Optional, text</td>
+<td>The type of Bpost pickup point</td>
+</tr>
+</tbody>
+</table>
+<h4 id="dhlde">DHLDE</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Option code</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PackingStationCode</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>PostNumber</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

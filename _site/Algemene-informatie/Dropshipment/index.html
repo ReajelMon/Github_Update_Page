@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Dropshipment </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Dropshipment ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+  
+  <meta property="docfx:rel" content="../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="dropshipment">Dropshipment</h1>
+
+<p>Dropshipment is dat de leverancier van een klant zelf de orders verzend.</p>
+<p>Aangezien er dus geen voorraad van de leverancier aanwezig is, komen de orders in backorder. Het is natuurlijk mogelijk de backorder handmatig te verwijderen uit Montaportal en de dropshipper de orderinformatie te sturen zodat die de order kan gaan verwerken.</p>
+<p>Om dit handwerk te voorkomen zijn verschillende mogelijkheden. Hierin moet onderscheid gemaakt worden in:</p>
+<ol>
+<li>De dropshipper werkt ook met Monta, wat op twee manieren kan:</li>
+</ol>
+<ul>
+<li>De dropshipper heeft het fulfilment ondergebracht in een magazijn van Monta</li>
+<li>De dropshipper doet het fulfilmet zelf met de MontaWMS software</li>
+</ul>
+<ol start="2">
+<li>De dropshipper werkt niet met Monta</li>
+</ol>
+<p>Ook kan de klant de wens hebben om de voorraad van de dropshipper mee te tellen in de voorraadkoppeling naar de webshop.</p>
+<h2 id="de-dropshipper-werkt-ook-met-monta">De dropshipper werkt ook met Monta</h2>
+<h3 id="orders">Orders</h3>
+<p>Om dit op te zetten moet als eerste bij de klant een apart kanaal worden gemaakt voor de dropship orders. Dit kanaal moet worden gekoppeld aan het magazijn waar de voorraad ligt. Dit kan een magazijn zijn van Monta, die het fulfilment doet voor de dropshipper, of een eigen magazijn van de dropshipper als die MontaWMS gebruikt.</p>
+<p>Vervolgens kan op twee manier ingeregeld worden dat de orders worden omgezet naar die origin:</p>
+<ol>
+<li>Bij de klant kan worden ingesteld dat alle orders worden omgezet naar het magazijn waar de voorraad is.</li>
+<li>Bij de supplier kan het ID van het magazijn worden ingesteld waar de order naartoe omgezet worden worden.</li>
+</ol>
+<p>Het verschil is dat smaak 1 alleen werkt als er voorraad is van de producten in het andere magazijn. Bij smaakt 2 worden ook backorders omgezet naar het kanaal wat gekoppeld is aan dat magazijn.</p>
+<p>Smaak 1 kan ook als nadeel hebben dat alle orders worden omgezet naar het magazijn waar de voorraad is, terwijl dit soms alleen gewenst is voor orders van die supplier.</p>
+<h3 id="voorraad">Voorraad</h3>
+<p>Via een <a href="../../Algemene-informatie/Voorraadbeheer/Wholesale">groothandel koppeling</a> kan voorraad van de dropshipper klant beschikbaar worden gemaakt worden voor de klant die het verkoopt.</p>
+<p>Bij het omzetten van de orders wordt dan ook de voorraad in het magazijn intern omgeboekt van de dropshipper naar de klant.</p>
+<p>Het dropship systeem bied ook de mogelijk om aan de dropshipper te laten zien hoeveel er in backorder staan van een product bij de klant die het verkoopt. Voor het geval de dropshipper achteraf inkoopt. De orderinformatie zelf krijgt de dropshipper pas de zien als de order is omgezet.</p>
+<h2 id="de-dropshipper-werkt-niet-met-monta">De dropshipper werkt niet met Monta</h2>
+<h3 id="orders-1">Orders</h3>
+<p>Aangezien de dropshipper niet met Monta werkt, moeten de orders uit de backorders gehaald worden. En liefst moet ook automatisch de dropshipper geïnformeerd worden.</p>
+<p>Hiervoor zijn verschillende oplossingen:</p>
+<ol>
+<li>Automatisch orderregels van bepaalde producten verwijderen</li>
+<li>Individuele orders automatisch op shipped zetten en mailen naar de dropshipper</li>
+<li>Op vaste momenten alle orders handmatig op shipped zetten en mailen naar de dropshipper</li>
+<li>Op vaste momenten alle orders automatisch op shipped zetten en mailen naar de dropshipper</li>
+</ol>
+<h4 id="automatisch-orderregels-van-bepaalde-producten-verwijderen">Automatisch orderregels van bepaalde producten verwijderen</h4>
+<p>Bij de split- and added products kan ingesteld worden dat bepaalde producten automatisch uit de orders verwijderd worden.</p>
+<p>Nadelen zijn:</p>
+<ul>
+<li>de dropshipper wordt niet automatisch geïnformeerd wordt over de order</li>
+<li>als een order alleen zulke producten heeft blijft een lege order over die wordt geblokkeerd</li>
+</ul>
+<p>Ondanks de nadelen kan dit een prima oplossing zijn in sommige situaties.</p>
+<h4 id="individuele-orders-automatisch-op-shipped-zetten-en-mailen-naar-de-dropshipper">Individuele orders automatisch op shipped zetten en mailen naar de dropshipper</h4>
+<p>Er kan ingesteld worden dat orders van producten van de dropshipper automatisch op shipped worden gezet, en dat er een mailtje met de order informatie naar de dropshipper wordt gestuurd.</p>
+<p>Als een order deels ge-dropshipt moet worden, wordt deze gesplitst.</p>
+<p>Dit wordt toegepast op de orders als ze in backorder zouden gaan. Dus als de klant toch eigen voorraad heeft van de producten, gaat de order niet in backorder en worden ze niet op shipped gezet en naar de supplier gemaild.</p>
+<p>Dit kan door IT ingesteld worden.</p>
+<p>In tblPortalPurchaseSuppliers moeten de kolommen SetOrdersDropshipped en MailOrdersToSupplier op 1 gezet worden.</p>
+<p>Ook moet een e-mail template ingesteld worden met type OrderToSupplier. Dit template wordt gebruikt voor de e-mail naar de klant.</p>
+<h4 id="op-vaste-momenten-alle-orders-handmatig-op-shipped-zetten-en-mailen-naar-de-dropshipper">Op vaste momenten alle orders handmatig op shipped zetten en mailen naar de dropshipper</h4>
+<p>Als het om veel orders gaat, is het niet handig dat de dropshipper veel losse mailtjes binnenkrijgt. Daarom is het ook mogelijk om op vaste momenten meerdere orders tegelijk te verwerken.</p>
+<p>Op de supplier details pagina kan geklikt worden op de knop [Put all backorders from this supplier on shipped (dropship)]. Deze zet de orders van producten van die supplier automatisch op shipped. Hierbij wordt ook een Excel gegenereerd met alle productinformatie, de verstuurd kan worden naar de dropshipper.</p>
+<h4 id="op-vaste-momenten-alle-orders-automatisch-op-shipped-zetten-en-mailen-naar-de-dropshipper">Op vaste momenten alle orders automatisch op shipped zetten en mailen naar de dropshipper</h4>
+<p>In deze smaak wordt de voorgaande smaak geautomatiseerd. Dit kan op Montaportal ingesteld worden.</p>
+<p>De geplande taak SupplierDropshipper voert het uit.</p>
+<h3 id="voorraad-1">Voorraad</h3>
+<p>Er zijn twee mogelijkheden om voorraad van de dropshipper beschikbaar te maken voor de klant.</p>
+<ol>
+<li>Een apart magazijn maken en daar de voorraad in importeren</li>
+<li>Een aparte Montaportal omgeving maken de voorraad delen met het <a href="../../Algemene-informatie/Voorraadbeheer/Groothandelsysteem">groothandelsysteem</a></li>
+</ol>
+<p>Smaak 1 heeft als nadeel dat voorraad uit een ander magazijn ook wordt gerekend als beschikbare voorraad in het inkoopsysteem. Het inkoopsysteem zal dus niet de suggestie geven om de producten in te kopen omdat ze al op voorraad zijn. Terwijl de wens kan zijn om het inkoopsysteem juist te gebruiken om in te kopen bij de dropshipper.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Scenario&#39;s Failover SQL Cluster </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Scenario&#39;s Failover SQL Cluster ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="scenarios-failover-sql-cluster">Scenario's Failover SQL Cluster</h1>
+
+<p><strong>Scenario's:</strong></p>
+<ol>
+<li><p>Read-Only SQL cluster node Eindhoven (MP-SQL21) valt uit:<br>
+<br>
+Er gebeurt helemaal niets qua cluster waar klanten wat van merken,
+want deze node heeft geen vote. Wel raakt dit de read-only
+bevragingen door Montapacking zelf.</p>
+</li>
+<li><p>SQL cluster node Eindhoven (MP-SQL10) valt uit:
+<br>
+Cluster node Rotterdam heeft verbinding met de witness disk op de
+EIN-MGMT01 en behoudt quorum, dus draait gewoon door.</p>
+</li>
+<li><p>SQL cluster node Rotterdam (MP-SQL20) valt uit:
+<br>
+Cluster node Eindhoven heeft verbinding met de witness disk op de
+EIN-MGMT01 en behoudt quorum, dus draait gewoon door.</p>
+</li>
+<li><p>Het SAN in Eindhoven valt uit:
+<br>
+Cluster node Rotterdam heeft verbinding met de witness disk op de
+EIN-MGMT01 en behoudt quorum, dus draait gewoon door.</p>
+</li>
+<li><p>Heel Eindhoven valt uit (bijvoorbeeld door een kapotte switch stack
+of de interconnect link):
+<br>
+Cluster node Rotterdam heeft geen verbinding met de witness disk op de
+EIN-MGMT01 en ook niet met de cluster node in Eindhoven. Cluster heeft
+geen quorum meer, cluster gaat down. Cluster dient geforceerd gestart te
+worden (fixquorum). Dit kan met de failover cluster manager (Force
+start) of met command prompt: <em><strong>net start clussvc /fixquorum</strong></em></p>
+</li>
+</ol>
+<p>Binnen SQL dient het volgende commando te worden uitgevoerd.<br>
+ALTER AVAILABILITY GROUP [Monta_Maindb]
+FORCE_FAILOVER_ALLOW_DATA_LOSS;</p>
+<p>GO</p>
+<p>Hierdoor gaat het SQL-cluster niet automatisch weer syncen.</p>
+<p>Op secondary: Availability Databases: Resume Data movement.</p>
+<p>Op de MP-FS205 dient in &quot;C:\scripts\BackupSQL&quot; MP-SQL10 veranderd te
+worden in MP-SQL20.<br>
+Dit dient weer terug gezet te worden als de MP-SQL10 weer primary wordt.</p>
+<ol start="6">
+<li><p>File share witness valt weg en binnen 10 minuten ook een van de twee
+cluster nodes. Cluster gaat down. Na de verstreken 10 minuten wordt
+de fileshare witness getracht opnieuw te starten. Indien succesvol
+--&gt;</p>
+</li>
+<li><p>Cluster Database is corrupt en het hele cluster is niet meer te
+benaderen. Volg hiervoor de <strong>Noodprocedure bij Clusterproblemen uit
+de bijlage.</strong></p>
+</li>
+</ol>
+<p><strong>Bijlage</strong> <strong>Noodprocedure problemen Backend Cluster</strong></p>
+<p><strong>Probleem</strong>: Cluster database is corrupt. Cluster service draait, maar
+daar is alles mee gezegd. In SQL staan de databases op alle nodes in een
+'Restoring' status.</p>
+<p>Eventlog geeft deze critical errors:</p>
+<ol>
+<li><p>The failover cluster database could not be unloaded and any
+potentially incorrect changes in memory could not be discarded. The
+cluster service will attempt to repair the database by retrieving it
+from another cluster node. If the cluster service does not come
+online, restart the cluster service on this node. If restarting the
+cluster service does not fix the problem, please restart the
+machine. If the cluster service fails to come online after a reboot,
+please restore the cluster database from the last backup. The
+current database was copied to
+'C:\Windows\Cluster\CLUSDB.Corrupt.bak'. If no backups are
+available, please copy 'C:\Windows\Cluster\CLUSDB.Corrupt.bak'
+to 'C:\Windows\Cluster\CLUSDB' and attempt to start the cluster
+service. If the cluster service then comes online on this node, some
+cluster configuration changes may be lost and the cluster may not
+function properly. Run the Validate a Configuration wizard to check
+your cluster configuration and verify that the hosted Services and
+Applications are online and functioning correctly.</p>
+</li>
+<li><p>The cluster database could not be loaded. The file may be missing or
+corrupt. Automatic repair might be attempted.</p>
+</li>
+</ol>
+<p>We hebben nu drie opties waaruit we kunnen kiezen:</p>
+<p>Drie opties:</p>
+<ol>
+<li><p><strong>Restore C-schijf (en dus de system state) met Veeam</strong>.</p>
+</li>
+<li><p>**Restore system state met Windows Backup.<br>
+**</p>
+</li>
+<li><p><strong>SQL Databases op een losse node opbrengen om z.s.m. weer in de
+lucht te zijn.</strong> Let op: in dit geval is er later weer downtime
+nodig om de oorspronkelijke situatie te herstellen. Kies je hier
+toch voor volg dan de volgende stappen:</p>
+</li>
+</ol>
+<pre><code class="lang-{=html}">&lt;!-- --&gt;
+</code></pre>
+<p>a.  Noteer het ip adres van de listener (MP-SQLlist2, 10.10.202.123)</p>
+<p>b.  Verwijder hem uit DNS</p>
+<p>c.  Maak een CNAME aan voor MP-SQLlist2 naar de node die normaliter
+primair is (MP-SQL10). Dit zodat connecties naar de listener nu
+direct bij de node uit komen.</p>
+<p>d.  Wacht heel even totdat het record gesynchroniseerd is naar de andere
+DC's. In de tussentijd kunnen de databases uit de restoring state
+geforceerd worden middels de volgende statements (uitvoeren op de
+node :</p>
+<p>RESTORE DATABASE [Monta_Backend] WITH RECOVERY</p>
+<p>RESTORE DATABASE [MontaIdentity] WITH RECOVERY</p>
+<p>RESTORE DATABASE [RelatieSystemConnections] WITH RECOVERY</p>
+<p>e.  Als het record op alle DC's bekend is hebben de machines nog het
+oude IP in hun cache staan. Deze verloopt binnen 5 minuten. Om zaken
+te versnellen kan deze cache handmatig geleegd worden door op alle
+machines (bijvoorbeeld Montaportal webservers) een dns flush uit te
+voeren:</p>
+<p><strong>ipconfig /flushdns</strong></p>
+<p>f.  Alles moet nu weer in de lucht zijn.</p>
+<p>Later herstel:</p>
+<p>a.  Verwijder de databases op de andere nodes.</p>
+<p>b.  Schakel op alle nodes AlwaysOn uit en herstart SQL (Is dit nodig)</p>
+<p>c.  Verwijder de cluster role**:
+Uninstall-WindowsFeature Failover-Clustering.**</p>
+<p>d.  Reboot de server</p>
+<p>e.  Verwijder de DNS record van het cluster uit DNS en verwijder ook het
+computer object</p>
+<p>f.  Verwijder de DNS record van de listener uit DNS en verwijder ook het
+computer object</p>
+<p>g.  Voer nu verder de procedure uit voor installatie van het failvoer
+cluster en AlwaysOn. Het enige verschil is dat het computer account
+voor de listener geprestaged moet worden. Dus handmatig computer
+object aanmaken en nodes full control geven op dat computer object.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

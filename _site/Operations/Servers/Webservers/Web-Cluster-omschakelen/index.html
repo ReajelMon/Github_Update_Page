@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Web Cluster omschakelen </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Web Cluster omschakelen ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="web-cluster-omschakelen">Web Cluster omschakelen</h1>
+
+<h3 id="inleiding">Inleiding</h3>
+<p>Er draaien 10 Webservers in 5 clusters.<br>
+Hiervoor wordt er gebruikt gemaakt van Microsoft Failover Cluster.<br>
+Hiermee worden IP-nr's als Cluster-Core-Resource beschikbaar gesteld
+waardoor websites (die een binding hebben naar deze IP-nr's) altijd door
+kunnen draaien, ongeacht of een webserver actief is in Eindhoven of in
+Rotterdam</p>
+<p>Dit ziet er in Failover Cluster Manager als volgt uit:</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-WebCluster-omschakelen/media/image1.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-WebCluster-omschakelen/media/image2.png" alt=""></p>
+<p>Voor een actueel overzicht van de 5 Webclusters, de servers die daar
+deel vanuit maken en de websites die daarop draaien, zie : <a href="https://montanl.sharepoint.com/sites/Serviceteam-IT/Gedeelde%20documenten/General/Webservers%20monta.xlsx">Webservers
+Montapacking</a>
+, tabblad &quot;Webservers&quot;</p>
+<h3 id="failover-als-beide-web-cluster-nodes-nog-benaderbaar-zijn">Failover als beide Web-Cluster nodes nog benaderbaar zijn</h3>
+<p>Als beide Web-Cluster-nodes nog benaderbaar zijn en je wil overschakelen
+naar de andere node dan kun het best de actieve Webserver herstarten.
+Het duurt dan maximaal een minuut voordat de betreffende
+monta-applicatie weer verbinding kan maken.</p>
+<h3 id="failover-als-de-actieve-web-cluster-node-niet-meer-benaderbaar-is">Failover als de actieve Web-Cluster node niet meer benaderbaar is</h3>
+<p>In deze beschrijving wordt er van uitgegaan dat de MP-Web11 de actieve
+node is maar niet meer benaderbaar en dat de MP-Web21 nog wel
+benaderbaar is en dat het cluster niet automatisch is overgegaan is naar
+de MP-Web21.</p>
+<p>Log in op de MP-Web21.</p>
+<p>Start vanuit &quot;Administrative Tools&quot; de Failover Cluster Manager. Maak
+connectie met &quot;MP-WebClus01.montapacking.nl&quot;.<br>
+Check of de MP-Web21 de &quot;Current Host Server&quot; is. Zo niet schakel dan
+over naar de MP-Web21 via &quot;Select Node&quot; en dan kiezen voor de MP-Web21.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-WebCluster-omschakelen/media/image3.png" alt=""></p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-WebCluster-omschakelen/media/image4.png" alt=""></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

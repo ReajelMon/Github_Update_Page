@@ -1,0 +1,12 @@
+- name: Algemene informatie
+  href: Algemene-informatie/
+  topicHref: Algemene-informatie/
+- name: Operations
+  href: Operations/
+  topicHref: Operations/
+- name: Updates
+  href: Updates/
+  topicHref: Updates/
+- name: Troubleshooting
+  href: Troubleshooting/
+  topicHref: Troubleshooting/

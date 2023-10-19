@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Transport inkoop facturen </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Transport inkoop facturen ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="transport-inkoop-facturen">Transport inkoop facturen</h1>
+
+<h2 id="transport-inkoopfacturen">Transport inkoopfacturen</h2>
+<p>Voor het inlezen van transport inkoopfacturen die we krijgen van de verschillende verzenders wordt een software tool gebruikt. Bij de meeste verzenders is het inmiddels zo dat de bijlagen van de transport inkoopfacturen ingelezen kunnen worden, zodat de verzendkosten gematcht kunnen worden aan eorders.</p>
+<h2 id="inlezen-van-transport-inkoopfacturen">Inlezen van transport inkoopfacturen</h2>
+<p>De tools die gebruikt worden bij het inlezen en verwerken van de transportinkoopfacturen worden hieronder toegelicht. In principe is alles gemaakt en bedacht door Haiko van der Velden en Remy van Strien met onderstaande taakverdeling:.</p>
+<ul>
+<li>Alles in T-SQL --&gt; Remy</li>
+<li>Functionele ontwerpen --&gt; Remy</li>
+<li>alles in C# gemaakt --&gt; Haiko</li>
+<li>Techniek / tools die gebruikt worden om functionele ontwerp te realiseren --&gt; Haiko</li>
+</ul>
+<p><img src="../../../Attachments/Afdeling%20-%20IT%20-%20man-07f21249-e7c6-4c07-bf45-5879591915a2.png" alt="Afdeling - IT - man.png"></p>
+<p>********** De informatie hieronder is meer van technische aard **********</p>
+<h2 id="waar-draaien-de-websitesservices">Waar draaien de websites/services</h2>
+<p>De transport inkoopfacturen website bestaat uit verschillende onderdelen die allemaal op de MP-WEB09 draaien. Jasper Verhaar heeft geholpen bij de recente migratie van de web07 naar web09 en onderhoud de MP-WEB09.</p>
+<p><strong>toeslagservice.monta.nl</strong>
+Zou een service moeten zijn die voor TransportinkoopfacturenV2.monta.nl de instructies voor de toeslagen doorzet naar ??sqlgraph??, omdat die beter werkt met T-sql instructies. Hiermee worden de instellingen opgehaald voor de verwerking van de ingelezen inkoopfactuurregels.</p>
+<ul>
+<li>Devops: <a href="https://dev.azure.com/MontaDev/_git/MontaInkoopTransportServiceSolution?path=/MontaInkoopTransportService/ToeslagService">https://dev.azure.com/MontaDev/_git/MontaInkoopTransportServiceSolution?path=/MontaInkoopTransportService/ToeslagService</a></li>
+</ul>
+<p><strong>transportinkoopfacturen.monta.nl</strong>
+Website voor de controle van de ingelezen inkoopfacturen, het verwerken van de kruisposten en hier moeten alle configuratieschermen komen voor de TPT voor alle acties die nu rechtstreeks in de DB worden uitvoerd. Inloggen op de website gaat via Azure Active Directory. Hierbij moet de gebruiker (via inheritance) de Gomonta Finance rol hebben. Iedereen met een IT rol heeft dit.</p>
+<ul>
+<li>Website: <a href="https://transportinkoopfacturen.monta.nl/">https://transportinkoopfacturen.monta.nl/</a></li>
+<li>Devops: <a href="https://dev.azure.com/MontaDev/MontaTransportPurchaseTools">https://dev.azure.com/MontaDev/MontaTransportPurchaseTools</a></li>
+</ul>
+<p><strong>transportinkoopfacturenv2.monta.nl</strong>
+Inlezen, transformeren en wegschrijven van de inkoopfacturen. Via de website worden de bestanden (.xlsx en .csv bestanden) per verzender ingelezen en vervolgens via deze service verwerkt en gematcht (veelal via TT code) aan een eorderid. Het resultaat wordt in de correcte tabellen op de Finance DB (SQL06) gezet. De belangrijkste tabellen hierbij zijn:</p>
+<ol>
+<li>tblInkoopDetail: bevat alle regels met de gematchte inkoopregels</li>
+<li>tblInkoopDetailTransportKruispostNoMatch: bevat alle regels met nomatch inkoopregels</li>
+<li>tblInkoop: bevat alle eorderid's van orders waarvoor we transportkosten verwachten en die dus gebruikt wordt voor het matchen met een samenvatting van enkele belangrijke ordergegevens voor rapportage doeleinde en KPI.</li>
+</ol>
+<p>Echter zijn er nog veel meer tabellen met allemaal instellingen, die nodig zijn bij het verwerkingsproces. Op de website log je in via je AD account, onduidelijk is of hier nog specifieke rechten voor nodig zijn.</p>
+<ul>
+<li>Website: <a href="https://transportinkoopfacturenv2.monta.nl/">https://transportinkoopfacturenv2.monta.nl/</a></li>
+<li>Devops: <a href="https://dev.azure.com/MontaDev/MontaInkoopTransportServiceSolution">https://dev.azure.com/MontaDev/MontaInkoopTransportServiceSolution</a></li>
+</ul>
+<p><strong>transportinkoopfacturenwebservice.monta.nl</strong>
+Dit is de aparte service waarin Hangfire nu draait. Oorspronkelijk was dit onderdeel van Transportinkoopfacturen.monta.nl maar de taken die we schedulen hierin gingen dan alleen starten als ook de website een keer was geopend door iemand en dat was niet handig voor taken die welke dag moeten draaien. Toen heeft Haiko daar een aparte service voor gemaakt.</p>
+<ul>
+<li>Devops: <a href="https://dev.azure.com/MontaDev/InkoopTransportJobs">https://dev.azure.com/MontaDev/InkoopTransportJobs</a></li>
+</ul>
+<h2 id="hangfire-taken">Hangfire taken</h2>
+<p>Rondom de transport inkoopfacuturen draaien een aantal periodieke taken. Deze worden uitgevoerd door hangfire. Een dashboard van de uitgevoerde taken is te zien via <a href="https://transportinkoopfacturen.monta.nl/hangfire/">https://transportinkoopfacturen.monta.nl/hangfire/</a>
+en hier <a href="https://transportinkoopfacturen.monta.nl/Home/Jobs">https://transportinkoopfacturen.monta.nl/Home/Jobs</a>
+<img src="../../../Attachments/image-89b9129d-65fd-4388-8a68-1cb97964208f.png" alt="image.png"></p>
+<p>w.google</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

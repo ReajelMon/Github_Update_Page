@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Handleiding CBS350 inrichten met VLAN ontwerp 2023 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Handleiding CBS350 inrichten met VLAN ontwerp 2023 ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="handleiding-cbs350-inrichten-met-vlan-ontwerp-2023">Handleiding CBS350 inrichten met VLAN ontwerp 2023</h1>
+
+<h2 id="inhoud">Inhoud</h2>
+<ul>
+<li><p><a href="#algemene-inrichting">Algemene inrichting</a></p>
+</li>
+<li><p><a href="#Accesspoints-in-VLAN100">Accesspoints in VLAN100</a></p>
+</li>
+<li><p><a href="#tijd-instellen">Tijd instellen</a></p>
+</li>
+<li><p><a href="#snmp">SNMP</a></p>
+</li>
+<li><p><a href="#ssh">SSH</a></p>
+</li>
+<li><p><a href="#password-aging">Password Aging</a></p>
+</li>
+<li><p><a href="#dns">DNS</a></p>
+</li>
+<li><p><a href="#Chronicle-Data-Forwarder-instellen">Chronicle Data Forwarder instellen</a></p>
+</li>
+<li><p><a href="#configuratie-opslaan">Configuratie opslaan</a></p>
+</li>
+</ul>
+<h2 id="algemene-inrichting">Algemene inrichting</h2>
+<p>Achterhaal het IP-adres uit de Fortinet (Onder Dashboard – Network – DHCP). Een nieuwe switch krijgt een DHCP-lease uit de DHCP-pool van de Physical interface van de Fortinet.</p>
+<p><img src="../../../../Attachments/image-b8c2879d-0a2d-4593-a1bf-11de34b6d37b.png" alt="image.png"></p>
+<p>Dat wordt dus een IP-nummer met (prefix). (vestigingID).255.xxx  (in bovenstaand voorbeeld bijvoorbeeld 10.101.255.242.
+Login op de switch met Cisco en als wachtwoord Cisco.
+Maak de Vlans aan. Kijk hiervoor in de IP LIJST.</p>
+<p><img src="../../../../Attachments/image-f8e203c5-f949-457e-82b2-f48f785749e2.png" alt="image.png"></p>
+<p>Start de configuratie wizard</p>
+<p><img src="../../../../Attachments/image-4f371f51-ce64-47ac-ad87-7c7f0dde0040.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-46c9608a-4fc3-4b31-bd63-3597ab13a6f0.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-e92c1685-bbbd-4d6c-80ba-6bc394254c69.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-c0fd55cd-7b70-47ec-bca5-59a2a0feae4d.png" alt="image.png"></p>
+<p>Vlan Omzetten van vlan 1 naar vlan 4</p>
+<p><img src="../../../../Attachments/image-1c20a167-cfd4-47e2-95f2-d74736c1fada.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-b31638ae-177c-410b-840f-cf0685159dae.png" alt="image.png"></p>
+<p>Doe dit voor alle poorten behalve de trunk-poorten!</p>
+<h2 id="accesspoints-in-vlan100">Accesspoints in VLAN100</h2>
+<p>Als er AP's aangesloten worden op een switch die in VLAN100 terecht moeten komen dan moeten de betreffende poorten voor VLAN100 op untagged gezet worden.<br>
+In onderstaand voorbeeld GE4-GE8.</p>
+<p><img src="../../../../Attachments/image-6c3b2d8b-04b5-4343-bde6-59027ccc0daf.png" alt="image.png"></p>
+<h2 id="ssh">SSH</h2>
+<p>Vlans toewijzen kan ook op een snelle manier via SSH
+Open Putty en verbind naar de switch.
+Gebruik de inlog gegevens vanaf passwordstate.
+Config T
+Definieer de range bijvoorbeeld int range gi1-10
+Wissel het vlan om naar het juiste vlan met switchport access vlan 4
+Alle poorten zijn in een handomdraai omgewisseld.</p>
+<p><img src="../../../../Attachments/image-d84fa420-4816-4e22-a796-db23fe79f9c9.png" alt="image.png"></p>
+<h2 id="tijd-instellen">Tijd instellen</h2>
+<p>Zet de switch in de “Advanced mode”.
+Zet de tijd-instellingen goed.</p>
+<p><img src="../../../../Attachments/image-c9a89f06-be24-4262-9203-2ebf61f28c30.png" alt="image.png"></p>
+<p>En voeg als SNTP-server de Firewall toe.</p>
+<p><img src="../../../../Attachments/image-5132ecb2-6b9c-4a59-a866-580214676fcb.png" alt="image.png"></p>
+<h2 id="snmp">SNMP</h2>
+<p>Voeg een SNMP Community toe.</p>
+<p><img src="../../../../Attachments/image-a142e8e7-9f1a-46ae-ab3b-af92b01fdcdc.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-78c59a48-c186-407a-a95e-8bb2f4ec2412.png" alt="image.png"></p>
+<p>Zet SNMP aan (je kunt op de link “SNMP Service” klikken uit bovenstaand scherm.)/
+Zet HTTP uit.</p>
+<p><img src="../../../../Attachments/image-250d84dc-7dbe-4034-8b44-8ed6e5b1747e.png" alt="image.png"></p>
+<p>Zet gelijk ook SSH aan (nodig voor Putty).</p>
+<h2 id="password-aging">Password Aging</h2>
+<p>Zet bij Password Strength “Password aging” uit.</p>
+<p><img src="../../../../Attachments/image-c81b887e-e6f9-464b-af51-d6db2a4c7ee0.png" alt="image.png"></p>
+<h2 id="dns">DNS</h2>
+<p>Ga naar &quot;General IP Configuration \ DNS \ DNS Settings&quot;<br>
+Stel als DNS server de default gateway in van het VLAN waar de switch zelf in zit.<br>
+Dus bijvoorbeeld switch met IP-nr 10.101.100.11 stel dan als DNS server 10.101.100.1 in.
+<img src="../../../../Attachments/image-7cfe8b1c-3b80-47b9-93ff-16f7eb854fca.png" alt="image.png"></p>
+<h2 id="chronicle-data-forwarder-instellen">Chronicle Data Forwarder instellen</h2>
+<p>Zet de instellingen op Advanced (anders kun je de poort niet instellen).<br>
+Ga naar &quot;Administration \ System log \ Log Settings en vul bij Max Aggregation Time&quot; 300 in.
+<img src="../../../../Attachments/image-24eed6c3-4dad-4dba-95eb-3c38b8a8ccd3.png" alt="image.png"></p>
+<p>Ga dan naar &quot;Remote Log Servers&quot; en vul bij &quot;Log Server IP Address/Name&quot; &quot;10.10.202.24&quot; in en bij UDP poort 10524.</p>
+<p><img src="../../../../Attachments/image-52d39c3b-ce24-4169-9bf3-822dd088483b.png" alt="image.png"></p>
+<h2 id="configuratie-opslaan">Configuratie opslaan</h2>
+<p>Sla de config-wijzigingen op door op het save-icoon te klikken.
+In de Logs is te zien dat de current config is opgeslagen in de flash startup-config.</p>
+<p><img src="../../../../Attachments/image-ab9bff44-225d-4c73-94f7-6013f7d228c5.png" alt="image.png"></p>
+<p>Hiervoor wordt als File operations Operation Type “Duplicate” gebruikt.</p>
+<p><img src="../../../../Attachments/image-b96743e3-5023-4959-95d4-eb127ccdefe8.png" alt="image.png"></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

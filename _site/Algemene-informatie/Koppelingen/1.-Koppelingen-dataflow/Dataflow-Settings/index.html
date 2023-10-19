@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Dataflow Settings </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Dataflow Settings ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="dataflow-settings">Dataflow Settings</h1>
+
+<h2 id="product-match">Product match</h2>
+<ul>
+<li><p><code>Import Purchase Price Hidden</code>:  als je de inkoopprijzen importeert bij import purchase price (voor rapportages), zorgt deze instelling ervoor dat deze onzichtbaar wordt voor Montaportal gebruikers.</p>
+</li>
+<li><p><code>Overwrite barcodes</code>: hiermee sta je toe dat barcodes overschreven worden door de koppeling. Dus wanneer je een barcode wijzigt in de webshop, wijzigt deze ook in de Montaportal, met als gevaar dat producten met oude barcodes niet meer verwerkt kunnen worden in het magazijn.</p>
+</li>
+<li><p><code>Can import product sizes</code>: hiermee sta je toe dat productafmetingen kunnen worden geïmporteerd vanuit de koppeling. Standaard meten en wegen we nieuwe producten in onze magazijnen.</p>
+</li>
+<li><p><code>Auto remove first zero in barcodes</code>: Hiermee worden de 1e voorloopnullen in barcodes automatisch verwijderd.</p>
+</li>
+<li><p><code>Image Import</code>: hiermee sta je toe dat de standaard productafbeelding kan worden geïmporteerd vanuit de koppeling. Dit zal o.a. gebruikt worden op de RMA pagina.
+Dit is mogelijk bij de volgende koppelingen:</p>
+</li>
+</ul>
+<pre><code>Magento
+Shopify
+WooCommerce
+CCVShop
+BigCommerce
+Exact
+LightspeedEcom
+MyOnlineStore
+Shopware
+</code></pre>
+<ul>
+<li><p>(Staff functie) <code>Import product information</code>: hiermee worden extra productvelden zoals descriptions uitgelezen</p>
+</li>
+<li><p>(Staff functie) <code>Import supplier information</code>: hiermee worden de suppplier gegevens opgehaald
+Dit is mogelijk bij de volgende koppelingen:</p>
+</li>
+</ul>
+<pre><code>ExactOnline
+</code></pre>
+<h2 id="order-import">Order Import</h2>
+<ul>
+<li><p><code>Origin mapping</code>: de tekst die hier wordt ingevuld moet overeen komt met die origin in Magento/Amazon om alleen orders van die origin te importeren.</p>
+</li>
+<li><p><code>Do Not import OrderLine Description</code>: soms geeft een order een orderline description mee aan een materiaal, die gebruiken we in de Montaportal en op de pakbon. Met deze instelling gebruiken we de originele omschrijving van het materiaal.</p>
+</li>
+<li><p><code>DenyOrderWithUnknownShipperCodes</code>: Orders met shipperCodes die niet bekend zijn in shipper mapping van klant negeren. Let op : Een lege waarde wordt niet genegeerd, die orders komen dus wel door.</p>
+</li>
+<li><p>(Staff functie) <code>Use Shipping Document As Pro Forma Invoice When Needed</code>: met deze instelling gebruiken we de pakbon als pro forma invoice wanneer die ontbreekt in de order en nodig is om de order buiten de EU te verzenden, met als risico dat de douane de order terugstuurt. <br>
+<em>Shipping document is used as pro forma because a pro forma is required for this order and only a shipping document is given and the option was given to use the shipping document in this situation</em></p>
+</li>
+<li><p>(Staff functie) <code>Do not change Shipper to Cancelled When Deletion Request not possible</code>: wanneer een order geannuleerd wordt vanuit de webshop maar de order al in de pickstroom zit, zetten we de vervoerder normaal gesproken op &quot;cancelled&quot; zodat de order niet verstuurd kan worden. Met deze instelling doen we dat niet, en versturen we dus alsnog de geannuleerde order.</p>
+</li>
+<li><p>(Staff Functie) <code>Re Use webshop OrderID allowed</code>: met deze instelling kan een OrderID opnieuw gebruikt worden, dit kan echter alleen bij een FTP-koppeling</p>
+</li>
+<li><p>(Staff functie) <code>UpdateWhenAlreadyExistsAndPlatformSupportsIt</code>: Hiermee is het mogelijk om wijzigen en annuleringen binnen te halen.</p>
+</li>
+<li><p>(Staff functie) <code>Backorder Handling</code>: Zie onderstaande tabel voor de mogelijkheden en uitleg wat de mogelijkheden doen. Vul in de database '1' in het kolom.</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Opties</th>
+<th>Naam</th>
+<th>Uitleg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>OrdersShipped</td>
+<td>Order volledig uitleveren (Default) - Order blijft in backorder staan tot alle producten op voorraad zijn. Dit is onze default</td>
+</tr>
+<tr>
+<td>1</td>
+<td>AllowSplit</td>
+<td>Deellevering toestaan - Versturen wat aanwezig is, de rest in backorder laten staan. Dit heet 'Auto split backorders'</td>
+</tr>
+<tr>
+<td>2</td>
+<td>NoBackOrders</td>
+<td>Geen backorders leveren - Versturen wat aanwezig is, de rest annuleren</td>
+</tr>
+</tbody>
+</table>
+<p>Hieronder een overzicht van de platformen die deze functionaliteit wel/niet ondersteunen:</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Update orders</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AFAS</td>
+<td>Nee</td>
+</tr>
+<tr>
+<td>Amazon Vendor Central</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td>Amazon</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td>BigCommerce</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td>Bol.com</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td>CCV Shop</td>
+<td>Nee</td>
+</tr>
+<tr>
+<td>Channable</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td>ChannelEngine</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td>Colect</td>
+<td>Nee</td>
+</tr>
+<tr>
+<td>Exact Online</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td>FTP Tabular (CSV / Excel)</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td>FTP XML</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td>Le New Black</td>
+<td>Nee</td>
+</tr>
+<tr>
+<td>Lightspeed eCommerce</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td>Magento 2</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td>ManoMano</td>
+<td>Nee</td>
+</tr>
+<tr>
+<td>Mirakl</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td>MyOnlineStore (Mijnwebwinkel)</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td>Plug&amp;Pay</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td>PrestaShop</td>
+<td>Nee</td>
+</tr>
+<tr>
+<td>Shopify</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td>Shopware</td>
+<td>Nee</td>
+</tr>
+<tr>
+<td>Sylius</td>
+<td>Nee</td>
+</tr>
+<tr>
+<td>WooCommerce</td>
+<td>Nee</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>tblRelatieSystemConnectionDataFlowOrderImportSettingsShippers</code>: Tabel voor het mappen van shippers voor de order import. Hier kun je per relatiesystemconnection een shipper naam vanuit het platform mappen met een shipper vanuit Monta. Je kunt  ook een esetting kan toevoegen aan deze mapping. Wanneer je dit doet zal hij het kanaal wijzigen op basis van de gekozen shipper.</li>
+</ul>
+<h2 id="order-update">Order Update</h2>
+<ul>
+<li><code>Esetting</code>: alleen van orders van dit kanaal wordt de status teruggekoppeld naar de webshop.</li>
+<li><code>AllowMultipleShippedOrderUpdates</code>: Als deze setting op 'true' staat zorgt deze ervoor dat dubbele order updates met de status 304(shipped) toegestaan zijn. Deze staat standaard uit.</li>
+<li><code>Order update statusses only: (FTP)</code></li>
+</ul>
+<h2 id="stock-update">Stock update</h2>
+<ul>
+<li><code>Exclude stock in transit</code>: met deze instelling worden producten die al wel in het magazijn liggen maar nog niet in een stelling zijn gelegd niet meegenomen in de webshopvoorraad. <br></li>
+</ul>
+<details closed="">
+<summary><small>Klik hier voor uitgebreide uitleg:</small></summary>
+Voorraad die nog niet bij ons in de stellingen is gelegd ligt kan bij ons
+op een zogenaamde transitlocatie liggen. Deze voorraad is standaard wel al beschikbaar in
+de webshop, aangezien deze binnen enkele uren wel in de stellingen komt te liggen om
+gepickt te kunnen worden. Je kunt er ook voor kiezen deze voorraad niet beschikbaar te
+maken in de webshop, aangezien het gevaar bestaat dat de order te laat komt wanneer de
+voorraad niet op tijd in de stellingen komt te liggen.
+</details>
+<br>
+<ul>
+<li><p><code>Update split product stock</code>: bij bundels sturen we normaal gesproken de voorraadstand van het aantal bundels dat gemaakt kan worden met de producten in de bundels. Zet je deze instelling uit dan sturen we een voorraadstand van 0. Bundels kunnen hier worden ingesteld: <a href="https://www.montaportal.nl/ProductRules/ProductRules?page=0">https://www.montaportal.nl/ProductRules/ProductRules?page=0</a></p>
+</li>
+<li><p><code>DoNotSubtractStockReserverationsForOrdersOfConfiguredEsettingsIDs</code>: voor meerdere esettings iets niet uitvoeren ;). Weet niet precies wat de instelling nu inhoudt, maar eerst kon het alleen maar voor 1 esetting, nu voor meerdere. Dat kan dan door één of meerdere esettings in te vullen in kolom EsettingsIds. De kolom esettingsId nu niet meer gebruiken.</p>
+</li>
+<li><p><code>StockType</code>: Kies het type voorraad die je wilt importeren. Je kunt kiezen uit &quot;Financiele voorraad&quot; en &quot;Beschikbare voorraad&quot;. Dit is aan te passen vanuit het Monta portal bij de koppelingdetails onder 'Instellingen &gt; Configureer voorraadtype'.</p>
+</li>
+</ul>
+<h2 id="inbound-update">Inbound update</h2>
+<ul>
+<li><code>WaitUntilInboundForecastGroupApproved</code>: De inbounds worden pas doorgegeven als alle inbounds van de inboundforecastgroup op approved zijn gezet.</li>
+<li><code>WaitUntilInboundForecastApproved</code> : Een inbound wordt pas doorgegeven als de inboundforecast daarvan op approved is gezet.</li>
+</ul>
+<h2 id="purchase-order-export">Purchase order export</h2>
+<p>De Purchase order export dataflow heeft zelf momenteel geen settings tabel.
+Echter, de product match heeft wel twee settings die benodigd zijn voor de purchase order export:</p>
+<ul>
+<li><p>(Staff functie) <code>Import product information</code></p>
+</li>
+<li><p>(Staff functie) <code>Import supplier information</code></p>
+</li>
+</ul>
+<p>De purchase order export is afhankelijk van de External supplier ID</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

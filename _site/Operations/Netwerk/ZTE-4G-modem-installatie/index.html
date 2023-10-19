@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ZTE 4G modem installatie </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="ZTE 4G modem installatie ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="zte-4g-modem-installatie">ZTE 4G modem installatie</h1>
+
+<h2 id="inleiding">Inleiding</h2>
+<p>Deze handleiding betreft de installatie van een ZTE-MF286R. Deze word
+ingezet als noodverbinding of als backup voor vestigingen.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/ZTE-4G-Modem-installatie/media/image2.jpeg" alt=""></p>
+<h2 id="voorbereidingen">Voorbereidingen</h2>
+<p>Er dient een simkaart opgevraagd te worden bij de fianc-afdeling van Monta.<br>
+Beschrijf hier dat het gaat om een simkaart die een vast IP-adres nodig heeft en geen belminuten.<br>
+Als deze simkaart geactiveerd is word deze handleiding in werking gezet en de gegevens van de simkaart
+ingevoerd in de IP lijst die zich bevindt in &quot;\Monta -
+IT-Support - Documenten\Netwerk&quot;.<br>
+Zorg ook voor het interne adress van de vestiging. In dit voorbeeld is de IP-range 192.168.33.1/24.<br>
+Zorg voor een apparaat met UTP aansluiting of WIFI in deze handleiding word verbinding met UTP kabel behandeld.</p>
+<h2 id="wachtwoord-veranderen">Wachtwoord veranderen</h2>
+<p>Log via de router in op 192.168.2.1 en de standaard wachtwoord is &quot;admin&quot;.<br>
+Je kunt het IP-nummer ook achterhalen met een Advanced IP Scanner.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/ZTE-4G-Modem-installatie/media/image3.png" alt=""></p>
+<p>Op het beginscherm van de router zie je een aantal opties. We gaan eerst
+het standaard wachtwoord veranderen. Dat doe je door op het beginscherm
+rechtsboven op modify login password te drukken.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/ZTE-4G-Modem-installatie/media/image4.png" alt=""></p>
+<p>Vul het oude wachtwoord in en genereer via Passwordstate een wachtwoord
+en voer deze in als het nieuwe wachtwoord.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/ZTE-4G-Modem-installatie/media/image5.png" alt=""></p>
+<h2 id="zet-wi-fi-uit">Zet Wi-Fi uit</h2>
+<p>Nagiveer via het dashboard naar de my router selecteer onder het kopje
+wifi Settings. Zet de optie Wi-Fi Switch uit.
+<img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/ZTE-4G-Modem-installatie/media/image6.png" alt=""></p>
+<p>Check via het apparaat of Wi-Fi uitstaat.</p>
+<h2 id="lte-disconnecten">LTE Disconnecten</h2>
+<p>Om de DHCP scope aan te kunnen passen en AdvancedInternet in te stellen moet LTE+ gedisconnect worden.</p>
+<p><img src="../../../Attachments/image-219d040b-38fa-48d1-949b-79f0ee948bb8.png" alt="image.png"></p>
+<h2 id="dhcp-scope-aanpasssen">DHCP Scope aanpasssen</h2>
+<p>Navigeer via het dashboard naar Advanced Settings.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/ZTE-4G-Modem-installatie/media/image7.png" alt=""></p>
+<p>Verander het IP-Adres in de correcte range.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/ZTE-4G-Modem-installatie/media/image8.png" alt=""></p>
+<h2 id="activeer-advancedinternet-apn">Activeer AdvancedInternet APN.</h2>
+<p>Navigeer via het dashboard naar LTE+ Settings</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/ZTE-4G-Modem-installatie/media/image9.png" alt=""></p>
+<p>Selecteer APN.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/ZTE-4G-Modem-installatie/media/image10.png" alt=""></p>
+<p>Zet het APN Modus op Manual. Voer als APN Naam advancedinternet in (naam exact overnemen). En
+geeft het profiel de naam: Advanced internet KPN. Zet de authenticatie
+op PAP (als dat niet geaccetpeerd wordt laat het dan op NONE) staan.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/ZTE-4G-Modem-installatie/media/image11.png" alt=""></p>
+<p>Klik vervolgens op &quot;Set as Default&quot;.</p>
+<h2 id="dmz-instellen">DMZ instellen.</h2>
+<p>Door DMZ in te stellen wordt een Firewall achter een 4G-modem vanaf buiten benaderbaar.<br>
+Het IP-nummer wat bij DMZ ingesteld is moet het IP-nummer worden van de 4G-interface in de firewall.<br>
+Je kunt dit op 2 manieren doen.<br>
+Als de 4G-interface in de firewall op DHCP staat zet dan het DHCP-IP-nummer in het 4G-modem bij DMZ.<br>
+Je kunt er ook voor kiezen het IP-nr van de 4G-interface in de firewall een vast IP nummer te geven en dit in het 4G-modem te zetten bij DMZ.</p>
+<p>Ga naar &quot;Advanced Settings \ Firewall \ DMZ&quot;.<br>
+Stel daar een IP-nummer in uit de IP-reeks die zojuist is ingesteld.\</p>
+<p><img src="../../../Attachments/image-7ebb0288-dd4e-4ba0-a1c5-552f975513c5.png" alt="image.png"></p>
+<p>De configuratie in een Sophos firewall van de interface kan dan als volgt ingesteld worden:</p>
+<p><img src="../../../Attachments/image-5e30df3a-012c-4097-b186-0f4469c08973.png" alt="image.png"></p>
+<p>De Sophos firewall is nu via het externe nummer van het 4G modem te benaderen.<br>
+Dit is te zien onder detail informatie.<br>
+In onderstaand voorbeeld dus de 92.69.121.151.</p>
+<p><img src="../../../Attachments/image-c4f74238-9029-423a-ad26-fa2806803ae8.png" alt="image.png"></p>
+<h2 id="lte-connecten">LTE Connecten</h2>
+<p>Zet de connectie weer aan.<br>
+<img src="../../../Attachments/image-450adc61-e8d0-4439-b800-ec8846747bab.png" alt="image.png"></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

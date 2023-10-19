@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>DFS Algemeen </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="DFS Algemeen ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="dfs-algemeen">DFS Algemeen</h1>
+
+<h3 id="dfs-namespace">DFS Namespace</h3>
+<p>In onderstaand plaatje is weergegeven hoe een DFS Namespace in elkaar zit.
+<img src="../../../../Attachments/image-b0686ced-9537-4c5f-9cf6-42278827f7ef.png" alt="image.png"></p>
+<p>Onderstaand de situatie bij Monta medio mei 2023.<br>
+<img src="../../../../Attachments/image-d5e9fbb2-d705-40f7-a5ac-3c4a5dc64bc6.png" alt="image.png"></p>
+<h3 id="fileservers-dfs">Fileservers DFS</h3>
+<p>De fileservers MP-FS100 en MP-FS200 worden ontsloten via de DFS Namespace \montapacking.nl\DFS.<br>
+De MP-FS100 is preferred, als de MP-FS100 niet bereikbaar is duurt het een aantal minuten (kan niet minder dan 40 seconden zijn want dit is de SMB-timeout) voordat er overgeschakeld wordt naar de MP-FS200.<br>
+Er is een cache referral ingesteld van 5 minuten. Het lijkt niet verstandig om dat korter te zetten, omdat dat teveel netwerkverkeer oplevert.<br>
+Een client houdt dan maximaal de MP-FS100 of de MP-FS200 in de cache.<br>
+Als de MP-FS100 niet bereikbaar is geweest duurt het maximaal 5 minuten voordat een client weer met deze (preferred) server connectie maakt.</p>
+<p>Zie ook : <a href="https://www.reddit.com/r/sysadmin/comments/55m3kb/lowest_realistic_cache_setting_in_dfsr/">https://www.reddit.com/r/sysadmin/comments/55m3kb/lowest_realistic_cache_setting_in_dfsr/</a>
+What happens is, both referrals stay active and on first attempt to access the namespace target, the clients wait for SMB timeout to happen, which is about 40 seconds and it is hardcoded in Windows IIRC.<br>
+Then after the timeout, the clients select the secondary referral that is actually online,
+and remember to use that until the next referral cache update.</p>
+<p>Backlog bekijken : dfsrdiag backlog /rgname:&quot;MP-FSCLus01&quot; /rfname:&quot;appdata&quot; /sendingmember:&quot;MP-FS100&quot; /receivingmember:&quot;MP-FS200&quot;<br>
+Handige DFS powershell commando's en links:<br>
+Get-DfsrMembership -GroupName MP-FSClus01 -ComputerName <em><br>
+Get-DfsrState -ComputerName &quot;MP-FS100&quot; | Format-Table FileName,UpdateState,Inbound,Source</em> -Auto -Wrap<br>
+Get-DfsrBacklog -SourceComputerName MP-FS100 -DestinationComputerName MP-FS200\</p>
+<p><a href="https://docs.microsoft.com/en-us/windows-server/troubleshoot/how-to-determine-the-minimum-staging-area-dfsr-needs-for-a-replicated-folder">https://docs.microsoft.com/en-us/windows-server/troubleshoot/how-to-determine-the-minimum-staging-area-dfsr-needs-for-a-replicated-folder</a></p>
+<h3 id="primary-dfs-member">Primary DFS Member</h3>
+<p>Bij de installatie van DFS wordt een primary member opgegeven.<br>
+Na installatie is dat niet meer te zien.
+<a href="https://techcommunity.microsoft.com/t5/storage-at-microsoft/determining-which-member-was-set-as-the-primary-member-for-dfs/ba-p/423220%5C">https://techcommunity.microsoft.com/t5/storage-at-microsoft/determining-which-member-was-set-as-the-primary-member-for-dfs/ba-p/423220\</a>
+Op fileniveau kun je wel zien welke DFS-server Primary is:<br>
+<img src="../../../../Attachments/image-d9b2adbb-c626-4f04-a15d-0563906623b8.png" alt="image.png"></p>
+<h3 id="dfs-staging">DFS Staging</h3>
+<p>Er zijn verschillende adviezen over de grootte van de staging.<br>
+In deze artikelen van Microsoft wordt geadviseerd om de staging file gelijk te maken aan de 32 grootste bestanden in DFS.<br>
+<a href="https://docs.microsoft.com/en-us/previous-versions/orphan-topics/ws.11/dn465158(v=ws.11)?redirectedfrom=MSDN%5C">https://docs.microsoft.com/en-us/previous-versions/orphan-topics/ws.11/dn465158(v=ws.11)?redirectedfrom=MSDN\</a>
+<a href="https://docs.microsoft.com/en-us/windows-server/troubleshoot/how-to-determine-the-minimum-staging-area-dfsr-needs-for-a-replicated-folder%5C">https://docs.microsoft.com/en-us/windows-server/troubleshoot/how-to-determine-the-minimum-staging-area-dfsr-needs-for-a-replicated-folder\</a>
+Get-ChildItem c:\temp -recurse | Sort-Object length -descending | select-object -first 32 | ft name,length -wrap –auto<br>
+Get-ChildItem c:\temp -recurse | Sort-Object length -descending | select-object -first 32 | measure-object -property length –sum</p>
+<p>Onderstaand commando rekent het om naar GB.</p>
+<p>$big32 = Get-ChildItem c:\temp -recurse | Sort-Object length -descending | select-object -first 32 | measure-object -property length –sum</p>
+<p>$big32.sum /1gb</p>
+<p>De default is 4 GB.</p>
+<p>Event 4208 is een goede indicator voor de grootte van de staging. Dit even mag niet meer dan een keer per uur voorkomen.</p>
+<p>Geadviseerd wordt om staging folders op een andere disk te zetten dan de replicated folders.</p>
+<h3 id="dfs-replicatie-alternatief">DFS Replicatie Alternatief</h3>
+<p>DFS Replicatie blijft een black box, waar je maar zeer beperkt wat aan kunt zien.<br>
+Een alternatief het pakket &quot;Resilio&quot;, zie : is <a href="https://www.resilio.com/tech/connect-vs-dfsr/">https://www.resilio.com/tech/connect-vs-dfsr/</a></p>
+<h3 id="dfs-tools">DFS Tools</h3>
+<p>DFSUtil.exe /spcinfo.<br>
+DFSUtil.exe /pktinfo.<br>
+DFSUtil is te installeren als onderdeel van RSAT, bijvoorbeeld via powershell Add-WindowsCapability -Online -Name &quot;Rsat.FileServices.Tools<br>
+Het kan ook via het control panel en dan via het toevoegen van &quot;Optionele onderdelen - RSAT: Hulpprogramma's voor Bestandservices&quot;.</p>
+<p>Backlog bekijken<br>
+dfsrdiag backlog /rgname:&quot;MP-FSCLus01&quot; /rfname:&quot;appdata&quot; /sendingmember:&quot;MP-FS100&quot; /receivingmember:&quot;MP-FS200&quot;</p>
+<p>Op de MP-FS100 : Get-DfsrState -ComputerName &quot;mp-fs200&quot; | Format-Table FileName,UpdateState,Inbound,Source* -Auto -Wrap
+Dit geeft 100 files die op dat moment verwerkt worden.</p>
+<p>In &quot;C:\windows\debug&quot; staan logfiles, deze kunnen met 7-zip bekeken worden.</p>
+<p>Zie : <a href="https://docs.microsoft.com/en-us/troubleshoot/windows-server/networking/dfsn-access-failures">https://docs.microsoft.com/en-us/troubleshoot/windows-server/networking/dfsn-access-failures</a></p>
+<p>Zie : <a href="https://infrastructureland.wordpress.com/tag/dfs/">https://infrastructureland.wordpress.com/tag/dfs/</a></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

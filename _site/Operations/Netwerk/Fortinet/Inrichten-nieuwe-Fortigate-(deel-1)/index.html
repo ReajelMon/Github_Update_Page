@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Inrichten nieuwe Fortigate (deel 1) </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Inrichten nieuwe Fortigate (deel 1) ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="inrichten-nieuwe-fortigate-deel-1">Inrichten nieuwe Fortigate (deel 1)</h1>
+
+<h2 id="inhoudsopgave">Inhoudsopgave</h2>
+<ol start="0">
+<li>Algemeen</li>
+<li>Factory Reset (indien nodig)</li>
+<li>Fortigate registreren in FortiCloud</li>
+<li>Algemene Werkwijze</li>
+<li>Firmware Update</li>
+</ol>
+<h2 id="0-algemeen">0. Algemeen</h2>
+<p>In Papland kan een Fortigate voor een andere locatie tot een bepaald niveau worden voorbereid.
+Dat wordt in deze handleiding beschreven.<br>
+in dit voorbeeld is uitgegaan van de inrichting van Pap01-fg01.<br>
+Daarnaast is ook beschreven wat er nog moet gebeuren als de Fortigate op locatie wordt geplaats.
+Als een Fortigate een Sophos vervangt zijn er nog een aantal afwijkende stappen.</p>
+<h2 id="1-factory-reset-indien-nodig">1. Factory Reset (indien nodig)</h2>
+<p>Onderstaande is niet nodig voor nieuwe fortigates maar alleen voor bestaande die opnieuw ingericht moeten worden:</p>
+<p>Mocht er een factory-reset nodig zijn, haal de stroom van het apparaat even los. Zodra de Fortigate weer aangaat de resetknop ingedrukt houden tot de status-LED gaat branden.<br>
+De GUI van de fortinet is standaard te bereiken op lanpoort 1 op adres <a href="https://192.168.1.99:4444/">https://192.168.1.99:4444/</a> <br>
+Bij het inlogscherm wordt standaard de inlog ‘admin’ met een leeg wachtwoord gebruikt.</p>
+<p>Een factory reset kan ook uitgevoerd worden door in de cli het commando &quot;exec factoryreset&quot; te geven.<br>
+Mocht de firewall niet tevoorschijn komen in de root ADOM bij unauthorized devices dan kun je door direct aan te loggen op ip-nummer 192.168.1.99 met admin zonder wachtwoord in de cli nogmaals het factory reset commando geven.</p>
+<h2 id="2-fortigate-registreren-in-forticloud">2. Fortigate registreren in FortiCloud</h2>
+<p>Registreer het apparaat in FortiCloud (zie passwordstate)
+FortiCloud is nodig om een licentie aan de Fortigate toe te kennen.<br>
+Registreren op <a href="https://support.fortinet.com/">https://support.fortinet.com/</a> bij asset management,
+waarbij je het serienummer en de FortiCloud-key nodig hebt (staan op de
+firewall).</p>
+<p><img src="../../../../Attachments/image-3330f24e-0829-4ca8-85e6-ad55c44ae06a.png" alt="image.png">
+<img src="../../../../Attachments/image-afe60897-49b4-4e35-8eb7-a1f0d29ec00f.png" alt="image.png">
+Kies non-government.</p>
+<p>Later na stap 9 kan onderstaande uitgevoerd worden.<br>
+Door onder &quot;System \ Fortiguard&quot; op &quot;Update Licenses &amp; Definitions Now&quot; te klikken (of via de CLI
+het commando &quot;execute update-now&quot; in te geven) haalt de Fortigate de
+license informatie op.</p>
+<p><img src="https://cdn.monta.nl/PublicFiles/MontaDocs/images/operations/Handleiding-inrichting-Fortigate/media/image2.png" alt=""></p>
+<h2 id="3-algemene-werkwijze">3. Algemene Werkwijze</h2>
+<ol>
+<li><p>Plaats pap01-fg01 in Papland</p>
+</li>
+<li><p>Sluit WAN2 aan op een willekeurige poort in het netwerk van Papland zodat WAN2 een IP-nr krijgt uit de DHCP-pool.</p>
+</li>
+<li><p>Maak DHCP option 240 aan met IP-nr 10.10.202.101 van de FortiManager (dit is voor Papland reeds uitgevoerd)<br>
+<img src="../../../../Attachments/image-ce9578ee-a1ec-411d-83ca-e75c35c96124.png" alt="image.png"></p>
+</li>
+<li><p>Authorize nieuwe Fortigate vanuit Device manager - root ADOM – Unauthorized Devices.
+<img src="../../../../Attachments/image-9dd60af7-6d2e-4092-baeb-59f76d0e1f81.png" alt="image.png">
+Mocht de Fortigate niet vanzelf te zien zijn in het root-ADOM, dan kun je vanuit de Monta-Fabric kiezen voor Add device:
+<img src="../../../../Attachments/image-40895487-3f58-4d6e-a1b4-1407810bad88.png" alt="image.png">
+Kies dan wel voor &quot;Import later&quot;
+<img src="../../../../Attachments/image-c5327893-1ef5-4829-b3fb-e1ee6f4b9f41.png" alt="image.png"></p>
+</li>
+<li><p>Selecteer bij “Assign New Device Name” de naam Vestiging-FG01, en vul bij &quot;Assign Policy name&quot;&quot;vestiging_Default&quot; in (kies wel ADOM Montafabric)..
+<img src="../../../../Attachments/image-eeb11123-005a-4376-ad19-668186c6c963.png" alt="image.png"></p>
+</li>
+<li><p>Voer een Firmware Upgrade uit:
+<img src="../../../../Attachments/image-8872160e-6724-4c8e-bc86-8d6f5c6b2a56.png" alt="image.png">
+<img src="../../../../Attachments/image-f4ad192c-d907-47b8-a20a-15ff4e9cf0e7.png" alt="image.png"></p>
+</li>
+<li><p>Vul het volgende in bij de &quot;Metadata Variables on der Policy &amp; Objects onder Advanced.</p>
+</li>
+</ol>
+<p><img src="../../../../Attachments/image-6676772f-e31f-459d-9e35-3433f3ef7f14.png" alt="image.png"></p>
+<p>Vul altijd de volgende in door een mapped device toe te voeggen.</p>
+<ul>
+<li>hostname, altijd  bijv pap01-fg01</li>
+<li>ip_prefix, altijd  bijv 172 of 10</li>
+<li>location_name, altijd  bijv pap01</li>
+<li>vestiging_id, altijd  bijv 39</li>
+</ul>
+<p><img src="../../../../Attachments/image-12312cd7-2b2f-479b-ac0b-ec7a2b0aa80a.png" alt="image.png"></p>
+<p>Indien bekend kan onderstaande ingevuld worden.</p>
+<ul>
+<li>wan1_cidr, alleen invullen bij statisch IP-adres, zie onderstaande afbeelding</li>
+<li>wan1_gw, aleen invullen bij statisch IP-adres, zie onderstaande afbeelding</li>
+<li>wan2_cidr,           Alleen invullen bij statisch IP-adres, zie onderstaande afbeelding</li>
+<li>wan2_gw            Alleen invullen bij statisch IP-adres, zie onderstaande afbeelding</li>
+<li>wan3_cidr          Alleen invullen bij statisch IP-adres, zie onderstaande afbeelding</li>
+<li>wan3_gw            Alleen invullen bij statisch IP-adres, zie onderstaande afbeelding
+<img src="../../../../Attachments/image-223a61fc-c20e-4a77-a91a-d8d393d6e1f7.png" alt="image.png">
+<img src="../../../../Attachments/image-8b2f6cf9-e65f-4c1b-a4b0-7c8597b76220.png" alt="image.png"></li>
+</ul>
+<ol start="8">
+<li>Objecten aanpassen. Bij alle interfaces moeten de per-device-mappings toegevoegd worden.</li>
+</ol>
+<p><img src="../../../../Attachments/image-51359416-5486-47b0-8716-2d6cbe238924.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-e476701c-e614-4d70-98b4-621d1e2c87bb.png" alt="image.png"></p>
+<ol start="9">
+<li>Scripts<br>
+Allereerst fase 1 en 2 uitvoeren.
+<img src="../../../../Attachments/image-fa747800-c8a3-4065-b03e-06c3e5e6ee12.png" alt="image.png"></li>
+</ol>
+<p>Stel je gaat op 4G werken, dat is WAN3. Dan kun je een van de volgende 2 scripts uitvoeren:</p>
+<p><img src="../../../../Attachments/image-9b0f760a-f6b5-4a2d-a563-331366a13c80.png" alt="image.png">.</p>
+<p>Installeer de Device settings
+<img src="../../../../Attachments/image-10f96030-61fb-48cb-a1d7-15b0126ab175.png" alt="image.png">
+<img src="../../../../Attachments/image-71cccfef-4535-4156-869b-ff4cfa673947.png" alt="image.png">
+Cancel na volgende (logisch omdat de VIPS’nog niet bestaan).
+<img src="../../../../Attachments/image-9a5c9600-ed20-46eb-b337-c9343375dc89.png" alt="image.png"></p>
+<p>Edit Wan1
+<img src="../../../../Attachments/image-b983b103-562b-441c-b73f-c5e3d92c8484.png" alt="image.png"><br>
+Herhaal dat voor wan2.<br>
+En ook voor wan3 (maar dan naar internal 1)<br>
+<img src="../../../../Attachments/image-9c5ebe4f-cd3e-450e-97ad-88e6e1fa4d9d.png" alt="image.png">
+<img src="../../../../Attachments/image-0c92f955-8102-4ced-9d97-a439afec5d39.png" alt="image.png"></p>
+<p>Bij 3 VIP's moeten de per-device-mappings toegevoegd worden.
+<img src="../../../../Attachments/image-d5293aa5-a126-4c3b-b701-6a29342fb5ab.png" alt="image.png">
+<img src="../../../../Attachments/image-176013d9-7aab-48ba-b234-0d30faf71d78.png" alt="image.png"></p>
+<ol start="10">
+<li>Policies deployen<br>
+Install wizard uitvoeren
+<img src="../../../../Attachments/image-c7f104d0-6d83-44dc-913a-bba6c085838c.png" alt="image.png">
+Create ADOM Revison invullen bij een grote wijziging voor de terugvindbaarheid.</li>
+</ol>
+<p>Je kunt nu inloggen op de nieuwe Foritgae vanaf een server in het LAN (bijvoorbeeld de MP-MGMT12) met het account fallback en het wachtwoord vanuit Passwordstate.</p>
+<p>Voer de volgende commandos'uit die in 5.1 en 5.2 staan in die volgorde (vul het vestigings id in).</p>
+<p>config system central-management<br>
+set fmg-source-ip 10.255.255.$(vestiging_id)<br>
+end</p>
+<p>config router static<br>
+delete 250<br>
+end</p>
+<h2 id="4-firmware-update">4. Firmware Update</h2>
+<p>Als eerste zal de firmwareversie moeten worden geupgrade. Dit is de vinden onder System &gt; Fabric management. Kies dan voor de knop Upgrade.
+<img src="../../../../Attachments/image-700daf81-0791-4bda-b12e-0128c872aacb.png" alt="image.png">
+De upgrade wordt vervolgens uitgevoerd.</p>
+<p>De firmware files zijn ook te downloaden via &quot;https://support.fortinet.com/download/firmwareimages.aspx&quot; user en password staat in PasswordState.
+Kies hier de juiste firmwareversie. Bijvoorbeeld &quot;FGT_81F-v7.0.9.M-build0444-FORTINET.out&quot;<br>
+Als vuistregel kan worden aangehouden “actueel – 1”, maar ook vooraf even zoeken naar de meest stabiele versie kan natuurlijk ook.<br>
+De file moet op de pc staan waarmee je verbind met de fortigate.
+<img src="../../../../Attachments/image-05749309-ae7c-4cb3-a010-1eb354d79038.png" alt="image.png"></p>
+<p>Start een cmd sessie met Ping 192.168.1.99 -t om te zien of de firmware al is geupgrade.
+de ping zal dan weer opkomen.</p>
+<p>Vervolg vervolgens de inrichting volgens deel2.
+Dit deel is verschillend voor de situatie waarbij een Sophos vervangen moet worden of waneer het een geheel nieuwe locatie betreft.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

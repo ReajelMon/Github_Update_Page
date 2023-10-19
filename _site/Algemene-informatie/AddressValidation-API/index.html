@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>AddressValidation API </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="AddressValidation API ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+  
+  <meta property="docfx:rel" content="../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="addressvalidation-api">AddressValidation API</h1>
+
+<h2 id="addressvalidation-api-1">AddressValidation API</h2>
+<p><a href="https://addressvalidation.monta.nl/swagger/index.html">https://addressvalidation.monta.nl/swagger/index.html</a></p>
+<p>11-01-2023, Erin</p>
+<h2 id="algemeen">Algemeen</h2>
+<p>De AddressValidation API is een nieuwe website binnen Monta met als doel het centraliseren en verbeteren van adresvalidatie binnen andere Monta processen. De applicatie staat momenteel live en wordt aangeroepen vanuit de Verify, maar wordt nog niet gebruikt om daadwerkelijk bestellingen te blokkeren als het adres als ongeldig wordt gezien. De applicatie gebruikt adresgegevens (ContactDetails) + extra's om een adres te valideren. Zie de afbeelding hieronder:</p>
+<p><img src="../../Attachments/Afbeelding4-5bf5aebb-85df-4158-a39c-291d9b73e855.png" alt="Afbeelding4.png"></p>
+<h2 id="gegevens-input">Gegevens (input)</h2>
+<p>Er zijn drie adresvalidatie endpoints. Gebruik voor nu de validate-complete. Hiervoor is de volgende input nodig:</p>
+<p><img src="../../Attachments/Afbeelding1-43e2d95f-5ad1-4d0f-bafa-752414f8bc8f.png" alt="Afbeelding1.png"></p>
+<ol>
+<li>De ShipperID wordt gebruikt om regels per verzender te controleren.</li>
+<li>De EOrderID wordt gebruikt als het uiteindelijke resultaat wordt opgeslagen.</li>
+<li>De RelationID wordt gebruikt omdat voor bepaalde klanten bepaalde adresvalidatie stappen aan/uit gezet kunnen worden.</li>
+<li>UseLibPostalParse wordt gebruikt om de LibPostal library wel/niet te gebruiken. LibPostal staat nog niet live. Zet deze daarom op false.</li>
+<li>Als SaveToDb op true staat wordt het uiteindelijke resultaat opgeslagen in de Monta_Backend MongoDB.</li>
+</ol>
+<br>
+<h2 id="gegevens-output">Gegevens (output)</h2>
+<p>Er wordt in hoofdlijnen gevalideerd op drie dingen: de regels van de verzender, de regels per land, en eventueel externe adresvalidatie software. Daarnaast zitten er ook andere checks, wordt geprobeerd gegevens automatisch te verbeteren, et cetera. De stappen zijn onderverdeeld in groepen. Zie de afbeelding hieronder:</p>
+<p><img src="../../Attachments/AddresValidationSteps-Address%201%20v2%20landen.drawio%20(9)-c6ba8d91-77bf-4923-a86e-437b572f03d8.png" alt="AddresValidationSteps-Address 1 v2 landen.drawio (9).png"></p>
+<br>
+<p>Adresvalidatie bestaat dus meerdere stappen. Het uiteindelijke resultaat van één adres validatie bevat algemene informatie, of het adres geldig is of niet, en de resultaten per stap. Je kan precies zien waarom een adres ongeldig is en welke stappen doorlopen zijn in het resultaat. Zie de afbeelding hieronder:</p>
+<p><img src="../../Attachments/image-2de70812-ce4c-44c9-a800-d192b45e8a6e.png" alt="image.png"></p>
+<h2 id="hoe-wordt-de-addressvalidation-momenteel-gebruikt">Hoe wordt de AddressValidation momenteel gebruikt?</h2>
+<p>De AddressValidation API staat live, en wordt aangeroepen door de Verify voor elke bestelling. Het resultaat wordt opgeslagen in de Monta_Backend MongoDB, en de JSON die de API teruggeeft wordt opgeslagen. Het resultaat wordt nog niet gebruikt om daadwerkelijk bestellingen met een (volgens de AddressValidation API) ongeldig adres te blokkeren.</p>
+<h2 id="technische-uitleg">Technische uitleg</h2>
+<p>Tijdens het adresvalidatie algoritme worden de stappen van adresvalidatie uitgevoerd, en per stap het resultaat toegevoegd aan een uiteindelijke adresvalidatieresultaat.</p>
+<ul>
+<li>De Validator loopt continue ActionBlocks door, totdat de adresvalidatie klaar is (het adres is (on)geldig verklaard).</li>
+<li>ActionsBlocks bevatten acties (IAction implementaties), en één ActionBlockResultChecker implementatie.</li>
+<li>IAction implementaties bevatten de businesslogica van de adresvalidatie.</li>
+<li>ActionResults zijn resultaten die vanuit IAction implementaties gegenereerd worden.</li>
+<li>ValidationResultBuilder bevat alle informatie over de validatie, en staat centraal. Wordt een keer geïnstantieerd en daarna continue aangevuld, tot de adresvalidatie voorbij is.</li>
+<li>De ActionBlockResultChecker controleerd of de individuele acties (van dat action block) het gewenste resultaat gaven, en maakt het volgende ActionBlock aan.</li>
+</ul>
+<p><img src="../../Attachments/Afbeelding6-5f60f0e5-6de2-4797-a96e-1b11e1f6db43.png" alt="Afbeelding6.png"></p>
+<p>Voor elk land en elke verzender bestaan verschillende regels. Deze worden vanuit een JSON bestand opgeslagen. De regels kunnen daardoor makkelijk aangepast worden.</p>
+<p><img src="../../Attachments/image-00343e62-a696-4dc9-8cee-54a4d99c8518.png" alt="image.png"></p>
+<p>Naast adresvalidatie zelf heeft de AddressValidation API CRUD functionaliteiten voor:</p>
+<ul>
+<li>De adresvalidatie resultaten;</li>
+<li>De configuratie van klanten.</li>
+</ul>
+<br>
+<h2 id="externe-adresvalidatie">Externe adresvalidatie</h2>
+<p>In de adresvalidatie zitten enkele stappen die externe software (APIs) aanroepen. Namelijk:</p>
+<ul>
+<li>PostNL Validation API <a href="https://developer.postnl.nl/browse-apis/checkout/postcodecheck/documentation/">https://developer.postnl.nl/browse-apis/checkout/postcodecheck/documentation/</a></li>
+<li>AddressValidator NET <a href="https://www.address-validator.net/">https://www.address-validator.net/</a></li>
+</ul>
+<p>Voor AddressValidator net gebruik ik (Erin) nu een persoonlijk account (alleen voor testen). Om deze daadwerkelijk te gebruiken zal een algemeen Monta account ingesteld moeten worden inclusief betalingen, et cetera.</p>
+<p>Deze staan niet standaard aan. Per klant kan bepaald worden of deze aan/uit gaan. Dit wordt ook opgeslagen in de Monta_Backend MongoDB.</p>
+<p><img src="../../Attachments/Afbeelding5-690a29fe-fe14-4423-935a-5eb3a900a92b.png" alt="Afbeelding5.png"></p>
+<p>Deze kunnen uiteindelijk aangezet worden via MontaPortal. Hier is een nieuwe pagina voor gemaakt (die nog niet live staat).</p>
+<p>In de adresvalidatie wordt via de configuratie gekeken of/welke stap(pen) wel/niet doorlopen moeten worden.</p>
+<p>Omdat deze externe adresvalidatie stappen geld (kunnen) kosten kan het zijn dat de klant gefactureerd moet worden hiervoor. Dit is ook de reden dat we willen dat klanten dit uit of aan kunnen zetten (willen klanten hier niet voor betalen kunnen ze kiezen externe adresvalidatie stappen uit te zetten</p>
+<p><img src="../../Attachments/Afbeelding7-d0508e30-78c1-4dc7-80b7-8e1fc0b602c6.png" alt="Afbeelding7.png">).</p>
+<h2 id="verdere-stappen">Verdere stappen</h2>
+<p>De applicatie staat dus nog niet &quot;echt&quot; live (as of 11-1-2023). Eventueel volgende stappen zouden kunnen zijn:</p>
+<ul>
+<li>De adresvalidatieresultaten gebruiken in de Verify om bestellingen te blokkeren (eventueel eerst voor één klant).</li>
+<li>Alle regels van landen/verzenders te dubbelchecken.</li>
+<li>Externe adresvalidatie verder implementeren, om eventueel bij één klant te implementeren. Contact opnemen met externe partij(en), financiën regelen (API keys van externe partij regelen indien nodig, inbouwen dat klanten gefactureerd worden). Delen hiervan zijn al deels ingebouwd/geregeld.</li>
+<li>Uiteindelijke de adresvalidatie voor elke klant aanzetten, en elke klant de mogelijkheid geven externe adresvalidatie te gebruiken.</li>
+<li>Langzaam meer stappen/bronnen/regels/etc toe voegen aan de AddressValidation API.</li>
+<li>Eventueel adresvalidatie van andere processen (anders dan Verify) vervangen met de AddressValidation API, en (nu nog bestaande) adresvalidatie verwijderen uit de Verify/ShippingAPI/Etc.</li>
+</ul>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

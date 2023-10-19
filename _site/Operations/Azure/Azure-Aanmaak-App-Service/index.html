@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Azure Aanmaak App Service </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Azure Aanmaak App Service ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="azure-aanmaak-app-service">Azure Aanmaak App Service</h1>
+
+<p>In deze handleiding wordt de aanmaak van de App Service &quot;Montastatus&quot; beschreven. <br>
+Te benaderen via : <a href="https://webapp-montastatus-fr-001.azurewebsites.net/">https://webapp-montastatus-fr-001.azurewebsites.net/</a></p>
+<p>De App Service maakt gebruik van een SQL database die eerst aangemaakt moet worden. Zie hiervoor de betreffende handleiding.</p>
+<p>De App Service bestaat uit een Web App voor de backend met een Windows App Service Plan, en een Web app voor de frontend met een Linux App Service Plan.<br>
+Daarnaast is er een Container Registratie aangemaakt.</p>
+<p>Dit levert de volgende resources op:<br>
+<img src="../../../Attachments/image-489f11fb-90ba-4287-a8ad-356c1f012bbd.png" alt="image.png"><br>
+<img src="../../../Attachments/image-9917a096-d387-4f6a-bac3-0614077264e9.png" alt="image.png"></p>
+<h2 id="backend-web-app">Backend Web App</h2>
+<p><img src="../../../Attachments/image-d518d0ff-663a-47cd-9118-084253db5bf6.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-9313f805-713b-45e3-9816-828638ab9925.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-0855891a-d4fc-4bc1-8a39-55919db31769.png" alt="image.png"></p>
+<p>Developers moeten rechten krijgen op de Web app.</p>
+<p><img src="../../../Attachments/image-83ace15e-d7a4-4918-b9b1-5ba120776ccb.png" alt="image.png"></p>
+<p>Bij Networking van de SQL-server moet Azure toegang krijgen.
+Je zou verwachten dat dit werkt via onderstaand vinkje.</p>
+<p><img src="../../../Attachments/image-e60ffc98-5bf9-444a-9795-2c9006c05f35.png" alt="image.png"></p>
+<p>Dat werkte niet meteen en daarom is er een Firewall regel voor de App service toegevoegd.
+<img src="../../../Attachments/image-10d0007a-0e94-4ddd-95c6-e29890753c71.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-78194f31-b788-4733-881a-374b885fb64a.png" alt="image.png"></p>
+<p>Developers moeten toegang krijgen.
+<img src="../../../Attachments/image-438b5d58-ba35-45a0-9be3-74923c85a858.png" alt="image.png"></p>
+<p>Er is een Access key nodig in de applicatie voor de toegang vanuit Visual code voor de developer.
+Hiermee kan een image naar de container gepushed worden.</p>
+<p><img src="../../../Attachments/image-bab44a11-c4c2-45c4-a0a0-5e06ab9b5f54.png" alt="image.png"></p>
+<h2 id="frontend-web-app">Frontend Web App</h2>
+<p><img src="../../../Attachments/image-86489ba2-1b37-490e-bb04-71b3ef43fc17.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-e8b35281-1dbf-4a6f-b594-927bbad77b56.png" alt="image.png"></p>
+<p>Ook hierop moeten developers rechten krijgen.</p>
+<p><img src="../../../Attachments/image-eba6118c-9672-4dd0-a530-d5cb24ccba5e.png" alt="image.png"></p>
+<h2 id="mailen">Mailen</h2>
+<p>Om de applicatie de mogelijkheid te geven om te mailen moeten de Outbound IP-adressen van de Frontend Web app toegevoegd worden bij de whitelist van Mailrelay Montapacking.</p>
+<p><img src="../../../Attachments/image-92703dfd-eb32-40b8-a56a-c88ce1b661af.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-621b7267-37a4-47a5-9b80-e707311d2413.png" alt="image.png"></p>
+<h2 id="devops-pipeline">Devops Pipeline</h2>
+<p>Via devops een release pipeline aanmaken die automatisch een artifact van een build pipeline deployt naar een Azure App Service.<br>
+Om dit vanuit devops te kunnen uitvoeren moet je owner zijn van de “Azure Pipeline organisatie” en owner van de “Azure subscription”.<br>
+Onderstaande is uitgevoerd in Devops door Jasper Verhaar die owner is gemaakt van de “Azure Pipeline organisatie”.
+Zie ook : &quot;https://learn.microsoft.com/en-us/azure/devops/pipelines/library/connect-to-azure?view=azure-devops&quot;</p>
+<p><img src="../../../Attachments/image-a493a740-cdb2-4239-9236-b3e219ac41d9.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-62c242c7-bb5b-4db5-a8ce-b6042c97d180.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-5addb2bc-80fa-4b8d-b008-d2327c0502a5.png" alt="image.png"></p>
+<p><img src="../../../Attachments/image-0320de7d-911a-4125-87d5-87f75cc3ad57.png" alt="image.png"></p>
+<p>In Azure is er een App registratie aangemaakt op deze dag, waarschijnlijk hoort deze bij de Pipeline.</p>
+<p><img src="../../../Attachments/image-47e58bb7-d841-4d40-9291-3c7e213ca73f.png" alt="image.png"></p>
+<h2 id="frontend-bereikbaar-maken-via-statusmontanl">Frontend bereikbaar maken via status.monta.nl</h2>
+<p><img src="../../../Attachments/image-0bbb42f8-5045-4600-808b-10cc3b493657.png" alt="image.png"></p>
+<p>2 entries toevoegen bij Transip en bij de interne DNS.</p>
+<p>Status		CNAME	   webapp-montastatus-fr-001.azurewebsites.net.
+asuid.status 	TXT	   5107E2271AFC04B7C42222D20093016F71EE15A64971C283DFA6D03BCF9D420C</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

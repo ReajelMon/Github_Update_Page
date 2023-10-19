@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>N Able (Cove data Protection) backup installeren </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="N Able (Cove data Protection) backup installeren ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="n-able-cove-data-protection-backup-installeren">N Able (Cove data Protection) backup installeren</h1>
+
+<h3 id="handleiding-n-able-backup-installeren">Handleiding N-Able backup installeren</h3>
+<p><strong>Servers</strong><br>
+Login op : <a href="https://backup.management/#/dashboard">https://backup.management/#/dashboard</a> (Cove Data Protection).<br>
+Check eventueel of er een nieuwe versie van de Backup Manager is uitgekomen op : <a href="https://www.n-able.com/products/cove-data-protection/downloads%5C">https://www.n-able.com/products/cove-data-protection/downloads\</a>
+Vergelijk dit met de versie in &quot;\\10.10.202.60\software\Cove Backup\</p>
+<p>Kopieer &quot;\\10.10.202.60\software\Cove Backup\xxxxx.bat\ (afhankelijk van een standaard installatie, een webserver of een rds-server)&quot; lokaal
+naar de betreffende server en voer de bat-file uit.<br>
+Als je een server met het Backup-install.bat installeert komt deze op
+profiel TEMP binnen, in Cove Data Protection moet de server dan nog worden
+toegevoegd aan een profiel.</p>
+<p>Bij het profiel &quot;Web-Server&quot; is bij de system state &quot;Keep local
+settings&quot; ingesteld.<br>
+Na de eerste backup dien je bij de instellingen lokaal de system state
+er bij te zetten.<br>
+Er zijn bij webservers problemen bekend waarbij er naderhand delen van
+de systemstate uitgezet moeten worden.</p>
+<p>Een dat nadat er een backup gedraaid heeft kan binnen &quot;Cove data protection&quot; bij de server gekozen worden voor &quot;Assing recovery testing plan&quot;.</p>
+<p>Als bij de backup van de system state foutmeldingen verschijnen van
+SentinelOne onderdelen dan kan het backuppen hiervan als volgt
+uitgeschakeld worden:<br>
+CD C:\Program Files\Backup Manager\<br>
+ClientTool.exe control.selection.modify -datasource SystemState -exclude
+&quot;System State\Sentinel Agent Database VSS Writer&quot;<br>
+ClientTool.exe control.selection.modify -datasource SystemState -exclude
+&quot;System State\Sentinel Agent Log VSS Writer&quot;<br>
+ClientTool.exe control.selection.modify -datasource SystemState -exclude
+&quot;System State\Sentinel Agent Database VSS Writer&quot;<br>
+Hiervan is een bat-file geplaatst in:
+&quot;&quot;\\mp-fs102.montapacking.nl\Cove Backup\ VSSuitSsytemstate.bat&quot;</p>
+<p>Bij het profiel van de MP-FS200 is bij de system state &quot;Keep local
+settings&quot; ingesteld. In dat geval zijn de instellingen via de de backup
+client ingesteld. Bij de MP-FS200 is de &quot;DFS Replication service writer&quot;
+uit gesloten van de backup.</p>
+<p>Indien er een nieuw profiel nodig is zet hier dan de volgende exlusions
+in :</p>
+<ul>
+<li><p>\Internet Explorer\Recovery\Active\*</p>
+</li>
+<li><p>\Internet Explorer\DomainSuggestions\*</p>
+</li>
+<li><p>\Appdata\Local\Microsoft\Windows\NetCache\*</p>
+</li>
+<li><p>\Appdata\Local\Microsoft\Windows\WebCache\*</p>
+</li>
+<li><p>\Appdata\Local\Microsoft\Windows\Explorer\*</p>
+</li>
+<li><p>\security.config.cch*</p>
+</li>
+<li><p>\Chrome\User data\*</p>
+</li>
+<li><p>\ProgramData\Microsoft\Windows Defender\Scans\*</p>
+</li>
+<li><p>\DeliveryOptimization\Cache\*</p>
+</li>
+<li><p>\ProgramData\Sentinel\*</p>
+</li>
+</ul>
+<p><strong>Office 365</strong><br>
+Stel voor Office 365 onder devicename &quot;montapacking.nl&quot; op de tabbladen Exchange en Onedrive de gewenste gebruikers in.
+Het meeste kan ingesteld worden via het webconsole.
+Bijvoorbeeld de scheduled mails: zie <a href="https://documentation.solarwindsmsp.com/backup/documentation/Content/service-management/console/emails.htm?Highlight=email%20view">https://documentation.solarwindsmsp.com/backup/documentation/Content/service-management/console/emails.htm?Highlight=email%20view</a></p>
+<p>Sommige instellingen kunnen alleen via het &quot;CloudManagementConsole&quot; ingesteld worden.
+Hiermee kunnen bijvoorbeeld event-based-notifications ingesteld worden : <a href="https://success.solarwindsmsp.com/kb/solarwinds_backup/How-to-setup-event-based-notifications-for-SolarWinds-Backup">https://success.solarwindsmsp.com/kb/solarwinds_backup/How-to-setup-event-based-notifications-for-SolarWinds-Backup</a></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

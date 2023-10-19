@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Fortinet Inrichting </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Fortinet Inrichting ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="fortinet-inrichting">Fortinet Inrichting</h1>
+
+<h2 id="inhoudsopgave">Inhoudsopgave</h2>
+<p><a href="#Inleiding">Inleiding</a></p>
+<p><a href="#Fortimanager-instellen-als-Fabric-connector">Fortimanager instellen als Fabric connector</a></p>
+<p><a href="#Acties-in-Fortimanager">Acties in Fortimanager</a></p>
+<p><a href="#Policy-&amp;-Objects">Policy &amp; Objects</a></p>
+<p><a href="#DNS">DNS</a></p>
+<p><a href="#DHCP">DHCP</a></p>
+<p><a href="#SD-WAN">SD-WAN</a></p>
+<p><a href="#SD-WAN-zones">SD-WAN zones</a></p>
+<p><a href="#SD-WAN-Rules">SD-WAN Rules</a></p>
+<p><a href="#SD-WAN-Performance-SLA">SD-WAN Performance SLA</a></p>
+<p><a href="#SD-WAN-zones-DC">SD-WAN zones DC</a></p>
+<p><a href="#SD-WAN-Rules-DC">SD-WAN Rules DC</a></p>
+<p><a href="#SD-WAN-Performance-SLA-DC">SD-WAN Performance SLA DC</a></p>
+<p><a href="#SD-WAN-Overig">SD-WAN Overig</a></p>
+<p><a href="#Security-Profiles">Security Profiles</a></p>
+<p><a href="#SSL-Inspection">SSL Inspection</a></p>
+<p><a href="#Mgtm-loopback">Mgtm-loopback</a></p>
+<p><a href="#NAT-rule">NAT rule</a></p>
+<p><a href="#SSO">SSO</a></p>
+<p><a href="#Certificates">Certificates</a></p>
+<p><a href="#Intrusion-Prevention">Intrusion Prevention</a></p>
+<p><a href="#Notifications">Notifications</a></p>
+<p><a href="#Specifieke-instellingen-voor-Cisco-switches">Specifieke instellingen voor Cisco switches</a></p>
+<p><a href="#Anylinq">Anylinq </a></p>
+<h2 id="inleiding">Inleiding</h2>
+<p>Een Fortigate voor een locatie wordt vanuit de Fortimanager ingericht.<br>
+Zie hiervoor het document &quot;Inrichten nieuwe Fortigate (voorbereiden in Papland)&quot;.
+In dit document worden onderdelen beschreven die via de scripts worden ingesteld op een Fortigate.</p>
+<h2 id="fortimanager-instellen-als-fabric-connector">Fortimanager instellen als Fabric connector</h2>
+<p>Onder &quot;System - Fabric connectors&quot; moet de Fortimanager ingesteld worden op het IP-nr 10.10.202.101.
+<img src="../../../../Attachments/image-3d518fb2-e64b-403a-a769-e7705dbc9cf5.png" alt="image.png"><br>
+Daarnaast moet het source-IP-nr ingesteld worden middels de cli.<br>
+config system central-management<br>
+set fmg-source-ip 10.38.100.1 (afh van de vestiging).<br>
+Middels het commando show kan het resultaat bekeken worden.</p>
+<p><img src="../../../../Attachments/image-bc23d9b7-1ae5-4b23-9097-bea8aa8e2c2f.png" alt="image.png"></p>
+<p>In de Fortimanager moet dit dan geauthoriseerd worden vanuit de notifications.<br>
+<img src="../../../../Attachments/image-1b6b94fd-d10e-48d2-82aa-606e925fd741.png" alt="image.png"></p>
+<h2 id="acties-in-fortimanager">Acties in Fortimanager</h2>
+<p><strong>Device toevoegen</strong></p>
+<p>Open de FortiManager en klik op Add Device. Klik daarna op Discover Device en voeg het apparaat toe op basis van het IP adres.
+Voeg dan de Fortigate toe bij &quot;Installation Targets.
+<img src="../../../../Attachments/image-b0aad980-89c9-40bc-8560-1ae022c6d26f.png" alt="image.png"></p>
+<p><strong>Static routes toevoegen</strong></p>
+<p>Na de inrichting van SD-WAN is er nog maar één static route nodig:
+<img src="../../../../Attachments/image-c8a1b046-47ef-4560-9a22-1b8707c04f6d.png" alt="image.png">
+<img src="../../../../Attachments/image-9e033d88-7807-4f87-bad4-fe74eced98a1.png" alt="image.png"></p>
+<p>Via de Install Wizard kan deze static route gedistribueerd worden naar de betreffende Fortigate.</p>
+<p><img src="../../../../Attachments/image-c974f4a1-21a5-48ad-b8cb-a8195e19ba73.png" alt="image.png"></p>
+<h2 id="policy--objects">Policy &amp; Objects</h2>
+<p>Onder Policy &amp; Objects staan Policy Packages met de Firewall Policy en de installation Targets.
+Daarnaast stan er de Object Configurations met o.a. alle addressen die nodig zijn.</p>
+<p><strong>Policy packages</strong></p>
+<p>Als Policy package is &quot;Vestiging_Default&quot; aangemaakt.<br>
+Hieronder vallen de Firewall-policy-regels voor de Fortigates en de installation targets waarin alle Fortigates staan.<br>
+In het algemeen zijn de regels voor verkeer van Datacenter naar Fortigates op de Fortigates aangemaakt en regels voor verkeer van Fortigates naar Datacenter zijn in het Datacenter aangemaakt.<br>
+In het datacenter wordt al het verkeer van het LAN en DMZ-WEB toegestaan in de dc-rou01 en dit wordt dan op de Fortigates gefilterd.<br>
+Andersom wordt op de Fortigates al het verkeer naar het datacenter toegestaan want dan weer op de dc-rou101 via firewall-rules beperkt wordt.</p>
+<p><strong>Object Configurations</strong></p>
+<p>Maak onder &quot;Firewall objects \ Addresses&quot; alle VLAN's aan als adressen.
+Dus bijvoorbeeld 04-DATA-VLAN met een Per-Deviemapping.<br>
+<img src="../../../../Attachments/image-ad9d4bae-08f8-46e5-925d-11d0eb775588.png" alt="image.png"></p>
+<p><strong>Country Blocking</strong></p>
+<p>Verkeer vanaf Interet naar net de Fortigates is niet mogelijk.
+Voor een aantal landen willen we er ook geen verkeer naar toe zoals China en Rusland.
+Maak onder &quot;Firewall objects \ Addresses&quot; voor die landen adressen aan.
+<img src="../../../../Attachments/image-b609a3f3-660c-47e1-9d93-df68a7c9b853.png" alt="image.png"></p>
+<p>Gebruik deze verolgens in de onderstaande firewall regel:
+<img src="../../../../Attachments/image-3f8c4313-0ef8-4566-a1e1-0bc9611ee0ee.png" alt="image.png"></p>
+<p><strong>MP-Gast beperken</strong></p>
+<p>Om verkeer te kunnen beperken dienen er eerst traffic shapers aangemaakt te worden.
+Die kunnen vervolgens opgeroepen worden in een policy.
+<img src="../../../../Attachments/image-3444fac1-fd14-4a00-826e-7950d535ee01.png" alt="image.png">
+<img src="../../../../Attachments/image-2aea8a60-5da8-4397-8b18-61e74fb3f797.png" alt="image.png">
+<img src="../../../../Attachments/image-8f98e59e-9ac7-4a22-94f0-cd4e14a9bdf9.png" alt="image.png"></p>
+<p><strong>Windows Updates beperken</strong></p>
+<p>Om Windows Update verkeer te beperken kan er een policy aangemaakt worden waarbij het type verkeer geselecteerd kan worden in combinatie met een traffic shaper.
+<img src="../../../../Attachments/image-55b9fb64-3bf7-48bc-aa0d-88b0d766f143.png" alt="image.png">
+<img src="../../../../Attachments/image-1d27df21-12c2-4dc9-ba30-84d8e7a3831d.png" alt="image.png"></p>
+<h2 id="dns">DNS</h2>
+<p>Om DNS in te richten moet het script &quot;0.2-DNS Settings&quot; uitgevoerd worden.
+Belangrijk is dat :</p>
+<ol>
+<li>dns-server op recursive staat</li>
+<li>authoritive op disable is gezet voor de domeinen</li>
+<li>source ip is toegevoegd voor de request van de forwarder</li>
+</ol>
+<p>Hierin kunnen variabelen opgeroepen worden, bijv in :
+<img src="../../../../Attachments/image-748f9ad0-faef-4edd-8e0e-d29ae729dd36.png" alt="image.png"><br>
+Deze variabelen staan in &quot;System Settings \ Advanced \ Meta Fields.
+<img src="../../../../Attachments/image-8476ec2a-814b-48ab-8b51-419f67b6f21f.png" alt="image.png">
+Hier kunnen eventueel nog nieuwe variabelen aangemaakt worden.</p>
+<p>Dat resulteert dan in de volgende config :
+<img src="../../../../Attachments/image-e86e8f62-8437-456e-a864-b5d465f18cc0.png" alt="image.png"><br>
+Gebaseerd op <a href="https://community.fortinet.com/t5/FortiGate/Technical-Tip-DNS-conditional-forwarding/ta-p/196821">https://community.fortinet.com/t5/FortiGate/Technical-Tip-DNS-conditional-forwarding/ta-p/196821</a></p>
+<p>Er kan een foutmelding optreden over de server hostname, dan moet onderstaand veld leeggemaakt worden:
+<img src="../../../../Attachments/image-4d54d1eb-7558-4b0f-adc5-23e679206b88.png" alt="image.png"></p>
+<p>Op de Fortigates kan DNS-database als volgt zichtbaar gemaakt worden onder &quot;System\ Feature Visibility&quot;:
+<img src="../../../../Attachments/image-82219519-f5e6-4f9e-9c30-f93587e8c70b.png" alt="image.png"></p>
+<p>DNS - database wordt dan zichtbaar bij &quot;Network \ DNS Servers&quot;.</p>
+<p><img src="../../../../Attachments/image-6276d378-b473-4147-8692-5eda9fa7d3b9.png" alt="image.png"></p>
+<h2 id="dhcp">DHCP</h2>
+<p>Bij de inrichting van de DHCP scopes moeten er 2 DHCP opties meegegeven worden, voorlopig alleen op VLAN Data.</p>
+<p><img src="../../../../Attachments/image-afe1b94f-9c1b-4a1a-9617-9b20e9e24c62.png" alt="image.png">
+<img src="../../../../Attachments/image-7abeed22-02c4-405f-8cff-966bba043147.png" alt="image.png">
+<a href="http://voip.montapacking.nl:5000/provisioning/v9ecbvglu7z">http://voip.montapacking.nl:5000/provisioning/v9ecbvglu7z</a>
+<img src="../../../../Attachments/image-290b0abb-b013-45c5-8f5e-4e0e46ef84ea.png" alt="image.png">
+In het script levert dit dan het volgende op (in de cli te zien met show system dhcp server.
+<img src="../../../../Attachments/image-5a19451c-1689-46d6-812d-80300bdbc291.png" alt="image.png"></p>
+<p>Alleen voor Papland is ook onderstaande DHCP optie nog nodig voor het uitrollen van nieuwe Fortigates:</p>
+<p><img src="../../../../Attachments/image-d2a339a1-6e60-40b0-8e21-b49e97d85264.png" alt="image.png"></p>
+<h2 id="sd-wan">SD-WAN</h2>
+<p>SD-WAN is een manier om verbindingen tussen locaties te regelen.<br>
+Binnen een SD-WAN worden een aantal interfaces gedefinieerd waartussen gekozen kan worden n.a.v. een performance SLA.
+Op de Fortigate van de locatie onder &quot;Network\SD-WAN en dan SD-WAN Rules&quot; is de actuele status te zien.</p>
+<p>In onderstaand geval van TWI gaat de VPN naar het DC over &quot;A2B in DC - glas TWI&quot; en internet via glas-TWI.</p>
+<p><img src="../../../../Attachments/image-32591a78-d53b-4628-a76f-98fd06bab160.png" alt="image.png"></p>
+<p>onder &quot;Network\SD-WAN en dan Performance SLAs&quot; is de actuele status te zien van de verbindingen te zien qua Packet loss, Latency en jitter.
+Bij TWI is er geen DSL vandaar dat deze down is.</p>
+<p><img src="../../../../Attachments/image-a6a0330a-6207-4c59-8719-1987d6df2d22.png" alt="image.png"></p>
+<p>Aan de kant van het datacenter is op de ein-fg01 onder VDOM Root, Dashboard IPSec Monitor te zien welke VPN-tunnels er zijn. Het kan nodig zijn dit specifieke dashboard toe te voegen.
+De verbindingen naar de locaties zijn te herkennen aan het IP-nummer.<br>
+Voor TWI is dat 217.76.29.136 voor glas en 92.69.121.150 voor de 4G. Deze IP-nummers zijn terug te vinden in de IP-lijast, tabblad &quot;Vestigingen | IP adressen&quot;.</p>
+<p><img src="../../../../Attachments/image-69efd7e2-34ab-42e9-9b44-9b173a86e911.png" alt="image.png"></p>
+<p>Om SD-WAN te kunnen gebruiken is de inrichting nodig van AD-VPN, BGP en SD-WAN zelf.<br>
+In de volgende paragrafen wordt de inrichting hiervan beschreven.</p>
+<p>Overigens is onderstaande set and forget. Als het eenmaal goed is ingericht heb jer er geen omkijken meer naar.<br>
+Het enige is dat je per vestiging SD-WAN nog wat moet finetunen vooral wat betreft de Performance SAL.</p>
+<h3 id="ad-vpn">AD-VPN</h3>
+<p>Fortigate in DC Ein-fg01 : VDOM -root<br>
+Spoke (locatie) verbindt naar het DC als er internet is, er wordt onderhandeld over VPN.<br>
+<img src="../../../../Attachments/image-aef1cd49-ac26-4db6-aa6a-2bd94748ff2c.png" alt="image.png"></p>
+<p>Het betreft de volgende IPsec-tunnels</p>
+<table>
+<thead>
+<tr>
+<th>IPsec Tunnel</th>
+<th>Datacenter</th>
+<th>locatie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VPN_AnyLinQ_Pri</td>
+<td>A2B</td>
+<td>Anylinq</td>
+</tr>
+<tr>
+<td>VPN_Spokes_Pri1</td>
+<td>A2B</td>
+<td>Glas</td>
+</tr>
+<tr>
+<td>VPN_Spokes_Pri2</td>
+<td>A2B</td>
+<td>DSL</td>
+</tr>
+<tr>
+<td>VPN_Spokes_Pri3</td>
+<td>A2B</td>
+<td>4G</td>
+</tr>
+<tr>
+<td>VPN_Spokes_Sec1</td>
+<td>KPN</td>
+<td>Glas</td>
+</tr>
+<tr>
+<td>VPN_Spokes_Sec2</td>
+<td>KPN</td>
+<td>DSL</td>
+</tr>
+<tr>
+<td>VPN_Spokes_Sec3</td>
+<td>KPN</td>
+<td>4G</td>
+</tr>
+</tbody>
+</table>
+<p><img src="../../../../Attachments/image-6acc777b-e8d6-4e5a-b99e-8b2b0a603377.png" alt="image.png"></p>
+<p>Network / Interfaces</p>
+<p><img src="../../../../Attachments/image-144167b7-bd91-4f7e-8ad7-cf0038e3c66c.png" alt="image.png">
+Aan de kant van de locatie zijn er 6 tunnels.<br>
+VPN_DC_Pri is A2B in het DC, VPN_DC_Sec is KPN in het DC.<br>
+Met 3 verbindingen op de locatie krijg je 6 IPsec Tunnels.</p>
+<p><img src="../../../../Attachments/image-38a24ffd-44e7-4a4f-8833-61b343921a2c.png" alt="image.png"></p>
+<p>P.S. Bij Pap16test is een 4G-modem aangesloten op de glas-interface.</p>
+<h3 id="bgp">BGP</h3>
+<p>Fortigate in DC Ein-fg01 : VDOM -root<br>
+Network \ BGP</p>
+<p><img src="../../../../Attachments/image-40574b50-6bce-43c6-bbc2-7a4d75f91015.png" alt="image.png"></p>
+<p>Bij de Interfaces is aangegeven dat de 6 Tunnel interfaces van de Spokes lopen van 10.0.1.1 – 10.0.1.6.\ Onderstaande Neighbor range loopt van 10.0.0.1 / 10.0.7.254. Daar vallen de adressen van de spokes dus in.</p>
+<p><img src="../../../../Attachments/image-4d363691-0245-45da-8881-4bf949ace363.png" alt="image.png"></p>
+<p>De netwerken die daar bij horen zijn:<br>
+10.255.255.1   = mgmt loopback adres ein-fg01 / rot-fg01<br>
+102.169.201.0/24 = DMZ in DC<br>
+10.10.202.0/24 = LAN in DMZ<br>
+10.255.1.0/24 = SSL VPN<br>
+100.100.0.0/16 = NAT-reeks naar 2e partijen (Bijv Anylinq)</p>
+<p><img src="../../../../Attachments/image-adb41b0f-3f61-4fd7-82cb-134d15742f8d.png" alt="image.png"></p>
+<p>Meerdere paden zijn toegestaan voor BGP (dit is alleen te zien in de cli).
+<img src="../../../../Attachments/image-d47657c1-2970-4371-b945-4c56985b9cf3.png" alt="image.png">
+<img src="../../../../Attachments/image-f14aed41-e3ec-4442-b0af-082bf331d44d.png" alt="image.png"></p>
+<p>Onderstaande adverteer je naar de locaties. Dus daarmee geef je aan dat deze subnets te vinden zijn in het DC.</p>
+<p><img src="../../../../Attachments/image-193d733e-fb29-418e-bb6b-fe83dfbc9e00.png" alt="image.png"></p>
+<p>100.100 is NAT-reeks voor AnyLinq voor de beheer tunnel.<br>
+10.255.1.0/24 is het SSLVPN-subnet.</p>
+<p>Vervolgens is op de ein-fg01 de route-table ook in de cli te zien.</p>
+<p><img src="../../../../Attachments/image-cfa2c7a1-1f4a-4583-b607-5029a1b0d2d4.png" alt="image.png"></p>
+<p>Azure (10.21.0.0/16) heeft een verbinding met A2B en KPN.<br>
+Bij een vestiging met 1 verbinding (bijvoorbeeld Papland 1 (10.39.x.x) medio juni 2023) zie je 2 routes (naar A2B en KPN).<br>
+Bij een vestiging met 2 verbindingen (bijvoorbeeld Pap16test 10.10.x.x) zie je 4 routes (2 naar A2B en 2 KPN).<br>
+Er kunnen maximaal 6 routes zijn bij een locatie met glas, dsl en 4G.</p>
+<p>op de locatie ziet BGP er als volgt uit:</p>
+<p><img src="../../../../Attachments/image-ecf240d4-7d66-4d9a-8ff2-261fef41b595.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-747a11f8-9c4f-4968-af52-c1898f2bc27b.png" alt="image.png"></p>
+<p>In de cli is te zien dat de preferable route-out de OK-variant is.</p>
+<p><img src="../../../../Attachments/image-5451e4af-72e2-4755-9853-63570b86a639.png" alt="image.png"></p>
+<p>Er wordt gekeken naar de SLA status binnen SD-WAN</p>
+<p><img src="../../../../Attachments/image-97f308bf-2138-4595-809c-d911068eea1e.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-13b81333-db54-4608-81d9-07a97fb4335b.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-b8316747-e5fc-4e36-b303-922bf77597f7.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-5b1b914b-f649-41bc-acf8-8e1a864819af.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-d5e2be14-1423-4a65-b842-8846fa037ae7.png" alt="image.png"></p>
+<p>De locatie geeft , afhankelijk van welke verbinding goed is een route tag door aan de ein-fg01.</p>
+<p>Op de ein-fg01 kan er a.d.h.v. de route-tag een keuze gemaakt worden welke VPN te gebruiken.</p>
+<p><img src="../../../../Attachments/image-66bc982f-cc2d-4561-9d06-81f832c8a9ac.png" alt="image.png"></p>
+<p>Onderstaande is per locatie.
+Stel PR1-SLA-NOK, maar Sec1-OK dan Spokes-Sec1-SLA-OK</p>
+<p><img src="../../../../Attachments/image-94decaf8-ea40-41c2-9595-d6906eb0801c.png" alt="image.png"></p>
+<p>Stel PR1-SLA-NOK en Sec1-SLA-NOK dan Spokes-Pri1-SLA-NOK<br>
+In onderstaande is te zien wat de 2 was.<br>
+VPN_DC_Sec_1 :    glas naar KPN</p>
+<p><img src="../../../../Attachments/image-1cfdc4c2-b7b0-4bdb-9be8-7e0909b213a7.png" alt="image.png"></p>
+<h3 id="sd-wan-locatie-kant">SD-WAN Locatie kant</h3>
+<p>Dit wordt beschreven aan de hand van de Pap16test-fg01.</p>
+<h3 id="sd-wan-zones">SD-WAN zones</h3>
+<p>Er zijn 2 SD-WAN-zones aangemaakt (Network \ SD-WAN).<br>
+“Internet” met alle interfaces als members (in onderstaand voorbeeld Glas en 4G, dit zou op een andere locatie ook DSL kunnen zijn).</p>
+<p><img src="../../../../Attachments/image-4a9b74e5-1775-435c-b7fb-570878d4711e.png" alt="image.png"></p>
+<p>SDWAN-DC gaat nog verwijderd worden (Dit was voor TWI die op de dc-rou01 aangesloten was).</p>
+<p>SDWAN heeft 6 VPN's (glas, dsl , 4G naar A2NB en JKPN).
+Met cost is de volgorde weer gegeven, dus als eerst A2B over glas (locatie), daarna A2B over DSL en dan A2B over 4G. DSL is er niet in Pap16test dus die zijn rood.</p>
+<h3 id="sd-wan-rules">SD-WAN Rules</h3>
+<p>Er zijn een 2-tal SD-Wan Rules aangemaakt.<br>
+<img src="../../../../Attachments/image-e6a530e8-8db0-4563-b5e3-e347108e727e.png" alt="image.png"><br>
+Hier kun je ook zien welke verbinding actief is.<br>
+VPN_NAT_100.100.0.0/16 is voor 3e partijen zoals Anylinq.</p>
+<p>Internet voor het verkeer naar internet.</p>
+<p><img src="../../../../Attachments/image-bb11c6b0-a798-4164-b953-2280fbd13f3c.png" alt="image.png"></p>
+<p>DC voor verkeer naar het Datacenter.</p>
+<p><img src="../../../../Attachments/image-621e321e-399d-4f11-8f8e-16bc83d3113c.png" alt="image.png"></p>
+<h3 id="sd-wan-performance-sla">SD-WAN Performance SLA</h3>
+<p>Er is een Performance SLA genaamd “SLA_DC” gemaakt waarin staat bij welke tresholds actie moet worden ondernomen. Bijvoorbeeld bij 1% packet loss.</p>
+<p><img src="../../../../Attachments/image-31a7a46a-8f55-49e5-b472-d25de81fc1a7.png" alt="image.png"></p>
+<p>Als je op een SLA-regel dubbelklikt dan zie je de historie van 10 minuten.</p>
+<p>Bij de SLA_DC wordt de verbinding op “Packet Loss/Latency/Jitter” gemeten en geclassificeerd a.d.h.v de tresholds.<br>
+Als een verbinding niet OK is wordt dit als BGP attribuut meegegeven naar de DC.<br>
+Bij de neighbor is onder water RM_Pri_SLA-OK_Out geselecteerd, als de verbinding niet goed is wordt bij Route map out “RM_Pri_SLA_NOK_Out” meegegeven.</p>
+<p><img src="../../../../Attachments/image-5be631b4-5790-489a-bfae-7a2e0e5c423a.png" alt="image.png"></p>
+<p>In het routing object wordt dan bij de community 101 meegegeven wat overeenkomt met routetag 1 in het DC.</p>
+<p><img src="../../../../Attachments/image-b48be98c-1544-4fd9-a888-27c81689b310.png" alt="image.png"></p>
+<p>Onderstaande is aangepast:
+<img src="../../../../Attachments/image-4df0f9f9-d0d2-4726-9b0e-456295edb5c0.png" alt="image.png"></p>
+<p>Voor troubleshooting van SD-WAN kunnen onderstaande 2 commando's gebruikt worden:<br>
+Diagnose sys sdwan member<br>
+Diagnose sys sdwan healh-check status SLA_DC</p>
+<p>De routing objects zijn te zien onder &quot;Network \ Routing objects&quot;.
+<img src="../../../../Attachments/image-c38675ec-2161-4231-8e69-6339c44fc2ec.png" alt="image.png"></p>
+<p>Hierin staat ook de &quot;Prefix_local_scope&quot;.
+<img src="../../../../Attachments/image-79c44965-2c39-411c-b6d4-5f3c9dc439f4.png" alt="image.png">
+Hierdoor wordt er extra VLAN tussen de 21 en 32 automatisch opgenomen</p>
+<h3 id="sd-wan-datacenter-kant">SD-WAN Datacenter kant</h3>
+<h3 id="sd-wan-zones-dc">SD-WAN Zones DC</h3>
+<p><img src="../../../../Attachments/image-061c8255-7e5c-4d14-9e0e-1dc39ad6ddd0.png" alt="image.png"></p>
+<h3 id="sd-wan-rules-dc">SD-WAN Rules DC</h3>
+<p><img src="../../../../Attachments/image-f233b8cb-8941-4b3e-8f5e-2c97082c5da4.png" alt="image.png"></p>
+<p>Elke locatie heeft een performance sla naar het DC toe.<br>
+Afhankelijk of deze sla gehaald wordt, markeert deze de vpn OK of NOK.<br>
+Attribuut wordt naar DC meegestuurd, die dat gebruikt voor de selectie van bovenstaande SD-WAN rules (OK = routetag 1 , NOK = routetag 2).</p>
+<h3 id="performance-slas-dc">Performance SLA's DC</h3>
+<p><img src="../../../../Attachments/image-1741bc18-3040-45f4-93a9-bfa9b412f18b.png" alt="image.png"></p>
+<h3 id="sd-wan-overig">SD-WAN Overig</h3>
+<p>Om de Fortianalyser onder SD-WAN werkend te krijgen moest &quot;set interface-select-method sdwan&quot; toegevoegd worden.<br>
+Set-source ip moet ook ingesteld worden.<br>
+<img src="../../../../Attachments/image-b40962ed-15e4-481b-afb9-d9b9e53a45e2.png" alt="image.png"></p>
+<p>Om pingen vanaf de Fortimanager en de Fortianalyzer mogelijk te maken moet dit protocol toegevoegd worden op de interfaces van deze machines.</p>
+<p><img src="../../../../Attachments/image-84f016a1-121e-4832-9972-fe49570b003e.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-849745e3-0db0-41c4-8c9a-80a66ffc777b.png" alt="image.png"></p>
+<p>Om vanaf een Fortigate te kunnen pingen moet het sourece-ip aangegeven worden en er moet worden aangegeven dat er van sdwan gebruik wordt gemaakt.</p>
+<p><img src="../../../../Attachments/image-a3e6c14b-affb-4778-b6b6-4028c1cad46d.png" alt="image.png"></p>
+<h2 id="security-profiles">Security Profiles</h2>
+<p><strong>Web Filter</strong></p>
+<p>Er kan een specifiek webfilter gemaakt worden wat gebruikt kan worden in een Fortigate.<br>
+Dit kan via Install gedeployed worden.
+<img src="../../../../Attachments/image-170a33b1-b39b-4cea-8f54-3e34ad3d544b.png" alt="image.png">
+<img src="../../../../Attachments/image-ce5bdabf-d51f-483d-aa4c-3f42a3022967.png" alt="image.png"></p>
+<h2 id="ssl-inspection">SSL Inspection</h2>
+<p>Advies voor het aanzetten van SSL Inspection
+<img src="../../../../Attachments/image-f99b72f8-048a-413b-8033-8b56566cdfdb.png" alt="image.png"></p>
+<p>a.	Certificate-inspection. Onveilige sites worden tegengehouden.
+b.	Deep inspection is controle op sql injectie etc. , dit is alleen zinvol als er websites lokaal gehost worden.<br>
+c.	Custom-deep-inspection, zelf in te stellen.</p>
+<p>Er worden geen websites lokaal gehost dus voor de lokale fortigates is &quot;No SSL Inspection&quot; prima.</p>
+<h2 id="mgtm-loopback">Mgtm-loopback</h2>
+<p>Op elke Fortigate is een Loopback interface aangemaakt met als IP-nummer 10.255.255.x, waarbij x de prefix is van de vestiging.
+<img src="../../../../Attachments/image-94bceffc-2f33-404d-9a20-951904a59e34.png" alt="image.png"><br>
+Vervolgens kan de Fortigate gemanaged worden op dit adres.<br>
+Het voordeel van dezle loopback-interface is dat deze logische interface altijd up is (geen fysieke link-afhankelijkheid) en de gekoppelde subnetten altijd aanwezig zijn in de routeringstabel.</p>
+<p>Het managen op het IP-nummer van de Fhysical interface werkt namelijk niet als de achterliggende switches niet bereikbaar zijn.</p>
+<p><img src="../../../../Attachments/image-fe4e3e60-d120-4eed-970b-e1cd64bea3e9.png" alt="image.png"></p>
+<p>Hierna dient central management als volgt aangepast te worden (source IP):</p>
+<p><img src="../../../../Attachments/image-e7bca590-973a-427a-abb1-dedea5872bc2.png" alt="image.png"></p>
+<p>Daarnaast dient ook de fortianalyzer settings aangepast te worden (Source IP):</p>
+<p><img src="../../../../Attachments/image-9591468c-7245-4e3a-9333-6c51637523e1.png" alt="image.png"></p>
+<p>Koppel tot slot de NAT-rule aan het juiste installation target.</p>
+<p><img src="../../../../Attachments/image-9b3a3db4-47c8-4b0f-824f-e41dca90ae4c.png" alt="image.png"></p>
+<h2 id="nat-rule">NAT rule</h2>
+<p>Een NAT-rule kan er als volgt uitzien:</p>
+<p><img src="../../../../Attachments/image-46ac4a07-4ae6-48a1-81d4-626a98277584.png" alt="image.png"></p>
+<p><img src="../../../../Attachments/image-ef2befa7-771e-4819-89f3-8d4eeb471738.png" alt="image.png"></p>
+<p>Hierbij is een VIP aangemaakt.</p>
+<p><img src="../../../../Attachments/image-1c1bd7ee-1317-44f6-9185-94ded47bc8ae.png" alt="image.png"></p>
+<p>Hiervoor was de aanmaak van interface wans3 noodzakelijk.
+<img src="../../../../Attachments/image-5df255d7-af61-4695-8e8e-23ab9c874209.png" alt="image.png"></p>
+<h2 id="sso">SSO</h2>
+<p>Voor SSO is er onder &quot;User &amp; Authentication \ LDAP Server&quot; een ldap-server aangemaakt:<br>
+<img src="../../../../Attachments/image-d36161f3-5ece-461c-987a-2869e048902c.png" alt="image.png">
+Vervolgens kun je ook browsen in AD.
+Onder User Groups zijn dan de groepen in te stellen (Admin en View).<br>
+LDAP_GRP_Admin_Locaties<br>
+LDAP_GRP_RO_Locaties<br>
+LDAP_GRP_Admin_DC<br>
+LDAP_GRP_RO_DC</p>
+<p><img src="../../../../Attachments/image-abd213a6-c5c4-4be4-bc0e-d20c5e84180f.png" alt="image.png">
+<img src="../../../../Attachments/image-46a53b1c-2466-4fd5-ad27-52c064360812.png" alt="image.png">
+Onder System \ Admin Profiles zijn de admin en view-profielen gedefinieerd.
+<img src="../../../../Attachments/image-46de2e25-cc04-4ed6-ab4a-7b85a20fb331.png" alt="image.png">
+Onder System \ Administrators zijn LDAP_Admin en LDAP_RO aangemaakt waarbij de betreffende admin profiles opgeroepen worden.
+<img src="../../../../Attachments/image-ab737a06-b7a3-4e43-aa43-1f99f54de46b.png" alt="image.png"></p>
+<p>Dit is ook allemaal middels een script te deployen (Zie script 06 user admin)</p>
+<p>Voor de Fortimanager werkt het anders. Daarbij maak je een account aan met de AD_naam, je kiest de LDAP-server en je geeft een Admin Profile op.
+<img src="../../../../Attachments/image-fbc237d4-967a-4ebd-8b31-5360060345cd.png" alt="image.png"></p>
+<p>Voor de Fortianalyzer is SSO niet nodig, daar log je zelden op in.</p>
+<h2 id="certificates">Certificates</h2>
+<p>Op de Fortigate : System \ Certificates en kies dan voor Create/import
+<img src="../../../../Attachments/image-c2cd2418-ff77-4f2c-b019-0bcf7eee298c.png" alt="image.png">
+Roep dit certificaat op onder &quot;System \ Settings \ HTTPS server certificate&quot;.
+<img src="../../../../Attachments/image-63d39259-ba26-4461-b3f6-c7ebf21988cb.png" alt="image.png"></p>
+<h2 id="intrusion-prevention">Intrusion Prevention</h2>
+<p>Bij Intrusion Prevention is de default actief.
+<img src="../../../../Attachments/image-555debb7-ae64-4e6a-80c6-9f426797b22c.png" alt="image.png">
+<img src="../../../../Attachments/image-f4d7d93a-a4af-44b6-b182-302f5286a9f6.png" alt="image.png"></p>
+<h2 id="notifications">Notifications</h2>
+<p>Als SMTP-server is standaard die van Fortinet ingesteld (System \ Settings):
+<img src="../../../../Attachments/image-f7af043e-4e8a-4607-adb8-864c1ae4d36a.png" alt="image.png">
+Onder &quot;Security Fabric \ Automation&quot; kunnen mails ingesteld worden voor bepaalde situaties.
+Bijvoorbeeld voor een Interface die down gaat.
+<img src="../../../../Attachments/image-050cd9cb-4bd1-4eab-9a73-0266309fa814.png" alt="image.png">
+<img src="../../../../Attachments/image-f5112de6-1490-4cf1-8737-a0e9cf6ba5f5.png" alt="image.png">
+<img src="../../../../Attachments/image-0903f4d2-e7f5-42d4-85fc-9d4fb9a73a87.png" alt="image.png">
+Om in het subject de hostnaam te kunnen gebruiken is hiervoor een script gemaakt.
+<img src="../../../../Attachments/image-2d018625-b7bf-4baf-ba7d-385b1504994e.png" alt="image.png"></p>
+<h2 id="specifieke-instellingen-voor-cisco-switches">Specifieke instellingen voor Cisco switches</h2>
+<p>Om er voor te zorgen dat Ruckus AP's in VLAN 100 geplaatst kunnen worden moet voor betreffende poorten VLAN100 als untagged ingesteld worden.
+<img src="../../../../Attachments/image-77d67a4f-1d22-41a1-9bad-564344cfbce7.png" alt="image.png"></p>
+<h2 id="anylinq">AnyLinq</h2>
+<p>Om het mogelijk te maken dat Anylinq ondersteuning kan bieden op de Fortimanager, Foritanalyzer en Fortigates is het volgende ingeregeld.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Exchange Powershell </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Exchange Powershell ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="exchange-powershell">Exchange Powershell</h1>
+
+<p>Om Exchange met Powershell te kunnen benaderen moet eerst de Module &quot;ExchangeOnlineManagement&quot; geïnstalleerd worden.
+Hier moet vervolgens connectie mee gemaakt worden met het eigen account bijv: jasper.verhaar@monta.nl</p>
+<p>Import-Module ExchangeOnlineManagement Connect-ExchangeOnline</p>
+<h4 id="diverse-commandos">Diverse commando's:</h4>
+<ul>
+<li>Remove-MailboxPermission -Identity opdrachtgevers@montapacking.nl -User jasper@montapacking.nl -AccessRights FullAccess</li>
+<li>Add-MailboxPermission -Identity opdrachtgevers@montapacking.nl -User jasper@montapacking.nl -AccessRights FullAccess -AutoMapping:$false</li>
+<li>Get-Mailbox -Identity &quot;opdrachtgevers&quot; | Format-List</li>
+<li>Get-MailboxPermission -Identity opdrachtgevers@montapacking.nl | Format-List</li>
+<li>Get-RetentionPolicy -Identity &quot;Default MRM policy&quot; | Format-List</li>
+<li>Get-Mailbox -filter 'RetentionPolicy -like &quot;*&quot;' | Select-Object Name, RetentionPolicy</li>
+<li>get-mailbox &quot;breda&quot; | fl retentionpolicy</li>
+<li>Get-Mailbox | Get-MailboxPermission -User xxxxxx</li>
+<li>Get-MailboxFolderPermission -Identity auto-it-mercedes@monta.nl:\calendar</li>
+<li>Set-MailboxFolderPermission -Identity auto-it-mercedes@monta.nl:\calendar -user Default -AccessRights reviewer</li>
+</ul>
+<p><img src="../../../../Attachments/image-cd23eb8c-d15f-42ce-89c5-f45317b37b80.png" alt="image.png"></p>
+<p>Set-Mailbox -Identity &quot;Waspik&quot; -HiddenFromAddressListsEnabled $true, dit commando werkt helaas niet in een hybride omgeving, daarom dient dit in onderstaande attributen ingesteld te worden.</p>
+<p><img src="../../../../Attachments/image-f232511f-cbb1-4423-811c-557cf20f6678.png" alt="image.png"></p>
+<ol>
+<li>Disabled users met een licentie -&gt; csv</li>
+</ol>
+<ul>
+<li>Get-MsolUser -All | where {$<em>.isLicensed -eq $true -and $</em>.BlockCredential -eq <span class="math">\(true} | Select DisplayName, SignInName, @{n=&quot;LicensesType&quot;;e={\)</span>_.Licenses.AccountSKUid}} | Export-Csv -Path C:\scripts\output.csv -NoTypeInformation</li>
+</ul>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

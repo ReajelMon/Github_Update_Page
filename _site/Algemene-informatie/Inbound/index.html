@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Inbound </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Inbound ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+  
+  <meta property="docfx:rel" content="../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="inbound">Inbound</h1>
+
+<p>Inbound betreft de goederen die bij het magazijn geleverd worden.</p>
+<h2 id="flowchart">Flowchart</h2>
+<p>Deze flowchart beschrijft het inboundproces.</p>
+<div class="mermaid">
+graph TD;
+subgraph klant
+product_info[Maakt productinformatie aan in Montaportal] -->
+po_advice[Maakt inkoopadvies op Montaportal] -->
+po_create[Maakt inkooporder op Montaportal] -->
+place_po[Stuurt inkooporder naar leverancier]
+inbound_forecast[Maakt inbound forecast aan]
+inbound_forecast_ok_klant[Inbound forecast goedkeuren]
+end
+subgraph leverancier
+supp_po_delivery_date[Bevestigd leverdatum en aantallen] -->
+supp_ship[Verstuurt goederen naar magazijn]
+end
+subgraph magazijn
+lvr[Levering registreren] -->
+ib[Product inbounden] -->
+inbound_forecast_check{Klopt het aantal<br>met de forecast?} -- yes -->
+inbound_forecast_ok_magazijn[Inbound forecast wordt automatisch goedgekeurd]
+ib --> kopp[Voorraad koppelen op locatie]
+inbound_forecast_check -- no -->
+inbound_forecast_ok_klant
+end
+place_po --> supp_po_delivery_date
+supp_po_delivery_date --> inbound_forecast
+supp_ship --> lvr
+style po_advice stroke-dasharray: 5 5
+style po_create stroke-dasharray: 5 5
+style lvr stroke-dasharray: 5 5
+</div>
+<h2 id="productinformatie">Productinformatie</h2>
+<p>Voordat Monta producten van de klant (webshopeigenaar) op voorraad kan nemen (inbounden) moet Monta beschikken over de productinformatie. Productinformatie bestaat minimaal uit: SKU, omschrijving en één barcode.</p>
+<p>Productinformatie kan op drie manieren bij Monta beschikbaar komen:</p>
+<ul>
+<li>Automatisch via een <a href="../../Algemene-informatie/Koppelingen">koppeling</a></li>
+<li>Handmatig op Montaportal​ meerdere producten tegelijk importeren met een Excel import</li>
+<li>Handmatig producten stuk voor stuk invoeren op Montaportal</li>
+</ul>
+<h3 id="barcodes">Barcodes</h3>
+<p>Zie <a href="../../Algemene-informatie/Voorraadbeheer/Barcodes">Voorraadbeheer - Barcodes</a> voor meer informatie.</p>
+<h2 id="foodtht">Food/THT</h2>
+<p>Bij een product dat als Food gemarkeerd is, wordt bij de inbound de batch en THT geregistreerd.</p>
+<p>Het is de verantwoordelijkheid van de klant om in de gaten te houden welke THTs bijna verlopen. Hiervoor zijn rapporten in de Montaportal (het is ook mogelijk die automatisch te mailen).</p>
+<p>Food producten kunnen niet verstuurd worden als ze geen batch hebben of als de THT datum van de batch verstreken is. Orders komen dan in blocked.</p>
+<p>Bij een product kunnen ook THT periodes ingesteld worden voor inbound en outbound.</p>
+<p>THT periode inbound: aantal dagen voordat de THT bereikt is dat het niet meer mag worden geinbound.</p>
+<p>THT periode outbound: aantal dagen voordat de THT bereikt is dat het niet meer verstuurd mag worden.</p>
+<p>THTs die bijna over de datum gaan kan de klant afboeken door ze te bestellen. Dit kan met onderstaande knop op de Montaportal.</p>
+<p><img src="../../Attachments/image-025b301f-7f39-4d65-9398-d5506878ba74.png" alt="image.png"></p>
+<p>In het geval van een terugroepactie kan de klant een export maken welke batch verstuurd is in welke orders. Dit kan met het Excel knopje bij de batch op de product details pagina op Montaportal.</p>
+<h2 id="inkoopadvies-en-inkooporder-montaportal">Inkoopadvies en inkooporder Montaportal</h2>
+<p>Klanten kunnen op de Montaportal vanuit de stock forecast een inkoopadvies maken. Dit kan evt per leverancier. Dit inkoopadvies kan nog aangepast worden en dan omgezet worden in een inkooporder. De inkooporder kan vanuit de Montaportal gemaild worden naar de leverancier. Als de leverdatum bekend is kan de inkooporder omgezet worden naar een inbound forecast.</p>
+<p>Zie <a href="../../Algemene-informatie/Inbound/Inkoopsysteem">inkoopsysteem</a>.</p>
+<h2 id="inbound-forecasts">Inbound forecasts</h2>
+<p>Een klant is verplicht bij ons aan te geven als producten bij ons geleverd gaan worden. Dit kan door middel van een &quot;inbound forecast&quot;. Een inbound forecast kan op meerdere manieren gemaakt worden.</p>
+<ul>
+<li>Op Montaportal</li>
+<li>Via een koppeling</li>
+<li>Op ​Montaportal vanuit een purchase order</li>
+</ul>
+<p>Bij het maken van een inbound forecast geeft de klant op welke aantallen van welke producten op welke datum geleverd gaan worden.</p>
+<p>Per klant kan ingesteld worden of er ge-inbound mag worden zonder forecast en of er meer producten ge-inbound mogen worden dan in de inbound forecast staan.</p>
+<h3 id="inbound-forecasts-verwijderen">Inbound forecasts verwijderen</h3>
+<p>Hert is mogelijk om een prouductregel van een forecast te verwijderen. Dit kan op een paar manieren in Montaportal, zolang er nog niks van dit product is verwerkt.
+Dit ios aangetoond door de status &quot;Nothing yet&quot;.
+Deze pagina is te vinden op <strong>Binnenkomend-&gt;Vooraanmeldingen-&gt;view details</strong>.</p>
+<p>Je kan een regel indivudueel verwijderen door de regel te bewerken, en dan op &quot;verwijder:  te klikken.
+Je kan ook in bulk verwijderen. Als er nog niks van de vooraanmelding is verwerkt staat er onder aan de pagina een knop <strong>🗑 Verwijder</strong>.
+Deze knop verwijdert alle geselecteerde regels.</p>
+<p><img src="../../.attachements/firefox_szjGz2eqn8.png" alt="vooraanmelding verwijderen 1">.</p>
+<p>Als er al wel wat verwerkt is, maar een deel nog niet, dan staat er de knop <strong>🗑 Verwijder alles met status 'Nothing yet'</strong>.
+Deze knop verwijderd dan alle geselecteerde regels waarvan de status <strong>Nothing yet</strong> is, maar laat alle andere geselecteerde regels staan.</p>
+<p><img src="../../.attachements/ApplicationFrameHost_TR1BVxPsrr.png" alt="vooraanmelding verwijderen 2">.</p>
+<h2 id="levering-registeren">Levering registeren</h2>
+<p>Het is mogelijk om te registreren dat de levering bij het magazijn is binnengekomen. Dit kan met de scanner. Hierbij kan ook aangegeven worden hoeveel dozen en pallets er zijn ontvangen.</p>
+<p>Deze optie kan ingeschakeld worden bij het magazijn.</p>
+<p>Hiermee ziet de klant sneller dat de levering in het magazijn is ontvangen, nog voordat de producten ingeboekt worden.</p>
+<h2 id="producten-inboeken-inbounden">Producten inboeken (inbounden)</h2>
+<p>Zie ook <a href="../../Algemene-informatie/Inbound/Handleiding-inbounden">Handleiding inbounden</a>.</p>
+<p>Bij het inboeken van producten worden de volgende stappen doorlopen.</p>
+<ul>
+<li>Inbound forecast kiezen</li>
+<li>Pakbon inscannen</li>
+<li>Barcode producten inscannen (als niet gevonden dan kan een onbekende inbound gemaakt worden)</li>
+<li>Aantal invullen</li>
+<li>Afmetingen en gewicht invullen</li>
+<li>Optioneel is het mogelijk om een foto te maken van het product. Bij de klant moet ingeschakeld worden worden deze knop beschikbaar komt.</li>
+<li>Crossdock</li>
+<li>Koppellabel wordt geprint (niet bij crossdock). Het is ook mogelijk om een krat te scannen. De producten worden op de krat geboekt ipv een koppellabel.</li>
+</ul>
+<h3 id="meldinginstructie">Melding/instructie</h3>
+<p>In GoMonta kan bij producten een inboundinstructie ingesteld worden, deze wordt als melding getoond bij het inbounden van het product.</p>
+<h3 id="crossdocken">Crossdocken</h3>
+<p>Als er backorders zijn van het product dat geinbound is, dan kunnen die meteen door naar de outbound (Echeck). Na het scannen van het product en het invullen van het aantal wordt aangegeven hoeveel producten er gecrossdockt kunnen worden. Er moet een kar of krat gescand worden waar de producten ingelegd worden. Of er kan een papieren crossdock bon geprint worden.</p>
+<p>Dit kan alleen voor orders die geschikt zijn. Een order is geschikt voor crossdocken als hij uit één product bestaat (met één of meer items). Echeck toevoegproducten tellen hierbij niet mee.</p>
+<h4 id="aantal-te-crossdocken">Aantal te crossdocken</h4>
+<p>Het kan zijn dat maar een deel van het te inbounden aantal gecrossdockt kan worden. Dit heeft er mee te maken dat alleen S en HM orders gecrossdockt kunnen worden. Als er andere (M, L) backorders zijn die eerder verstuurd moeten worden, moet eerst voorraad voor die orders in het warehouse gelegd worden.</p>
+<h4 id="crossdock-annuleren">Crossdock annuleren</h4>
+<p>Dit kan in GoMonta. De orders gaan dan terug in backorder en de producten moeten opnieuw ingeboekt worden.</p>
+<h4 id="b2b-orders-crossdocken">B2b orders crossdocken</h4>
+<p>Het is mogelijk om grote backorders meteen vanuit de crossdock te verzamelen op een locatie. Hiervoor moet in GoMonta een magazijnlocatie worden toegewezen aan de order.</p>
+<h4 id="crossdock-in-of-uitschakelen">Crossdock in of uitschakelen</h4>
+<p>De mogelijkheid om te crossdocken is standaard ingeschakeld.
+Indien gewenst kan per magazijn het crossdocken worden uitgeschakeld door in GoMonta bij Magazijn Inbound Instellingen het schuifje om te zetten.</p>
+<h3 id="barcodestickers-printen">Barcodestickers printen</h3>
+<p>Als de producten niet (correct) voorzien zijn van (scanbare) barcodestickers, is er bij de inbound een optie om alsnog correcte barcode stickers te printen, zodat de producten verder in het proces wel correct te identificeren zijn dmv een barcode scan.</p>
+<p>Het printen van de barcod​​estickers wordt geregistreerd zodat dit aan de klant gefactureerd kan worden.</p>
+<h3 id="inbound-banner">Inbound banner</h3>
+<p>Het is mogelijk om bij de inbound een A4 vel te laten printen met informatie over het product. Deze kan op de pallet bevestigd worden om deze makkelijker te kunnen herkennen in het magazijn.</p>
+<p>Het printen van de inbound banner kan ingeschakeld worden per klant.</p>
+<h3 id="mobiele-inbound">Mobiele inbound</h3>
+<p>Een mobiele inbound is bijv een laptop met de inbound applicatie. Dan hoeft er geen koppellabel geprint te worden, maar kan meteen de locatie gescand worden waar het op gekoppeld kan worden. Een inbound station kan als mobiele inbound gemarkeerd worden.</p>
+<h3 id="inbounden-met-de-scanner">Inbounden met de scanner</h3>
+<p>Het is ook mogelijk om te inbounden met de scanner. Dan hoeft er geen koppellabel geprint te worden, maar kan er meteen op locatie gekoppeld worden. Bij inbound met de scanner kan er niet gecrossdockt worden.</p>
+<h3 id="inbounden-met-mutaties">Inbounden met mutaties</h3>
+<p>Als er een aantal product ingeboekt moet worden die niet vanuit een levering binnengekomen zijn, kunnen deze met positieve mutaties ingeboekt worden. Om dit in GoMonta te doen is echter veel handwerk. Daarom is het ook mogelijk om te inbounden met mutaties. Er hoeft dan alleen een product gescand te worden en er wordt een kopellabel geprint. De inbounds worden niet zichtbaar op Montaportal.</p>
+<h3 id="onbekende-inbounds">Onbekende inbounds</h3>
+<p>Het is mogelijk om producten die (nog) niet bekend zijn toch in te boeken. Bij de inbound moet dan een omschrijving ingevuld worden en dan wordt het product alsnog aangemaakt. Bij een klant is ook in te stellen dat hierbij verplicht een foto gemaakt moet worden. De klant krijgt een waarschuwing op de Montaportal en kan het product accepteren als nieuw product of samenvoegen met een bestaand product.</p>
+<p>Deze werkwijze heeft als voordeel dat er geen onbekende producten blijven rondslingeren op de vloer.</p>
+<p>Per klant is in te stellen of onbekende inbounds zijn toegestaan.</p>
+<p>Als een onbekende inbound per ongeluk gedaan is kan deze ongedaan gemaakt worden door de inbound te verwijderen.</p>
+<h3 id="inbound-ongedaan-maken-verwijderen">Inbound ongedaan maken (verwijderen)</h3>
+<p>Het is ook mogelijk om een inbound te verwijderen zo lang de voorraad nog op de locatie staat waar het is gekoppeld.</p>
+<h3 id="verkeerde-inbound-forecast-gekozen">Verkeerde inbound forecast gekozen</h3>
+<p>Als bij de inbound het product op de verkeerde forecast is ingeboekt kan dit op de Montaportal gecorrigeerd worden. Het product kan verplaatst worden naar een andere forecast.</p>
+<h3 id="inbounden-op-krat--papierloos-inbounden">Inbounden op krat / papierloos inbounden</h3>
+<p>Het is ook mogelijk producten die ge-inbound worden te koppelen aan een krat. De &quot;koppelaar&quot; scant de krat, waarvanuit de producten gekoppeld worden op locatie. Als de krat leeg is &quot;meld&quot; de koppelaar deze af, w​​aarbij het systeem kan controleren of de producten correct gekoppeld zijn.</p>
+<h3 id="quarantaine-inbound">Quarantaine inbound</h3>
+<p>Producten kunnen oo​​k direct geinbound worden als quarantaine voorraad, bijvoorbeeld als geconstateerd wordt dat de producten beschadigd zijn.</p>
+<h2 id="koppelen">Koppelen</h2>
+<p>Nadat het product geinbound is moet het op locatie gekoppeld worden. Dit kan:</p>
+<ul>
+<li>In GoMonta</li>
+<li>Met de scanner door het koppellabel te scannen</li>
+</ul>
+<p>Koppelen met de scanner gaat door eerste het koppellabel of de krat te scannen en daarna de locatie waar het op gekoppeld moet worden.</p>
+<h3 id="controles">Controles</h3>
+<ul>
+<li>Gewone voorraad mag alleen op niet-quarantaine locaties gekoppeld worden. Quarantaine voorraad mag alleen op quarantaine locaties gekoppeld worden.</li>
+<li>Er mag maar één product of batch op een locatie gekoppeld worden, tenzij multiproduct ingesteld staat. Zie <a href="../../Algemene-informatie/Voorraadbeheer#multiproductlocaties">voorraadbeheer - Multiproductlocaties</a>. Hierbij wordt ook gekeken naar de <a href="../../Algemene-informatie/Voorraadbeheer#soorten-voorraad">fysieke voorraad</a>. Omdat een order die klaarstaat om gepickt te worden geannuleerd kan worden. Als er dan een ander product gekoppeld is zou een multiproduct locatie ontstaan.</li>
+<li>Bij een magazijnlocatie kan ingesteld zijn dat alleen producten van een bepaalde supplier gekoppeld mogen worden.</li>
+<li>Bij een magazijnlocatie kan ingesteld zijn dat alleen een bepaald product gekoppeld mag worden.</li>
+</ul>
+<h3 id="locatiezone-suggestie">Locatie/zone suggestie</h3>
+<p>Op het koppellabel wordt een locatie geprint waar het product bijgeplaatst kan worden (als het al ergens ligt). Als het nog niet ergens ligt kan per klant een zone ingesteld worden waar het product geplaatst moet worden. Dit wordt dan op het koppellabel geprint.</p>
+<p>Op de scanner worden ook de locaties getoond waar het product al ligt.</p>
+<h3 id="alternatieve-tekst-zone-suggestie">Alternatieve tekst zone suggestie</h3>
+<p>Als een product nog niet gekoppeld is op een magazijnlocatie en er geen zonesuggestie ingesteld staat voor de betreffende klant is het mogelijk een tekst in te stellen dat op het koppellabel getoond wordt.</p>
+<p>Dit kan in GoMonta bij de relatie ingesteld worden onder het kopje Inbound:
+<img src="../../Attachments/image-532dff47-8c07-486f-a7dc-e9e0d57cc384.png" alt="image.png"></p>
+<h3 id="openstaande-orders">Openstaande orders</h3>
+<p>Het is mogelijk om een &quot;B&quot; te laten printen op het koppellabel als er backorders zijn van een ge-inbound product (en crossdocken is niet mogelijk omdat het bijvoorbeeld M orders zijn). De producten kunnen dan dicht bij de echeck gelegd worden zodat ze snel weer gepickt kunnen worden als de order uit backorder komt.</p>
+<p>Dit kan ingeschakeld worden in GoMonta bij Inbound instellingen &quot;Print TT01 backorder label&quot;.</p>
+<h3 id="abc-advies">ABC advies</h3>
+<p>Op het koppellabel wordt een A, B of C getoond wat aangeeft wat de omloopsnelheid van het product is. Vaak verkopende product (A) moeten op goed bereikbare locaties in het magazijn gelegd worden.</p>
+<p>Zie <a href="../../Updates/R&amp;D-Updates#abc-tool-update-15-21-02-2023">R en D update - ABC tool</a>.</p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>Zoekwoorden: i
+,in
+,inb
+,inbo
+,inbou
+,inboun
+,inbound</p>
+<!--
+,Opens
+,Openst
+,Opensta
+,Openstaa
+,Openstaan
+,Openstaand
+,Openstaande
+,Openstaande
+,Openstaande o
+,Openstaande or
+,Openstaande ord
+,Openstaande orde
+,Openstaande order
+,Openstaande orders
+-->
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

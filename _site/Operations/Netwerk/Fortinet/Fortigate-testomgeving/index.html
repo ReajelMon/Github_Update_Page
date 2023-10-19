@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Fortigate testomgeving </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Fortigate testomgeving ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        <!-- Your HTML code with the image -->
+        <!--
+          Copyright (c) Microsoft. All rights reserved.
+          Licensed under the MIT license. See LICENSE file in the project root for full license information.
+        -->
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <div class="DUTCH_FLAG_CLASS">
+          <img class="Dutch_Flag" src="https://i.ibb.co/X5whpXX/Monta-NL.png" alt="Monta-EN-IMG.png">
+          <a href="../nl/index.html" style="margin-left: 5px;" class="flag_name_NL_size">NL</a>
+        </div>
+        <div class="EN_FLAG_CLASS">
+          <img class="EN_Flag" src="https://i.ibb.co/9V7ZW74/Monta-WMS-Engels.webp" alt="Monta-EN-IMG.png">
+          <a href="../en/index.html" style="margin-left: 5px;" class="flag_name_EN_size">EN</a>
+        </div><a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off"><!-- Your HTML code wrapped in a custom class -->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="fortigate-testomgeving">Fortigate testomgeving</h1>
+
+<p>Dit zijn de relevante gegevens voor de PAP16test-omgeving:</p>
+<table>
+<thead>
+<tr>
+<th>Extern IP-nr</th>
+<th>Intern IP-nr</th>
+<th>Wat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>92.69.124.92</td>
+<td>10.20.30.1</td>
+<td>4g</td>
+</tr>
+<tr>
+<td>92.69.118.171</td>
+<td>192.168.101.186</td>
+<td>glas</td>
+</tr>
+</tbody>
+</table>
+<p>De glasverbinding is in werkelijkheid een 4g-modem.</p>
+<p>Er zijn 3 manieren om de pap16test-fg01 te benaderen:</p>
+<p><a href="https://92.69.124.92:4444">https://92.69.124.92:4444</a>  PAP16test-fg01 buitenom modem 1<br>
+<a href="https://92.69.118.171:4444">https://92.69.118.171:4444</a>  Pap16test-fg01 buitenom 4G modem 2<br>
+<a href="https://pap16test-fg01.montapacking.nl:4444/">https://pap16test-fg01.montapacking.nl:4444/</a>  Pap16test-fg01 binnendoor (via mgmt-loopback-adres) (alleen vanaf server in het LAN)</p>
+<p>Je kunt altijd inloggen met het account fallback uit Passwordstate<br>
+Je kunt ook inloggen met voornaam.achternaam en AD-wachtwoord.</p>
+<p>In teamviewer is “Papland IT-Fortigate-testpc-4G-modem” een laptop die aan het 4G-modem 2 hangt.<br>
+Als je op deze laptop inlogt is het 4G modem te benaderen via : \http://192.168.101.1/index.html#login  (ww=passwrdstate)\</p>
+<p>Om te testen wat er gebeurt als er een verbinding wegvalt kun je even het schuifje bij LTE_ uitzetten.</p>
+<p><img src="../../../../Attachments/image-ee0ae3c5-6c44-4797-b988-8333eb1aebe1.png" alt="image.png"></p>
+<p>In teamviewer is &quot;Papland IT-Fortigate-testPC (MONPC1313)&quot; een PC die hangt achter een switch in het pap16 testnetwerk. DUO nodig om in te loggen.</p>
+<p>Op deze PC kun je bijvoorbeeld internet testen en de VPN door bijvoorbeeld  <a href="https://rest.monta.nl/v0">https://rest.monta.nl/v0</a> te benaderen.<br>
+Als je met whatismyip wilt zien over welke 4G modem je het internet op gaat kan het nodig zijn de browser opnieuw te starten omdat je anders door caching een verkeerd beeld krijgt.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+             <a href="#top" class="toppert">Back to top</a>
+            </span>
+      
+      <span></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.mermaidAPI.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>
